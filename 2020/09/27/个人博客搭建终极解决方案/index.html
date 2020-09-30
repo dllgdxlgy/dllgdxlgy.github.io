@@ -30,8 +30,10 @@
 <meta property="og:description" content="gitee+git+hexo+typora打造终极博客连续花了4天多的时间，终于把我的博客搭建好了～～俺的博客，">
 <meta property="og:locale">
 <meta property="og:image" content="https://gitee.com/dlutlgy/images_for_typora/raw/master/images/image-20200930204251672.png">
+<meta property="og:image" content="https://gitee.com/dlutlgy/images_for_typora/raw/master/images/image-20200930205936952.png">
+<meta property="og:image" content="https://gitee.com/dlutlgy/images_for_typora/raw/master/images/image-20200930211427311.png">
 <meta property="article:published_time" content="2020-09-27T01:18:08.000Z">
-<meta property="article:modified_time" content="2020-09-30T12:49:14.854Z">
+<meta property="article:modified_time" content="2020-09-30T13:17:14.795Z">
 <meta property="article:author" content="吕光越">
 <meta property="article:tag" content="Linux">
 <meta property="article:tag" content="Git">
@@ -303,7 +305,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2020-09-30 20:49:14" itemprop="dateModified" datetime="2020-09-30T20:49:14+08:00">2020-09-30</time>
+        <time title="Modified: 2020-09-30 21:17:14" itemprop="dateModified" datetime="2020-09-30T21:17:14+08:00">2020-09-30</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -342,11 +344,38 @@
 <p>虽然有点累，但还是挺开心的，哈哈哈哈，我花的时间太多了，大神遇见不要笑我，期间遇见很多问题，也查到很多很多方案，今天有时间，在这里记录一下，我用的mac中，windows上搭建也是大同小异，需要的可以参考。</p>
 <h3 id="设计思路"><a href="#设计思路" class="headerlink" title="设计思路"></a>设计思路</h3><p>先看一张图片，上图</p>
 <p><img src="https://gitee.com/dlutlgy/images_for_typora/raw/master/images/image-20200930204251672.png" alt="image-20200930204251672"></p>
-<h3 id="typora中图片存储解决方案"><a href="#typora中图片存储解决方案" class="headerlink" title="typora中图片存储解决方案"></a>typora中图片存储解决方案</h3><p>因为在typora上面写md文件特别舒服，但是在搭建博客的时候容易出现图片不显示问题，所以在这里重点解决一下图片显示问题。</p>
+<h3 id="typora中图片存储解决方案"><a href="#typora中图片存储解决方案" class="headerlink" title="typora中图片存储解决方案"></a>typora中图片存储解决方案</h3><p>参考链接<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/13e64c9e2295">点这里</a></p>
+<p>因为在typora上面写md文件特别舒服，但是在搭建博客的时候容易出现图片不显示问题，所以在这里重点解决一下图片显示问题。</p>
 <p>方案：gitee+picgo+typora</p>
 <p>思路：把typora图片上传到gitee，之所以不传到git，是因为git太慢了，本来图片就不小，加载太慢很容易丢失信心～，而PicGo很容易解决，在中间起中间支撑作用。再加上图片自动上传，那简直不要太爽～</p>
 <hr>
-<p>1.</p>
+<ol>
+<li><p>安装Node.js <a target="_blank" rel="noopener" href="https://nodejs.org/en/">链接在这</a></p>
+<p>其主要目的是用来生成静态页面</p>
+</li>
+<li><p>安装Git</p>
+<p>检查版本：</p>
+<p><img src="https://gitee.com/dlutlgy/images_for_typora/raw/master/images/image-20200930205936952.png" alt="image-20200930205936952"></p>
+</li>
+<li><p>安装Hexo</p>
+<ul>
+<li><p>首先在终端执行下面代码</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo npm install -g hexo</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>选择你要保存博客的根目录，接下来将要创建博客文件</p>
+</li>
+<li><p>假设你把文件保存在blog中，则在上一层文件中创建</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>执行如下命令，开启服务器</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo s</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>此时，打开浏览器访问<a href="http://localhost:4000，就能看到如下页面">http://localhost:4000，就能看到如下页面</a></p>
+<p><img src="https://gitee.com/dlutlgy/images_for_typora/raw/master/images/image-20200930211427311.png" alt="image-20200930211427311"></p>
+</li>
+</ol>
 
     </div>
 
