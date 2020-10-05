@@ -2626,7 +2626,7 @@ ul.breadcrumb li:last-child {
 }
 .header-inner {
   background: var(--content-bg-color);
-  border-radius: initial;
+  border-radius: 15px 15px 15px 15px;
   box-shadow: initial;
   width: 240px;
 }
@@ -2660,7 +2660,7 @@ ul.breadcrumb li:last-child {
   }
 }
 .main-inner {
-  border-radius: initial;
+  border-radius: 15px 15px 15px 15px;
   box-sizing: border-box;
   width: calc(100% - 252px);
 }
@@ -2796,7 +2796,7 @@ ul.breadcrumb li:last-child {
 }
 .sidebar-inner {
   background: var(--content-bg-color);
-  border-radius: initial;
+  border-radius: 15px;
   box-shadow: initial;
   box-sizing: border-box;
   color: var(--text-color);
