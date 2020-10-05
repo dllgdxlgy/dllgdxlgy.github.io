@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search> 
+  
+  
+    
+    <entry>
+      <title>个人博客搭建终极解决方案</title>
+      <link href="2020/09/27/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E7%BB%88%E6%9E%81%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/"/>
+      <url>2020/09/27/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E7%BB%88%E6%9E%81%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/</url>
+      
+        <content type="html"><![CDATA[<h1 id="gitee-git-hexo-typora打造终极博客"><a href="#gitee-git-hexo-typora打造终极博客" class="headerlink" title="gitee+git+hexo+typora打造终极博客"></a>gitee+git+hexo+typora打造终极博客</h1><p>连续花了4天多的时间，终于把我的博客搭建好了～～<a href="https://dllgdxlgy.github.io/">俺的博客</a>，</p><a id="more"></a><p>虽然有点累，但还是挺开心的，哈哈哈哈，我花的时间太多了，大神遇见不要笑我，期间遇见很多问题，也查到很多很多方案，今天有时间，在这里记录一下，我用的mac中，windows上搭建也是大同小异，需要的可以参考。</p><h3 id="设计思路"><a href="#设计思路" class="headerlink" title="设计思路"></a>设计思路</h3><p>先看一张图片，上图</p><p><img src="https://gitee.com/dlutlgy/images_for_typora/raw/master/images/image-20200930204251672.png" alt="image-20200930204251672"></p><h3 id="解决图片传输的终极方案"><a href="#解决图片传输的终极方案" class="headerlink" title="解决图片传输的终极方案"></a>解决图片传输的终极方案</h3><p>参考链接：<a href="https://blog.csdn.net/baidu_41656912/article/details/106431054">我在这呢</a></p><h4 id="GItee准备"><a href="#GItee准备" class="headerlink" title="GItee准备"></a>GItee准备</h4><ol><li><p>这里需要先准备一个Gitee账号</p></li><li><p>然后在Gitee里面建立一个账户，这里仓库必须公开，要是不公开是没有办法进行图片上传的，（我踩过坑）</p><p>新建仓库–&gt;然后给仓库起一个名字</p></li><li><p>然后点击头像–&gt;设置，在安全设置里面，选择私人令牌，然后生成新令牌，记得把令牌保存一下，一会要用。</p></li></ol><h4 id="PicGO配置"><a href="#PicGO配置" class="headerlink" title="PicGO配置"></a>PicGO配置</h4><ol><li><p>去官网下载<a href="https://molunerfinn.com/PicGo/">链接</a></p></li><li><p>然后安装好，点击插件设置，在搜索框输入gitee，安装gitee插件，据说两个都可以。随便安装一个</p><p><img src="https://gitee.com/dlutlgy/images_for_typora/raw/master/images/image-20201002201414373.png" alt="image-20201002201414373"></p></li><li><p>点击下面的设置按钮，进行插件设置</p><p><img src="https://gitee.com/dlutlgy/images_for_typora/raw/master/images/image-20201002201623841.png" alt="image-20201002201623841"></p><p>owner：是拥有者</p><p>repo：是图片仓库的名称</p><p>path：是在哪里文件夹下</p><p>token：是刚刚复制的令牌</p><p>message：可以不填。</p></li><li><p>然后进行图片上传，可以看到这里能进行上传了，</p></li><li><p>可以尝试去一下自己的gitee网站下，看一下是不是路径下有自己的图片存在，</p><p>（这里在上传图片时不要传太大的，要不回传上去，但是不显示在文档里）</p></li></ol><h4 id="Typora"><a href="#Typora" class="headerlink" title="Typora"></a>Typora</h4><ol><li><p>下载typora后，进行偏好设置</p><p><img src="https://gitee.com/dlutlgy/images_for_typora/raw/master/images/image-20201002202718374.png" alt="image-20201002202718374"></p></li></ol><ol start="2"><li><p>点击图像，可以插入图片时可以像我，这样设置（我这样设置的目的为了在本地有备份）也可以直接上传，接着选择上传服务，以及选择PicGo的安装路径，最后可以验证一下图片上传选项</p><p><img src="https://gitee.com/dlutlgy/images_for_typora/raw/master/images/image-20201002202851487.png" alt="image-20201002202851487"></p></li><li><p>这时候新建一个文件，就可以进行编辑了，图片自动上传到gitee，这样图片就不会丢失了。</p></li></ol><h3 id="搭建博客"><a href="#搭建博客" class="headerlink" title="搭建博客"></a>搭建博客</h3><p>参考链接<a href="https://www.jianshu.com/p/13e64c9e2295">点这里</a></p><p>因为在typora上面写md文件特别舒服，但是在搭建博客的时候容易出现图片不显示问题，所以在这里重点解决一下图片显示问题。</p><p>方案：gitee+picgo+typora</p><p>思路：把typora图片上传到gitee，之所以不传到git，是因为git太慢了，本来图片就不小，加载太慢很容易丢失信心～，而PicGo很容易解决，在中间起中间支撑作用。再加上图片自动上传，那简直不要太爽～</p><hr><ol><li><p>安装Node.js <a href="https://nodejs.org/en/">链接在这</a></p><p>其主要目的是用来生成静态页面</p></li><li><p>安装Git</p><p>检查版本：</p><p><img src="https://gitee.com/dlutlgy/images_for_typora/raw/master/images/image-20200930205936952.png" alt="image-20200930205936952"></p></li><li><p>安装Hexo</p><ul><li><p>首先在终端执行下面代码</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo npm install -g hexo</span><br></pre></td></tr></table></figure></li><li><p>选择你要保存博客的根目录，接下来将要创建博客文件</p></li><li><p>假设你把文件保存在blog中，则在上一层文件中创建</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install</span><br></pre></td></tr></table></figure></li><li><p>执行如下命令，开启服务器</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo s</span><br></pre></td></tr></table></figure></li></ul><p>此时，打开浏览器访问<a href="http://localhost:4000，就能看到如下页面">http://localhost:4000，就能看到如下页面</a></p></li></ol><p>   <img src="https://gitee.com/dlutlgy/images_for_typora/raw/master/images/image-20201001200925073.png" alt="image-20201001200925073"></p><ol start="4"><li><p>关联github</p><p>登陆账号，新建仓库，命名为<span style='color:red;background:yellow;font-size:文字大小;font-family:字体;'>用户名.github.io</span></p><p>此时blog文件夹下的文件目录为</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">_config.yml </span><br><span class="line">db.json </span><br><span class="line">node_modules </span><br><span class="line"><span class="keyword">package</span>.json</span><br><span class="line">scaffolds</span><br><span class="line">source</span><br><span class="line">themes</span><br></pre></td></tr></table></figure><p>然后进入到<span style='color:red;background:yellow;font-size:文字大小;font-family:字体;'>blog</span>文件夹下，使用vim命令打开_config.yml，命令如下：    </p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ vim _config.yml</span><br></pre></td></tr></table></figure><p>然后修改为：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repository: https:&#x2F;&#x2F;github.com&#x2F;dllgdxlgy&#x2F;dllgdxlgy.github.io.git</span><br><span class="line">  branch: master     </span><br></pre></td></tr></table></figure><p>你需要把dllgdxlgy换为自己的用户名，并且冒号里面需要空格，否则就出现错误。</p><p>然后执行：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo -generate   或者 hexo g     </span><br></pre></td></tr></table></figure><p>目的：为了生成静态页面。</p><p>若出现以下错误</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ERROR Local hexo not found in ~&#x2F;blog</span><br><span class="line">ERROR Try runing: &#39;npm install hexo --save&#39;</span><br></pre></td></tr></table></figure><p>则执行：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install hexo --save</span><br></pre></td></tr></table></figure><p>若无报错，则忽略此步骤。</p><p>在执行配置命令：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy           或者：hexo d</span><br></pre></td></tr></table></figure><p>如果此步骤出现错误：无法连接git或找不到git</p><p>则执行：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install hexo-deployer-git --save      </span><br></pre></td></tr></table></figure><p>然后在执行hexo g 和 hexo d 命令</p><p>执行成功后就能在<a href="http://dllgdxlgy.github.io上看到和之前一样页面./">http://dllgdxlgy.github.io上看到和之前一样页面。</a></p></li></ol><ol start="5"><li>检查ssh keys是否存在Github上（我这里是存在的）</li></ol><ol start="6"><li><p>然后将ssh key 添加到github上。</p><p>Find前往文件夹<code>~/.ssh/id_rsa.pub</code>打开id_rsa.pub文件，里面的信息即为SSH key，将这些信息复制到Github的Add SSH key页面即可。</p><p>进入GitHub –&gt; Settings –&gt; SSH keys –&gt; add SSH key:</p><p>Title里任意添一个标题，将复制的内容粘贴到Key里，点击下方<code>Add key</code>绿色按钮即可。</p></li><li><p>（小记：commend+[  就能稀释掉前面的样式）</p><p>发布文章，进入到blog文件夹下，打开命令行，执行：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new &quot;文件夹名字&quot; </span><br></pre></td></tr></table></figure><p>会在文件夹下发现文档（md格式）</p><p>然后再用typora编写就可以</p></li></ol><h3 id="安装主题Next"><a href="#安装主题Next" class="headerlink" title="安装主题Next"></a>安装主题Next</h3><p>官网链接<a href="https://hexo.io/themes/">点击这里</a>，选自己喜欢的就行了，这里选择的是<span style='color:red;background:yellow;font-size:文字大小;font-family:字体;'>hexo-theme-next</span>主题，</p><p>终端进入到blog文件夹下，执行：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git clone https:&#x2F;&#x2F;github.com&#x2F;iissnan&#x2F;hexo-theme-next themes&#x2F;next</span><br></pre></td></tr></table></figure><p>可以看到blog文件夹目录下的theme文件下多出了theme的文件，这就是刚下的文件，</p><p>然后进入到blog文件下的_config.xml文件下，修改他，可以用vscode改，也可以使用命令行的格式进行修改，</p><p>修改内容：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">landscape:next  (这里改为next)</span><br></pre></td></tr></table></figure><p>然后执行：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ hexo clean           &#x2F;&#x2F;清除缓存文件 (db.json) 和已生成的静态文件 (public)</span><br><span class="line"></span><br><span class="line">$ hexo g             &#x2F;&#x2F;生成缓存和静态文件</span><br><span class="line"> </span><br><span class="line">$ hexo d             &#x2F;&#x2F;重新部署到服务器</span><br></pre></td></tr></table></figure><p>也可以修改其他的选项。</p><p>​    </p><p>​    </p><p>​    </p><p>​    </p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 搭建 </category>
+          
+          <category> 博客搭建 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Linux </tag>
+            
+            <tag> Git </tag>
+            
+            <tag> Gitee </tag>
+            
+            <tag> hexo </tag>
+            
+            <tag> PicGo </tag>
+            
+            <tag> typora </tag>
+            
+            <tag> Mac </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Hello World</title>
+      <link href="2020/09/27/hello-world/"/>
+      <url>2020/09/27/hello-world/</url>
+      
+        <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Linux修改文件等命令</title>
+      <link href="2020/09/26/uahcia/"/>
+      <url>2020/09/26/uahcia/</url>
+      
+        <content type="html"><![CDATA[<p>1、 vi 文件名（编辑文件）</p><p>2、按insert按键，是编辑文件</p><p>3、esc退出编辑</p><p>4、:wq 保存并退出</p><p>5、:q! 不保存并退出</p><a id="more"></a><p>6、在没有编辑的情况下，当光标在最后一行的时候，输入o，不显示，但是可以插入一行，如图：</p><p><img src="https://gitee.com/dlutlgy/images_for_typora/raw/master/images/image-20200926190125902.png" alt="image-20200926190125902"></p><p>7、dd（删除光标所在一行）</p><p>8、</p><p>ls 显示当前下面的文件及文件夹</p><p>ls -a 显示<a href="https://www.baidu.com/s?wd=%E5%BD%93%E5%89%8D%E7%9B%AE%E5%BD%95&tn=SE_PcZhidaonwhc_ngpagmjz&rsv_dl=gh_pc_zhidao">当前目录</a>下的所有文件及文件夹包括隐藏的.和..等</p><p>ls -al 显示<a href="https://www.baidu.com/s?wd=%E5%BD%93%E5%89%8D%E7%9B%AE%E5%BD%95&tn=SE_PcZhidaonwhc_ngpagmjz&rsv_dl=gh_pc_zhidao">当前目录</a>下的所有文件及文件夹包括隐藏的.和..等并显示详细信息，详细信息包括大小，属组，创建时间</p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> Linux </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+  
+  
+</search>
