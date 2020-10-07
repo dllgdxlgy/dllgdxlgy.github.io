@@ -8,7 +8,7 @@
       <link href="2020/10/07/jQuery%E5%A4%8D%E4%B9%A0%EF%BC%881%EF%BC%89/"/>
       <url>2020/10/07/jQuery%E5%A4%8D%E4%B9%A0%EF%BC%881%EF%BC%89/</url>
       
-        <content type="html"><![CDATA[<center>开始第一天复习jQuery</center><!--html--><ol><li>$ 或 jQuery是一个函数，既是函数也是对象。</li><li>$( )返回的对象就是jQuery对象。</li><li>文档夹在完成才执行</li></ol><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  </span><br><span class="line">  </span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure><ol start="4"><li><p>引入jQuery后，当函数用：$(***)</p><p>当对象用：$.(***)</p></li><li><p>作为一般函数调用: $(param)<br>  1). 参数为函数 : 当DOM加载完成后，执行此回调函数<br>  2). 参数为选择器字符串: 查找所有匹配的标签, 并将它们封装成jQuery对象<br>  3). 参数为DOM对象: 将dom对象封装成jQuery对象<br>  4). 参数为html标签字符串 (用得少): 创建标签对象并封装成jQuery对象</p><p>作为对象使用: $.xxx()</p><p>1). $.each() : 隐式遍历数组</p><p>2). $.trim() : 去除两端的空格</p></li></ol>]]></content>
+        <content type="html"><![CDATA[<center>开始第一天复习jQuery</center><a id="more"></a><ol><li>$ 或 jQuery是一个函数，既是函数也是对象。</li><li>$( )返回的对象就是jQuery对象。</li><li>文档夹在完成才执行</li></ol><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  </span><br><span class="line">  </span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure><ol start="4"><li><p>引入jQuery后，当函数用：$(***)</p><p>当对象用：$.(***)</p></li><li><p>作为一般函数调用: $(param)<br>  1). 参数为函数 : 当DOM加载完成后，执行此回调函数<br>  2). 参数为选择器字符串: 查找所有匹配的标签, 并将它们封装成jQuery对象<br>  3). 参数为DOM对象: 将dom对象封装成jQuery对象<br>  4). 参数为html标签字符串 (用得少): 创建标签对象并封装成jQuery对象</p><p>作为对象使用: $.xxx()</p><p>1). $.each() : 隐式遍历数组</p><p>2). $.trim() : 去除两端的空格</p></li></ol>]]></content>
       
       
       <categories>
@@ -38,14 +38,14 @@
       
       <categories>
           
-          <category> Typora </category>
+          <category> typora </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> Typora </tag>
+            <tag> typora </tag>
             
             <tag> 命令 </tag>
             
@@ -74,7 +74,7 @@
       
         <tags>
             
-            <tag> Typora </tag>
+            <tag> typora </tag>
             
             <tag> Linux </tag>
             
