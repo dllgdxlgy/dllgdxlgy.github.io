@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>LeetCode-344-反转字符串</title>
+      <link href="2020/10/08/LeetCode-344-%E5%8F%8D%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2/"/>
+      <url>2020/10/08/LeetCode-344-%E5%8F%8D%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2/</url>
+      
+        <content type="html"><![CDATA[<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>编写一个函数，其作用是将输入的字符串反转过来。输入字符串以字符数组 char[] 的形式给出。</p><p>不要给另外的数组分配额外的空间，你必须原地修改输入数组、使用 O(1) 的额外空间解决这一问题。</p><p>你可以假设数组中的所有字符都是 ASCII 码表中的可打印字符。</p><p>示例 1：</p><p>输入：[“h”,”e”,”l”,”l”,”o”]<br>输出：[“o”,”l”,”l”,”e”,”h”]<br>示例 2：</p><p>输入：[“H”,”a”,”n”,”n”,”a”,”h”]<br>输出：[“h”,”a”,”n”,”n”,”a”,”H”]</p><h3 id="解法："><a href="#解法：" class="headerlink" title="解法："></a>解法：</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">reverseString</span><span class="params">(<span class="keyword">char</span>[] s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n = s.length;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> left = <span class="number">0</span>, right = n - <span class="number">1</span>; left &lt; right; ++left, --right) &#123;</span><br><span class="line">            <span class="keyword">char</span> tmp = s[left];</span><br><span class="line">            s[left] = s[right];</span><br><span class="line">            s[right] = tmp;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/reverse-string">https://leetcode-cn.com/problems/reverse-string</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> LeetCode </category>
+          
+          <category> 算法 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> LeetCode </tag>
+            
+            <tag> 算法 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>jQuery复习（1）</title>
       <link href="2020/10/07/jQuery%E5%A4%8D%E4%B9%A0%EF%BC%881%EF%BC%89/"/>
       <url>2020/10/07/jQuery%E5%A4%8D%E4%B9%A0%EF%BC%881%EF%BC%89/</url>
