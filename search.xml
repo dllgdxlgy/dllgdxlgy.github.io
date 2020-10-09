@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>chrome上的Ghelper插件</title>
+      <link href="2020/10/09/Ghelper%E6%8F%92%E4%BB%B6%E6%8E%A8%E8%8D%90/"/>
+      <url>2020/10/09/Ghelper%E6%8F%92%E4%BB%B6%E6%8E%A8%E8%8D%90/</url>
+      
+        <content type="html"><![CDATA[<center>能帮助我们打卡谷歌学术的插件～～～</center><a id="more"></a><p>我们时不时需要查阅资料，但是像在百度上搜不到，资料也比较少，这是我们就可能要“FQ”，但是还需要买服务器，很麻烦，这里我推荐一个插件，它能够帮我们进行查阅一些资料，像谷歌学术这类的网站能够快速进去</p><p>下载网址：<a href="http://googlehelper.net/">点这里</a></p><p>下载后，解压，然后打开谷歌浏览器，</p><p>点击：</p><img src="https://gitee.com/dlutlgy/images_for_typora/raw/master/images/image-20201009091724613.png" alt="image-20201009091724613" style="zoom:67%;" /><p>然后依次点击 更过工具–&gt;扩展程序  或者直接在chrome上输入：chrome://extensions/</p><img src="https://gitee.com/dlutlgy/images_for_typora/raw/master/images/image-20201009091850917.png" alt="image-20201009091850917" style="zoom:67%;" /><p>然后按下图点击啊：</p><img src="https://gitee.com/dlutlgy/images_for_typora/raw/master/images/image-20201009092427481.png" alt="image-20201009092427481" style="zoom:67%;" /><p>把下载后解压的ghelper_source文件夹就可以了。</p><p>这时候就能上谷歌学术查阅资料辽～～～</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 软件 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 软件 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>jQuery复习（2）</title>
       <link href="2020/10/08/jQuery%E5%A4%8D%E4%B9%A0%EF%BC%882%EF%BC%89/"/>
       <url>2020/10/08/jQuery%E5%A4%8D%E4%B9%A0%EF%BC%882%EF%BC%89/</url>
@@ -155,8 +180,6 @@
             
             <tag> typora </tag>
             
-            <tag> Linux </tag>
-            
             <tag> Git </tag>
             
             <tag> Gitee </tag>
@@ -166,6 +189,8 @@
             <tag> PicGo </tag>
             
             <tag> Mac </tag>
+            
+            <tag> Linux </tag>
             
         </tags>
       
