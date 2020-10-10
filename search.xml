@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>jQuery复习（3）</title>
+      <link href="2020/10/10/jQuery%E5%A4%8D%E4%B9%A0%EF%BC%883%EF%BC%89/"/>
+      <url>2020/10/10/jQuery%E5%A4%8D%E4%B9%A0%EF%BC%883%EF%BC%89/</url>
+      
+        <content type="html"><![CDATA[<center>继续学习~</center><a id="more"></a><ol><li>关于新添加的元素没有被绑定事件，解决方法：给要绑定的元素的父元素绑定（事件委托）</li></ol><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//问题：新添加的元素，点击以后不会变红</span></span><br><span class="line">&lt;ul&gt;</span><br><span class="line">  &lt;li&gt;<span class="number">11111</span>&lt;/li&gt;</span><br><span class="line">  &lt;li&gt;<span class="number">1111111</span>&lt;/li&gt;</span><br><span class="line">  &lt;li&gt;<span class="number">111111111</span>&lt;/li&gt;</span><br><span class="line">  &lt;li&gt;<span class="number">11111111111</span>&lt;/li&gt;</span><br><span class="line">&lt;/ul&gt;</span><br><span class="line">&lt;br&gt;</span><br><span class="line">&lt;button id=<span class="string">&quot;btn&quot;</span>&gt;添加新的li&lt;/button&gt;</span><br><span class="line">&lt;br&gt;</span><br><span class="line"></span><br><span class="line">$(<span class="string">&#x27;ul&gt;li&#x27;</span>).click(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">this</span>.style.background = <span class="string">&#x27;red&#x27;</span></span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line">  $(<span class="string">&#x27;#btn&#x27;</span>).click(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    $(<span class="string">&#x27;ul&#x27;</span>).append(<span class="string">&#x27;&lt;li&gt;新增的li....&lt;/li&gt;&#x27;</span>)</span><br><span class="line">  &#125;)</span><br></pre></td></tr></table></figure><ol start="2"><li><p>事件委托(委派/代理):<br>将多个子元素(li)的事件监听委托给父辈元素(ul)处理<br>监听回调是加在了父辈元素上<br>当操作任何一个子元素(li)时, 事件会冒泡到父辈元素(ul)<br>父辈元素不会直接处理事件, 而是根据event.target得到发生事件的子元素(li), 通过这个子元素调用事件回调函数</p><p>事件委托的2方:<br>委托方: 业主  li<br>被委托方: 中介  ul</p><p>使用事件委托的好处<br>添加新的子元素, 自动有事件响应处理<br>减少事件监听的数量: n==&gt;1</p><p>jQuery的事件委托API<br>设置事件委托: </p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$(parentSelector).delegate(childrenSelector, eventName, callback)</span><br></pre></td></tr></table></figure><p>例子：</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">&#x27;ul&#x27;</span>).delegate(<span class="string">&#x27;li&#x27;</span>, <span class="string">&#x27;click&#x27;</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">   <span class="built_in">console</span>.log(<span class="built_in">this</span>)</span><br><span class="line">   <span class="built_in">this</span>.style.background = <span class="string">&#x27;red&#x27;</span></span><br><span class="line"> &#125;)</span><br></pre></td></tr></table></figure><p>移除事件委托: </p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$(parentSelector).undelegate(eventName)</span><br></pre></td></tr></table></figure></li><li><p>淡入淡出: 不断改变元素的透明度(opacity)来实现的<br>fadeIn(): 带动画的显示<br>fadeOut(): 带动画隐藏<br>fadeToggle(): 带动画切换显示/隐藏</p><p>fadeIn()无参数，效果会立刻出现</p><p>fadeIn(‘slow’)字符串参数</p><p>fadeIn(3000)   3秒</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">&#x27;#btn1&#x27;</span>).click(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">   <span class="comment">//$div1.fadeOut()</span></span><br><span class="line">    <span class="comment">//$div1.fadeOut(&#x27;slow&#x27;)</span></span><br><span class="line">   $div1.fadeOut(<span class="number">1000</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">     alert(<span class="string">&#x27;动画完成了!!!&#x27;</span>)</span><br><span class="line">   &#125;)</span><br><span class="line"> &#125;)</span><br></pre></td></tr></table></figure></li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> jQuery </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> jQuery </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>chrome上的Ghelper插件</title>
       <link href="2020/10/09/Ghelper%E6%8F%92%E4%BB%B6%E6%8E%A8%E8%8D%90/"/>
       <url>2020/10/09/Ghelper%E6%8F%92%E4%BB%B6%E6%8E%A8%E8%8D%90/</url>
