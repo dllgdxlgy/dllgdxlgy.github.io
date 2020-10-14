@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>Ajax学习笔记</title>
+      <link href="2020/10/14/Ajax%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+      <url>2020/10/14/Ajax%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
+      
+        <content type="html"><![CDATA[<center>文案</center><center>白天隐藏在入夜的灯，风躺进熟睡人的呼吸</center><center>芦苇是地底的云，你推窗望过来，瞳孔是距我最近的星🌟</center><a id="more"></a><h3 id="工作原理"><a href="#工作原理" class="headerlink" title="工作原理"></a>工作原理</h3><p><img src="https://gitee.com/dlutlgy/images_for_typora/raw/master/images/image-20201014162325571.png" alt="image-20201014162325571"></p><p>完成高功能：局部刷新，但是不可以后退。</p><p>使用XMLHttpRequest对象</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xhr = <span class="keyword">new</span> XMLHttpReuqest();</span><br></pre></td></tr></table></figure><p>xhr拥有一些属性方法，</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Ajax </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Ajax </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>好句子</title>
       <link href="2020/10/13/%E5%A5%BD%E5%8F%A5%E5%AD%90/"/>
       <url>2020/10/13/%E5%A5%BD%E5%8F%A5%E5%AD%90/</url>
