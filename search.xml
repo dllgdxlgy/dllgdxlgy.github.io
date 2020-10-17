@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>WebStorm常用快捷键</title>
+      <link href="2020/10/17/WebStorm%E5%BF%AB%E6%8D%B7%E9%94%AE/"/>
+      <url>2020/10/17/WebStorm%E5%BF%AB%E6%8D%B7%E9%94%AE/</url>
+      
+        <content type="html"><![CDATA[<center>一天 24 小时。学习 24 小时，休息 24 小时。</center><a id="more"></a><p>file —&gt;Setting—&gt;Keymap  例如：搜索duplicate即可找到关于复制的快捷键设置，双击设置。</p><table><thead><tr><th>操作</th><th>快捷键</th><th>备注</th></tr></thead><tbody><tr><td>复制当前行并粘贴到下一行（windows）</td><td>Ctrl+D</td><td></td></tr><tr><td>快速上移一行</td><td>shift+Alt+上</td><td></td></tr><tr><td></td><td></td><td></td></tr></tbody></table>]]></content>
+      
+      
+      <categories>
+          
+          <category> 软件 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> WebStorm </tag>
+            
+            <tag> 快捷键 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title></title>
       <link href="2020/10/16/vue%E5%AD%A6%E4%B9%A0/"/>
       <url>2020/10/16/vue%E5%AD%A6%E4%B9%A0/</url>
@@ -61,33 +88,6 @@
         <tags>
             
             <tag> Ajax </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>WebStorm常用快捷键</title>
-      <link href="2020/10/13/WebStorm%E5%BF%AB%E6%8D%B7%E9%94%AE/"/>
-      <url>2020/10/13/WebStorm%E5%BF%AB%E6%8D%B7%E9%94%AE/</url>
-      
-        <content type="html"><![CDATA[<center>一天 24 小时。学习 24 小时，休息 24 小时。</center><a id="more"></a><p>file —&gt;Setting—&gt;Keymap  例如：搜索duplicate即可找到关于复制的快捷键设置，双击设置。</p><table><thead><tr><th>操作</th><th>快捷键</th><th>备注</th></tr></thead><tbody><tr><td>复制当前行并粘贴到下一行（windows）</td><td>Ctrl+D</td><td></td></tr><tr><td>快速上移一行</td><td>shift+Alt+上</td><td></td></tr><tr><td></td><td></td><td></td></tr></tbody></table>]]></content>
-      
-      
-      <categories>
-          
-          <category> 软件 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> WebStorm </tag>
-            
-            <tag> 快捷键 </tag>
             
         </tags>
       
