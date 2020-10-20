@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>LeetCode-143-重排链表</title>
+      <link href="2020/10/20/LeetCode-143-%E9%87%8D%E6%8E%92%E9%93%BE%E8%A1%A8/"/>
+      <url>2020/10/20/LeetCode-143-%E9%87%8D%E6%8E%92%E9%93%BE%E8%A1%A8/</url>
+      
+        <content type="html"><![CDATA[<p>给定一个单链表 L：L0→L1→…→Ln-1→Ln ，<br>将其重新排列后变为： L0→Ln→L1→Ln-1→L2→Ln-2→…</p><p>你不能只是单纯的改变节点内部的值，而是需要实际的进行节点交换。</p><a id="more"></a><p>示例1：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">给定链表 1-&gt;2-&gt;3-&gt;4, 重新排列为 1-&gt;4-&gt;2-&gt;3.</span><br></pre></td></tr></table></figure><p>实例2：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">给定链表 1-&gt;2-&gt;3-&gt;4-&gt;5, 重新排列为 1-&gt;5-&gt;2-&gt;4-&gt;3.</span><br></pre></td></tr></table></figure><p>解题思路：</p><p>如果是直接去把L<del>n</del>取出来添加到L<del>1</del>下，不仅第一次需要遍历整个链表，第二次还需要遍历，很麻烦，很浪费时间。</p><p>我们不如直接把整个链表遍历一遍，放在List里面（跟数组一样），然后定义两个整数，一个在前面，一个在后面，把后面的数添加到前面的数的后面，然后前面的加，后面的减。直到最后。</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * public class ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode next;</span></span><br><span class="line"><span class="comment"> *     ListNode() &#123;&#125;</span></span><br><span class="line"><span class="comment"> *     ListNode(int val) &#123; this.val = val; &#125;</span></span><br><span class="line"><span class="comment"> *     ListNode(int val, ListNode next) &#123; this.val = val; this.next = next; &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">     </span><br><span class="line">     <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">reorderList</span><span class="params">(ListNode head)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (head == <span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//存到 list 中去</span></span><br><span class="line">    List&lt;ListNode&gt; list = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">    <span class="keyword">while</span> (head != <span class="keyword">null</span>) &#123;</span><br><span class="line">        list.add(head);</span><br><span class="line">        head = head.next;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//头尾指针依次取元素</span></span><br><span class="line">    <span class="keyword">int</span> i = <span class="number">0</span>, j = list.size() - <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span> (i &lt; j) &#123;</span><br><span class="line">        list.get(i).next = list.get(j);</span><br><span class="line">        i++;</span><br><span class="line">        <span class="comment">//偶数个节点的情况，会提前相遇</span></span><br><span class="line">        <span class="keyword">if</span> (i == j) &#123;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        list.get(j).next = list.get(i);</span><br><span class="line">        j--;</span><br><span class="line">    &#125;</span><br><span class="line">    list.get(i).next = <span class="keyword">null</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p><strong>复杂度分析</strong></p><ul><li>时间复杂度：O(N)<em>O</em>(<em>N</em>)，其中 N<em>N</em> 是链表中的节点数。</li><li>空间复杂度：O(N)<em>O</em>(<em>N</em>)，其中 N<em>N</em> 是链表中的节点数。主要为线性表的开销。</li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> LeetCode </category>
+          
+          <category> 算法 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> LeetCode </tag>
+            
+            <tag> 算法 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>WebStorm常用快捷键</title>
       <link href="2020/10/17/WebStorm%E5%BF%AB%E6%8D%B7%E9%94%AE/"/>
       <url>2020/10/17/WebStorm%E5%BF%AB%E6%8D%B7%E9%94%AE/</url>
