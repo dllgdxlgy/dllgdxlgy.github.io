@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>第15章 Java 高级编程 -反射</title>
+      <link href="2021/11/27/%E7%AC%AC15%E7%AB%A0%20java%E9%AB%98%E7%BA%A7%E7%BC%96%E7%A8%8B-%E5%8F%8D%E5%B0%84/"/>
+      <url>2021/11/27/%E7%AC%AC15%E7%AB%A0%20java%E9%AB%98%E7%BA%A7%E7%BC%96%E7%A8%8B-%E5%8F%8D%E5%B0%84/</url>
+      
+        <content type="html"><![CDATA[<center>总体来说，没有什么迫在眉睫一定要得到的东西。这一路上也不曾感觉有所失去。所以，我是一个幸福的人!</center><a id="more"></a><h2 id="15-1-：Java反射机制概述"><a href="#15-1-：Java反射机制概述" class="headerlink" title="15.1 ：Java反射机制概述"></a>15.1 ：Java反射机制概述</h2><h3 id="15-1-1-反射的概述"><a href="#15-1-1-反射的概述" class="headerlink" title="15.1.1 反射的概述"></a>15.1.1 反射的概述</h3><p>​        反射是被视为<strong>动态语言</strong>的关键，是因为 Java 文件要进行两个阶段的“洗礼”，第一个编译阶段是生成  .java 文件编译为 .class 文件，此时还不能确定某一类的对象，只有在运行时才能确定是哪个。体现了动态性。</p><p><img src="https://gitee.com/dlutlgy/window_typora/raw/master/images/image-20201124193827032.png" alt="image-20201124193827032"></p><p>反射的意思就是 通过类的对象，能了解到类的信息。就是反射。</p><p><img src="https://gitee.com/dlutlgy/window_typora/raw/master/images/image-20201127142743534.png" alt="image-20201127142743534"></p><h3 id="15-1-2-动态语言-与-静态语言"><a href="#15-1-2-动态语言-与-静态语言" class="headerlink" title="15.1.2 动态语言 与 静态语言"></a>15.1.2 动态语言 与 静态语言</h3><p><strong>动态语言</strong>：在运行时可以改变其结构的语言，例如新的函数、对象、甚至代码可以 被引进，已有的函数可以被删除或是其他结构上的变化。通俗点说就是<strong>在运行时代码可以根据某些条件改变自身结构。</strong> </p><p><strong>静态语言</strong>：运行时结构不可改变，如Java、C、 C++。</p><p>虽然Java不是动态语言，但是Java可以成为“<strong>准动态语言</strong>”，也就是说它有动态性，可以利用反射的机制来体现。</p><h3 id="15-1-3-Java反射机制研究与应用"><a href="#15-1-3-Java反射机制研究与应用" class="headerlink" title="15.1.3 Java反射机制研究与应用"></a>15.1.3 Java反射机制研究与应用</h3><p>反射可以干什么？</p><ul><li>在运行时判断任意一个对象所属的类 </li><li>在运行时构造任意一个类的对象 </li><li>在运行时判断任意一个类所具有的成员变量和方法 </li><li>在运行时获取泛型信息 </li><li>在运行时调用任意一个对象的成员变量和方法 </li><li>在运行时处理注解 </li><li>生成动态代理</li></ul><p>总之一句话：就是可以获取类的任何信息。</p><p>关于反射相关的API</p><ul><li>java.lang.Class:代表一个类</li><li>java.lang.reflect.Method:代表类的方法</li><li>java.lang.reflect.Field:代表类的成员变量</li><li>java.lang.reflect.Constructor:代表类的构造器</li></ul><h2 id="15-2-理解Class类并获取Class实例"><a href="#15-2-理解Class类并获取Class实例" class="headerlink" title="15.2 理解Class类并获取Class实例"></a>15.2 理解Class类并获取Class实例</h2><h3 id="15-2-1-Class类"><a href="#15-2-1-Class类" class="headerlink" title="15.2.1 Class类"></a>15.2.1 Class类</h3><p>Class是用来描述类的类，比如每个类都有属性，都有方法等等，所以又抽象出一个类。Class类是反射的源头。</p><img src="https://gitee.com/dlutlgy/window_typora/raw/master/images/image-20201127144332468.png" alt="image-20201127144332468" style="zoom: 80%;" /><p>因为 Object 类是所有类的父类，要想得到每个类的信息，getClass()方法就声明在了 Object 类中。</p><p>​        对象照镜子后可以得到的信息：某个类的属性、方法和构造器、某个类到底实现了哪些接口。对于每个类而言，JRE 都为其保留一个不变的 Class 类型的对象。一个 Class 对象包含了特定某个结构的有关信息。</p><ul><li>Class本身也是一个类 </li><li>Class 对象只能由系统建立对象 </li><li>一个加载的类在 JVM 中只会有一个Class实例 </li><li>一个Class对象对应的是一个加载到JVM中的一个.class文件 </li><li>每个类的实例都会记得自己是由哪个 Class 实例所生成 </li><li>通过Class可以完整地得到一个类中的所有被加载的结构 </li><li>Class类是Reflection的根源，针对任何你想动态加载、运行的类，唯有先获得相应的 Class对</li></ul><h3 id="15-2-2-获取Class类的实例-（四种方法）"><a href="#15-2-2-获取Class类的实例-（四种方法）" class="headerlink" title="15.2.2 获取Class类的实例 （四种方法）"></a>15.2.2 获取Class类的实例 （四种方法）</h3><p>获取Class类的实例的四种方法，其中前三种方法比较重要，经常用到，最后一种不需要掌握。</p><p> 方式一：调用运行时类的属性：.class</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Class clazz1 = Person.class;</span><br><span class="line">System.out.println(clazz1);</span><br></pre></td></tr></table></figure><p>方式二：通过运行时类的对象,调用getClass()</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Person p1 = <span class="keyword">new</span> Person(); <span class="comment">// 此时Person类为运行时类</span></span><br><span class="line">Class clazz2 = p1.getClass();<span class="comment">//.getclass 是在object里面造的</span></span><br><span class="line">System.out.println(clazz2);</span><br></pre></td></tr></table></figure><p>方式三：调用Class的 静态方法 ：forName(String classPath)。这里必须写 类的全类名，因为同一个module下可能有多个person。</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Class clazz3 = Class.forName(<span class="string">&quot;com.atguigu.java.Person&quot;</span>);</span><br><span class="line">System.out.println(clazz3+<span class="string">&quot;打印3&quot;</span>);</span><br></pre></td></tr></table></figure><p>方式四：使用类的加载器：ClassLoader  (了解)</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ClassLoader classLoader = ReflectionTest.class.getClassLoader();</span><br><span class="line">Class clazz4 = classLoader.loadClass(<span class="string">&quot;com.atguigu.java.Person&quot;</span>);</span><br><span class="line">System.out.println(clazz4);</span><br></pre></td></tr></table></figure><h2 id="15-3-类的加载-与ClassLoader的理解（了解）"><a href="#15-3-类的加载-与ClassLoader的理解（了解）" class="headerlink" title="15.3 类的加载 与ClassLoader的理解（了解）"></a>15.3 类的加载 与ClassLoader的理解（了解）</h2><h3 id="15-3-1-类的加载过程-（了解）"><a href="#15-3-1-类的加载过程-（了解）" class="headerlink" title="15.3.1 类的加载过程 （了解）"></a>15.3.1 类的加载过程 （了解）</h3><p>当程序主动使用某个类时，如果该类还未被加载到内存中，则系统会通过 如下三个步骤来对该类进行初始化。</p><p><img src="https://gitee.com/dlutlgy/window_typora/raw/master/images/image-20201127152144541.png" alt="image-20201127152144541"></p><ul><li>加载：将class文件字节码内容加载到内存中，并将这些静态数据转换成方法区的运行时 数据结构，然后生成一个代表这个类的java.lang.Class对象，作为方法区中类数据的访问 入口（即引用地址）。所有需要访问和使用类数据只能通过这个Class对象。这个加载的 过程需要类加载器参与。</li><li>链接：将Java类的二进制代码合并到JVM的运行状态之中的过程。<ul><li>验证：确保加载的类信息符合JVM规范，例如：以cafe开头，没有安全方面的问题 </li><li>准备：正式为类变量（static）分配内存并设置类变量默认初始值的阶段，这些内存 都将在方法区中进行分配。 </li><li>解析：虚拟机常量池内的符号引用（常量名）替换为直接引用（地址）的过程。</li></ul></li><li>初始化<ul><li>执行类构造器<clinit>()方法的过程。类构造器<clinit>()方法是由编译期自动收集类中 所有类变量的赋值动作和静态代码块中的语句合并产生的。（类构造器是构造类信息的，不是构造该类对象的构造器）。</li><li>当初始化一个类的时候，如果发现其父类还没有进行初始化，则需要先触发其父类 的初始化。</li><li>虚拟机会保证一个类的<clinit>()方法在多线程环境中被正确加锁和同步。</li></ul></li></ul><p><img src="https://gitee.com/dlutlgy/window_typora/raw/master/images/image-20201125121333135.png" alt="image-20201125121333135"></p><p>类加载器的作用： </p><ul><li>类加载的作用：将class文件字节码内容加载到内存中，并将这些静态数据转换成方 法区的运行时数据结构，然后在堆中生成一个代表这个类的java.lang.Class对象，作为 方法区中类数据的访问入口。 </li><li>类缓存：标准的 JavaSE 类加载器可以按要求查找类，但一旦某个类被加载到类加载器 中，它将维持加载（缓存）一段时间。不过 JVM 垃圾回收机制可以回收这些Class对象。</li></ul><h2 id="15-4-创建运行时类对象"><a href="#15-4-创建运行时类对象" class="headerlink" title="15.4 创建运行时类对象"></a>15.4 创建运行时类对象</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//1.根据全类名获取对应的Class对象 </span></span><br><span class="line">String name = “atguigu.java.Person<span class="string">&quot;; </span></span><br><span class="line"><span class="string">Class clazz = null; clazz = Class.forName(name); </span></span><br><span class="line"><span class="string">//2.调用指定参数结构的构造器，生成Constructor的实例 </span></span><br><span class="line"><span class="string">Constructor con = clazz.getConstructor(String.class,Integer.class); </span></span><br><span class="line"><span class="string">//3.通过Constructor的实例创建对应类的对象，并初始化类属性 </span></span><br><span class="line"><span class="string">Person p2 = (Person) con.newInstance(&quot;</span>Peter<span class="string">&quot;,20); </span></span><br><span class="line"><span class="string">System.out.println(p2);</span></span><br></pre></td></tr></table></figure><h2 id="15-5-获取运行时类的完整结构"><a href="#15-5-获取运行时类的完整结构" class="headerlink" title="15.5 获取运行时类的完整结构"></a>15.5 获取运行时类的完整结构</h2><p>具体内容在代码中体现。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Java基础 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> java </tag>
+            
+            <tag> 反射 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Mybatis复习总结（未完结）</title>
       <link href="2021/01/07/Mybatis/"/>
       <url>2021/01/07/Mybatis/</url>
@@ -384,9 +411,9 @@
       
         <tags>
             
-            <tag> typora </tag>
-            
             <tag> Mac </tag>
+            
+            <tag> typora </tag>
             
             <tag> Linux </tag>
             
