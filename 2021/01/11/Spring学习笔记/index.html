@@ -22,15 +22,15 @@
     var CONFIG = {"hostname":"dlutlgy.top","root":"/","scheme":"Pisces","version":"8.0.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
   </script>
 
-  <meta name="description" content="what kind of life do you want ~">
+  <meta name="description" content="若女生没有暗示，男人就不敢追   一个暗示一个勾搭，一个调戏一个愿意，促成一段苟且  事后的不甘，纯属你俩分赃不均。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Spring学习笔记">
 <meta property="og:url" content="http://dlutlgy.top/2021/01/11/Spring%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.html">
 <meta property="og:site_name" content="酒窝里有酒">
-<meta property="og:description" content="what kind of life do you want ~">
+<meta property="og:description" content="若女生没有暗示，男人就不敢追   一个暗示一个勾搭，一个调戏一个愿意，促成一段苟且  事后的不甘，纯属你俩分赃不均。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-01-11T12:07:12.000Z">
-<meta property="article:modified_time" content="2021-01-11T12:07:48.606Z">
+<meta property="article:modified_time" content="2021-01-18T15:01:08.824Z">
 <meta property="article:author" content="Dlutlgy">
 <meta property="article:tag" content="Spring">
 <meta name="twitter:card" content="summary">
@@ -213,7 +213,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
@@ -225,6 +225,7 @@
 
       <!--noindex-->
       <section class="post-toc-wrap sidebar-panel">
+          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#AOP%E6%9C%AF%E8%AF%AD"><span class="nav-number">1.</span> <span class="nav-text">AOP术语</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AOP%E7%9A%84%E6%93%8D%E4%BD%9C"><span class="nav-number">2.</span> <span class="nav-text">AOP的操作</span></a></li></ol></div>
       </section>
       <!--/noindex-->
 
@@ -326,10 +327,16 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
-      
 
-      <time title="创建时间：2021-01-11 20:07:12 / 修改时间：20:07:48" itemprop="dateCreated datePublished" datetime="2021-01-11T20:07:12+08:00">2021-01-11</time>
+      <time title="创建时间：2021-01-11 20:07:12" itemprop="dateCreated datePublished" datetime="2021-01-11T20:07:12+08:00">2021-01-11</time>
     </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-01-18 23:01:08" itemprop="dateModified" datetime="2021-01-18T23:01:08+08:00">2021-01-18</time>
+      </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-folder"></i>
@@ -369,7 +376,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>0</span>
+      <span>901</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -387,7 +394,74 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        
+        <center>若女生没有暗示，男人就不敢追</center>
+
+<center> 一个暗示一个勾搭，一个调戏一个愿意，促成一段苟且</center>
+
+<center>事后的不甘，纯属你俩分赃不均。</center>
+
+<a id="more"></a>
+
+<h3 id="AOP术语"><a href="#AOP术语" class="headerlink" title="AOP术语"></a>AOP术语</h3><ul>
+<li>连接点：在一个类中，哪一个方法能够被增强，那这个方法就叫做连接点</li>
+</ul>
+<p>例子</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">User</span></span>&#123;</span><br><span class="line">	add();</span><br><span class="line">	delete()；</span><br><span class="line">  update();</span><br><span class="line">  query();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li><p>切入点：<strong>实际</strong>被真正增强的方法叫做切入点（因为并不是所有的连接点都被增强）</p>
+</li>
+<li><p>通知/增强</p>
+<ul>
+<li>实际增强的逻辑的部分就是通知，比如在add（）方法后加了一个输出语句，那么那个输出语句就是通知</li>
+<li>通知有多种类型<ul>
+<li>前置通知（在执行之前执行）</li>
+<li>后置通知（在执行之后执行）</li>
+<li>环绕通知（前后都执行）</li>
+<li>异常通知（出现异常的时候执行）</li>
+<li>最终通知（不管怎么样，都会执行）</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>切面：是动作，是把<strong>通知</strong>应用到<strong>切入点</strong>的过程</p>
+</li>
+</ul>
+<h3 id="AOP的操作"><a href="#AOP的操作" class="headerlink" title="AOP的操作"></a>AOP的操作</h3><ol>
+<li>在Spring框架中，一般基于AspectJ 实现 AOP 的操作</li>
+</ol>
+<p>什么是 AspectJ ？</p>
+<p>答：AspectJ不是Spring 的组成部分，独立于AOP框架，一般把 AspectJ 和Spring 框架一起使用，完成AOP操作。</p>
+<ol start="2">
+<li><p>基于 AspectJ 实现AOP的操作</p>
+<p>(1) 基于XML配置文件的实现</p>
+<p>(2) 基于注解的方式实现（使用）</p>
+</li>
+<li><p>在项目工程中引入AOP项目依赖</p>
+</li>
+</ol>
+<ol start="4">
+<li>切入点的表达式<ul>
+<li>切入点表达式的作用：知道对哪个类型里面的哪个方法进行增强</li>
+<li>语法结构<ul>
+<li>execution([权限修饰符] [返回类型] [类全路径] ([参数列表])</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<p>举例1：对com.lgy.dao.BookDao 类里面的 add()方法进行增强</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//* 表示任意的修饰符,返回类型没有没写，参数列表用了(..)</span></span><br><span class="line">execution(* com.lgy.dao.BookDao.add(..))</span><br></pre></td></tr></table></figure>
+
+<p>举例2：对com.lgy.dao.BookDao 类里面的所有方法进行增强</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//* 表示任意的修饰符,返回类型没有没写，参数列表用了(..)</span></span><br><span class="line">execution(* com.lgy.dao.BookDao.*(..))</span><br></pre></td></tr></table></figure>
+
+<p>举例3：对com.lgy.dao 包里面的所有类及类里面的所有方法进行增强</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//* 表示任意的修饰符,返回类型没有没写，参数列表用了(..)</span></span><br><span class="line">execution(* com.lgy.dao.*.*(..))</span><br></pre></td></tr></table></figure>
+
+
     </div>
 
     
@@ -487,7 +561,7 @@
       <i class="fa fa-chart-line"></i>
     </span>
       <span>站点总字数：</span>
-    <span title="站点总字数">39k</span>
+    <span title="站点总字数">40k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
