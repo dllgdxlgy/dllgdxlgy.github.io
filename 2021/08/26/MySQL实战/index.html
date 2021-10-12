@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.14.0/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"dlutlgy.top","root":"/","scheme":"Pisces","version":"8.0.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
+  </script>
+
+  <meta name="description" content="文案  要想成为强者，  绝不能绕过挡道的荆棘，也不能回避风雨的冲刷。  在复习java基础知识的时候，顺便学习一下sql，发现之前学过的数据库在用的时候不会了，拿过来重新拾起来，好难，加油。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MySQL实战">
+<meta property="og:url" content="http://dlutlgy.top/2021/08/26/MySQL%E5%AE%9E%E6%88%98/index.html">
+<meta property="og:site_name" content="酒窝里有酒">
+<meta property="og:description" content="文案  要想成为强者，  绝不能绕过挡道的荆棘，也不能回避风雨的冲刷。  在复习java基础知识的时候，顺便学习一下sql，发现之前学过的数据库在用的时候不会了，拿过来重新拾起来，好难，加油。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-08-26T02:48:57.000Z">
+<meta property="article:modified_time" content="2021-08-26T05:06:47.486Z">
+<meta property="article:author" content="Dlutlgy">
+<meta property="article:tag" content="MySql">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://dlutlgy.top/2021/08/26/MySQL%E5%AE%9E%E6%88%98/">
+
+
+<script class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>MySQL实战 | 酒窝里有酒</title>
+  
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?610f3edfabbb82ef386946e8513bdacf";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">酒窝里有酒</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">盐于律己，甜以待人。生而温柔，却有力量，近朱者赤，近我者甜。众生皆草木，唯我是青山。</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-guestbook">
+
+    <a href="/guestbook/" rel="section"><i class="fa fa-book fa-fw"></i>留言板</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-overview-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <section class="post-toc-wrap sidebar-panel">
+      </section>
+      <!--/noindex-->
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Dlutlgy"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">Dlutlgy</p>
+  <div class="site-description" itemprop="description">what kind of life do you want ~</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">34</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">21</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">32</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/dllgdxlgy" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;dllgdxlgy" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:L337cu@163.com" title="E-Mail → mailto:L337cu@163.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://music.163.com/#/user/home?id=440399808" title="音乐 → https:&#x2F;&#x2F;music.163.com&#x2F;#&#x2F;user&#x2F;home?id&#x3D;440399808" rel="noopener" target="_blank"><i class="fa fa-headphones fa-fw"></i>音乐</a>
+      </span>
+  </div>
+
+
+
+      </section>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+      
+
+      
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://dlutlgy.top/2021/08/26/MySQL%E5%AE%9E%E6%88%98/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Dlutlgy">
+      <meta itemprop="description" content="what kind of life do you want ~">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="酒窝里有酒">
+    </span>
+
+    
+    
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          MySQL实战
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2021-08-26 10:48:57 / 修改时间：13:06:47" itemprop="dateCreated datePublished" datetime="2021-08-26T10:48:57+08:00">2021-08-26</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/MySql/" itemprop="url" rel="index"><span itemprop="name">MySql</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/2021/08/26/MySQL%E5%AE%9E%E6%88%98/" class="post-meta-item leancloud_visitors" data-flag-title="MySQL实战" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2021/08/26/MySQL%E5%AE%9E%E6%88%98/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2021/08/26/MySQL%E5%AE%9E%E6%88%98/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+      </div>
+      <div class="post-meta">
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>14k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>12 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <center>文案</center>
+
+<center>要想成为强者，</center>
+
+<center>绝不能绕过挡道的荆棘，也不能回避风雨的冲刷。</center>
+
+<p>在复习java基础知识的时候，顺便学习一下sql，发现之前学过的数据库在用的时候不会了，拿过来重新拾起来，好难，加油。</p>
+<a id="more"></a>
+
+<p>视频来源：来自于美国一位老师，看了一些感觉还不错，就决定坚持看下去，在看的基础上，还要看相关书籍，并进行整理。</p>
+<p>视频链接：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1UE41147KC?p=3">简单易懂的MySQL教程</a></p>
+<p>该教程使用到的文件：<a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1ao7TTXYQF6OFOPX-O0rOjw">点击这里</a> 密码: 8iha</p>
+<p>以下sql语句是边学边敲的。设计到对数据库的方方面面。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br><span class="line">280</span><br><span class="line">281</span><br><span class="line">282</span><br><span class="line">283</span><br><span class="line">284</span><br><span class="line">285</span><br><span class="line">286</span><br><span class="line">287</span><br><span class="line">288</span><br><span class="line">289</span><br><span class="line">290</span><br><span class="line">291</span><br><span class="line">292</span><br><span class="line">293</span><br><span class="line">294</span><br><span class="line">295</span><br><span class="line">296</span><br><span class="line">297</span><br><span class="line">298</span><br><span class="line">299</span><br><span class="line">300</span><br><span class="line">301</span><br><span class="line">302</span><br><span class="line">303</span><br><span class="line">304</span><br><span class="line">305</span><br><span class="line">306</span><br><span class="line">307</span><br><span class="line">308</span><br><span class="line">309</span><br><span class="line">310</span><br><span class="line">311</span><br><span class="line">312</span><br><span class="line">313</span><br><span class="line">314</span><br><span class="line">315</span><br><span class="line">316</span><br><span class="line">317</span><br><span class="line">318</span><br><span class="line">319</span><br><span class="line">320</span><br><span class="line">321</span><br><span class="line">322</span><br><span class="line">323</span><br><span class="line">324</span><br><span class="line">325</span><br><span class="line">326</span><br><span class="line">327</span><br><span class="line">328</span><br><span class="line">329</span><br><span class="line">330</span><br><span class="line">331</span><br><span class="line">332</span><br><span class="line">333</span><br><span class="line">334</span><br><span class="line">335</span><br><span class="line">336</span><br><span class="line">337</span><br><span class="line">338</span><br><span class="line">339</span><br><span class="line">340</span><br><span class="line">341</span><br><span class="line">342</span><br><span class="line">343</span><br><span class="line">344</span><br><span class="line">345</span><br><span class="line">346</span><br><span class="line">347</span><br><span class="line">348</span><br><span class="line">349</span><br><span class="line">350</span><br><span class="line">351</span><br><span class="line">352</span><br><span class="line">353</span><br><span class="line">354</span><br><span class="line">355</span><br><span class="line">356</span><br><span class="line">357</span><br><span class="line">358</span><br><span class="line">359</span><br><span class="line">360</span><br><span class="line">361</span><br><span class="line">362</span><br><span class="line">363</span><br><span class="line">364</span><br><span class="line">365</span><br><span class="line">366</span><br><span class="line">367</span><br><span class="line">368</span><br><span class="line">369</span><br><span class="line">370</span><br><span class="line">371</span><br><span class="line">372</span><br><span class="line">373</span><br><span class="line">374</span><br><span class="line">375</span><br><span class="line">376</span><br><span class="line">377</span><br><span class="line">378</span><br><span class="line">379</span><br><span class="line">380</span><br><span class="line">381</span><br><span class="line">382</span><br><span class="line">383</span><br><span class="line">384</span><br><span class="line">385</span><br><span class="line">386</span><br><span class="line">387</span><br><span class="line">388</span><br><span class="line">389</span><br><span class="line">390</span><br><span class="line">391</span><br><span class="line">392</span><br><span class="line">393</span><br><span class="line">394</span><br><span class="line">395</span><br><span class="line">396</span><br><span class="line">397</span><br><span class="line">398</span><br><span class="line">399</span><br><span class="line">400</span><br><span class="line">401</span><br><span class="line">402</span><br><span class="line">403</span><br><span class="line">404</span><br><span class="line">405</span><br><span class="line">406</span><br><span class="line">407</span><br><span class="line">408</span><br><span class="line">409</span><br><span class="line">410</span><br><span class="line">411</span><br><span class="line">412</span><br><span class="line">413</span><br><span class="line">414</span><br><span class="line">415</span><br><span class="line">416</span><br><span class="line">417</span><br><span class="line">418</span><br><span class="line">419</span><br><span class="line">420</span><br><span class="line">421</span><br><span class="line">422</span><br><span class="line">423</span><br><span class="line">424</span><br><span class="line">425</span><br><span class="line">426</span><br><span class="line">427</span><br><span class="line">428</span><br><span class="line">429</span><br><span class="line">430</span><br><span class="line">431</span><br><span class="line">432</span><br><span class="line">433</span><br><span class="line">434</span><br><span class="line">435</span><br><span class="line">436</span><br><span class="line">437</span><br><span class="line">438</span><br><span class="line">439</span><br><span class="line">440</span><br><span class="line">441</span><br><span class="line">442</span><br><span class="line">443</span><br><span class="line">444</span><br><span class="line">445</span><br><span class="line">446</span><br><span class="line">447</span><br><span class="line">448</span><br><span class="line">449</span><br><span class="line">450</span><br><span class="line">451</span><br><span class="line">452</span><br><span class="line">453</span><br><span class="line">454</span><br><span class="line">455</span><br><span class="line">456</span><br><span class="line">457</span><br><span class="line">458</span><br><span class="line">459</span><br><span class="line">460</span><br><span class="line">461</span><br><span class="line">462</span><br><span class="line">463</span><br><span class="line">464</span><br><span class="line">465</span><br><span class="line">466</span><br><span class="line">467</span><br><span class="line">468</span><br><span class="line">469</span><br><span class="line">470</span><br><span class="line">471</span><br><span class="line">472</span><br><span class="line">473</span><br><span class="line">474</span><br><span class="line">475</span><br><span class="line">476</span><br><span class="line">477</span><br><span class="line">478</span><br><span class="line">479</span><br><span class="line">480</span><br><span class="line">481</span><br><span class="line">482</span><br><span class="line">483</span><br><span class="line">484</span><br><span class="line">485</span><br><span class="line">486</span><br><span class="line">487</span><br><span class="line">488</span><br><span class="line">489</span><br><span class="line">490</span><br><span class="line">491</span><br><span class="line">492</span><br><span class="line">493</span><br><span class="line">494</span><br><span class="line">495</span><br><span class="line">496</span><br><span class="line">497</span><br><span class="line">498</span><br><span class="line">499</span><br><span class="line">500</span><br><span class="line">501</span><br><span class="line">502</span><br><span class="line">503</span><br><span class="line">504</span><br><span class="line">505</span><br><span class="line">506</span><br><span class="line">507</span><br><span class="line">508</span><br><span class="line">509</span><br><span class="line">510</span><br><span class="line">511</span><br><span class="line">512</span><br><span class="line">513</span><br><span class="line">514</span><br><span class="line">515</span><br><span class="line">516</span><br><span class="line">517</span><br><span class="line">518</span><br><span class="line">519</span><br><span class="line">520</span><br><span class="line">521</span><br><span class="line">522</span><br><span class="line">523</span><br><span class="line">524</span><br><span class="line">525</span><br><span class="line">526</span><br><span class="line">527</span><br><span class="line">528</span><br><span class="line">529</span><br><span class="line">530</span><br><span class="line">531</span><br><span class="line">532</span><br><span class="line">533</span><br><span class="line">534</span><br><span class="line">535</span><br><span class="line">536</span><br><span class="line">537</span><br><span class="line">538</span><br><span class="line">539</span><br><span class="line">540</span><br><span class="line">541</span><br><span class="line">542</span><br><span class="line">543</span><br><span class="line">544</span><br><span class="line">545</span><br><span class="line">546</span><br><span class="line">547</span><br><span class="line">548</span><br><span class="line">549</span><br><span class="line">550</span><br><span class="line">551</span><br><span class="line">552</span><br><span class="line">553</span><br><span class="line">554</span><br><span class="line">555</span><br><span class="line">556</span><br><span class="line">557</span><br><span class="line">558</span><br><span class="line">559</span><br><span class="line">560</span><br><span class="line">561</span><br><span class="line">562</span><br><span class="line">563</span><br><span class="line">564</span><br><span class="line">565</span><br><span class="line">566</span><br><span class="line">567</span><br><span class="line">568</span><br><span class="line">569</span><br><span class="line">570</span><br><span class="line">571</span><br><span class="line">572</span><br><span class="line">573</span><br><span class="line">574</span><br><span class="line">575</span><br><span class="line">576</span><br><span class="line">577</span><br><span class="line">578</span><br><span class="line">579</span><br><span class="line">580</span><br><span class="line">581</span><br><span class="line">582</span><br><span class="line">583</span><br><span class="line">584</span><br><span class="line">585</span><br><span class="line">586</span><br><span class="line">587</span><br><span class="line">588</span><br><span class="line">589</span><br><span class="line">590</span><br><span class="line">591</span><br><span class="line">592</span><br><span class="line">593</span><br><span class="line">594</span><br><span class="line">595</span><br><span class="line">596</span><br><span class="line">597</span><br><span class="line">598</span><br><span class="line">599</span><br><span class="line">600</span><br><span class="line">601</span><br><span class="line">602</span><br><span class="line">603</span><br><span class="line">604</span><br><span class="line">605</span><br><span class="line">606</span><br><span class="line">607</span><br><span class="line">608</span><br><span class="line">609</span><br><span class="line">610</span><br><span class="line">611</span><br><span class="line">612</span><br><span class="line">613</span><br><span class="line">614</span><br><span class="line">615</span><br><span class="line">616</span><br><span class="line">617</span><br><span class="line">618</span><br><span class="line">619</span><br><span class="line">620</span><br><span class="line">621</span><br><span class="line">622</span><br><span class="line">623</span><br><span class="line">624</span><br><span class="line">625</span><br><span class="line">626</span><br><span class="line">627</span><br><span class="line">628</span><br><span class="line">629</span><br><span class="line">630</span><br><span class="line">631</span><br><span class="line">632</span><br><span class="line">633</span><br><span class="line">634</span><br><span class="line">635</span><br><span class="line">636</span><br><span class="line">637</span><br><span class="line">638</span><br><span class="line">639</span><br><span class="line">640</span><br><span class="line">641</span><br><span class="line">642</span><br><span class="line">643</span><br><span class="line">644</span><br><span class="line">645</span><br><span class="line">646</span><br><span class="line">647</span><br><span class="line">648</span><br><span class="line">649</span><br><span class="line">650</span><br><span class="line">651</span><br><span class="line">652</span><br><span class="line">653</span><br><span class="line">654</span><br><span class="line">655</span><br><span class="line">656</span><br><span class="line">657</span><br><span class="line">658</span><br><span class="line">659</span><br><span class="line">660</span><br><span class="line">661</span><br><span class="line">662</span><br><span class="line">663</span><br><span class="line">664</span><br><span class="line">665</span><br><span class="line">666</span><br><span class="line">667</span><br><span class="line">668</span><br><span class="line">669</span><br><span class="line">670</span><br><span class="line">671</span><br><span class="line">672</span><br><span class="line">673</span><br><span class="line">674</span><br><span class="line">675</span><br><span class="line">676</span><br><span class="line">677</span><br><span class="line">678</span><br><span class="line">679</span><br><span class="line">680</span><br><span class="line">681</span><br><span class="line">682</span><br><span class="line">683</span><br><span class="line">684</span><br><span class="line">685</span><br><span class="line">686</span><br><span class="line">687</span><br><span class="line">688</span><br><span class="line">689</span><br><span class="line">690</span><br><span class="line">691</span><br><span class="line">692</span><br><span class="line">693</span><br><span class="line">694</span><br><span class="line">695</span><br><span class="line">696</span><br><span class="line">697</span><br><span class="line">698</span><br><span class="line">699</span><br><span class="line">700</span><br><span class="line">701</span><br><span class="line">702</span><br><span class="line">703</span><br><span class="line">704</span><br><span class="line">705</span><br><span class="line">706</span><br><span class="line">707</span><br><span class="line">708</span><br><span class="line">709</span><br><span class="line">710</span><br><span class="line">711</span><br><span class="line">712</span><br><span class="line">713</span><br><span class="line">714</span><br><span class="line">715</span><br><span class="line">716</span><br><span class="line">717</span><br><span class="line">718</span><br><span class="line">719</span><br><span class="line">720</span><br><span class="line">721</span><br><span class="line">722</span><br><span class="line">723</span><br><span class="line">724</span><br><span class="line">725</span><br><span class="line">726</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">use sql_store</span><br><span class="line"></span><br><span class="line">SELECT *</span><br><span class="line">from customers</span><br><span class="line">-- WHERE customers_id &#x3D; 1</span><br><span class="line">ORDER BY first_name;</span><br><span class="line"></span><br><span class="line">SELECT first_name,last_name,points,points+10</span><br><span class="line">FROM customers;</span><br><span class="line"></span><br><span class="line">SELECT </span><br><span class="line">	first_name,</span><br><span class="line">	last_name,</span><br><span class="line">	points,</span><br><span class="line">	points*10+10</span><br><span class="line">FROM customers;</span><br><span class="line"></span><br><span class="line">SELECT </span><br><span class="line">	first_name,</span><br><span class="line">	last_name,</span><br><span class="line">	points,</span><br><span class="line">	(points+10)*10</span><br><span class="line">FROM customers;</span><br><span class="line"></span><br><span class="line">SELECT </span><br><span class="line">	first_name,</span><br><span class="line">	last_name,</span><br><span class="line">	points,</span><br><span class="line">	(points+10)*10 AS discountfactor </span><br><span class="line">FROM customers;</span><br><span class="line"></span><br><span class="line">SELECT </span><br><span class="line">	first_name,</span><br><span class="line">	last_name,</span><br><span class="line">	points,</span><br><span class="line">	(points+10)*10 AS &#39;discoun factor&#39; </span><br><span class="line">FROM customers;</span><br><span class="line"></span><br><span class="line">SELECT DISTINCT state</span><br><span class="line">from customers;</span><br><span class="line"></span><br><span class="line">#练习,出现的错误，没有在new_price中加入_,导致执行不了</span><br><span class="line">#还有就是，字段之间要加入逗号。</span><br><span class="line">SELECT </span><br><span class="line">	name,</span><br><span class="line">	unit_price,</span><br><span class="line">	unit_price*1.1 AS new_price</span><br><span class="line">from products;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#这里还可以使用&gt; &gt;&#x3D; &lt; &lt;&#x3D; !&#x3D;或者&lt;&gt;</span><br><span class="line">SELECT *</span><br><span class="line">from customers</span><br><span class="line">where points&gt;3000;</span><br><span class="line"></span><br><span class="line">SELECT *</span><br><span class="line">from customers</span><br><span class="line">where birth_date &gt; &#39;1990-01-01&#39;;</span><br><span class="line"></span><br><span class="line">#练习 GET the orders place this year</span><br><span class="line">#查看今年所有的订单</span><br><span class="line">select *</span><br><span class="line">from orders</span><br><span class="line">WHERE order_date &gt;&#x3D; &#39;2019-01-01&#39;;</span><br><span class="line"></span><br><span class="line">#组合筛选条件</span><br><span class="line">SELECT *</span><br><span class="line">FROM customers</span><br><span class="line">WHERE birth_date &gt;&#39;1990-01-01&#39; AND points &gt; 1000;</span><br><span class="line"></span><br><span class="line">SELECT *</span><br><span class="line">FROM customers</span><br><span class="line">WHERE birth_date &gt;&#39;1990-01-01&#39; OR points &gt; 1000;</span><br><span class="line"></span><br><span class="line">#练习</span><br><span class="line">SELECT *</span><br><span class="line">FROM order_items</span><br><span class="line">WHERE order_id &#x3D; 6 AND unit_price * quantity&gt;30;</span><br><span class="line"></span><br><span class="line">#in的练习</span><br><span class="line">SELECT *</span><br><span class="line">FROM customers</span><br><span class="line">WHERE state &#x3D; &#39;VA&#39; OR state &#x3D;&#39;GA&#39; OR state &#x3D; &#39;FL&#39;;</span><br><span class="line"></span><br><span class="line">SELECT *</span><br><span class="line">FROM customers</span><br><span class="line">WHERE state in (&#39;VA&#39;,&#39;GA&#39;,&#39;FL&#39;);</span><br><span class="line"></span><br><span class="line">SELECT *</span><br><span class="line">FROM customers</span><br><span class="line">WHERE state not in (&#39;VA&#39;,&#39;GA&#39;,&#39;FL&#39;);</span><br><span class="line"></span><br><span class="line">#练习</span><br><span class="line">select *</span><br><span class="line">from products</span><br><span class="line">WHERE quantity_in_stock IN (&#39;49&#39;,&#39;38&#39;,&#39;72&#39;);</span><br><span class="line"></span><br><span class="line">#关于between运算符</span><br><span class="line">select *</span><br><span class="line">from customers</span><br><span class="line">WHERE points&gt;1300 AND points&lt;3000;</span><br><span class="line"></span><br><span class="line">#使用between运算符</span><br><span class="line">SELECT *</span><br><span class="line">FROM customers </span><br><span class="line">where points between 1000 AND 3000;</span><br><span class="line"></span><br><span class="line">#between练习</span><br><span class="line">select * </span><br><span class="line">FROM customers</span><br><span class="line">WHERE birth_date between &#39;1990-01-01&#39; AND &#39;2000-01-01&#39;;</span><br><span class="line"></span><br><span class="line">#字符串匹配,使用%，这里的b可以匹配大写的，百分号是表示任意多字符。</span><br><span class="line">SELECT *</span><br><span class="line">from customers</span><br><span class="line">WHERE last_name LIKE &#39;b%&#39;;</span><br><span class="line"></span><br><span class="line">#这里_表示只匹配一个字符</span><br><span class="line">SELECT *</span><br><span class="line">from customers</span><br><span class="line">WHERE last_name LIKE &#39;_____y&#39;;</span><br><span class="line"></span><br><span class="line">#练习</span><br><span class="line">SELECT *</span><br><span class="line">from customers</span><br><span class="line">WHERE address LIKE &#39;%TRAIL%&#39;or  address LIKE &#39;%AVENUE%&#39;;</span><br><span class="line"></span><br><span class="line">SELECT *</span><br><span class="line">FROM customers</span><br><span class="line">WHERE phone LIKE &#39;%9&#39;;</span><br><span class="line"></span><br><span class="line">SELECT *</span><br><span class="line">FROM customers</span><br><span class="line">WHERE NOT phone LIKE &#39;%9&#39;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># regexp </span><br><span class="line">#平常写：</span><br><span class="line">SELECT *</span><br><span class="line">from customers</span><br><span class="line">WHERE last_name LIKE &#39;%field%&#39;;</span><br><span class="line"></span><br><span class="line">#使用regexp</span><br><span class="line">SELECT *</span><br><span class="line">from customers</span><br><span class="line">WHERE last_name REGEXP &#39;field&#39;;</span><br><span class="line"></span><br><span class="line">#表示只能以field开头</span><br><span class="line">SELECT *</span><br><span class="line">from customers</span><br><span class="line">WHERE last_name REGEXP &#39;^field&#39;;</span><br><span class="line"></span><br><span class="line">#表示只能以field结尾</span><br><span class="line">SELECT *</span><br><span class="line">from customers</span><br><span class="line">WHERE last_name REGEXP &#39;field$&#39;;</span><br><span class="line"></span><br><span class="line">SELECT *</span><br><span class="line">from customers</span><br><span class="line">WHERE last_name REGEXP &#39;field|mac&#39;;</span><br><span class="line"></span><br><span class="line">SELECT *</span><br><span class="line">from customers</span><br><span class="line">WHERE last_name REGEXP &#39;field|mac|rose&#39;;</span><br><span class="line"></span><br><span class="line">SELECT *</span><br><span class="line">from customers</span><br><span class="line">WHERE last_name REGEXP &#39;^field|mac|rose&#39;;</span><br><span class="line"></span><br><span class="line">SELECT *</span><br><span class="line">from customers</span><br><span class="line">WHERE last_name REGEXP &#39;field$|mac|rose&#39;;</span><br><span class="line"></span><br><span class="line">SELECT *</span><br><span class="line">from customers</span><br><span class="line">WHERE last_name REGEXP &#39;e&#39;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#里面含有ge、ie、或者 me。</span><br><span class="line">SELECT *</span><br><span class="line">from customers</span><br><span class="line">WHERE last_name REGEXP &#39;[gim]e&#39;;</span><br><span class="line"></span><br><span class="line">#里面含有eq、 ey、或者es。</span><br><span class="line">SELECT *</span><br><span class="line">from customers</span><br><span class="line">WHERE last_name REGEXP &#39;e[qys]&#39;;</span><br><span class="line"></span><br><span class="line">#里面含有a-h和e组合的所有字符。</span><br><span class="line">SELECT *</span><br><span class="line">from customers</span><br><span class="line">WHERE last_name REGEXP &#39;[a-h]e&#39;;</span><br><span class="line"></span><br><span class="line">#总结: ^:是在最开始</span><br><span class="line"># 		%:表示是结束</span><br><span class="line">#			|:或</span><br><span class="line">#			[abcd]</span><br><span class="line">#		  [a-d]</span><br><span class="line"></span><br><span class="line">#四个练习</span><br><span class="line">select *</span><br><span class="line">from customers</span><br><span class="line">where first_name REGEXP &#39;ELKA|AMBUR&#39;;</span><br><span class="line"></span><br><span class="line">SELECT *</span><br><span class="line">from customers</span><br><span class="line">WHERE last_name REGEXP &#39;EY$|ON$&#39;;</span><br><span class="line"></span><br><span class="line">#查询</span><br><span class="line">SELECT *</span><br><span class="line">from customers</span><br><span class="line">WHERE last_name REGEXP &#39;^my|se&#39;;</span><br><span class="line"></span><br><span class="line">SELECT *</span><br><span class="line">from customers</span><br><span class="line">WHERE last_name REGEXP &#39;B[RU]&#39;;</span><br><span class="line"></span><br><span class="line">#如何获取缺省值</span><br><span class="line"></span><br><span class="line">#获取手机里面没有信息的</span><br><span class="line">SELECT * from customers</span><br><span class="line">WHERE phone is null;</span><br><span class="line"></span><br><span class="line">SELECT * from customers</span><br><span class="line">WHERE phone is null;</span><br><span class="line"></span><br><span class="line">#获取没有发货的订单</span><br><span class="line"></span><br><span class="line">SELECT *</span><br><span class="line">FROM orders;</span><br><span class="line"></span><br><span class="line">SELECT *</span><br><span class="line">from orders</span><br><span class="line">WHERE shipper_id is null;</span><br><span class="line"></span><br><span class="line">#对查询的数据进行排序</span><br><span class="line"></span><br><span class="line">SELECT *</span><br><span class="line">from customers</span><br><span class="line">ORDER BY customer_id DESC;</span><br><span class="line"></span><br><span class="line">SELECT *</span><br><span class="line">from customers</span><br><span class="line">ORDER BY first_name;</span><br><span class="line"></span><br><span class="line">SELECT *</span><br><span class="line">from customers</span><br><span class="line">ORDER BY state desc,first_name DESC;</span><br><span class="line"></span><br><span class="line">SELECT first_name,last_name,10 as point</span><br><span class="line">from customers</span><br><span class="line">ORDER BY 1,2;</span><br><span class="line"></span><br><span class="line">#练习</span><br><span class="line">SELECT *</span><br><span class="line">from order_items</span><br><span class="line">WHERE order_id &#x3D; 2</span><br><span class="line">ORDER BY quantity * unit_price DESC ;</span><br><span class="line"></span><br><span class="line">SELECT * ,quantity * unit_price AS total_price</span><br><span class="line">from order_items</span><br><span class="line">WHERE order_id &#x3D; 2</span><br><span class="line">ORDER BY quantity * unit_price DESC ;</span><br><span class="line"></span><br><span class="line">SELECT * ,quantity * unit_price AS total_price</span><br><span class="line">from order_items</span><br><span class="line">WHERE order_id &#x3D; 2</span><br><span class="line">ORDER BY total_price DESC ;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#限制展示查询的数据，比如查出来10条数据，只展示3条；</span><br><span class="line">#limit语句</span><br><span class="line"></span><br><span class="line">SELECT *</span><br><span class="line">from customers;</span><br><span class="line"></span><br><span class="line">SELECT *</span><br><span class="line">from customers</span><br><span class="line">LIMIT 3</span><br><span class="line"></span><br><span class="line"># page1  1-3</span><br><span class="line"># page2  4-6</span><br><span class="line"># page3  7-9</span><br><span class="line">#我们想取第三页的数据</span><br><span class="line">SELECT *</span><br><span class="line">from customers</span><br><span class="line">LIMIT 6,3</span><br><span class="line"></span><br><span class="line">#练习</span><br><span class="line">SELECT *</span><br><span class="line">FROM customers</span><br><span class="line">ORDER BY points DESC</span><br><span class="line">LIMIT 3;</span><br><span class="line"></span><br><span class="line">#写sql语句时关键字的顺序</span><br><span class="line">SELECT *</span><br><span class="line">FROM customers</span><br><span class="line">WHERE points&gt;2500</span><br><span class="line">ORDER BY points DESC</span><br><span class="line">LIMIT 3;</span><br><span class="line"></span><br><span class="line">##之前，都是在一张表上进行操作，但是实际上，我们需要在多张表上进行操作。</span><br><span class="line"></span><br><span class="line">#inner join</span><br><span class="line">SELECT *</span><br><span class="line">from orders</span><br><span class="line">inner JOIN customers on orders.customer_id &#x3D; customers.customer_id; #可选的</span><br><span class="line"></span><br><span class="line">SELECT order_id,first_name,last_name</span><br><span class="line">from orders</span><br><span class="line">inner JOIN customers on orders.customer_id &#x3D; customers.customer_id;</span><br><span class="line"></span><br><span class="line">#这样会报错，因为customer_id两张表都有，</span><br><span class="line">SELECT order_id,customer_id,first_name,last_name</span><br><span class="line">from orders</span><br><span class="line">inner JOIN customers on orders.customer_id &#x3D; customers.customer_id;</span><br><span class="line"></span><br><span class="line">#这样就可以了</span><br><span class="line">SELECT order_id,orders.customer_id,first_name,last_name</span><br><span class="line">from orders</span><br><span class="line">inner JOIN customers on orders.customer_id &#x3D; customers.customer_id;</span><br><span class="line"></span><br><span class="line">#除此之外，因为表名特别长。也可以对表名进行起别名</span><br><span class="line">SELECT order_id,o.customer_id,first_name,last_name</span><br><span class="line">from orders o</span><br><span class="line">JOIN customers c on o.customer_id &#x3D; c.customer_id;</span><br><span class="line"></span><br><span class="line">#练习</span><br><span class="line">SELECT o.order_id,o.product_id,quantity,o.unit_price</span><br><span class="line">from order_items o</span><br><span class="line">JOIN products p on o.product_id &#x3D; p.product_id;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#跨数据库中的表查询</span><br><span class="line"></span><br><span class="line">SELECT *</span><br><span class="line">from order_items o</span><br><span class="line">JOIN sql_inventory.products p on o.product_id &#x3D; p.product_id;</span><br><span class="line">#此时是能够进行查询的，因为我们使用的是sql_store数据库，但是如果不是使用的这个数据库</span><br><span class="line">#我们就需要进行换一种写法</span><br><span class="line">SELECT *</span><br><span class="line">from sql_store.order_items o</span><br><span class="line">JOIN sql_inventory.products p on o.product_id &#x3D; p.product_id;</span><br><span class="line">#所以在查询不同数据库的时候，我们需要在不同数据库表的前面加上数据库的名字</span><br><span class="line"></span><br><span class="line">#其实表也是可以自链接的</span><br><span class="line">use sql_hr;</span><br><span class="line"></span><br><span class="line">SELECT e.employee_id,e.first_name,m.first_name AS manager</span><br><span class="line">from</span><br><span class="line">employees e</span><br><span class="line">JOIN employees m ON e.reports_to &#x3D; m.employee_id;</span><br><span class="line"></span><br><span class="line">#如何连接两个以上的表,这里连接的是三张表</span><br><span class="line">use sql_store;</span><br><span class="line"></span><br><span class="line">SELECT *</span><br><span class="line">FROM orders</span><br><span class="line">JOIN customers ON orders.customer_id &#x3D; customers.customer_id </span><br><span class="line">JOIN order_statuses on order_statuses.order_status_id &#x3D; orders.&#96;status&#96;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#改进</span><br><span class="line">SELECT </span><br><span class="line">	o.order_id,</span><br><span class="line">	o.order_date,</span><br><span class="line">	c.first_name,</span><br><span class="line">	c.last_name,</span><br><span class="line">	os.name AS status</span><br><span class="line">FROM orders o</span><br><span class="line">JOIN customers c ON o.customer_id &#x3D; c.customer_id </span><br><span class="line">JOIN order_statuses os on os.order_status_id &#x3D; o.&#96;status&#96;</span><br><span class="line"></span><br><span class="line">#练习</span><br><span class="line">use sql_invoicing</span><br><span class="line"></span><br><span class="line">SELECT </span><br><span class="line">	p.date,</span><br><span class="line">	p.invoice_id,</span><br><span class="line">	p.payment_id,</span><br><span class="line">	p.amount,</span><br><span class="line">	c.&#96;name&#96;,</span><br><span class="line">	pm.&#96;name&#96;</span><br><span class="line">FROM payments p</span><br><span class="line">JOIN payment_methods pm ON p.payment_method &#x3D; pm.payment_method_id</span><br><span class="line">JOIN clients c ON p.client_id &#x3D; c.client_id;</span><br><span class="line"></span><br><span class="line">#到目前为止，我们只是做的事每一个表有主键只有一个，接下来是多个字段作为主键的情况</span><br><span class="line"></span><br><span class="line">#练习一个表与另一表进行连接，其中一个表主键包含两个字段</span><br><span class="line">USE sql_store</span><br><span class="line"></span><br><span class="line">SELECT *</span><br><span class="line">FROM order_items</span><br><span class="line">JOIN order_item_notes </span><br><span class="line">	on order_items.order_id &#x3D; order_item_notes.order_id</span><br><span class="line">	AND order_items.product_id &#x3D; order_item_notes.product_id;</span><br><span class="line">	</span><br><span class="line">#隐式连接</span><br><span class="line">#之前的是这样的</span><br><span class="line">SELECT *</span><br><span class="line">from orders o</span><br><span class="line">JOIN customers c on o.customer_id &#x3D; c.customer_id;</span><br><span class="line">#现在</span><br><span class="line">#我们称之为隐式语法，但是如果没有写where子句的话，查出来的数据与我们想要的不一样，</span><br><span class="line">#所以但是我们最好使用显示的。</span><br><span class="line">SELECT *</span><br><span class="line">FROM orders o,customers c</span><br><span class="line">WHERE o.customer_id &#x3D; c.customer_id;</span><br><span class="line"></span><br><span class="line">#下面的写法是没有问题的，但是发现，有的数据是不能展示出来的。</span><br><span class="line">SELECT </span><br><span class="line">	c.customer_id,</span><br><span class="line">	c.first_name,</span><br><span class="line">	o.order_id</span><br><span class="line">FROM customers c</span><br><span class="line">JOIN orders o on c.customer_id &#x3D; o.customer_id</span><br><span class="line">ORDER BY c.customer_id;</span><br><span class="line"></span><br><span class="line">#左连接</span><br><span class="line">SELECT </span><br><span class="line">	c.customer_id,</span><br><span class="line">	c.first_name,</span><br><span class="line">	o.order_id</span><br><span class="line">FROM customers c</span><br><span class="line">left JOIN orders o on c.customer_id &#x3D; o.customer_id</span><br><span class="line">ORDER BY c.customer_id;</span><br><span class="line"></span><br><span class="line">#右连接</span><br><span class="line">SELECT </span><br><span class="line">	c.customer_id,</span><br><span class="line">	c.first_name,</span><br><span class="line">	o.order_id</span><br><span class="line">FROM customers c</span><br><span class="line">left JOIN orders o on c.customer_id &#x3D; o.customer_id</span><br><span class="line">ORDER BY c.customer_id;</span><br><span class="line"></span><br><span class="line">SELECT </span><br><span class="line">	p.product_id,</span><br><span class="line">	p.name,</span><br><span class="line">	oi.quantity</span><br><span class="line">from products p</span><br><span class="line">LEFT JOIN order_items oi</span><br><span class="line">	on p.product_id &#x3D; oi.product_id;</span><br><span class="line">	</span><br><span class="line">SELECT </span><br><span class="line">	p.product_id,</span><br><span class="line">	p.name,</span><br><span class="line">	oi.quantity</span><br><span class="line">from products p</span><br><span class="line">LEFT JOIN order_items oi</span><br><span class="line">	on p.product_id &#x3D; oi.product_id;</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">SELECT </span><br><span class="line">	c.customer_id,</span><br><span class="line">	c.first_name,</span><br><span class="line">	o.order_id</span><br><span class="line">FROM customers c</span><br><span class="line">left JOIN orders o on c.customer_id &#x3D; o.customer_id</span><br><span class="line">JOIN shippers sh on o.shipper_id &#x3D; sh.shipper_id</span><br><span class="line">ORDER BY c.customer_id;</span><br><span class="line"></span><br><span class="line">SELECT </span><br><span class="line">	c.customer_id,</span><br><span class="line">	c.first_name,</span><br><span class="line">	o.order_id</span><br><span class="line">FROM customers c</span><br><span class="line">left JOIN orders o on c.customer_id &#x3D; o.customer_id</span><br><span class="line">left JOIN shippers sh on o.shipper_id &#x3D; sh.shipper_id</span><br><span class="line">ORDER BY c.customer_id;</span><br><span class="line"></span><br><span class="line">#练习</span><br><span class="line">SELECT </span><br><span class="line">	o.order_id,</span><br><span class="line">	o.order_date,</span><br><span class="line">	c.first_name as customer,</span><br><span class="line">	s.name as shipper</span><br><span class="line">	</span><br><span class="line">from orders o</span><br><span class="line">LEFT JOIN customers c ON o.customer_id &#x3D; c.customer_id</span><br><span class="line">LEFT JOIN shippers s  on s.shipper_id &#x3D; o.shipper_id </span><br><span class="line">ORDER BY o.order_id</span><br><span class="line"></span><br><span class="line">#自连接</span><br><span class="line">use sql_hr;</span><br><span class="line"></span><br><span class="line">#如果不是使用left join，只是会显示employees有经理的，如下所示：</span><br><span class="line">SELECT </span><br><span class="line">	e.employee_id,</span><br><span class="line">	e.first_name,</span><br><span class="line">	m.first_name as manager</span><br><span class="line">FROM employees e</span><br><span class="line">JOIN employees m</span><br><span class="line">	on e.reports_to &#x3D; m.employee_id;</span><br><span class="line"></span><br><span class="line">#改进：</span><br><span class="line">SELECT </span><br><span class="line">	e.employee_id,</span><br><span class="line">	e.first_name,</span><br><span class="line">	m.first_name as manager</span><br><span class="line">FROM employees e</span><br><span class="line">LEFT JOIN employees m</span><br><span class="line">	on e.reports_to &#x3D; m.employee_id;</span><br><span class="line">	</span><br><span class="line">#USING 使用</span><br><span class="line">#之前是这样的，</span><br><span class="line">select</span><br><span class="line">	o.order_id,</span><br><span class="line">	c.first_name</span><br><span class="line">FROM orders o</span><br><span class="line">join customers c ON o.customer_id &#x3D; c.customer_id;</span><br><span class="line">#现在是这样的，</span><br><span class="line">select</span><br><span class="line">	o.order_id,</span><br><span class="line">	c.first_name</span><br><span class="line">FROM orders o</span><br><span class="line">join customers c  USING(customer_id);</span><br><span class="line"></span><br><span class="line">#关于之前的主键包含两个字段的</span><br><span class="line">select *</span><br><span class="line">from order_items</span><br><span class="line">JOIN order_item_notes</span><br><span class="line">on order_items.order_id &#x3D; order_item_notes.order_Id </span><br><span class="line">	AND order_items.product_id &#x3D; order_item_notes.product_id;</span><br><span class="line">	</span><br><span class="line">#可以换为：</span><br><span class="line">select *</span><br><span class="line">from order_items</span><br><span class="line">JOIN order_item_notes</span><br><span class="line">USING(order_id,product_id);</span><br><span class="line"></span><br><span class="line">#练习</span><br><span class="line">use sql_invoicing</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#这里面在使用Using()的时候，两个表名里面的字段名必须相同，否则没办法用。</span><br><span class="line">SELECT *</span><br><span class="line">FROM payments p</span><br><span class="line">JOIN payment_methods pm</span><br><span class="line">	on pm.payment_method_id &#x3D; p.payment_id</span><br><span class="line">join clients USING(client_id);</span><br><span class="line"></span><br><span class="line">#交叉连接</span><br><span class="line">#例如：</span><br><span class="line">use sql_store;</span><br><span class="line"></span><br><span class="line">#交叉连接显示语法</span><br><span class="line">SELECT *</span><br><span class="line">from customers</span><br><span class="line">cross JOIN products;</span><br><span class="line"></span><br><span class="line">#交叉连接隐式语法</span><br><span class="line">SELECT *</span><br><span class="line">from customers,products;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#UNION,将多个查询的语句结果进行整合，但是如果没个查询的语句查询的列数不一样，比如</span><br><span class="line">#第一个查询是一个字段，第二个查询是两个字段，回产生错误。</span><br><span class="line"></span><br><span class="line"># &#39;Avtive&#39;是我们自己加上去的，题目意思是：2019-01-01之前的不是Active。</span><br><span class="line">SELECT </span><br><span class="line">	order_id,</span><br><span class="line">	order_date,</span><br><span class="line">	&#39;Active&#39; AS status</span><br><span class="line">from orders</span><br><span class="line">WHERE order_date &gt;&#x3D; &#39;2019-01-01&#39; </span><br><span class="line">UNION</span><br><span class="line">SELECT </span><br><span class="line">	order_id,</span><br><span class="line">	order_date,</span><br><span class="line">	&#39;Actived&#39; AS status</span><br><span class="line">from orders</span><br><span class="line">WHERE order_date &lt; &#39;2019-01-01&#39;;</span><br><span class="line"></span><br><span class="line">#练习</span><br><span class="line">SELECT </span><br><span class="line">	customer_id,</span><br><span class="line">	first_name,</span><br><span class="line">	points,</span><br><span class="line">	&#39;Bronze&#39; AS type </span><br><span class="line">FROM customers</span><br><span class="line">WHERE points &lt; 2000</span><br><span class="line">UNION</span><br><span class="line">SELECT </span><br><span class="line">	customer_id,</span><br><span class="line">	first_name,</span><br><span class="line">	points,</span><br><span class="line">	&#39;Silver&#39; AS type </span><br><span class="line">FROM customers</span><br><span class="line">WHERE points BETWEEN 2000 AND 3000</span><br><span class="line">UNION</span><br><span class="line">SELECT </span><br><span class="line">	customer_id,</span><br><span class="line">	first_name,</span><br><span class="line">	points,</span><br><span class="line">	&#39;Gold&#39; AS type </span><br><span class="line">FROM customers</span><br><span class="line">WHERE points &gt; 3000</span><br><span class="line">ORDER BY first_name;</span><br><span class="line"></span><br><span class="line">#-----------------------------------------------------------</span><br><span class="line">#插入、更新和删除</span><br><span class="line">#在表格中插入一行,这里default是默认真，起初设置的是id，</span><br><span class="line">#我们遵循mysql里面的自动增长，不能进行显示赋值。</span><br><span class="line">INSERT INTO customers</span><br><span class="line">VALUES(</span><br><span class="line">	DEFAULT,</span><br><span class="line">	&#39;LGY&#39;,</span><br><span class="line">	&#39;GG&#39;,</span><br><span class="line">	NULL,</span><br><span class="line">	&#39;17863978947&#39;,</span><br><span class="line">	&#39;山东省&#39;,</span><br><span class="line">	&#39;聊城&#39;,</span><br><span class="line">	&#39;aa&#39;,</span><br><span class="line">	DEFAULT);</span><br><span class="line">	</span><br><span class="line">#也可以指定值，我们没必要按照顺序进行</span><br><span class="line">INSERT INTO customers(</span><br><span class="line">	first_name,</span><br><span class="line">	last_name,</span><br><span class="line">	birth_date,</span><br><span class="line">	address,</span><br><span class="line">	city,</span><br><span class="line">	state</span><br><span class="line">)</span><br><span class="line">VALUES(</span><br><span class="line">	&#39;LGY1&#39;,</span><br><span class="line">	&#39;GG&#39;,</span><br><span class="line">	&#39;1996-06-26&#39;,</span><br><span class="line">	&#39;山东省&#39;,</span><br><span class="line">	&#39;聊城&#39;,</span><br><span class="line">	&#39;aa&#39;</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line">#一次性插入多行</span><br><span class="line">INSERT into shippers (name)</span><br><span class="line">VALUES (&#39;shipper1&#39;),(&#39;shipper2&#39;),(&#39;shipper&#39;);</span><br><span class="line">#练习</span><br><span class="line">INSERT INTO products(name,quantity_in_stock,unit_price)</span><br><span class="line">VALUES(&#39;lhu&#39;,&#39;22&#39;,&#39;33&#39;),</span><br><span class="line">			(&#39;ldu&#39;,&#39;3&#39;,&#39;3&#39;),</span><br><span class="line">			(&#39;lhuw&#39;,&#39;7&#39;,&#39;1&#39;);</span><br><span class="line">			</span><br><span class="line">#将数据插入到多表中,关于order与order_item表</span><br><span class="line"></span><br><span class="line">INSERT INTO orders(customer_id,order_date,&#96;status&#96;)</span><br><span class="line">VALUES(1,&#39;2020-01-01&#39;,1);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">INSERT into order_items</span><br><span class="line">VALUES</span><br><span class="line">	(LAST_INSERT_ID(),1,1,2.98),</span><br><span class="line">	(LAST_INSERT_ID(),2,1,3.98)</span><br><span class="line">	</span><br><span class="line">#复制数据从一个表到另一个表,但是，复制产生的表里面的主键是没有的，</span><br><span class="line">#而且没有设置为自动增长的</span><br><span class="line">#这里是查询所有的数据进行复制过去</span><br><span class="line">CREATE table order_archived as</span><br><span class="line">SELECT * from orders;</span><br><span class="line"></span><br><span class="line">#也可以先清空表，然后进行复制筛选出来的部分</span><br><span class="line">INSERT into order_archived</span><br><span class="line">SELECT *</span><br><span class="line">from orders</span><br><span class="line">WHERE order_date &lt; &#39;2019-01-01&#39;;</span><br><span class="line"></span><br><span class="line">#练习</span><br><span class="line">use sql_invoicing;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">create TABLE invoices_archied as</span><br><span class="line">SELECT </span><br><span class="line">	client_id,</span><br><span class="line">	invoice_id,</span><br><span class="line">	&#96;name&#96; AS client,</span><br><span class="line">	invoice_total,</span><br><span class="line">	payment_total,</span><br><span class="line">	invoice_date,</span><br><span class="line">	due_date,</span><br><span class="line">	payment_date</span><br><span class="line">FROM invoices</span><br><span class="line">JOIN clients USING(client_id)</span><br><span class="line">WHERE payment_date is not null</span><br><span class="line"></span><br><span class="line">#更新数据</span><br><span class="line">UPDATE invoices</span><br><span class="line">SET payment_total &#x3D; 10,payment_date &#x3D; &#39;2020-12-22&#39;</span><br><span class="line">where invoice_id &#x3D; 1;</span><br><span class="line"></span><br><span class="line">#更新多行</span><br><span class="line">UPDATE invoices</span><br><span class="line">SET payment_total &#x3D; 10,payment_date &#x3D; &#39;2020-12-22&#39;</span><br><span class="line">where client_id &#x3D; 3;</span><br><span class="line"></span><br><span class="line">UPDATE invoices</span><br><span class="line">SET payment_total &#x3D; 10,payment_date &#x3D; &#39;2020-12-22&#39;</span><br><span class="line">where client_id &#x3D; (3,4);</span><br><span class="line"></span><br><span class="line">#练习</span><br><span class="line">use sql_store;</span><br><span class="line"></span><br><span class="line">UPDATE customers</span><br><span class="line">SET points &#x3D; points +50</span><br><span class="line">WHERE birth_date &lt;&#39;1990-01-01&#39;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">use sql_invoicing</span><br><span class="line"></span><br><span class="line">UPDATE invoices</span><br><span class="line">SET payment_total &#x3D; 10,payment_date &#x3D; &#39;2020-12-22&#39;</span><br><span class="line">where client_id &#x3D; (SELECT client_id FROM clients WHERE name &#x3D; &#39;Myworks&#39;);</span><br><span class="line"></span><br><span class="line">UPDATE invoices</span><br><span class="line">SET payment_total &#x3D; 10,payment_date &#x3D; &#39;2020-12-22&#39;</span><br><span class="line">where client_id in (SELECT client_id FROM clients WHERE state in (&#39;CA&#39;,&#39;NY&#39;));</span><br><span class="line"></span><br><span class="line">#delete删除</span><br><span class="line">DELETE from invoices</span><br><span class="line">WHERE invoice_id &#x3D; 1</span><br><span class="line"></span><br><span class="line">##################################</span><br><span class="line">到此完成了数据库前四章基础内容，对应视频1-40小节</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>Dlutlgy
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="http://dlutlgy.top/2021/08/26/MySQL%E5%AE%9E%E6%88%98/" title="MySQL实战">http://dlutlgy.top/2021/08/26/MySQL实战/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/MySql/" rel="tag"># MySql</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/08/20/LeetCode/" rel="prev" title="LeetCode 算法题目">
+                  <i class="fa fa-chevron-left"></i> LeetCode 算法题目
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/09/27/Nginx/" rel="next" title="Nginx">
+                  Nginx <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+  
+  
+  
+
+
+
+      
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      
+
+      
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Dlutlgy</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+      <span>站点总字数：</span>
+    <span title="站点总字数">128k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span>站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">1:56</span>
+  </span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.2.0/lib/anime.min.js"></script> <script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+  <script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+  
+<script>
+NexT.utils.loadComments('#valine-comments', () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js', () => {
+    new Valine(Object.assign({
+      el  : '#valine-comments',
+      path: "/2021/08/26/MySQL%E5%AE%9E%E6%88%98/",
+    }, {"enable":true,"appId":"QYi7IEQIz9YMSxsX95Id72rn-gzGzoHsz","appKey":"up4HJAyGMxTrtvP0bHO2fwTi","placeholder":"ヾﾉ≧∀≦)o来啊，快活啊!","avatar":"mm","meta":["nick","mail","link"],"pageSize":10,"lang":null,"visitor":true,"comment_count":true,"recordIP":true,"serverURLs":null,"enableQQ":true,"requiredFields":["nick"]}
+    ));
+  }, window.Valine);
+});
+</script>
+
+
+
+
+
+</body>
+</html>
