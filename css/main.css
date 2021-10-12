@@ -2710,45 +2710,6 @@ mark.search-keyword {
     width: auto;
   }
 }
-.header {
-  width: 80%;
-}
-@media (min-width: 768px) and (max-width: 991px) {
-  .header {
-    width: 100%;
-  }
-}
-@media (max-width: 767px) {
-  .header {
-    width: 100%;
-  }
-}
-.container .main-inner {
-  width: 80%;
-}
-@media (min-width: 768px) and (max-width: 991px) {
-  .container .main-inner {
-    width: 100%;
-  }
-}
-@media (max-width: 767px) {
-  .container .main-inner {
-    width: 100%;
-  }
-}
-.content-wrap {
-  width: calc(100% - 260px);
-}
-@media (min-width: 768px) and (max-width: 991px) {
-  .content-wrap {
-    width: 100%;
-  }
-}
-@media (max-width: 767px) {
-  .content-wrap {
-    width: 100%;
-  }
-}
 .site-brand-container {
   background: #222;
 }
