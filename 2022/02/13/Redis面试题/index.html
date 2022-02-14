@@ -29,11 +29,14 @@
 <meta property="og:site_name" content="酒窝里有酒">
 <meta property="og:description" content="1. Redis 与 Memcached 的共同点与区别？共同点：  都是基于内存的数据库，一般都用来当做缓存使用。 都有过期策略。 两者的性能都非常高。  不同点(区别)：  Redis 支持更丰富的数据类型（支持更复杂的应用场景）。Redis 不仅仅支持简单的 k&#x2F;v 类型的数据，同时还提供 list，set，zset，hash 等数据结构的存储。Memcached 只支持最简单的 k&#x2F;v 数">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gitee.com/dlutlgy/images_for_typora/raw/master/images/image-20220214170952086.png">
+<meta property="og:image" content="https://gitee.com/dlutlgy/images_for_typora/raw/master/images/image-20220214175759234.png">
 <meta property="article:published_time" content="2022-02-13T09:36:24.000Z">
-<meta property="article:modified_time" content="2022-02-13T15:06:24.090Z">
+<meta property="article:modified_time" content="2022-02-14T10:37:40.586Z">
 <meta property="article:author" content="Dlutlgy">
 <meta property="article:tag" content="Redis">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gitee.com/dlutlgy/images_for_typora/raw/master/images/image-20220214170952086.png">
 
 
 <link rel="canonical" href="http://dlutlgy.top/2022/02/13/Redis%E9%9D%A2%E8%AF%95%E9%A2%98/">
@@ -225,7 +228,7 @@
 
       <!--noindex-->
       <section class="post-toc-wrap sidebar-panel">
-          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Redis-%E4%B8%8E-Memcached-%E7%9A%84%E5%85%B1%E5%90%8C%E7%82%B9%E4%B8%8E%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="nav-text">1. Redis 与 Memcached 的共同点与区别？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Redis-%E9%99%A4%E4%BA%86%E5%81%9A%E7%BC%93%E5%AD%98%EF%BC%8C%E8%BF%98%E8%83%BD%E5%81%9A%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-text">2. Redis 除了做缓存，还能做什么？</span></a></li></ol></div>
+          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Redis-%E4%B8%8E-Memcached-%E7%9A%84%E5%85%B1%E5%90%8C%E7%82%B9%E4%B8%8E%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="nav-text">1. Redis 与 Memcached 的共同点与区别？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Redis-%E9%99%A4%E4%BA%86%E5%81%9A%E7%BC%93%E5%AD%98%EF%BC%8C%E8%BF%98%E8%83%BD%E5%81%9A%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-text">2. Redis 除了做缓存，还能做什么？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-Redis-%E4%B8%AD%E7%9A%84%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E6%9C%89%E5%93%AA%E4%BA%9B%EF%BC%9F"><span class="nav-text">3. Redis 中的数据类型有哪些？</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#SDS-%E7%AE%80%E5%8D%95%E5%8A%A8%E6%80%81%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="nav-text">SDS(简单动态字符串)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%93%BE%E8%A1%A8"><span class="nav-text">链表</span></a></li></ol></li></ol></div>
       </section>
       <!--/noindex-->
 
@@ -327,10 +330,16 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
-      
 
-      <time title="创建时间：2022-02-13 17:36:24 / 修改时间：23:06:24" itemprop="dateCreated datePublished" datetime="2022-02-13T17:36:24+08:00">2022-02-13</time>
+      <time title="创建时间：2022-02-13 17:36:24" itemprop="dateCreated datePublished" datetime="2022-02-13T17:36:24+08:00">2022-02-13</time>
     </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2022-02-14 18:37:40" itemprop="dateModified" datetime="2022-02-14T18:37:40+08:00">2022-02-14</time>
+      </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-folder"></i>
@@ -374,7 +383,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>819</span>
+      <span>1k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -413,7 +422,76 @@
 <ul>
 <li>分布式锁</li>
 </ul>
-<p>参考：<a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s?__biz=MzAwMjI0ODk0NA==&amp;mid=2451954663&amp;idx=1&amp;sn=4bd071b6aaede114263f88c790b61371&amp;chksm=8d1c2278ba6bab6eca2ef44f21b2178cc719fffe124289b68128c0dad72429fe5f286854157a&amp;scene=21#wechat_redirect">https://mp.weixin.qq.com/s?__biz=MzAwMjI0ODk0NA==&amp;mid=2451954663&amp;idx=1&amp;sn=4bd071b6aaede114263f88c790b61371&amp;chksm=8d1c2278ba6bab6eca2ef44f21b2178cc719fffe124289b68128c0dad72429fe5f286854157a&amp;scene=21#wechat_redirect</a></p>
+<p>参考：</p>
+<p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s?__biz=MzAwMjI0ODk0NA==&amp;mid=2451954663&amp;idx=1&amp;sn=4bd071b6aaede114263f88c790b61371&amp;chksm=8d1c2278ba6bab6eca2ef44f21b2178cc719fffe124289b68128c0dad72429fe5f286854157a&amp;scene=21#wechat_redirect">https://mp.weixin.qq.com/s?__biz=MzAwMjI0ODk0NA==&amp;mid=2451954663&amp;idx=1&amp;sn=4bd071b6aaede114263f88c790b61371&amp;chksm=8d1c2278ba6bab6eca2ef44f21b2178cc719fffe124289b68128c0dad72429fe5f286854157a&amp;scene=21#wechat_redirect</a></p>
+<h3 id="3-Redis-中的数据类型有哪些？"><a href="#3-Redis-中的数据类型有哪些？" class="headerlink" title="3. Redis 中的数据类型有哪些？"></a>3. Redis 中的数据类型有哪些？</h3><h4 id="SDS-简单动态字符串"><a href="#SDS-简单动态字符串" class="headerlink" title="SDS(简单动态字符串)"></a>SDS(简单动态字符串)</h4><ul>
+<li>作用</li>
+</ul>
+<ol>
+<li>保存字符串值</li>
+<li>用作缓冲区( AOF 模块的 AOF 缓冲区、客户端状态的输入缓冲区)</li>
+</ol>
+<ul>
+<li>结构</li>
+</ul>
+<img src="https://gitee.com/dlutlgy/images_for_typora/raw/master/images/image-20220214170952086.png" alt="image-20220214170952086" style="zoom:50%;" />
+
+
+
+<ul>
+<li>与 C 字符串的区别？</li>
+</ul>
+<ol>
+<li>常数复杂度获取字符串的长度</li>
+<li>能有效杜绝缓冲区溢出</li>
+<li>减少修改字符串时带来的内存重分配次数（空间预分配、惰性空间释放）</li>
+<li>二进制安全的</li>
+<li>兼容部分 C 字符串函数</li>
+</ol>
+<h4 id="链表"><a href="#链表" class="headerlink" title="链表"></a>链表</h4><ul>
+<li>作用：</li>
+</ul>
+<ol>
+<li>可以做链表键</li>
+<li>发布与订阅</li>
+<li>慢查询</li>
+<li>监视器</li>
+<li>保存多个客户端状态信息</li>
+<li>构建客户端输出缓冲区</li>
+</ol>
+<ul>
+<li>结构</li>
+</ul>
+<img src="https://gitee.com/dlutlgy/images_for_typora/raw/master/images/image-20220214175759234.png" alt="image-20220214175759234" style="zoom:50%;" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     </div>
 
@@ -512,7 +590,7 @@
       <i class="fa fa-chart-line"></i>
     </span>
       <span>站点总字数：</span>
-    <span title="站点总字数">151k</span>
+    <span title="站点总字数">152k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
