@@ -237,20 +237,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">41</span>
+          <span class="site-state-item-count">42</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">24</span>
+        <span class="site-state-item-count">25</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">33</span>
+        <span class="site-state-item-count">34</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -296,6 +296,178 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://dlutlgy.top/2022/02/09/MySQL%E9%AB%98%E7%BA%A7/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Dlutlgy">
+      <meta itemprop="description" content="what kind of life do you want ~">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="酒窝里有酒">
+    </span>
+
+    
+    
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/02/09/MySQL%E9%AB%98%E7%BA%A7/" class="post-title-link" itemprop="url">MySQL高级</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-02-09 16:16:36" itemprop="dateCreated datePublished" datetime="2022-02-09T16:16:36+08:00">2022-02-09</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2022-02-10 22:22:48" itemprop="dateModified" datetime="2022-02-10T22:22:48+08:00">2022-02-10</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/MySql/" itemprop="url" rel="index"><span itemprop="name">MySql</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/2022/02/09/MySQL%E9%AB%98%E7%BA%A7/" class="post-meta-item leancloud_visitors" data-flag-title="MySQL高级" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2022/02/09/MySQL%E9%AB%98%E7%BA%A7/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2022/02/09/MySQL%E9%AB%98%E7%BA%A7/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+      </div>
+      <div class="post-meta">
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>278</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>1 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h3 id="架构篇"><a href="#架构篇" class="headerlink" title="架构篇"></a>架构篇</h3><p><img src="https://gitee.com/dlutlgy/images_for_typora/raw/master/images/image-20220210222236950.png" alt="image-20220210222236950"></p>
+<p>逻辑架构</p>
+<ul>
+<li>逻辑架构分析</li>
+<li>SQL 查询流程</li>
+<li>查看执行计划</li>
+<li>数据库缓冲池</li>
+</ul>
+<p>存储引擎</p>
+<ul>
+<li>InnoDB</li>
+<li>MyISAM</li>
+<li>…</li>
+</ul>
+<p>InnoDB 的数据存储结构</p>
+<ul>
+<li>关系图</li>
+<li>InnoDB 的行格式</li>
+<li>数据页组成部分</li>
+<li>区的结构</li>
+<li>段的结构</li>
+<li>表空间</li>
+</ul>
+<h3 id="索引及调优篇"><a href="#索引及调优篇" class="headerlink" title="索引及调优篇"></a>索引及调优篇</h3><p>索引的数据结构</p>
+<ul>
+<li>类比</li>
+<li>InnoDB中的索引</li>
+<li>常见的数据结构</li>
+</ul>
+<p>索引的创建与设计原则</p>
+<p>性能分析工具使用</p>
+<p>索引的优化与查询优化</p>
+<ul>
+<li>调优原则与调优手段</li>
+<li>索引失效案例</li>
+<li>关联查询优化</li>
+<li>子查询优化</li>
+<li>排序优化</li>
+<li>Group By 优化</li>
+<li>日常SQL编写的规范与优化</li>
+</ul>
+<p>数据库的设计规范</p>
+<ul>
+<li>六大范式</li>
+<li>反范式化</li>
+<li>ER模型</li>
+<li>表的设计原则</li>
+<li>SQL编写建议</li>
+</ul>
+<p>数据库的其他调优策略</p>
+<h3 id="事务篇"><a href="#事务篇" class="headerlink" title="事务篇"></a>事务篇</h3><p>事务基础知识</p>
+<p>MySQL事务日志</p>
+<ul>
+<li>redo日志</li>
+<li>undo日志</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://dlutlgy.top/2022/01/04/Java%E9%9B%86%E5%90%88/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -331,7 +503,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2022-02-12 13:44:16" itemprop="dateModified" datetime="2022-02-12T13:44:16+08:00">2022-02-12</time>
+        <time title="修改时间：2022-02-19 18:03:17" itemprop="dateModified" datetime="2022-02-19T18:03:17+08:00">2022-02-19</time>
       </span>
 
   
@@ -404,13 +576,13 @@
 <ul>
 <li>占用内存空间</li>
 </ul>
-<p>ArrayList 的空间浪费主要是在list列表结尾会有一部分空间预留</p>
-<p>LinkedList 空间花费在每一个元素都比ArrayList 元素更多的空间（因为要存放前驱和后继的数据）</p>
+<p>ArrayList 的空间浪费主要是在 list 列表结尾会有一部分空间预留</p>
+<p>LinkedList 空间花费在每一个元素都比 ArrayList 元素更多的空间（因为要存放前驱和后继的数据）</p>
 <h3 id="ArrayList-和-Vector-的区别？-为什么Vector-被代替？"><a href="#ArrayList-和-Vector-的区别？-为什么Vector-被代替？" class="headerlink" title="ArrayList 和 Vector 的区别？ 为什么Vector 被代替？"></a>ArrayList 和 Vector 的区别？ 为什么Vector 被代替？</h3><ul>
 <li>ArrayList 是线程不安全的，效率高，而 Vector 是线程安全的，效率低。</li>
 <li>ArrayList 扩容的时候是扩容1.5倍，而 Vector 扩容的时候是2倍</li>
 </ul>
-<p>因为Vector 类中所有的方法都是同步的(线程安全的)，所以系统开销比较大。</p>
+<p>因为 Vector 类中所有的方法都是同步的(线程安全的)，所以系统开销比较大。</p>
 <h3 id="ArrayList-的扩容机制"><a href="#ArrayList-的扩容机制" class="headerlink" title="ArrayList 的扩容机制"></a>ArrayList 的扩容机制</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">jdk 7情况下</span><br><span class="line">*      ArrayList list = new ArrayList();//底层创建了长度是10的Object[]数组elementData</span><br><span class="line">*      list.add(123);//elementData[0] = new Integer(123);</span><br><span class="line">*      ...</span><br><span class="line">*      list.add(11);//如果此次的添加导致底层elementData数组容量不够，则扩容。</span><br><span class="line">*      默认情况下，扩容为原来的容量的1.5倍，同时需要将原有数组中的数据复制到新的数组中。</span><br><span class="line">*</span><br><span class="line">*      结论：建议开发中使用带参的构造器：ArrayList list = new ArrayList(int capacity)</span><br><span class="line">*</span><br><span class="line"></span><br><span class="line">jdk 8中ArrayList的变化：</span><br><span class="line">*      ArrayList list = new ArrayList();//底层Object[] elementData初始化为&#123;&#125;.并没有创建长度为10的数组</span><br><span class="line">*      list.add(123);//第一次调用add()时，底层才创建了长度10的数组，并将数据123添加到elementData[0]</span><br><span class="line">*      ...</span><br><span class="line">*      后续的添加和扩容操作与jdk 7 无异。</span><br><span class="line">小结：jdk7中的ArrayList的对象的创建类似于单例的饿汉式，而jdk8中的ArrayList的对象</span><br><span class="line">*            的创建类似于单例的懒汉式，延迟了数组的创建，节省内存。</span><br></pre></td></tr></table></figure>
 
 
@@ -444,11 +616,11 @@
 <h3 id="HashMap-和-Hashtable-的区别？"><a href="#HashMap-和-Hashtable-的区别？" class="headerlink" title="HashMap 和 Hashtable 的区别？"></a>HashMap 和 Hashtable 的区别？</h3><ul>
 <li>线程是否安全</li>
 </ul>
-<p>HashMap线程不安全、Hashtable是线程安全，Hashtable内部都是synchronized 的，如果是要保证线程安全，就用ConcurrenthashMap</p>
+<p>HashMap 线程不安全、Hashtable 是线程安全，Hashtable 内部都是 synchronized 的，如果是要保证线程安全，就用ConcurrenthashMap</p>
 <ul>
 <li>效率</li>
 </ul>
-<p>因为线程不安全，所以HashMap效率高点，Hashtable效率低，一般都不使用了。</p>
+<p>因为线程不安全，所以 HashMap 效率高点，Hashtable 效率低，一般都不使用了。</p>
 <ul>
 <li>Null key 和Null value</li>
 </ul>
@@ -457,7 +629,7 @@
 <ul>
 <li>初始化容量大小和每次扩容的大小不同</li>
 </ul>
-<p>HashMap 默认初始化是 16 ，每次扩容为原来的两倍。Hashtable默认初始化11。每次扩容为原来的2n+1。</p>
+<p>HashMap 默认初始化是 16 ，每次扩容为原来的两倍。Hashtable默认初始化 11。每次扩容为原来的 2n+1。</p>
 <p>如果初始化都指定来一个初始化值，那么 HashMap 都会扩充为2 的幂次方大小。而Hashtable则就是使用指定的大小进行初始化。</p>
 <ul>
 <li>底层数据结构</li>
@@ -485,8 +657,8 @@
 </li>
 <li><p>对于equals方法，一般为比较内容是否相同。</p>
 <ul>
-<li>如果没有对equals方法进行重写，则比较的是引用类型的变量所指向的对象的地址。</li>
-<li>诸如String、Date等类对equals方法进行了重写的话，比较的是所指向的对象的内容。</li>
+<li>如果没有对 equals 方法进行重写，则比较的是引用类型的变量所指向的对象的地址。</li>
+<li>诸如 String、Date 等类对 equals 方法进行了重写的话，比较的是所指向的对象的内容。</li>
 </ul>
 </li>
 </ol>
@@ -544,6 +716,7 @@
 <li>形成链表时，七上八下（jdk7:新的元素指向旧的元素。jdk8：旧的元素指向新的元素）</li>
 <li>当数组的某一个索引位置上的元素以链表形式存在的数据个数 &gt; 8 且当前数组的长度 &gt; 64时，此时此索引位置上的所数据改为使用红黑树存储。</li>
 </ul>
+<h3 id="ConcurrentHashMap-讲解"><a href="#ConcurrentHashMap-讲解" class="headerlink" title="ConcurrentHashMap 讲解"></a>ConcurrentHashMap 讲解</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/justloveyou_/article/details/72783008">https://blog.csdn.net/justloveyou_/article/details/72783008</a></p>
 
       
     </div>
@@ -834,135 +1007,6 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git pull origin master</span><br></pre></td></tr></table></figure>
 
 
-      
-    </div>
-
-    
-    
-    
-
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://dlutlgy.top/2021/09/27/Nginx/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.png">
-      <meta itemprop="name" content="Dlutlgy">
-      <meta itemprop="description" content="what kind of life do you want ~">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="酒窝里有酒">
-    </span>
-
-    
-    
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/09/27/Nginx/" class="post-title-link" itemprop="url">Nginx</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2021-09-27 15:48:57" itemprop="dateCreated datePublished" datetime="2021-09-27T15:48:57+08:00">2021-09-27</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-10-14 16:37:31" itemprop="dateModified" datetime="2021-10-14T16:37:31+08:00">2021-10-14</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Nginx/" itemprop="url" rel="index"><span itemprop="name">Nginx</span></a>
-        </span>
-    </span>
-
-  
-    <span id="/2021/09/27/Nginx/" class="post-meta-item leancloud_visitors" data-flag-title="Nginx" title="阅读次数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">阅读次数：</span>
-      <span class="leancloud-visitors-count"></span>
-    </span>
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2021/09/27/Nginx/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2021/09/27/Nginx/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-      </div>
-      <div class="post-meta">
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>286</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>1 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <center>Create your own path</center>
-
-<p><img src="https://gitee.com/dlutlgy/images_for_typora/raw/master/images/CDF554B0DD5CA43FF40BB106B6757193.png" alt="CDF554B0DD5CA43FF40BB106B6757193"></p>
-<br>
-
-<p>无论人生上到哪一层台阶，阶下总有人在仰望你，阶上亦有人在俯视你。你抬头自卑，低头自得，唯有平视，才能看见真正的自己。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/09/27/Nginx/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
       
     </div>
 
