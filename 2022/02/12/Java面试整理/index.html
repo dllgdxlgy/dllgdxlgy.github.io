@@ -30,7 +30,7 @@
 <meta property="og:description" content="1. java 中对象比较的三种方式 &#x3D;&#x3D; 和 equals() 方法 hashCode() 方法和 equals() 方法 Comparable 接口和 Comparator 接口   &#x3D;&#x3D; 和 equals() 方法（已经整理）  不重写就是比较的对象的地址值是不是一样的，自己写的类一般都重写 equals() 方法。  hashCode() 方法和 equals() 方法  之所以重写has">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-02-12T03:50:35.737Z">
-<meta property="article:modified_time" content="2022-02-12T10:28:44.447Z">
+<meta property="article:modified_time" content="2022-02-25T08:47:27.994Z">
 <meta property="article:author" content="Dlutlgy">
 <meta name="twitter:card" content="summary">
 
@@ -224,7 +224,7 @@
 
       <!--noindex-->
       <section class="post-toc-wrap sidebar-panel">
-          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-java-%E4%B8%AD%E5%AF%B9%E8%B1%A1%E6%AF%94%E8%BE%83%E7%9A%84%E4%B8%89%E7%A7%8D%E6%96%B9%E5%BC%8F"><span class="nav-text">1. java 中对象比较的三种方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-HashCode-%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="nav-text">2.  HashCode 的作用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Java-%E4%B8%AD%E8%8E%B7%E5%8F%96%E9%94%AE%E7%9B%98%E8%BE%93%E5%85%A5%E5%80%BC%E7%9A%84%E4%B8%89%E7%A7%8D%E6%96%B9%E6%B3%95"><span class="nav-text">Java 中获取键盘输入值的三种方法</span></a></li></ol></div>
+          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-java-%E4%B8%AD%E5%AF%B9%E8%B1%A1%E6%AF%94%E8%BE%83%E7%9A%84%E4%B8%89%E7%A7%8D%E6%96%B9%E5%BC%8F"><span class="nav-text">1. java 中对象比较的三种方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-HashCode-%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="nav-text">2.  HashCode 的作用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-Java-%E4%B8%AD%E8%8E%B7%E5%8F%96%E9%94%AE%E7%9B%98%E8%BE%93%E5%85%A5%E5%80%BC%E7%9A%84%E4%B8%89%E7%A7%8D%E6%96%B9%E6%B3%95"><span class="nav-text">3. Java 中获取键盘输入值的三种方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-Java%E4%B8%AD%E6%9C%89%E5%93%AA%E5%87%A0%E7%A7%8D%E7%B1%BB%E5%9E%8B%E7%9A%84%E6%B5%81"><span class="nav-text">4. Java中有哪几种类型的流</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-%E5%AD%97%E8%8A%82%E6%B5%81%E5%92%8C%E5%AD%97%E7%AC%A6%E6%B5%81%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="nav-text">5. 字节流和字符流的区别？</span></a></li></ol></div>
       </section>
       <!--/noindex-->
 
@@ -326,10 +326,16 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
-      
 
-      <time title="创建时间：2022-02-12 11:50:35 / 修改时间：18:28:44" itemprop="dateCreated datePublished" datetime="2022-02-12T11:50:35+08:00">2022-02-12</time>
+      <time title="创建时间：2022-02-12 11:50:35" itemprop="dateCreated datePublished" datetime="2022-02-12T11:50:35+08:00">2022-02-12</time>
     </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2022-02-25 16:47:27" itemprop="dateModified" datetime="2022-02-25T16:47:27+08:00">2022-02-25</time>
+      </span>
 
   
     <span id="/2022/02/12/Java%E9%9D%A2%E8%AF%95%E6%95%B4%E7%90%86/" class="post-meta-item leancloud_visitors" data-flag-title="" title="阅读次数">
@@ -360,7 +366,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>2k</span>
+      <span>2.3k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -406,7 +412,7 @@
 <p>（4）如果对象的equals方法被重写，那么对象的HashCode也尽量重写。</p>
 <p>在集合中，当要添加元素时，没使用 HashCode 之前，需要进行很多次 equals() 方法，会降低效率，但是我们使用 HashCode() 的时候，我们就能一下子确定插入的位置。即使相同的 Hash 值，也能调用有限次 equals() 方法进行比较。</p>
 <p>参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/SEU_Calvin/article/details/52094115">https://blog.csdn.net/SEU_Calvin/article/details/52094115</a></p>
-<h3 id="Java-中获取键盘输入值的三种方法"><a href="#Java-中获取键盘输入值的三种方法" class="headerlink" title="Java 中获取键盘输入值的三种方法"></a>Java 中获取键盘输入值的三种方法</h3><ul>
+<h3 id="3-Java-中获取键盘输入值的三种方法"><a href="#3-Java-中获取键盘输入值的三种方法" class="headerlink" title="3. Java 中获取键盘输入值的三种方法"></a>3. Java 中获取键盘输入值的三种方法</h3><ul>
 <li>从控制台中接收一个字符，然后将其打印出来。</li>
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.io.*;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String [] args)</span> <span class="keyword">throws</span> IOException</span>&#123; </span><br><span class="line">       System.out.print(<span class="string">&quot;Enter a Char:&quot;</span>); </span><br><span class="line">        <span class="keyword">char</span> i = (<span class="keyword">char</span>) System.in.read(); </span><br><span class="line">       System.out.println(<span class="string">&quot;your char is :&quot;</span>+i); </span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
@@ -423,6 +429,18 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String [] args)</span> </span>&#123; </span><br><span class="line">        Scanner sc = <span class="keyword">new</span> Scanner(System.in); </span><br><span class="line">       System.out.println(<span class="string">&quot;请输入你的姓名：&quot;</span>); </span><br><span class="line">        String name = sc.nextLine(); </span><br><span class="line">       System.out.println(<span class="string">&quot;请输入你的年龄：&quot;</span>); </span><br><span class="line">        <span class="keyword">int</span> age = sc.nextInt(); </span><br><span class="line">       System.out.println(<span class="string">&quot;请输入你的工资：&quot;</span>); </span><br><span class="line">        <span class="keyword">float</span> salary = sc.nextFloat(); </span><br><span class="line">       System.out.println(<span class="string">&quot;你的信息如下：&quot;</span>); </span><br><span class="line">       System.out.println(<span class="string">&quot;姓名：&quot;</span>+name+<span class="string">&quot;\n&quot;</span>+<span class="string">&quot;年龄：&quot;</span>+age+<span class="string">&quot;\n&quot;</span>+<span class="string">&quot;工资：&quot;</span>+salary); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>参考：<a target="_blank" rel="noopener" href="http://blog.sina.com.cn/s/blog_93dc666c0101h00f.html">http://blog.sina.com.cn/s/blog_93dc666c0101h00f.html</a></p>
+<h3 id="4-Java中有哪几种类型的流"><a href="#4-Java中有哪几种类型的流" class="headerlink" title="4. Java中有哪几种类型的流"></a>4. Java中有哪几种类型的流</h3><p>按照数据单位不同分为：<strong>字节流和字符流</strong></p>
+<p>按照数据流的流向分为：<strong>输入流和输出流</strong></p>
+<p>按照流的角色分为：<strong>节点流和处理流</strong></p>
+<p>节点流：直接作用在文件上。</p>
+<p>处理流：是在节点流的基础上进行包裹的流。</p>
+<p>字节流继承于 InputStream 和 OutStream，字符流继承于 Reader 和 Writer。</p>
+<h3 id="5-字节流和字符流的区别？"><a href="#5-字节流和字符流的区别？" class="headerlink" title="5. 字节流和字符流的区别？"></a>5. 字节流和字符流的区别？</h3><p>参考：<a target="_blank" rel="noopener" href="https://www.zhihu.com/question/39262026">https://www.zhihu.com/question/39262026</a></p>
+<ol>
+<li>字节流操作的基本单位是字节，而字符流操作的基本单位是 Unicode码元。</li>
+<li>字节流不需要使用缓冲区，字符流需要使用缓冲区。</li>
+<li>字节流可以处理二进制数据，也就是可以处理任意类型的数据。而字符流通常处理文本类型的数据。</li>
+</ol>
 
     </div>
 
