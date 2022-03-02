@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.14.0/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"dlutlgy.top","root":"/","scheme":"Pisces","version":"8.0.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
+  </script>
+
+  <meta name="description" content="引擎1. MySql 存储引擎 MyISAM 与 InnoDB 区别？Innodb 引擎：Innodb 引擎提供了对数据库 ACID 事务的支持。并且还提供了行级锁和外键的约束。它的设计的目标就是处理大数据容量的数据库系统。MyIASM 引擎(原本Mysql的默认引擎)：不提供事务的支持，也不支持行级锁和外键。MEMORY 引擎：所有的数据都在内存中，数据的处理速度快，但是安全性不高。  是否支持">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MySQL基础">
+<meta property="og:url" content="http://dlutlgy.top/2022/03/02/MySQL%E9%9D%A2%E8%AF%95/index.html">
+<meta property="og:site_name" content="酒窝里有酒">
+<meta property="og:description" content="引擎1. MySql 存储引擎 MyISAM 与 InnoDB 区别？Innodb 引擎：Innodb 引擎提供了对数据库 ACID 事务的支持。并且还提供了行级锁和外键的约束。它的设计的目标就是处理大数据容量的数据库系统。MyIASM 引擎(原本Mysql的默认引擎)：不提供事务的支持，也不支持行级锁和外键。MEMORY 引擎：所有的数据都在内存中，数据的处理速度快，但是安全性不高。  是否支持">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gitee.com/dlutlgy/window_typora/raw/master/images/image-20220228170105898.png">
+<meta property="article:published_time" content="2022-03-02T11:18:57.000Z">
+<meta property="article:modified_time" content="2022-03-02T11:18:28.744Z">
+<meta property="article:author" content="Dlutlgy">
+<meta property="article:tag" content="面试">
+<meta property="article:tag" content="MySql">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gitee.com/dlutlgy/window_typora/raw/master/images/image-20220228170105898.png">
+
+
+<link rel="canonical" href="http://dlutlgy.top/2022/03/02/MySQL%E9%9D%A2%E8%AF%95/">
+
+
+<script class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>MySQL基础 | 酒窝里有酒</title>
+  
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?610f3edfabbb82ef386946e8513bdacf";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">酒窝里有酒</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">盐于律己，甜以待人。生而温柔，却有力量，近朱者赤，近我者甜。众生皆草木，唯我是青山。</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-guestbook">
+
+    <a href="/guestbook/" rel="section"><i class="fa fa-book fa-fw"></i>留言板</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <section class="post-toc-wrap sidebar-panel">
+          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%95%E6%93%8E"><span class="nav-text">引擎</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-MySql-%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E-MyISAM-%E4%B8%8E-InnoDB-%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="nav-text">1. MySql 存储引擎 MyISAM 与 InnoDB 区别？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B4%A2%E5%BC%95"><span class="nav-text">索引</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E4%BB%80%E4%B9%88%E6%98%AF%E7%B4%A2%E5%BC%95%EF%BC%9F"><span class="nav-text">1. 什么是索引？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E7%B4%A2%E5%BC%95%E7%9A%84%E4%BC%98%E7%BC%BA%E7%82%B9%EF%BC%9F"><span class="nav-text">2. 索引的优缺点？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E7%B4%A2%E5%BC%95%E7%9A%84%E5%88%86%E7%B1%BB%EF%BC%9F"><span class="nav-text">3. 索引的分类？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-%E7%B4%A2%E5%BC%95%E7%9A%84%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF%EF%BC%9F"><span class="nav-text">4. 索引的使用场景？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-%E7%B4%A2%E5%BC%95%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%EF%BC%9F"><span class="nav-text">5. 索引的数据结构？</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Hash-amp-B-%E6%A0%91"><span class="nav-text">Hash &amp; B+树</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Hash-%E8%A1%A8%E5%AD%98%E5%9C%A8%E7%9A%84%E7%BC%BA%E7%82%B9"><span class="nav-text">Hash 表存在的缺点</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#B-%E6%A0%91%E5%92%8C-B-%E6%A0%91"><span class="nav-text">B 树和 B+ 树</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#B-%E6%A0%91%E5%92%8C-B-%E6%A0%91%E7%9A%84%E5%BC%82%E5%90%8C%EF%BC%9F"><span class="nav-text">B 树和 B+ 树的异同？</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-%E7%B4%A2%E5%BC%95%E7%9A%84%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99%EF%BC%9F"><span class="nav-text">6. 索引的设计原则？</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%82%A3%E4%BA%9B%E6%83%85%E5%86%B5%E4%B8%8B%E9%80%82%E5%90%88%E5%88%9B%E5%BB%BA%E7%B4%A2%E5%BC%95%EF%BC%9F"><span class="nav-text">那些情况下适合创建索引？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%93%AA%E4%BA%9B%E6%83%85%E5%86%B5%E4%B8%8D%E9%80%82%E5%90%88%E5%88%9B%E5%BB%BA%E7%B4%A2%E5%BC%95%EF%BC%9F"><span class="nav-text">哪些情况不适合创建索引？</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-%E8%81%94%E5%90%88%E7%B4%A2%E5%BC%95%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%E6%B3%A8%E6%84%8F%E8%81%94%E5%90%88%E7%B4%A2%E5%BC%95%E7%9A%84%E9%A1%BA%E5%BA%8F%EF%BC%9F"><span class="nav-text">7. 联合索引是什么？为什么需要注意联合索引的顺序？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-%E9%9D%9E%E8%81%9A%E7%B0%87%E7%B4%A2%E5%BC%95%E4%B8%80%E5%AE%9A%E4%BC%9A%E5%9B%9E%E8%A1%A8%E6%9F%A5%E8%AF%A2%E5%90%97%EF%BC%9F"><span class="nav-text">8. 非聚簇索引一定会回表查询吗？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-%E4%BB%80%E4%B9%88%E6%98%AF%E6%9C%80%E5%B7%A6%E5%89%8D%E7%BC%80%E5%8E%9F%E5%88%99%EF%BC%9F%E4%BB%80%E4%B9%88%E6%98%AF%E6%9C%80%E5%B7%A6%E5%8C%B9%E9%85%8D%E5%8E%9F%E5%88%99%EF%BC%9F"><span class="nav-text">9. 什么是最左前缀原则？什么是最左匹配原则？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-%E7%99%BE%E4%B8%87%E7%BA%A7%E5%88%AB%E6%88%96%E4%BB%A5%E4%B8%8A%E7%9A%84%E6%95%B0%E6%8D%AE%E5%A6%82%E4%BD%95%E5%88%A0%E9%99%A4%EF%BC%9F"><span class="nav-text">10. 百万级别或以上的数据如何删除？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#11-COUNT-%E5%92%8C-COUNT-%E5%85%B7%E4%BD%93%E5%AD%97%E6%AE%B5-%E6%95%88%E7%8E%87%EF%BC%9F"><span class="nav-text">11. COUNT(*) 和 COUNT(具体字段) 效率？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#12-%E5%85%B3%E4%BA%8E-select"><span class="nav-text">12. 关于 select(*)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#13-limit-1-%E5%AF%B9%E4%BA%8E%E4%BC%98%E5%8C%96%E7%9A%84%E5%BD%B1%E5%93%8D"><span class="nav-text">13. limit 1 对于优化的影响</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#14-%E5%88%9B%E5%BB%BA%E7%B4%A2%E5%BC%95%E7%9A%84%E4%B8%89%E7%A7%8D%E6%96%B9%E5%BC%8F"><span class="nav-text">14.创建索引的三种方式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8B%E5%8A%A1"><span class="nav-text">事务</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E4%BA%8B%E5%8A%A1%E7%9A%84%E5%9B%9B%E4%B8%AA%E7%89%B9%E6%80%A7%EF%BC%9F"><span class="nav-text">1. 事务的四个特性？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E4%BA%8B%E5%8A%A1%E7%9A%84%E5%B9%B6%E5%8F%91%E9%97%AE%E9%A2%98"><span class="nav-text">2. 事务的并发问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-SQL-%E7%9A%84%E9%9A%94%E7%A6%BB%E7%BA%A7%E5%88%AB"><span class="nav-text">3. SQL 的隔离级别</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%94%81"><span class="nav-text">锁</span></a></li></ol></div>
+      </section>
+      <!--/noindex-->
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Dlutlgy"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">Dlutlgy</p>
+  <div class="site-description" itemprop="description">what kind of life do you want ~</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">44</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">28</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">35</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/dllgdxlgy" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;dllgdxlgy" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:L337cu@163.com" title="E-Mail → mailto:L337cu@163.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://music.163.com/#/user/home?id=440399808" title="音乐 → https:&#x2F;&#x2F;music.163.com&#x2F;#&#x2F;user&#x2F;home?id&#x3D;440399808" rel="noopener" target="_blank"><i class="fa fa-headphones fa-fw"></i>音乐</a>
+      </span>
+  </div>
+
+
+
+      </section>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+      
+
+      
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://dlutlgy.top/2022/03/02/MySQL%E9%9D%A2%E8%AF%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Dlutlgy">
+      <meta itemprop="description" content="what kind of life do you want ~">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="酒窝里有酒">
+    </span>
+
+    
+    
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          MySQL基础
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2022-03-02 19:18:57 / 修改时间：19:18:28" itemprop="dateCreated datePublished" datetime="2022-03-02T19:18:57+08:00">2022-03-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/MySql/" itemprop="url" rel="index"><span itemprop="name">MySql</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/MySql/%E6%95%B0%E6%8D%AE%E5%BA%93/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/2022/03/02/MySQL%E9%9D%A2%E8%AF%95/" class="post-meta-item leancloud_visitors" data-flag-title="MySQL基础" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2022/03/02/MySQL%E9%9D%A2%E8%AF%95/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2022/03/02/MySQL%E9%9D%A2%E8%AF%95/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+      </div>
+      <div class="post-meta">
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>3.9k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>4 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="引擎"><a href="#引擎" class="headerlink" title="引擎"></a>引擎</h2><h3 id="1-MySql-存储引擎-MyISAM-与-InnoDB-区别？"><a href="#1-MySql-存储引擎-MyISAM-与-InnoDB-区别？" class="headerlink" title="1. MySql 存储引擎 MyISAM 与 InnoDB 区别？"></a>1. MySql 存储引擎 MyISAM 与 InnoDB 区别？</h3><p><strong>Innodb 引擎</strong>：Innodb 引擎提供了对数据库 ACID 事务的支持。并且还提供了行级锁和外键的约束。它的设计的目标就是处理大数据容量的数据库系统。<br><strong>MyIASM 引擎</strong>(原本Mysql的默认引擎)：不提供事务的支持，也不支持行级锁和外键。<br><strong>MEMORY 引擎</strong>：所有的数据都在内存中，数据的处理速度快，但是安全性不高。</p>
+<ol>
+<li><strong>是否支持行级锁，</strong>MyISAM 不支持行级锁，只支持表级锁，锁粒度更大。InnoDB 都支持</li>
+<li><strong>是否支持事务，</strong></li>
+<li><strong>是否支持外键，</strong></li>
+<li><strong>是否支持数据库异常崩溃后安全恢复</strong></li>
+<li><strong>是否支持 MVCC</strong></li>
+</ol>
+<p><img src="https://gitee.com/dlutlgy/window_typora/raw/master/images/image-20220228170105898.png" alt="image-20220228170105898"></p>
+<h2 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h2><h3 id="1-什么是索引？"><a href="#1-什么是索引？" class="headerlink" title="1. 什么是索引？"></a>1. 什么是索引？</h3><p>索引就是一种能帮助 MySql 高效获取数据的数据结构(排好序的快速查找的数据结构)，能实现快速查找。</p>
+<h3 id="2-索引的优缺点？"><a href="#2-索引的优缺点？" class="headerlink" title="2. 索引的优缺点？"></a>2. 索引的优缺点？</h3><p>优点：</p>
+<ul>
+<li><p>提高数据检索效率，降低数据库的 IO 成本。(主要原因)</p>
+</li>
+<li><p>因为索引已经帮我们排好序了，这样我们查询数据时服务器能避免排序。</p>
+</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li>时间方面：创建索引和维护索引需要额外的时间，对表进行增删改的时候，索引也要动态的维护。降低效率。</li>
+<li>空间方面：索引还会占用一定的物理存储空间。</li>
+</ul>
+<h3 id="3-索引的分类？"><a href="#3-索引的分类？" class="headerlink" title="3. 索引的分类？"></a>3. 索引的分类？</h3><p>索引包括<strong>普通索引、唯一索引、全文索引、单列索引、多列索引、和空间索引。</strong></p>
+<p>从功能逻辑上：索引分为四类：<strong>普通索引、唯一索引、主键索引、全文索引</strong>。</p>
+<p>从物理实现方式上：分为聚簇索引和非聚簇索引。</p>
+<p>按照作用字段来说：分为单列索引和联合索引。</p>
+<p>主键索引：数据列不允许重复，不允许为 null，一个表只有一个主键索引。</p>
+<p>唯一索引：数据列不允许重复，允许为 null，一个表可以由多个唯一索引。</p>
+<p>普通索引：没有唯一性和 null 值要求。</p>
+<p>全文索引：</p>
+<h3 id="4-索引的使用场景？"><a href="#4-索引的使用场景？" class="headerlink" title="4. 索引的使用场景？"></a>4. 索引的使用场景？</h3><h3 id="5-索引的数据结构？"><a href="#5-索引的数据结构？" class="headerlink" title="5. 索引的数据结构？"></a>5. 索引的数据结构？</h3><h4 id="Hash-amp-B-树"><a href="#Hash-amp-B-树" class="headerlink" title="Hash &amp; B+树"></a>Hash &amp; B+树</h4><p>Hash表查询数据时间复杂度为O(1),但是无法进行范围查询。并且查出类的数据也不一定对。</p>
+<h5 id="Hash-表存在的缺点"><a href="#Hash-表存在的缺点" class="headerlink" title="Hash 表存在的缺点"></a>Hash 表存在的缺点</h5><ul>
+<li>Hash 冲突问题</li>
+<li>Hash 索引不支持顺序查找和范围查找</li>
+</ul>
+<h4 id="B-树和-B-树"><a href="#B-树和-B-树" class="headerlink" title="B 树和 B+ 树"></a>B 树和 B+ 树</h4><h5 id="B-树和-B-树的异同？"><a href="#B-树和-B-树的异同？" class="headerlink" title="B 树和 B+ 树的异同？"></a>B 树和 B+ 树的异同？</h5><ul>
+<li>B 树的非叶子节点既存放键也存放数据，然而 B+ 树的数据只存在叶子节点中。</li>
+<li>B 树中叶子节点时独立的，而 B+ 树有链表指向邻居节点。</li>
+<li>B 树的查找是二分查找，可能没有找到叶子节点查找就结束了，而 B+ 树任何查找都是从根节点到叶子节点的查找。</li>
+</ul>
+<h3 id="6-索引的设计原则？"><a href="#6-索引的设计原则？" class="headerlink" title="6. 索引的设计原则？"></a>6. 索引的设计原则？</h3><h5 id="那些情况下适合创建索引？"><a href="#那些情况下适合创建索引？" class="headerlink" title="那些情况下适合创建索引？"></a>那些情况下适合创建索引？</h5><ol>
+<li><p>字段的数值有唯一性的限制</p>
+</li>
+<li><p>频繁作为 where 查询条件的字段</p>
+</li>
+<li><p>经常使用 Group by 和 Order by 的字段</p>
+</li>
+<li><p>Update 和 Delete 的 Where 条件列，</p>
+<p>因为如果没有给 Where 条件列添加索引，那么需要进行全表扫描后查出数据再进行更新或者删除操作。但是加上索引后，查询就快了，再进行对他更新或者删除。</p>
+</li>
+<li><p>DISTINCT 字段需要创建索引</p>
+</li>
+<li><p>多表 JOIN 连接操作时，对 Where 条件所需的字段</p>
+</li>
+<li><p>使用列的类型小的创建索引</p>
+<p>使用列的类型小的创建索引，那么占用的物理空间就少，就能够多放数据，可能就能让 B+ 树更扁平，降低 IO。</p>
+</li>
+<li><p>使用字符串前缀创建索引</p>
+</li>
+<li><p>区分度高(散列性高)的列适合作为索引</p>
+</li>
+<li><p>使用最频繁的列放到联合索引的左侧</p>
+</li>
+<li><p>在多个字段都要创建索引的情况下，联合索引优于单值索引。</p>
+</li>
+</ol>
+<h5 id="哪些情况不适合创建索引？"><a href="#哪些情况不适合创建索引？" class="headerlink" title="哪些情况不适合创建索引？"></a>哪些情况不适合创建索引？</h5><ol>
+<li>在 where 中使用不到的字段，不要设置索引。</li>
+<li>数据量小的表最好不要使用索引</li>
+<li>有大量重复数据的列上不要建立索引</li>
+<li>避免对经常更新的表创建过多的索引</li>
+<li>不建议用无序的值作为索引</li>
+<li>删除不再使用或者很少使用的索引</li>
+<li>不要定义冗余或重复的索引</li>
+</ol>
+<h3 id="7-联合索引是什么？为什么需要注意联合索引的顺序？"><a href="#7-联合索引是什么？为什么需要注意联合索引的顺序？" class="headerlink" title="7. 联合索引是什么？为什么需要注意联合索引的顺序？"></a>7. 联合索引是什么？为什么需要注意联合索引的顺序？</h3><p>联合索引就是为多个字段建立索引，如果想要命中索引，就需要按照建立索引时的字段顺序挨个使用，不这样就命中不了。一般情况下，我们会把查询频繁的字段或者选择性高的字段放在前面。</p>
+<h3 id="8-非聚簇索引一定会回表查询吗？"><a href="#8-非聚簇索引一定会回表查询吗？" class="headerlink" title="8. 非聚簇索引一定会回表查询吗？"></a>8. 非聚簇索引一定会回表查询吗？</h3><p>不一定，这涉及到查询语句所要求的字段是否全部命中了索引，如果全部命中了索引，那么就不必再进行回表查询。</p>
+<p>举个简单的例子，假设我们在员工表的年龄上建立了索引，那么当进行select age from employee where age &lt; 20的查询时，在索引的叶子节点上，已经包含了age信息，不会再次进行回表查询。</p>
+<h3 id="9-什么是最左前缀原则？什么是最左匹配原则？"><a href="#9-什么是最左前缀原则？什么是最左匹配原则？" class="headerlink" title="9. 什么是最左前缀原则？什么是最左匹配原则？"></a>9. 什么是最左前缀原则？什么是最左匹配原则？</h3><h3 id="10-百万级别或以上的数据如何删除？"><a href="#10-百万级别或以上的数据如何删除？" class="headerlink" title="10. 百万级别或以上的数据如何删除？"></a>10. 百万级别或以上的数据如何删除？</h3><p>如果直接删除，那么删除数据的时候还要维护索引，就意味着额外的 IO，会降低效率，所以，我们可以先记录已经创建的索引，在删除数据之前先删除索引，在删除数据，最后再建立相应的索引。</p>
+<h3 id="11-COUNT-和-COUNT-具体字段-效率？"><a href="#11-COUNT-和-COUNT-具体字段-效率？" class="headerlink" title="11. COUNT(*) 和 COUNT(具体字段) 效率？"></a>11. COUNT(*) 和 COUNT(具体字段) 效率？</h3><p>在 MySQL 中统计数据表的行数，有三种方式，select count(*)、select count(1)、select count(具体字段)。但是他们的效率如何的呢？</p>
+<p>环节1: COUNT(*) 和 COUNT(1) 都是对所有结果进行 COUNT，COUNT(※) 和 COUNT(1) 本质上并没有区别(二者执行时间可能略有差别，不过你还是可以把它俩的执行效率看成是相等的)。如果有 WHERE 子句，则是对所有符合筛选条件的数据行进行统计；如果没有 WHERE 子句，则是对数据表的数据行数进行统计。</p>
+<p>环节2: 如果是 MylSAM 存储引擎，统计数据表的行数只需要 O(1) 的复杂度，这是因为每张 MyISAM 的数据表都有一个meta 信息存储了 row_count 值，而一致性则由表级锁来保证。如果是 InnoDB 存储引擎，因为 InnoDB 支持事务，采用行级锁和 MVCC 机制，所以无法像 MyISAM 一样，维护一个row_count 变量，因此需要采用扫描全表，O(n)复杂度。进行循环＋计数的方式来完成统计。</p>
+<p>环节3: 在 InnoDB 引擎中，如果采用 COUNT(具体字段) 来统计数据行数，要尽量采用二级索引。因为主键采用的索引是聚簇索引，聚簇索引包含的信息多，明显会大于二级索引（非聚簇索引)。对于 COUNT(*) 和 COUNT(1) 来说，它们不需要查找具体的行，只是统计行数，系统会自动采用占用空间更小的二级索引来进行统计。</p>
+<p>如果有多个二级索引，会使用 key_len 小的二级索引进行扫描。当没有二级索引的时候，才会采用主键索引来进行统计。</p>
+<h3 id="12-关于-select"><a href="#12-关于-select" class="headerlink" title="12. 关于 select(*)"></a>12. 关于 select(*)</h3><p>尽量不要写 select(*), 推荐使用 select&lt;字段列表&gt; 查询。</p>
+<p>原因：</p>
+<p>①.MySQL 在解析的过程中，会通过查寻数据字典将*按序转化为所有列名，这会大大耗费资源和时间。</p>
+<p>②. 无法使用<strong>覆盖索引</strong>。</p>
+<h3 id="13-limit-1-对于优化的影响"><a href="#13-limit-1-对于优化的影响" class="headerlink" title="13. limit 1 对于优化的影响"></a>13. limit 1 对于优化的影响</h3><p>针对的是全表扫描的 SQL 语句，如果你可以确定结果集只有一条，那么加上 LIMIT1的时候，当找到一条结果的时候，就不会继续扫描了，这样会加快查询速度。</p>
+<p>如果数据表已经对字段建立了索引，那么就会通过索引进行扫描，就不用家 LIMIT1 了。</p>
+<h3 id="14-创建索引的三种方式"><a href="#14-创建索引的三种方式" class="headerlink" title="14.创建索引的三种方式"></a>14.创建索引的三种方式</h3><ul>
+<li>在创建表的时候创建索引</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE user_index2 (</span><br><span class="line">	id INT auto_increment PRIMARY KEY,</span><br><span class="line">	first_name VARCHAR (16),</span><br><span class="line">	last_name VARCHAR (16),</span><br><span class="line">	id_card VARCHAR (18),</span><br><span class="line">	information text,</span><br><span class="line">	KEY name (first_name, last_name),</span><br><span class="line">	FULLTEXT KEY (information),</span><br><span class="line">	UNIQUE KEY (id_card)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>使用 ALTER TABLE 命令去增加索引</li>
+<li>使用 CREATE INDEX 命令创建</li>
+</ul>
+<h2 id="事务"><a href="#事务" class="headerlink" title="事务"></a>事务</h2><h3 id="1-事务的四个特性？"><a href="#1-事务的四个特性？" class="headerlink" title="1. 事务的四个特性？"></a>1. 事务的四个特性？</h3><ul>
+<li><p>原子性(atomicity)</p>
+<p>原子性是指一个事务是一个不可分割的工作单位，要么全部提交，要么全部失败回滚。</p>
+</li>
+<li><p>一致性</p>
+<p>是指事务执行前后，数据从一个合法性状态转为另一个合法性状态</p>
+</li>
+<li><p>隔离性</p>
+<p>事务的隔离性是指一个事务在执行的过程中，不能被其他事务干扰，即是一个事务内部的操作及使用数据对并发的其他事务是隔离性的，并发的事务相互之间不能相互干扰。</p>
+</li>
+<li><p>持久性</p>
+<p>持久性是指一个事务一旦被提交，他对数据库的改变就是永久性的，接下来的其他数据库操作或者数据库的故障都能不能对其有任何影响。</p>
+</li>
+</ul>
+<h3 id="2-事务的并发问题"><a href="#2-事务的并发问题" class="headerlink" title="2. 事务的并发问题"></a>2. 事务的并发问题</h3><ul>
+<li><p>脏写</p>
+<p>脏写就是两个事务，一个事务A，一个事务B，如果事务A修改了另一个事务B未提交但修改过的数据，事务A提交了，但是事务B回滚了，这就意味着脏写。（这种问题太严重了，所有的隔离级别都解决了这种问题）</p>
+</li>
+<li><p>脏读</p>
+<p>所谓脏读，就是指一个事务A读取了事务B修改后，但是还没有提交的数据，这时候事务B又把数据回滚了，此时事务A读取到的数据就是脏的，所以称其为脏读。</p>
+</li>
+<li><p>不可重复读</p>
+<p>两个事务，事务A读取了数据，事务B修改了数据并且提交了，此时，事务A再次读取数据时发现数据变了，造成了两次读取数据不一样，就是不可重复读。</p>
+</li>
+<li><p>幻读</p>
+<p>两个事务，事务A从表中读取一个不存在的字段，但是这个时候事务B插入了数据，并且正好是事务A刚刚读过的数据，此时事务A也想插入数据，发现插入失败，出现幻读。</p>
+</li>
+</ul>
+<h3 id="3-SQL-的隔离级别"><a href="#3-SQL-的隔离级别" class="headerlink" title="3. SQL 的隔离级别"></a>3. SQL 的隔离级别</h3><ul>
+<li>read-uncommitted：读未提交</li>
+</ul>
+<p>此种隔离级别下，只能解决脏写，不能解决脏读、不可重复读、幻读。</p>
+<ul>
+<li>read-committed：读已提交</li>
+</ul>
+<p>也就是说事务只可以看的已经提交的数据，可以解决脏读，但是不可以解决不可重复读和幻读。Oracle 默认是此隔离级别。</p>
+<ul>
+<li>repeatable-read：可重复读</li>
+</ul>
+<p>事务A在读取一条数据时，事务B修改并提交了数据后，事务A再次读取此数据，读到的还是原来的内容，可以避免脏读、不可重复读，但是解决不了幻读问题。（MySQL 默认此种隔离级别）</p>
+<ul>
+<li>serializable：可串行化</li>
+</ul>
+<p>确保事务可以从一个表中读取相同的行，在这个事务持续期间，禁止其他食物对该表进行插入、更新、和删除操作。能避免所有问题，但是效率比较低。</p>
+<h2 id="锁"><a href="#锁" class="headerlink" title="锁"></a>锁</h2>
+    </div>
+
+    
+    
+    
+
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>Dlutlgy
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="http://dlutlgy.top/2022/03/02/MySQL%E9%9D%A2%E8%AF%95/" title="MySQL基础">http://dlutlgy.top/2022/03/02/MySQL面试/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/%E9%9D%A2%E8%AF%95/" rel="tag"># 面试</a>
+              <a href="/tags/MySql/" rel="tag"># MySql</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/02/17/JUC/" rel="prev" title="JUC（java 并发编程）">
+                  <i class="fa fa-chevron-left"></i> JUC（java 并发编程）
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+  
+  
+  
+
+
+
+      
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      
+
+      
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Dlutlgy</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+      <span>站点总字数：</span>
+    <span title="站点总字数">172k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span>站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">2:36</span>
+  </span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.2.0/lib/anime.min.js"></script> 
+
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+  <script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+  
+<script>
+NexT.utils.loadComments('#valine-comments', () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js', () => {
+    new Valine(Object.assign({
+      el  : '#valine-comments',
+      path: "/2022/03/02/MySQL%E9%9D%A2%E8%AF%95/",
+    }, {"enable":true,"appId":"QYi7IEQIz9YMSxsX95Id72rn-gzGzoHsz","appKey":"up4HJAyGMxTrtvP0bHO2fwTi","placeholder":"ヾﾉ≧∀≦)o来啊，快活啊!","avatar":"mm","meta":["nick","mail","link"],"pageSize":10,"lang":null,"visitor":true,"comment_count":true,"recordIP":true,"serverURLs":null,"enableQQ":true,"requiredFields":["nick"]}
+    ));
+  }, window.Valine);
+});
+</script>
+
+
+
+
+
+</body>
+</html>

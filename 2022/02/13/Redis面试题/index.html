@@ -33,7 +33,7 @@
 <meta property="og:image" content="https://gitee.com/dlutlgy/images_for_typora/raw/master/images/image-20220214175759234.png">
 <meta property="og:image" content="https://gitee.com/dlutlgy/images_for_typora/raw/master/images/image-20220223212722618.png">
 <meta property="article:published_time" content="2022-02-13T09:36:24.000Z">
-<meta property="article:modified_time" content="2022-03-02T09:05:06.030Z">
+<meta property="article:modified_time" content="2022-03-02T11:17:13.449Z">
 <meta property="article:author" content="Dlutlgy">
 <meta property="article:tag" content="面试">
 <meta property="article:tag" content="Redis">
@@ -230,7 +230,7 @@
 
       <!--noindex-->
       <section class="post-toc-wrap sidebar-panel">
-          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Redis-%E4%B8%8E-Memcached-%E7%9A%84%E5%85%B1%E5%90%8C%E7%82%B9%E4%B8%8E%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="nav-text">1. Redis 与 Memcached 的共同点与区别？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Redis-%E9%99%A4%E4%BA%86%E5%81%9A%E7%BC%93%E5%AD%98%EF%BC%8C%E8%BF%98%E8%83%BD%E5%81%9A%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-text">2. Redis 除了做缓存，还能做什么？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-Redis-%E4%B8%AD%E7%9A%84%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E6%9C%89%E5%93%AA%E4%BA%9B%EF%BC%9F"><span class="nav-text">3. Redis 中的数据类型有哪些？</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#SDS-%E7%AE%80%E5%8D%95%E5%8A%A8%E6%80%81%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="nav-text">SDS(简单动态字符串)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%93%BE%E8%A1%A8"><span class="nav-text">链表</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%B7%B3%E8%B7%83%E8%A1%A8"><span class="nav-text">跳跃表</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-Redis-%E8%BF%90%E8%A1%8C%E5%BF%AB%E7%9A%84%E5%8E%9F%E5%9B%A0%EF%BC%9F"><span class="nav-text">4.Redis 运行快的原因？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-%E8%AE%B2%E4%B8%80%E4%B8%8B-Redis-%E4%B8%AD%E7%9A%84%E6%8C%81%E4%B9%85%E5%8C%96%E6%9C%BA%E5%88%B6"><span class="nav-text">5. 讲一下 Redis 中的持久化机制</span></a></li></ol></div>
+          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Redis-%E4%B8%8E-Memcached-%E7%9A%84%E5%85%B1%E5%90%8C%E7%82%B9%E4%B8%8E%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="nav-text">1. Redis 与 Memcached 的共同点与区别？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Redis-%E9%99%A4%E4%BA%86%E5%81%9A%E7%BC%93%E5%AD%98%EF%BC%8C%E8%BF%98%E8%83%BD%E5%81%9A%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-text">2. Redis 除了做缓存，还能做什么？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-Redis-%E4%B8%AD%E7%9A%84%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E6%9C%89%E5%93%AA%E4%BA%9B%EF%BC%9F"><span class="nav-text">3. Redis 中的数据类型有哪些？</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#SDS-%E7%AE%80%E5%8D%95%E5%8A%A8%E6%80%81%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="nav-text">SDS(简单动态字符串)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%93%BE%E8%A1%A8"><span class="nav-text">链表</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%B7%B3%E8%B7%83%E8%A1%A8"><span class="nav-text">跳跃表</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-Redis-%E8%BF%90%E8%A1%8C%E5%BF%AB%E7%9A%84%E5%8E%9F%E5%9B%A0%EF%BC%9F"><span class="nav-text">4.Redis 运行快的原因？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-%E8%AE%B2%E4%B8%80%E4%B8%8B-Redis-%E4%B8%AD%E7%9A%84%E6%8C%81%E4%B9%85%E5%8C%96%E6%9C%BA%E5%88%B6"><span class="nav-text">5. 讲一下 Redis 中的持久化机制</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#RDB"><span class="nav-text">RDB</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#AOF"><span class="nav-text">AOF</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6%E3%80%81%E8%AF%B4%E4%B8%80%E4%B8%8B-RDB-%E5%92%8C-AOF-%E7%9A%84%E4%BC%98%E7%BC%BA%E7%82%B9%EF%BC%9F"><span class="nav-text">6、说一下 RDB 和 AOF 的优缺点？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7%E3%80%81RDB-%E5%92%8C-AOF-%E9%80%89%E5%93%AA%E4%B8%80%E4%B8%AA%EF%BC%9F"><span class="nav-text">7、RDB 和 AOF 选哪一个？</span></a></li></ol></div>
       </section>
       <!--/noindex-->
 
@@ -246,14 +246,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">43</span>
+          <span class="site-state-item-count">44</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">27</span>
+        <span class="site-state-item-count">28</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
@@ -340,7 +340,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2022-03-02 17:05:06" itemprop="dateModified" datetime="2022-03-02T17:05:06+08:00">2022-03-02</time>
+        <time title="修改时间：2022-03-02 19:17:13" itemprop="dateModified" datetime="2022-03-02T19:17:13+08:00">2022-03-02</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -385,14 +385,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>1.2k</span>
+      <span>1.9k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>1 分钟</span>
+      <span>2 分钟</span>
     </span>
 </div>
 
@@ -479,11 +479,37 @@
 <li>最最根本的是 Redis 是用 C 语音写的，直接跟操作系统交互，命令执行快的飞起。</li>
 </ol>
 <p><img src="https://gitee.com/dlutlgy/images_for_typora/raw/master/images/image-20220223212722618.png" alt="image-20220223212722618"></p>
-<h3 id="5-讲一下-Redis-中的持久化机制"><a href="#5-讲一下-Redis-中的持久化机制" class="headerlink" title="5. 讲一下 Redis 中的持久化机制"></a>5. 讲一下 Redis 中的持久化机制</h3><p>两种持久化机制：</p>
+<h3 id="5-讲一下-Redis-中的持久化机制"><a href="#5-讲一下-Redis-中的持久化机制" class="headerlink" title="5. 讲一下 Redis 中的持久化机制"></a>5. 讲一下 Redis 中的持久化机制</h3><h4 id="RDB"><a href="#RDB" class="headerlink" title="RDB"></a>RDB</h4><p>RDB 持久化方式是将 Redis 在内存中的数据库记录按照指定时间写入磁盘，实际操作过程是 fork 一个子进程，先将数据写入临时文件，写入成功后，在替换之前的文件，使用二进制压缩。</p>
+<h4 id="AOF"><a href="#AOF" class="headerlink" title="AOF"></a>AOF</h4><p>AOF 持久化是以日志的形式记录服务器所处理的每一个写、删除操作。不会记录查询操作，以文本的方式记录，可以打开文件看到详细的操作记录。</p>
+<h3 id="6、说一下-RDB-和-AOF-的优缺点？"><a href="#6、说一下-RDB-和-AOF-的优缺点？" class="headerlink" title="6、说一下 RDB 和 AOF 的优缺点？"></a>6、说一下 RDB 和 AOF 的优缺点？</h3><p>RDB 的优势</p>
 <ul>
-<li>RDB</li>
-<li>AOF</li>
+<li>适合大规模数据恢复（个人理解为启动效率高）</li>
+<li>恢复速度快</li>
+<li>可以对已经存在的 RDB 文件进行压缩，节省磁盘空间。</li>
+<li>性能最大化，对于持久化的时候，他唯一做的就是 fork 出子进程，之后再由子进程完成这些持久化工作，这样就能极大的避免主进程 IO 操作了。</li>
 </ul>
+<p>RDB 的缺点</p>
+<ul>
+<li>最后的一次修改可能会丢失（因为它是周期性做备份的）</li>
+<li>虽然Redis在fork时使用了<strong>写时拷贝技术</strong>,但是如果数据庞大时还是比较消耗性能。</li>
+<li>fork 的时候，内存中的数据被克隆了一份，大致2倍的膨胀性需要考虑。</li>
+</ul>
+<p>AOF 的优点</p>
+<ul>
+<li>可以让数据更安全，丢失数据概率更低。</li>
+<li>可读的日志文本，可以处理误操作。</li>
+<li>AOF 对日志文件的写入是追加的方式，所以即使在追加的时候出现宕机，之前的操作也是没什么问题的，而且 Redis 还有工具可以解决问题。</li>
+</ul>
+<p>AOF 的缺点</p>
+<ul>
+<li>比起RDB 更占空间（因为不仅仅保存数据还保存操作的记录）</li>
+<li>恢复速度比较慢（因为需要一条条执行完指令）</li>
+<li>存在 bug，可能造成不能恢复</li>
+</ul>
+<h3 id="7、RDB-和-AOF-选哪一个？"><a href="#7、RDB-和-AOF-选哪一个？" class="headerlink" title="7、RDB 和 AOF 选哪一个？"></a>7、RDB 和 AOF 选哪一个？</h3><p>这个要具体情况具体分析</p>
+<p>如果只是拿 Redis 做内存缓存的话，那么就都不用</p>
+<p>如果对于数据很敏感，可以使用 AOF，但是不建议单独使用，可以也打开 RDB。</p>
+<p>如果对数据不敏感而且还要进行保存，那么仅使用 RDB 进行存储</p>
 
     </div>
 
@@ -586,14 +612,14 @@
       <i class="fa fa-chart-line"></i>
     </span>
       <span>站点总字数：</span>
-    <span title="站点总字数">167k</span>
+    <span title="站点总字数">172k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span>站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">2:32</span>
+    <span title="站点阅读时长">2:36</span>
   </span>
 </div>
 
