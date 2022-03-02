@@ -250,7 +250,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">36</span>
+        <span class="site-state-item-count">35</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -313,7 +313,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2022/02/17/JUC/" class="post-title-link" itemprop="url">JUC</a>
+            <a href="/2022/02/17/JUC/" class="post-title-link" itemprop="url">JUC（java 并发编程）</a>
         </h2>
 
         <div class="post-meta-container">
@@ -323,10 +323,16 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
-      
 
-      <time title="创建时间：2022-02-17 11:13:21 / 修改时间：11:14:01" itemprop="dateCreated datePublished" datetime="2022-02-17T11:13:21+08:00">2022-02-17</time>
+      <time title="创建时间：2022-02-17 11:13:21" itemprop="dateCreated datePublished" datetime="2022-02-17T11:13:21+08:00">2022-02-17</time>
     </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2022-03-02 16:49:20" itemprop="dateModified" datetime="2022-03-02T16:49:20+08:00">2022-03-02</time>
+      </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-folder"></i>
@@ -338,7 +344,7 @@
     </span>
 
   
-    <span id="/2022/02/17/JUC/" class="post-meta-item leancloud_visitors" data-flag-title="JUC" title="阅读次数">
+    <span id="/2022/02/17/JUC/" class="post-meta-item leancloud_visitors" data-flag-title="JUC（java 并发编程）" title="阅读次数">
       <span class="post-meta-item-icon">
         <i class="far fa-eye"></i>
       </span>
@@ -384,7 +390,9 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h3 id="关于并发与多线程的一些思考"><a href="#关于并发与多线程的一些思考" class="headerlink" title="关于并发与多线程的一些思考"></a>关于并发与多线程的一些思考</h3><p>并发与多线程之间的关系就是目的与手段之间的关系。并发（Concurrent）的反面是串行。串行好比多个车辆行驶在一股车道上，它们只能“鱼贯而行”。而并发好比多个车辆行驶在多股车道上，它们可以“并驾齐驱”。并发的极致就是并行（Parallel）。多线程就是将原本可能是串行的计算“改为”并发（并行）的一种手段、途径或者模型。因此，有时我们也称多线程编程为并发编程。当然，目的与手段之间常常是一对多的关系。并发编程还有其他的实现途径，例如函数式（Functional programming）编程。多线程编程往往是其他并发编程模型的基础，所以多线程编程的重要性不言而喻。</p>
+          <a id="more"></a>
+
+<h3 id="关于并发与多线程的一些思考"><a href="#关于并发与多线程的一些思考" class="headerlink" title="关于并发与多线程的一些思考"></a>关于并发与多线程的一些思考</h3><p>并发与多线程之间的关系就是目的与手段之间的关系。并发（Concurrent）的反面是串行。串行好比多个车辆行驶在一股车道上，它们只能“鱼贯而行”。而并发好比多个车辆行驶在多股车道上，它们可以“并驾齐驱”。并发的极致就是并行（Parallel）。多线程就是将原本可能是串行的计算“改为”并发（并行）的一种手段、途径或者模型。因此，有时我们也称多线程编程为并发编程。当然，目的与手段之间常常是一对多的关系。并发编程还有其他的实现途径，例如函数式（Functional programming）编程。多线程编程往往是其他并发编程模型的基础，所以多线程编程的重要性不言而喻。</p>
 
       
     </div>
@@ -442,7 +450,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2022-03-02 16:22:20" itemprop="dateModified" datetime="2022-03-02T16:22:20+08:00">2022-03-02</time>
+        <time title="修改时间：2022-03-02 16:44:24" itemprop="dateModified" datetime="2022-03-02T16:44:24+08:00">2022-03-02</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -483,14 +491,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>5.1k</span>
+      <span>6.6k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>5 分钟</span>
+      <span>6 分钟</span>
     </span>
 </div>
 
@@ -599,7 +607,30 @@
 <p>堆对于整个应用程序都是共享、可见的。</p>
 <p>栈只对于线程是可见的，线程私有。</p>
 <h3 id="7-什么情况下会发生栈溢出"><a href="#7-什么情况下会发生栈溢出" class="headerlink" title="7. 什么情况下会发生栈溢出"></a>7. 什么情况下会发生栈溢出</h3><p>当线程请求的栈深度超过了虚拟机允许的最大深度时，会抛出StackOverFlowError异常。通过调整参数<code>-xss</code>可以调整JVM栈的大小。</p>
-<h2 id="二、垃圾收集器"><a href="#二、垃圾收集器" class="headerlink" title="二、垃圾收集器"></a>二、垃圾收集器</h2><h3 id="1-CMS垃圾收集器"><a href="#1-CMS垃圾收集器" class="headerlink" title="1. CMS垃圾收集器"></a>1. CMS垃圾收集器</h3><p>CMS(Consurrent Mark Sweep)收集器：以获取<strong>最短回收停顿时间</strong>为目标的收集器，采用<strong>标记-清除</strong>的算法实现的。</p>
+<h2 id="二、垃圾收集器"><a href="#二、垃圾收集器" class="headerlink" title="二、垃圾收集器"></a>二、垃圾收集器</h2><h3 id="1-垃圾回收器的有哪些类别"><a href="#1-垃圾回收器的有哪些类别" class="headerlink" title="1.垃圾回收器的有哪些类别"></a>1.垃圾回收器的有哪些类别</h3><ol>
+<li><p>Serial 收集器</p>
+<p>Serial收集器是一个单线程的收集器(采用的是复制算法暂停用户的线程)，这里单线程强调的是在进行垃圾回收前，必须进行暂停其他所有工作的线程，优点就是简单而高效，没有线程交互的开销，能够专心做垃圾收集。只要是不频繁进行垃圾回收，那么用户是感觉不出来的，也是可以接受的。</p>
+</li>
+<li><p>ParNew 收集器</p>
+<p>是Serial收集器的并行版本。重复使用了Serial收集器的大部分代码，能与CMS收集器进行配合工作。</p>
+</li>
+<li><p>CMS 收集器</p>
+<p>首次实现了让垃圾回收器和用户线程同时工作。</p>
+</li>
+<li><p>G1 收集器</p>
+<p>面向全堆的收集器。</p>
+</li>
+<li><p>Parallel Scavenge 收集器</p>
+<p>和 ParNew 收集器非常相似，不同之处：他的目标是为了控制吞吐量</p>
+</li>
+<li><p>Serial Old 收集器</p>
+<p>采用的是标记-整理算法暂停用户的线程</p>
+</li>
+<li><p>Parallel Old 收集器</p>
+<p>是Parallel Scavenge的老年代版本</p>
+</li>
+</ol>
+<h3 id="1-CMS垃圾收集器"><a href="#1-CMS垃圾收集器" class="headerlink" title="1. CMS垃圾收集器"></a>1. CMS垃圾收集器</h3><p>CMS(Consurrent Mark Sweep)收集器：以获取<strong>最短回收停顿时间</strong>为目标的收集器，采用<strong>标记-清除</strong>的算法实现的。</p>
 <p>四个过程：</p>
 <ul>
 <li>初始标记</li>
@@ -657,7 +688,76 @@
 <p><strong>访问标志</strong>：识别一些类或者接口层次的访问信息，包括：这个 Class 是类还是接口，是否为 public 或者 abstract 类型，如果是类的话是否声明为 final 等等。</p>
 <p><strong>当前类的索引this_class</strong>：类索引用于确定这个类的全限定名。</p>
 <p><strong>属性表集合</strong>：在 Class 文件，字段表，方法表中都可以携带自己的属性表集合，以用于描述某些场景专有的信息。与 Class 文件中其它的数据<a href="">项目</a>要求的顺序、长度和内容不同，属性表集合的限制稍微宽松一些，不再要求各个属性表具有严格的顺序，并且只要不与已有的属性名重复，任何人实现的编译器都可以向属性表中写 入自己定义的属性信息，Java 虚拟机运行时会忽略掉它不认识的属性。</p>
-<h2 id="四、类加载机制"><a href="#四、类加载机制" class="headerlink" title="四、类加载机制"></a>四、类加载机制</h2><h3 id="什么是类加载？类加载的过程？"><a href="#什么是类加载？类加载的过程？" class="headerlink" title="什么是类加载？类加载的过程？"></a>什么是类加载？类加载的过程？</h3>
+<h2 id="四、类加载机制"><a href="#四、类加载机制" class="headerlink" title="四、类加载机制"></a>四、类加载机制</h2><h3 id="1、什么是类加载？类加载的过程？"><a href="#1、什么是类加载？类加载的过程？" class="headerlink" title="1、什么是类加载？类加载的过程？"></a>1、什么是类加载？类加载的过程？</h3><p>类加载机制就是：把描述类的数据加载到内存，然后对数据进行校验、转换解析和初始化。最终形成被虚拟机直接使用的java 类型。</p>
+<p>类加载的过程：<strong>加载、验证、准备、解析、初始化、使用、卸载</strong></p>
+<img src="https://gitee.com/dlutlgy/window_typora/raw/master/images/image-20211116214556489.png" alt="image-20211116214556489" style="zoom: 67%;" />
+
+<h3 id="2、类加载的过程"><a href="#2、类加载的过程" class="headerlink" title="2、类加载的过程"></a>2、类加载的过程</h3><h4 id="1-加载"><a href="#1-加载" class="headerlink" title="1. 加载"></a>1. 加载</h4><p>此步骤需要做的是</p>
+<ol>
+<li>通过一个类的全限定名来获取定义此类的二进制字节流。 </li>
+<li>将这个字节流所代表的静态存储结构转化为方法区的运行时数据结构。 </li>
+<li>在内存中生成一个代表这个类的 java.lang.Class 对象，作为方法区这个类的各种数据的访问入口。</li>
+</ol>
+<h4 id="2-验证"><a href="#2-验证" class="headerlink" title="2. 验证"></a>2. 验证</h4><p>此步骤是为了确定加载到内存中的数据是安全的，不能危害虚拟机的安全。</p>
+<p>这部分主要是对 <strong>文件格式验证、元数据验证、字节码验证、和符号引用验证</strong> </p>
+<ol>
+<li>文件格式验证</li>
+</ol>
+<p>主要是验证字节流是否符合 Class 文件格式的规范，并且能被当前虚拟机进行处理。</p>
+<ul>
+<li>是否以魔数开头</li>
+<li>主次版本号是都在当前虚拟机中接受范围之内</li>
+<li>常量池中的常量是是否有不被支持的常量类型</li>
+<li>……</li>
+</ul>
+<ol start="2">
+<li>元数据验证</li>
+</ol>
+<p>此阶段主要是对字节码描述的信息进行语义分析，确保符合要求。</p>
+<ul>
+<li>这个类是否有父类</li>
+<li>这个类的父类是不是继承了不允许继承的类</li>
+<li>如果该类不是抽象类，那么该类是不是实现了其父类或者接口中要求的所有方法。</li>
+<li>……</li>
+</ul>
+<ol start="3">
+<li>字节码验证</li>
+</ol>
+<p>字节码验证时验证过程中最复杂的一个阶段，主要是通过数据流分析和控制流分析，确定程序是合法的，是符合逻辑的。</p>
+<ul>
+<li>保证任意时刻操作数栈上的类型与指令代码序列都能配合工作。</li>
+<li>……</li>
+</ul>
+<ol start="4">
+<li>符号引用验证</li>
+</ol>
+<p>此阶段的主要目的是确保解析行为能正常执行</p>
+<ul>
+<li>符号引用中通过字符串描述的全限定名是否能找到对应的类。</li>
+<li>……</li>
+</ul>
+<h4 id="3-准备"><a href="#3-准备" class="headerlink" title="3. 准备"></a>3. 准备</h4><p>准备阶段进行内存分配的仅仅是类变量，实例变量实在对象初始化的时候才分配。这里静态变量初始化 0 值，如果是有final 关键字的常量，则直接赋值。</p>
+<h4 id="4-解析"><a href="#4-解析" class="headerlink" title="4.解析"></a>4.解析</h4><p>解析阶段是Java虚拟机将常量池内的符号引用替换为直接引用的过程，符号引用就理解为一个标示，而在直接引用直接指向内存中的地址。</p>
+<h3 id="3、类加载器的种类"><a href="#3、类加载器的种类" class="headerlink" title="3、类加载器的种类"></a>3、类加载器的种类</h3><ol>
+<li>启动类加载器</li>
+</ol>
+<p>C++语言实现，他独立于虚拟机外部，他只加载 <JAVA_HOME>\lib 目录或者是 -Xbootclasspath 参数指定的路径存放的。启动类加载器是没法办法被Java程序直接调用的。如果强制调用，会显示 null 。</p>
+<ol start="2">
+<li>扩展类加载器</li>
+</ol>
+<p>扩展类加载器负责加载 <JAVA_HOME>\lib\ext 目录中，或者被 java.ext.dirs 系统遍历所指定的路径中所有的类库。允许被用户扩展 Java SE 的功能。</p>
+<ol start="3">
+<li>应用程序类加载器（系统类加载器）</li>
+</ol>
+<p>他负责加载类路径下的所有类库，开发者可以直接使用。在没有自己定义类加载器的情况下，这就是默认的类加载器。</p>
+<ol start="4">
+<li>用户自定义类加载器</li>
+</ol>
+<p>通过继承 java.lang.ClassLoader 类的方式实现。</p>
+<img src="https://gitee.com/dlutlgy/window_typora/raw/master/images/image-20211120143543051.png" alt="image-20211120143543051" style="zoom:50%;" />
+
+<p>四、什么情况下会对类立即执行初始化（在类的加载阶段）</p>
+
       
     </div>
 
@@ -1050,14 +1150,14 @@
       <i class="fa fa-chart-line"></i>
     </span>
       <span>站点总字数：</span>
-    <span title="站点总字数">165k</span>
+    <span title="站点总字数">167k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span>站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">2:30</span>
+    <span title="站点阅读时长">2:32</span>
   </span>
 </div>
 
