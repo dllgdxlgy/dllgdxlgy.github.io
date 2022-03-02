@@ -22,19 +22,26 @@
     var CONFIG = {"hostname":"dlutlgy.top","root":"/","scheme":"Pisces","version":"8.0.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
   </script>
 
-  <meta name="description" content="1. 浏览器出入 url 发生了什么？ 浏览器查询缓存 DNS 域名解析 TCP 三次握手连接 Http&#x2F;Https 连接 服务器处理请求； 返回响应结果； 关闭 TCP 连接； 浏览器解析 HTML； 浏览器布局渲染；  1.浏览器查询缓存 如果查找到缓存中有我们 URL 对应的文件，则判断是否命中强缓存，如果命中直接读取即可，如果没有命中强缓存，判断协商缓存是否命中，但是协商缓存无论是否命中都">
+  <meta name="description" content="​        本片主要梳理计算机网络基础知识，整理常见的面试题～">
 <meta property="og:type" content="article">
-<meta property="og:title" content="酒窝里有酒">
+<meta property="og:title" content="计算机网络">
 <meta property="og:url" content="http://dlutlgy.top/2022/02/12/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/index.html">
 <meta property="og:site_name" content="酒窝里有酒">
-<meta property="og:description" content="1. 浏览器出入 url 发生了什么？ 浏览器查询缓存 DNS 域名解析 TCP 三次握手连接 Http&#x2F;Https 连接 服务器处理请求； 返回响应结果； 关闭 TCP 连接； 浏览器解析 HTML； 浏览器布局渲染；  1.浏览器查询缓存 如果查找到缓存中有我们 URL 对应的文件，则判断是否命中强缓存，如果命中直接读取即可，如果没有命中强缓存，判断协商缓存是否命中，但是协商缓存无论是否命中都">
+<meta property="og:description" content="​        本片主要梳理计算机网络基础知识，整理常见的面试题～">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gitee.com/dlutlgy/images_for_typora/raw/master/images/image-20211112192025828.png">
+<meta property="og:image" content="https://gitee.com/dlutlgy/images_for_typora/raw/master/images/image-20211112195257985.png">
+<meta property="og:image" content="https://gitee.com/dlutlgy/images_for_typora/raw/master/images/image-20211112194503909.png">
+<meta property="og:image" content="https://gitee.com/dlutlgy/images_for_typora/raw/master/images/image-20211112213306704.png">
+<meta property="og:image" content="https://gitee.com/dlutlgy/images_for_typora/raw/master/images/image-20211103203402124.png">
 <meta property="og:image" content="https://gitee.com/dlutlgy/images_for_typora/raw/master/images/image-20220212163509594.png">
-<meta property="article:published_time" content="2022-02-12T08:13:13.134Z">
-<meta property="article:modified_time" content="2022-02-25T09:18:28.656Z">
+<meta property="article:published_time" content="2022-02-12T07:15:02.000Z">
+<meta property="article:modified_time" content="2022-03-02T07:35:37.102Z">
 <meta property="article:author" content="Dlutlgy">
+<meta property="article:tag" content="面试">
+<meta property="article:tag" content="计算机基础">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://gitee.com/dlutlgy/images_for_typora/raw/master/images/image-20220212163509594.png">
+<meta name="twitter:image" content="https://gitee.com/dlutlgy/images_for_typora/raw/master/images/image-20211112192025828.png">
 
 
 <link rel="canonical" href="http://dlutlgy.top/2022/02/12/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">
@@ -50,7 +57,7 @@
   };
 </script>
 
-  <title> | 酒窝里有酒</title>
+  <title>计算机网络 | 酒窝里有酒</title>
   
 
 
@@ -226,7 +233,7 @@
 
       <!--noindex-->
       <section class="post-toc-wrap sidebar-panel">
-          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E6%B5%8F%E8%A7%88%E5%99%A8%E5%87%BA%E5%85%A5-url-%E5%8F%91%E7%94%9F%E4%BA%86%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-text">1. 浏览器出入 url 发生了什么？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-HTTP-%E7%9A%84%E5%93%8D%E5%BA%94%E7%A0%81%E9%83%BD%E4%BB%A3%E8%A1%A8%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-text">2. HTTP 的响应码都代表什么？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-HTTP-%E5%8D%8F%E8%AE%AE%E5%AD%98%E5%9C%A8%E4%BB%80%E4%B9%88%E9%97%AE%E9%A2%98%EF%BC%9F%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%EF%BC%9F%E8%83%BD%E5%90%A6%E7%AE%80%E5%8D%95%E8%81%8A%E4%B8%80%E8%81%8A-HTTPS-%E7%9A%84-SSL%E8%BF%9E%E6%8E%A5%E5%BB%BA%E7%AB%8B%E7%9A%84%E8%BF%87%E7%A8%8B%EF%BC%9F"><span class="nav-text">3. HTTP 协议存在什么问题？如何解决？能否简单聊一聊 HTTPS 的 SSL连接建立的过程？</span></a></li></ol></div>
+          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81OSI%EF%BC%8CTCP-IP%EF%BC%8C%E4%BA%94%E5%B1%82%E5%8D%8F%E8%AE%AE%E7%9A%84%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84%EF%BC%8C%E4%BB%A5%E5%8F%8A%E5%90%84%E5%B1%82%E5%8D%8F%E8%AE%AE"><span class="nav-text">一、OSI，TCP&#x2F;IP，五层协议的体系结构，以及各层协议</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84"><span class="nav-text">1. 体系结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E5%90%84%E5%B1%82%E5%8D%8F%E8%AE%AE"><span class="nav-text">2. 各层协议</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E5%90%84%E5%B1%82%E4%BD%9C%E7%94%A8"><span class="nav-text">3. 各层作用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E8%BF%90%E8%BE%93%E5%B1%82"><span class="nav-text">二、运输层</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1%E3%80%81TCP%E7%9A%84%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E8%BF%87%E7%A8%8B"><span class="nav-text">1、TCP的三次握手过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2%E3%80%81TCP%E7%9A%84%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B%E8%BF%87%E7%A8%8B"><span class="nav-text">2、TCP的四次挥手过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3%E3%80%81%E4%B8%BA%E4%BB%80%E4%B9%88%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%9C%A8TIME-WAIT%E7%8A%B6%E6%80%81%E5%BF%85%E9%A1%BB%E7%AD%89%E5%BE%852MSL%EF%BC%9F"><span class="nav-text">3、为什么客户端在TIME-WAIT状态必须等待2MSL？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4%E3%80%81%E4%B8%BA%E4%BB%80%E4%B9%88TCP%E9%9C%80%E8%A6%81%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%EF%BC%8C%E4%B8%A4%E6%AC%A1%E4%B8%8D%E8%A1%8C%EF%BC%9F"><span class="nav-text">4、为什么TCP需要三次握手，两次不行？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5%E3%80%81TCP%E5%92%8CUDP%E4%B9%8B%E9%97%B4%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-text">5、TCP和UDP之间的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6%E3%80%81TCP%E7%9A%84%E7%B2%98%E5%8C%85%E5%92%8C%E6%8B%86%E5%8C%85%E5%8F%8A%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88"><span class="nav-text">6、TCP的粘包和拆包及解决方案</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7%E3%80%81CLOSE-WAIT-%E4%B8%8E-TIME-WAIT-%E4%BD%9C%E7%94%A8%E5%8F%8A%E9%98%B6%E6%AE%B5%EF%BC%9F"><span class="nav-text">7、CLOSE-WAIT 与 TIME-WAIT 作用及阶段？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8%E3%80%81TCP%E4%B8%80%E5%85%B1%E5%A4%9A%E5%B0%91%E7%A7%8D%E7%8A%B6%E6%80%81%EF%BC%9F"><span class="nav-text">8、TCP一共多少种状态？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9%E3%80%81TCP%E6%8B%A5%E5%A1%9E%E6%8E%A7%E5%88%B6%E5%92%8C%E6%B5%81%E9%87%8F%E6%8E%A7%E5%88%B6"><span class="nav-text">9、TCP拥塞控制和流量控制</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8B%A5%E5%A1%9E%E6%8E%A7%E5%88%B6"><span class="nav-text">拥塞控制</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B5%81%E9%87%8F%E6%8E%A7%E5%88%B6"><span class="nav-text">流量控制</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%BA%94%E7%94%A8%E5%B1%82"><span class="nav-text">三、应用层</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1%E3%80%81DNS%E8%A7%A3%E6%9E%90%E8%BF%87%E7%A8%8B"><span class="nav-text">1、DNS解析过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2%E3%80%81Http%E4%B8%8EHttps%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-text">2、Http与Https的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3%E3%80%81HTTP%E7%8A%B6%E6%80%81%E7%A0%81%E5%8F%8A301%E5%92%8C302%E4%B9%8B%E9%97%B4%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-text">3、HTTP状态码及301和302之间的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4%E3%80%81-%E6%B5%8F%E8%A7%88%E5%99%A8%E5%87%BA%E5%85%A5-url-%E5%8F%91%E7%94%9F%E4%BA%86%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-text">4、 浏览器出入 url 发生了什么？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5%E3%80%81-HTTP-%E5%8D%8F%E8%AE%AE%E5%AD%98%E5%9C%A8%E4%BB%80%E4%B9%88%E9%97%AE%E9%A2%98%EF%BC%9F%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%EF%BC%9F%E8%83%BD%E5%90%A6%E7%AE%80%E5%8D%95%E8%81%8A%E4%B8%80%E8%81%8A-HTTPS-%E7%9A%84-SSL%E8%BF%9E%E6%8E%A5%E5%BB%BA%E7%AB%8B%E7%9A%84%E8%BF%87%E7%A8%8B%EF%BC%9F"><span class="nav-text">5、 HTTP 协议存在什么问题？如何解决？能否简单聊一聊 HTTPS 的 SSL连接建立的过程？</span></a></li></ol></li></ol></div>
       </section>
       <!--/noindex-->
 
@@ -249,13 +256,13 @@
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">25</span>
+        <span class="site-state-item-count">26</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">34</span>
+        <span class="site-state-item-count">36</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -318,7 +325,7 @@
     
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          
+          计算机网络
         </h1>
 
         <div class="post-meta-container">
@@ -329,18 +336,27 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2022-02-12 16:13:13" itemprop="dateCreated datePublished" datetime="2022-02-12T16:13:13+08:00">2022-02-12</time>
+      <time title="创建时间：2022-02-12 15:15:02" itemprop="dateCreated datePublished" datetime="2022-02-12T15:15:02+08:00">2022-02-12</time>
     </span>
       <span class="post-meta-item">
         <span class="post-meta-item-icon">
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2022-02-25 17:18:28" itemprop="dateModified" datetime="2022-02-25T17:18:28+08:00">2022-02-25</time>
+        <time title="修改时间：2022-03-02 15:35:37" itemprop="dateModified" datetime="2022-03-02T15:35:37+08:00">2022-03-02</time>
       </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" itemprop="url" rel="index"><span itemprop="name">计算机网络</span></a>
+        </span>
+    </span>
 
   
-    <span id="/2022/02/12/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" class="post-meta-item leancloud_visitors" data-flag-title="" title="阅读次数">
+    <span id="/2022/02/12/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" class="post-meta-item leancloud_visitors" data-flag-title="计算机网络" title="阅读次数">
       <span class="post-meta-item-icon">
         <i class="far fa-eye"></i>
       </span>
@@ -368,14 +384,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>1.1k</span>
+      <span>8k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>1 分钟</span>
+      <span>7 分钟</span>
     </span>
 </div>
 
@@ -386,25 +402,90 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h2 id="1-浏览器出入-url-发生了什么？"><a href="#1-浏览器出入-url-发生了什么？" class="headerlink" title="1. 浏览器出入 url 发生了什么？"></a>1. 浏览器出入 url 发生了什么？</h2><ol>
-<li>浏览器查询缓存</li>
-<li>DNS 域名解析</li>
-<li>TCP 三次握手连接</li>
-<li>Http/Https 连接</li>
-<li>服务器处理请求；</li>
-<li>返回响应结果；</li>
-<li>关闭 TCP 连接；</li>
-<li>浏览器解析 HTML；</li>
-<li>浏览器布局渲染；</li>
-</ol>
-<p><strong>1.浏览器查询缓存</strong></p>
-<p>如果查找到缓存中有我们 URL 对应的文件，则判断是否命中强缓存，如果命中直接读取即可，如果没有命中强缓存，判断协商缓存是否命中，但是协商缓存无论是否命中都会发送请求。继续下面的步骤。</p>
-<p><strong>2. DNS 域名解析</strong></p>
-<p>DNS的域名查找，在客户端和浏览器，本地DNS之间的查询方式是递归查询；在本地DNS服务器与根域及其子域之间的查询方式是迭代查询；</p>
-<img src="https://gitee.com/dlutlgy/images_for_typora/raw/master/images/image-20220212163509594.png" alt="image-20220212163509594" style="zoom:50%;" />
+        <p>​        本片主要梳理计算机网络基础知识，整理常见的面试题～</p>
+<a id="more"></a>
 
-<p><strong>3. TCP 三次握手连接</strong></p>
-<h2 id="2-HTTP-的响应码都代表什么？"><a href="#2-HTTP-的响应码都代表什么？" class="headerlink" title="2. HTTP 的响应码都代表什么？"></a>2. HTTP 的响应码都代表什么？</h2><table>
+<h2 id="一、OSI，TCP-IP，五层协议的体系结构，以及各层协议"><a href="#一、OSI，TCP-IP，五层协议的体系结构，以及各层协议" class="headerlink" title="一、OSI，TCP/IP，五层协议的体系结构，以及各层协议"></a><strong>一、OSI，TCP/IP，五层协议的体系结构，以及各层协议</strong></h2><h3 id="1-体系结构"><a href="#1-体系结构" class="headerlink" title="1. 体系结构"></a>1. 体系结构</h3><p>五层协议从上向下：应用层、传输层、网络层、数据链路层、物理层</p>
+<p>七层协议从下到上：物理层、数据链路层、网络层、传输层、会话层、表示层、应用层。</p>
+<h3 id="2-各层协议"><a href="#2-各层协议" class="headerlink" title="2. 各层协议"></a>2. 各层协议</h3><p>物理层：RJ45、CLOCK、IEEE802.3   （中继器，集线器，网关） </p>
+<p>数据链路层：PPP、FR、HDLC、VLAN、MAC  （网桥，交换机） </p>
+<p>网络层：<strong>IP、ICMP、ARP、RARP</strong>、OSPF、IPX、RIP、IGRP、 （路由器） </p>
+<p>传输层：<strong>TCP、UDP、</strong>SPX </p>
+<p>（不是重点）会话层：NFS、SQL、NETBIOS、RPC </p>
+<p>（不是重点）表示层：JPEG、MPEG、ASII </p>
+<p>应用层：<strong>FTP、DNS、</strong>Telnet、<strong>SMTP、HTTP</strong>、WWW、NFS</p>
+<h3 id="3-各层作用"><a href="#3-各层作用" class="headerlink" title="3. 各层作用"></a>3. 各层作用</h3><p>应用层：通过应用进程之间的交互来完成特定网络应用。</p>
+<p>传输层：负责向两台主机进程之间的通信<strong>提供通用的数据传输服务</strong>（TCP、UDP）。</p>
+<p>网络层：负责为分组交换网上的不同主机提供通信服务。</p>
+<p>数据链路层：将网络层交下来IP数据报组装成帧、在结点与结点之间进行传播</p>
+<p>物理层：通过媒介传输比特,确定机械及电气规范</p>
+<h2 id="二、运输层"><a href="#二、运输层" class="headerlink" title="二、运输层"></a>二、运输层</h2><p>运输层主要是为<strong>两台主机应用进程之间</strong>提供端到端的逻辑通信</p>
+<h3 id="1、TCP的三次握手过程"><a href="#1、TCP的三次握手过程" class="headerlink" title="1、TCP的三次握手过程"></a>1、TCP的三次握手过程</h3><p><img src="https://gitee.com/dlutlgy/images_for_typora/raw/master/images/image-20211112192025828.png" alt="image-20211112192025828"></p>
+<ol>
+<li>起初、两台主机都是关闭状态、这时候，主机 B 先创建 TCB 模块，从 Closed 状态变为Listen状态。</li>
+<li>A 进程也是创建传输控制模块TCB，在创建连接时，设置SYN=1，seq=x，seq是初始序号</li>
+<li>B 收到后，设置SYN=1，ACK=1（建立连接后所有的报文段ACK都设置为1），并同时设置自己的序号y（seq=y）和期待对方发送到序号x+1。</li>
+<li>客户端收到后，ACK=1，并设置客户端期望的序列号y+1，并发送自己的序列号x+1</li>
+</ol>
+<p><strong>注</strong>：也是可以改为四报文握手的，而不是四次握手。</p>
+<h3 id="2、TCP的四次挥手过程"><a href="#2、TCP的四次挥手过程" class="headerlink" title="2、TCP的四次挥手过程"></a>2、TCP的四次挥手过程</h3><p>首先，需要确定的是TCP是全双工的，也就是说，客户端A与服务器B能互相发送接受信息。</p>
+<p><img src="https://gitee.com/dlutlgy/images_for_typora/raw/master/images/image-20211112195257985.png" alt="image-20211112195257985"></p>
+<ol>
+<li>客户端设置FIN=1，seq=u，（seq为已传送过的数据序号加一），此时A进入终止等待1（FIN-WAIT-1）</li>
+<li>B接收到后设置ACK=1，并且ack=u+1（期望对方发送u+1 的报文段）、然后seq=v，是自己的报文段序号，B就进入close-wait状态，这时候，就处于<strong>半关闭</strong>的状态，这时候只是A不能给B发送含有数据的数据报，可是B是可以向A发送的数据的，或许这时候，B向A发送了好多数据。</li>
+<li>当 B 发送完，B会发送FIN=1，ACK=1，seq=w（可能向上面所说的又发送了数据，这时候再发送就是w了）ack=u+1，一直期待A能发送u+1，B就进入了Last-ack状态</li>
+<li>A 收到 B 发送的释放连接的信号，ACK=1，seq=u+1，ack=w+1，此时A就进入了time-wait 状态，这里并没有直接把链接释放掉，需要等待<strong>2MSL</strong>，MSL为最长报文段寿命</li>
+</ol>
+<h3 id="3、为什么客户端在TIME-WAIT状态必须等待2MSL？"><a href="#3、为什么客户端在TIME-WAIT状态必须等待2MSL？" class="headerlink" title="3、为什么客户端在TIME-WAIT状态必须等待2MSL？"></a>3、为什么客户端在TIME-WAIT状态必须等待2MSL？</h3><p>第一，为了保证A发送的最后一个ACK报文段能够到达B。这个ACK报文段有可能丢失，因而使处在LAST-ACK状态的B收不到对已发送的FIN＋ACK报文段的确认。B会 时重传这个FIN＋ACK报文段，而A就能在2MSL时间内收到这个重传的FIN＋ACK报文段。接着A重传一次确认，重新启动2MSL计时器。最后，A和B都正常进入到 CLOSED状态。如果A在TIME-WAIT状态不等待一段时间，而是在发送完ACK报文段后 立即释放连接，那么就无法收到B重传的FIN＋ACK 报文段，因而也不会再发送一次 确认报文段。这样，B就无法按照正常步骤进入CLOSED状态。</p>
+<p>第二，防止上一节提到的“已失效的连接请求报文段”出现在本连接中。A在发送完最后一个ACK报文段后，再经过时间 2 MSL，就可以使本连接持续的时间内所产 生的所有报文段都从网络中消失。这样就可以使下一个新的连接中不会出现这种旧的连接请求报文段。</p>
+<h3 id="4、为什么TCP需要三次握手，两次不行？"><a href="#4、为什么TCP需要三次握手，两次不行？" class="headerlink" title="4、为什么TCP需要三次握手，两次不行？"></a>4、为什么TCP需要三次握手，两次不行？</h3><p>两次不行，因为：会有一种异常情况，就是客户端 A 发出第一个链接请求的时候，报文段并没有丢失，而是在网络节点中滞留了，这时候A就可能进行超时重传一次链接请求，后来B收到了链接，等数据传输完毕后，就释放了链接，但是这时候在网络节点中滞留的请求重新到达B节点，如果是不进行第三次握手，那么这时候B就认为A已经连接到了B，就会浪费了B的资源。</p>
+<p>也就是说：三次握手主要的目的就是确认自己和对方的发送和接受是正常的，如果少了第三次，服务器没办法确认<strong>自己发送正常，对方接受正常</strong></p>
+<h3 id="5、TCP和UDP之间的区别"><a href="#5、TCP和UDP之间的区别" class="headerlink" title="5、TCP和UDP之间的区别"></a>5、TCP和UDP之间的区别</h3><p><img src="https://gitee.com/dlutlgy/images_for_typora/raw/master/images/image-20211112194503909.png" alt="image-20211112194503909"></p>
+<h3 id="6、TCP的粘包和拆包及解决方案"><a href="#6、TCP的粘包和拆包及解决方案" class="headerlink" title="6、TCP的粘包和拆包及解决方案"></a>6、TCP的粘包和拆包及解决方案</h3><p>因为TCP是面向流，没有边界，而操作系统在发送TCP数据时，会通过缓冲区来进行优化，例如缓冲区为1024个字节大小。</p>
+<p>如果一次请求发送的数据量比较小，没达到缓冲区大小，TCP则会将多个请求合并为同一个请求进行发送，这就形成了粘包问题。</p>
+<p>如果一次请求发送的数据量比较大，超过了缓冲区大小，TCP就会将其拆分为多次发送，这就是拆包。</p>
+<p>对于粘包和拆包问题，常见的解决方案有四种：</p>
+<p>·客户端在发送数据包的时候，每个包都固定长度，比如1024个字节大小，如果客户端发送的数据长度不足1024个字节，则通过补充空格的方式补全到指定长度；</p>
+<p>·客户端在每个包的末尾使用固定的分隔符，例如\r\n，如果一个包被拆分了，则等待下一个包发送过来之后找到其中的\r\n，然后对其拆分后的头部部分与前一个包的剩余部分进行合并，这样就得到了一个完整的包；</p>
+<p>·将消息分为头部和消息体，在头部中保存有当前整个消息的长度，只有在读取到足够长度的消息之后才算是读到了一个完整的消息；</p>
+<p>·通过自定义协议进行粘包和拆包的处理。</p>
+<h3 id="7、CLOSE-WAIT-与-TIME-WAIT-作用及阶段？"><a href="#7、CLOSE-WAIT-与-TIME-WAIT-作用及阶段？" class="headerlink" title="7、CLOSE-WAIT 与 TIME-WAIT 作用及阶段？"></a>7、CLOSE-WAIT 与 TIME-WAIT 作用及阶段？</h3><p>TIME_WAIT 是主动关闭链接时形成的，等待2MSL时间，约4分钟。主要是防止最后一个ACK丢失。 由于TIME_WAIT 的时间会非常长，因此服务端应尽量减少主动关闭连接。</p>
+<p>CLOSE_WAIT是被动关闭连接是形成的。根据TCP状态机，服务器端收到客户端发送的FIN，则按照TCP实现发送ACK，因此进入CLOSE_WAIT状态。但如果服务器端不执行close()，就不能由CLOSE_WAIT迁移到LAST_ACK，则系统中会存在很多CLOSE_WAIT状态的连接。此时，可能是系统忙于处理读、写操作，而未将已收到FIN的连接，进行close。此时，recv/read已收到FIN的连接socket，会返回0。</p>
+<h3 id="8、TCP一共多少种状态？"><a href="#8、TCP一共多少种状态？" class="headerlink" title="8、TCP一共多少种状态？"></a>8、TCP一共多少种状态？</h3><p><img src="https://gitee.com/dlutlgy/images_for_typora/raw/master/images/image-20211112213306704.png" alt="image-20211112213306704"></p>
+<ol>
+<li>CLOSED（关闭状态）**：初始状态，表示TCP连接是“关闭着的”或“未打开的”。</li>
+<li><strong>LISTEN（监听状态）</strong> ：表示服务器端的某个SOCKET处于监听状态，可以接受客户端的连接。</li>
+<li><strong>SYN_SENT（同步已发送）</strong> ：这个状态与SYN_RCVD 状态相呼应，当客户端SOCKET执行connect()进行连接时，它首先发送SYN报文，然后随即进入到SYN_SENT 状态，并等待服务端的发送三次握手中的第2个报文。SYN_SENT 状态表示客户端已发送SYN报文。</li>
+<li><strong>SYN_RCVD（同步已收到）</strong> ：表示服务器接收到了来自客户端请求连接的SYN报文。在正常情况下，这个状态是服务器端的SOCKET在建立TCP连接时的三次握手会话过程中的一个中间状态，很短暂，基本上用netstat很难看到这种状态，除非故意写一个监测程序，将三次TCP握手过程中最后一个ACK报文不予发送。当TCP连接处于此状态时，再收到客户端的ACK报文，它就会进入到ESTABLISHED 状态。</li>
+<li><strong>ESTABLISHED(已建立链接)</strong> ：表示TCP连接已经成功建立。</li>
+<li><strong>FIN_WAIT_1（终止等待1）</strong> ：这个状态得好好解释一下，其实FIN_WAIT_1 和FIN_WAIT_2 两种状态的真正含义都是表示等待对方的FIN报文。而这两种状态的区别是：FIN_WAIT_1状态实际上是当SOCKET在ESTABLISHED状态时，它想主动关闭连接，向对方发送了FIN报文，此时该SOCKET进入到FIN_WAIT_1 状态。而当对方回应ACK报文后，则进入到FIN_WAIT_2 状态。当然在实际的正常情况下，无论对方处于任何种情况下，都应该马上回应ACK报文，所以FIN_WAIT_1 状态一般是比较难见到的，而FIN_WAIT_2 状态有时仍可以用netstat看到。</li>
+<li><strong>CLOSE_WAIT（关闭等待）</strong> ：表示正在等待关闭。怎么理解呢？当对方close()一个SOCKET后发送FIN报文给自己，你的系统毫无疑问地将会回应一个ACK报文给对方，此时TCP连接则进入到CLOSE_WAIT状态。接下来呢，你需要检查自己是否还有数据要发送给对方，如果没有的话，那你也就可以close()这个SOCKET并发送FIN报文给对方，即关闭自己到对方这个方向的连接。有数据的话则看程序的策略，继续发送或丢弃。简单地说，当你处于CLOSE_WAIT 状态下，需要完成的事情是等待你去关闭连接。</li>
+<li><strong>FIN_WAIT_2(终止等待2)</strong> ：上面已经解释了这种状态的由来，实际上FIN_WAIT_2状态下的SOCKET表示半连接，即有一方调用close()主动要求关闭连接。注意：FIN_WAIT_2 是没有超时的（不像TIME_WAIT 状态），这种状态下如果对方不关闭（不配合完成4次挥手过程），那这个 FIN_WAIT_2 状态将一直保持到系统重启，越来越多的FIN_WAIT_2 状态会导致内核crash。</li>
+<li><strong>TIME_WAIT（关闭等待）</strong> ：表示收到了对方的FIN报文，并发送出了ACK报文。 TIME_WAIT状态下的TCP连接会等待2*MSL（Max Segment Lifetime，最大分段生存期，指一个TCP报文在Internet上的最长生存时间。每个具体的TCP协议实现都必须选择一个确定的MSL值，RFC 1122建议是2分钟，但BSD传统实现采用了30秒，Linux可以cat /proc/sys/net/ipv4/tcp_fin_timeout看到本机的这个值），然后即可回到CLOSED 可用状态了。如果FIN_WAIT_1状态下，收到了对方同时带FIN标志和ACK标志的报文时，可以直接进入到TIME_WAIT状态，而无须经过FIN_WAIT_2状态。（这种情况应该就是四次挥手变成三次挥手的那种情况）</li>
+<li><strong>CLOSING（）</strong> ：这种状态在实际情况中应该很少见，属于一种比较罕见的例外状态。正常情况下，当一方发送FIN报文后，按理来说是应该先收到（或同时收到）对方的ACK报文，再收到对方的FIN报文。但是CLOSING 状态表示一方发送FIN报文后，并没有收到对方的ACK报文，反而却也收到了对方的FIN报文。什么情况下会出现此种情况呢？那就是当双方几乎在同时close()一个SOCKET的话，就出现了双方同时发送FIN报文的情况，这是就会出现CLOSING 状态，表示双方都正在关闭SOCKET连接。</li>
+<li><strong>LAST_ACK（最后确认）</strong> ：当被动关闭的一方在发送FIN报文后，等待对方的ACK报文的时候，就处于LAST_ACK 状态。当收到对方的ACK报文后，也就可以进入到CLOSED 可用状态了。</li>
+</ol>
+<h3 id="9、TCP拥塞控制和流量控制"><a href="#9、TCP拥塞控制和流量控制" class="headerlink" title="9、TCP拥塞控制和流量控制"></a>9、TCP拥塞控制和流量控制</h3><h4 id="拥塞控制"><a href="#拥塞控制" class="headerlink" title="拥塞控制"></a>拥塞控制</h4><p>四种算法：慢开始、拥塞避免、快重传、快开始。</p>
+<p><strong>慢开始阶段</strong>：主机一开始发送数据时，不知道网络负荷情况，这时候如果一下子就注入大量数据，就容易导致网络拥塞，最好的方法就是由小到大逐渐增大发送窗口，这时候，每经过一个传输伦次，拥塞窗口就加倍，1、2、4、8、16…</p>
+<p><strong>拥塞避免阶段：</strong>慢开始不能一直增长， 这里还需要设置一个门限值，当小于门限值的时候，使用慢开始的方法，大于门限值的时候，就是用拥塞避免的方法。拥塞避免的方法就是一个一个增加。当网络中出现了超时，发送方判断了网络拥塞，就开始从慢开始继续，此时慢开始门限就变为原来的1/2，</p>
+<p><strong>快重传阶段：</strong>当接连收到三个相同发ACK时，也就是这个报文在网络中丢失，需要快速进行重传，而不是进行慢启动阶段，而是进入快恢复阶段，并且调整门限为原来的1/2。</p>
+<h4 id="流量控制"><a href="#流量控制" class="headerlink" title="流量控制"></a>流量控制</h4><p>流量控制就是让发送方发送的不要太快，让接受方来得及接收</p>
+<h2 id="三、应用层"><a href="#三、应用层" class="headerlink" title="三、应用层"></a>三、应用层</h2><h3 id="1、DNS解析过程"><a href="#1、DNS解析过程" class="headerlink" title="1、DNS解析过程"></a>1、DNS解析过程</h3><ul>
+<li><strong>主机</strong>向<strong>本地域名服务器</strong>的查询一般都是采用递归查询</li>
+<li><strong>本地域名服务器</strong>向<strong>根域名</strong>服务器查询一般都是采用迭代查询。</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/idmask/p/4485836.html">DNS原理总结及其解析过程详解</a></p>
+<p>讲一下DNS过程。给一个网址<a href="http://www.bytedance.com，DNS服务器如何逐级解析的？">www.bytedance.com，DNS服务器如何逐级解析的？</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/23042131">下面内容的网址</a></p>
+<p>1、在浏览器中输入<a target="_blank" rel="noopener" href="http://www.qq.com/">www.qq.com</a> 域名，操作系统会先检查自己本地的hosts文件是否有这个网址映射关系，如果有，就先调用这个IP地址映射，完成域名解析。 </p>
+<p>2、如果hosts里没有这个域名的映射，则查找本地DNS解析器缓存，是否有这个网址映射关系，如果有，直接返回，完成域名解析。 </p>
+<p>3、如果hosts与本地DNS解析器缓存都没有相应的网址映射关系，首先会找TCP/ip参数中设置的首选DNS服务器，在此我们叫它本地DNS服务器，此服务器收到查询时，如果要查询的域名，包含在本地配置区域资源中，则返回解析结果给客户机，完成域名解析，此解析具有权威性。 </p>
+<p>4、如果要查询的域名，不由本地DNS服务器区域解析，但该服务器已缓存了此网址映射关系，则调用这个IP地址映射，完成域名解析，此解析不具有权威性。 </p>
+<p>5、如果本地DNS服务器本地区域文件与缓存解析都失效，则根据本地DNS服务器的设置（是否设置转发器）进行查询，如果未用转发模式，本地DNS就把请求发至13台根DNS，根DNS服务器收到请求后会判断这个域名(.com)是谁来授权管理，并会返回一个负责该顶级域名服务器的一个IP。本地DNS服务器收到IP信息后，将会联系负责.com域的这台服务器。这台负责.com域的服务器收到请求后，如果自己无法解析，它就会找一个管理.com域的下一级DNS服务器地址(<a href="https://link.zhihu.com/?target=http://qq.com">http://qq.com</a>)给本地DNS服务器。当本地DNS服务器收到这个地址后，就会找<a href="https://link.zhihu.com/?target=http://qq.com">http://qq.com</a>域服务器，重复上面的动作，进行查询，直至找到<a target="_blank" rel="noopener" href="http://www.qq.com主机./">www.qq.com主机。</a> </p>
+<p>6、如果用的是转发模式，此DNS服务器就会把请求转发至上一级DNS服务器，由上一级服务器进行解析，上一级服务器如果不能解析，或找根DNS或把转请求转至上上级，以此循环。不管是本地DNS服务器用是是转发，还是根提示，最后都是把结果返回给本地DNS服务器，由此DNS服务器再返回给客户机。 </p>
+<p>​    从客户端到本地DNS服务器是属于递归查询，而DNS服务器之间就是的交互查询就是迭代查询。</p>
+<h3 id="2、Http与Https的区别"><a href="#2、Http与Https的区别" class="headerlink" title="2、Http与Https的区别"></a>2、Http与Https的区别</h3><p><img src="https://gitee.com/dlutlgy/images_for_typora/raw/master/images/image-20211103203402124.png" alt="image-20211103203402124"></p>
+<h3 id="3、HTTP状态码及301和302之间的区别"><a href="#3、HTTP状态码及301和302之间的区别" class="headerlink" title="3、HTTP状态码及301和302之间的区别"></a>3、HTTP状态码及301和302之间的区别</h3><table>
 <thead>
 <tr>
 <th align="center"></th>
@@ -443,7 +524,62 @@
 <p>301:资源永久性重定向</p>
 <p>302:临时性重定向，该状态码表示请求的资源已分配了新的 URI，希望用户使用新的 URI 继续访问资源，和 301 相似，只不过是临时性的移动。</p>
 <p>303:该状态码表示由于请求对应的资源存在着另一个URI，应使用GET方法定向获取请求的资源， 303和302状态码有着相同的功能，但是303明确表示客户端应当采用get方法获取资源，这点与302状态码有区别。</p>
-<h2 id="3-HTTP-协议存在什么问题？如何解决？能否简单聊一聊-HTTPS-的-SSL连接建立的过程？"><a href="#3-HTTP-协议存在什么问题？如何解决？能否简单聊一聊-HTTPS-的-SSL连接建立的过程？" class="headerlink" title="3. HTTP 协议存在什么问题？如何解决？能否简单聊一聊 HTTPS 的 SSL连接建立的过程？"></a>3. HTTP 协议存在什么问题？如何解决？能否简单聊一聊 HTTPS 的 SSL连接建立的过程？</h2><p>主要存在 3 个问题</p>
+<ul>
+<li><p><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/HTTP%E7%8A%B6%E6%80%81%E7%A0%81#1xx%E6%B6%88%E6%81%AF">1xx消息</a>——请求已被服务器接收，继续处理。</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/HTTP%E7%8A%B6%E6%80%81%E7%A0%81#2xx%E6%88%90%E5%8A%9F">2xx成功</a>——请求已成功被服务器接收、理解、并接受。</p>
+<ul>
+<li>200: 正常返回信息</li>
+</ul>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/HTTP%E7%8A%B6%E6%80%81%E7%A0%81#3xx%E9%87%8D%E5%AE%9A%E5%90%91">3xx重定向</a>——需要后续操作才能完成这一请求。</p>
+<ul>
+<li>300 Multiple Choices</li>
+<li><strong>301 Moved Permanently：永久性重定向</strong>。表示请求的资源已经被分配了新的 URI，以后应使用资源现在所指向的 URI。通常会发送 HTTP Location 来重定向到正确的新位置。这是将 HTTP 迁移到 HTTPS 的极佳方法。</li>
+<li><strong>302 Found：临时重定向</strong>。表示请求的资源已被分配了新的 URI，希望用户**(本次)**能使用新的 URI 访问。</li>
+<li>303 See Other：临时重定向。表示由于请求对应的资源存在着另一个 URI，应使用 <strong>GET</strong> 方法定向获取请求的资源。</li>
+<li><strong>304 Not Modified：</strong>表示客户端发送附带条件的请求时，服务器端允许请求访问资源，但未满足条件的情况。304 状态码返回时，不包含任何响应的主体部分。304 虽然被划分在 3XX 类别中，但是和重定向没有关系。</li>
+</ul>
+<blockquote>
+<p>附带条件的请求是指采用 GET 方法的请求报文中包含 If-Match，If-Modified- Since，If-None-Match，If-Range，If-Unmodified-Since 中任一首部。</p>
+</blockquote>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/HTTP%E7%8A%B6%E6%80%81%E7%A0%81#4xx%E8%AF%B7%E6%B1%82%E9%94%99%E8%AF%AF">4xx请求错误</a>——请求含有词法错误或者无法被执行，客户端错误。</p>
+<ul>
+<li>401 Unauthorized：请求未经授权，即用户没有权限执行这个请求。</li>
+<li>403 Forbidden：服务器收到请求，但是拒绝提供服务</li>
+<li>404 Not Found：请求资源不存在。最常见的就是URL错误</li>
+</ul>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/HTTP%E7%8A%B6%E6%80%81%E7%A0%81#5xx%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%94%99%E8%AF%AF">5xx服务器错误</a>——服务器在处理某个正确请求时发生错误</p>
+<p>关于服务器500 501 502 503 504 505 的一些详解：<a target="_blank" rel="noopener" href="https://jingyan.baidu.com/article/63f2362812cc600208ab3dce.html">https://jingyan.baidu.com/article/63f2362812cc600208ab3dce.html</a></p>
+<ul>
+<li>500 Internal Server Error：表明服务器端在执行请求时发生了错误，有可能是 Web 应用存在的 bug 或某些临时的故障。</li>
+<li>502 Bad Gateway：作为网关或者代理工作的服务器尝试执行请求时，从上游服务器接收了无效的响应。</li>
+<li>503 Service Unavailable：服务器暂时处于超负载或正在进行停机维护，现在无法处理请求。</li>
+<li>504 Gateway Time-out 这是代表着网关超时是现象出现了。是指服务器作为网关或代理，但是没有及时从上游服务器收到请求。</li>
+</ul>
+</li>
+</ul>
+<h3 id="4、-浏览器出入-url-发生了什么？"><a href="#4、-浏览器出入-url-发生了什么？" class="headerlink" title="4、 浏览器出入 url 发生了什么？"></a>4、 浏览器出入 url 发生了什么？</h3><ol>
+<li>浏览器查询缓存</li>
+<li>DNS 域名解析</li>
+<li>TCP 三次握手连接</li>
+<li>Http/Https 连接</li>
+<li>服务器处理请求；</li>
+<li>返回响应结果；</li>
+<li>关闭 TCP 连接；</li>
+<li>浏览器解析 HTML；</li>
+<li>浏览器布局渲染；</li>
+</ol>
+<p><strong>1.浏览器查询缓存</strong></p>
+<p>如果查找到缓存中有我们 URL 对应的文件，则判断是否命中强缓存，如果命中直接读取即可，如果没有命中强缓存，判断协商缓存是否命中，但是协商缓存无论是否命中都会发送请求。继续下面的步骤。</p>
+<p><strong>2. DNS 域名解析</strong></p>
+<p>DNS的域名查找，在客户端和浏览器，本地DNS之间的查询方式是递归查询；在本地DNS服务器与根域及其子域之间的查询方式是迭代查询；</p>
+<img src="https://gitee.com/dlutlgy/images_for_typora/raw/master/images/image-20220212163509594.png" alt="image-20220212163509594" style="zoom:50%;" />
+
+<p><strong>3. TCP 三次握手连接</strong></p>
+<h3 id="5、-HTTP-协议存在什么问题？如何解决？能否简单聊一聊-HTTPS-的-SSL连接建立的过程？"><a href="#5、-HTTP-协议存在什么问题？如何解决？能否简单聊一聊-HTTPS-的-SSL连接建立的过程？" class="headerlink" title="5、 HTTP 协议存在什么问题？如何解决？能否简单聊一聊 HTTPS 的 SSL连接建立的过程？"></a>5、 HTTP 协议存在什么问题？如何解决？能否简单聊一聊 HTTPS 的 SSL连接建立的过程？</h3><p>主要存在 3 个问题</p>
 <ul>
 <li>通信使用明文，也就是不加密，内容<strong>可能会被窃听</strong>。</li>
 <li>不验证通信方的身份，因此有可能遭遇<strong>伪装</strong></li>
@@ -476,7 +612,7 @@
   </li>
   <li class="post-copyright-link">
       <strong>本文链接：</strong>
-      <a href="http://dlutlgy.top/2022/02/12/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" title="">http://dlutlgy.top/2022/02/12/计算机网络/</a>
+      <a href="http://dlutlgy.top/2022/02/12/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" title="计算机网络">http://dlutlgy.top/2022/02/12/计算机网络/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
@@ -484,6 +620,10 @@
 </ul>
 </div>
 
+          <div class="post-tags">
+              <a href="/tags/%E9%9D%A2%E8%AF%95/" rel="tag"># 面试</a>
+              <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/" rel="tag"># 计算机基础</a>
+          </div>
 
         
 
@@ -556,14 +696,14 @@
       <i class="fa fa-chart-line"></i>
     </span>
       <span>站点总字数：</span>
-    <span title="站点总字数">153k</span>
+    <span title="站点总字数">160k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span>站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">2:19</span>
+    <span title="站点阅读时长">2:26</span>
   </span>
 </div>
 
