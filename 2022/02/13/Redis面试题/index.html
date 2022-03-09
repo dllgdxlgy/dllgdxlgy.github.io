@@ -34,8 +34,12 @@
 <meta property="og:image" content="https://gitee.com/dlutlgy/images_for_typora/raw/master/images/image-20220214170952086.png">
 <meta property="og:image" content="https://gitee.com/dlutlgy/images_for_typora/raw/master/images/image-20220214175759234.png">
 <meta property="og:image" content="https://gitee.com/dlutlgy/images_for_typora/raw/master/images/image-20220307154253240.png">
+<meta property="og:image" content="https://gitee.com/dlutlgy/images_for_typora/raw/master/images/image-20220309123853020.png">
+<meta property="og:image" content="https://gitee.com/dlutlgy/images_for_typora/raw/master/images/image-20220309124333628.png">
+<meta property="og:image" content="https://gitee.com/dlutlgy/images_for_typora/raw/master/images/image-20220309125237765.png">
+<meta property="og:image" content="https://gitee.com/dlutlgy/images_for_typora/raw/master/images/image-20220309125916161.png">
 <meta property="article:published_time" content="2022-02-13T09:36:24.000Z">
-<meta property="article:modified_time" content="2022-03-08T02:50:33.641Z">
+<meta property="article:modified_time" content="2022-03-09T06:49:46.359Z">
 <meta property="article:author" content="Dlutlgy">
 <meta property="article:tag" content="面试">
 <meta property="article:tag" content="Redis">
@@ -232,7 +236,7 @@
 
       <!--noindex-->
       <section class="post-toc-wrap sidebar-panel">
-          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Redis-%E5%9F%BA%E7%A1%80%E7%AF%87"><span class="nav-text">Redis 基础篇</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Redis-%E4%B8%8E-Memcached-%E7%9A%84%E5%85%B1%E5%90%8C%E7%82%B9%E4%B8%8E%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="nav-text">1. Redis 与 Memcached 的共同点与区别？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Redis-%E9%99%A4%E4%BA%86%E5%81%9A%E7%BC%93%E5%AD%98%EF%BC%8C%E8%BF%98%E8%83%BD%E5%81%9A%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-text">2. Redis 除了做缓存，还能做什么？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-Redis-%E8%BF%90%E8%A1%8C%E5%BF%AB%E7%9A%84%E5%8E%9F%E5%9B%A0%EF%BC%9F"><span class="nav-text">3. Redis 运行快的原因？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-Redis-%E7%9A%84%E4%BC%98%E7%BC%BA%E7%82%B9%EF%BC%9F"><span class="nav-text">4. Redis 的优缺点？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-Redis4-0-%E4%B9%8B%E5%89%8D%E4%B8%BA%E4%BB%80%E4%B9%88%E9%80%89%E6%8B%A9%E5%8D%95%E7%BA%BF%E7%A8%8B-%E5%A4%9A%E8%B7%AF-IO-%E5%A4%8D%E7%94%A8"><span class="nav-text">5. Redis4.0 之前为什么选择单线程+多路 IO 复用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Redis-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%AF%87"><span class="nav-text">Redis 数据结构篇</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-SDS-%E7%AE%80%E5%8D%95%E5%8A%A8%E6%80%81%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="nav-text">1. SDS(简单动态字符串)</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BD%9C%E7%94%A8"><span class="nav-text">作用</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%BB%93%E6%9E%84"><span class="nav-text">结构</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%B8%8E-C-%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="nav-text">与 C 字符串的区别？</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E9%93%BE%E8%A1%A8"><span class="nav-text">2. 链表</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BD%9C%E7%94%A8-1"><span class="nav-text">作用</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%BB%93%E6%9E%84-1"><span class="nav-text">结构</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E5%AD%97%E5%85%B8"><span class="nav-text">3. 字典</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BD%9C%E7%94%A8-2"><span class="nav-text">作用</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%BB%93%E6%9E%84-2"><span class="nav-text">结构</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%93%88%E5%B8%8C%E7%AE%97%E6%B3%95"><span class="nav-text">哈希算法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#rehash"><span class="nav-text">rehash</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%B8%90%E8%BF%9B%E5%BC%8F-rehash"><span class="nav-text">渐进式 rehash</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-%E8%B7%B3%E8%B7%83%E8%A1%A8"><span class="nav-text">4. 跳跃表</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BD%9C%E7%94%A8-3"><span class="nav-text">作用</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-%E6%95%B4%E6%95%B0%E9%9B%86%E5%90%88"><span class="nav-text">5. 整数集合</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-%E5%8E%8B%E7%BC%A9%E5%88%97%E8%A1%A8"><span class="nav-text">6. 压缩列表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-%E5%AF%B9%E8%B1%A1"><span class="nav-text">7. 对象</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Redis-%E6%8C%81%E4%B9%85%E5%8C%96%E7%AF%87"><span class="nav-text">Redis 持久化篇</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E8%AE%B2%E4%B8%80%E4%B8%8B-Redis-%E4%B8%AD%E7%9A%84%E6%8C%81%E4%B9%85%E5%8C%96%E6%9C%BA%E5%88%B6"><span class="nav-text">1. 讲一下 Redis 中的持久化机制</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#RDB"><span class="nav-text">RDB</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#AOF"><span class="nav-text">AOF</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E8%AF%B4%E4%B8%80%E4%B8%8B-RDB-%E5%92%8C-AOF-%E7%9A%84%E4%BC%98%E7%BC%BA%E7%82%B9%EF%BC%9F"><span class="nav-text">2. 说一下 RDB 和 AOF 的优缺点？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-RDB-%E5%92%8C-AOF-%E9%80%89%E5%93%AA%E4%B8%80%E4%B8%AA%EF%BC%9F"><span class="nav-text">3. RDB 和 AOF 选哪一个？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Redis-%E9%9B%86%E7%BE%A4%E7%AF%87"><span class="nav-text">Redis 集群篇</span></a></li></ol></div>
+          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Redis-%E5%9F%BA%E7%A1%80%E7%AF%87"><span class="nav-text">Redis 基础篇</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Redis-%E4%B8%8E-Memcached-%E7%9A%84%E5%85%B1%E5%90%8C%E7%82%B9%E4%B8%8E%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="nav-text">1. Redis 与 Memcached 的共同点与区别？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Redis-%E9%99%A4%E4%BA%86%E5%81%9A%E7%BC%93%E5%AD%98%EF%BC%8C%E8%BF%98%E8%83%BD%E5%81%9A%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-text">2. Redis 除了做缓存，还能做什么？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-Redis-%E8%BF%90%E8%A1%8C%E5%BF%AB%E7%9A%84%E5%8E%9F%E5%9B%A0%EF%BC%9F"><span class="nav-text">3. Redis 运行快的原因？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-Redis-%E7%9A%84%E4%BC%98%E7%BC%BA%E7%82%B9%EF%BC%9F"><span class="nav-text">4. Redis 的优缺点？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-Redis4-0-%E4%B9%8B%E5%89%8D%E4%B8%BA%E4%BB%80%E4%B9%88%E9%80%89%E6%8B%A9%E5%8D%95%E7%BA%BF%E7%A8%8B-%E5%A4%9A%E8%B7%AF-IO-%E5%A4%8D%E7%94%A8"><span class="nav-text">5. Redis4.0 之前为什么选择单线程+多路 IO 复用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Redis-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%AF%87"><span class="nav-text">Redis 数据结构篇</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-SDS-%E7%AE%80%E5%8D%95%E5%8A%A8%E6%80%81%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="nav-text">1. SDS(简单动态字符串)</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BD%9C%E7%94%A8"><span class="nav-text">作用</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%BB%93%E6%9E%84"><span class="nav-text">结构</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%B8%8E-C-%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="nav-text">与 C 字符串的区别？</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E9%93%BE%E8%A1%A8"><span class="nav-text">2. 链表</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BD%9C%E7%94%A8-1"><span class="nav-text">作用</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%BB%93%E6%9E%84-1"><span class="nav-text">结构</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E5%AD%97%E5%85%B8"><span class="nav-text">3. 字典</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BD%9C%E7%94%A8-2"><span class="nav-text">作用</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%BB%93%E6%9E%84-2"><span class="nav-text">结构</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%93%88%E5%B8%8C%E7%AE%97%E6%B3%95"><span class="nav-text">哈希算法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#rehash"><span class="nav-text">rehash</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%B8%90%E8%BF%9B%E5%BC%8F-rehash"><span class="nav-text">渐进式 rehash</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-%E8%B7%B3%E8%B7%83%E8%A1%A8"><span class="nav-text">4. 跳跃表</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BD%9C%E7%94%A8-3"><span class="nav-text">作用</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-%E6%95%B4%E6%95%B0%E9%9B%86%E5%90%88"><span class="nav-text">5. 整数集合</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-%E5%8E%8B%E7%BC%A9%E5%88%97%E8%A1%A8"><span class="nav-text">6. 压缩列表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-%E5%AF%B9%E8%B1%A1"><span class="nav-text">7. 对象</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Redis-%E6%8C%81%E4%B9%85%E5%8C%96%E7%AF%87"><span class="nav-text">Redis 持久化篇</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E8%AE%B2%E4%B8%80%E4%B8%8B-Redis-%E4%B8%AD%E7%9A%84%E6%8C%81%E4%B9%85%E5%8C%96%E6%9C%BA%E5%88%B6"><span class="nav-text">1. 讲一下 Redis 中的持久化机制</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#RDB"><span class="nav-text">RDB</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#AOF"><span class="nav-text">AOF</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E8%AF%B4%E4%B8%80%E4%B8%8B-RDB-%E5%92%8C-AOF-%E7%9A%84%E4%BC%98%E7%BC%BA%E7%82%B9%EF%BC%9F"><span class="nav-text">2. 说一下 RDB 和 AOF 的优缺点？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-RDB-%E5%92%8C-AOF-%E9%80%89%E5%93%AA%E4%B8%80%E4%B8%AA%EF%BC%9F"><span class="nav-text">3. RDB 和 AOF 选哪一个？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Redis-%E9%9B%86%E7%BE%A4%E7%AF%87"><span class="nav-text">Redis 集群篇</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Redis-%E5%BA%94%E7%94%A8%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3%E7%AF%87"><span class="nav-text">Redis 应用问题解决篇</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Redis-%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81%EF%BC%9F"><span class="nav-text">1. Redis 如何实现分布式锁？</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E5%87%BA%E7%8E%B0%E7%9A%84%E5%8E%9F%E5%9B%A0"><span class="nav-text">问题出现的原因</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%A6%82%E6%9E%9C%E5%AE%9E%E7%8E%B0%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81%EF%BC%8C%E9%9C%80%E8%A6%81%E6%BB%A1%E8%B6%B3%E7%9A%84%E6%9D%A1%E4%BB%B6"><span class="nav-text">如果实现分布式锁，需要满足的条件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%9B%AE%E5%89%8D%E5%8F%AF%E4%BB%A5%E5%AE%9E%E7%8E%B0%E7%9A%84%E6%96%B9%E5%BC%8F"><span class="nav-text">目前可以实现的方式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%83%85%E5%86%B5%E4%B8%80"><span class="nav-text">情况一</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%83%85%E5%86%B5%E4%BA%8C"><span class="nav-text">情况二</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%83%85%E5%86%B5%E4%B8%89"><span class="nav-text">情况三</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%83%85%E5%86%B5%E5%9B%9B"><span class="nav-text">情况四</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%83%85%E5%86%B5%E4%BA%94"><span class="nav-text">情况五</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%83%85%E5%86%B5%E4%B8%83"><span class="nav-text">情况七</span></a></li></ol></li></ol></li></ol></li></ol></div>
       </section>
       <!--/noindex-->
 
@@ -342,7 +346,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2022-03-08 10:50:33" itemprop="dateModified" datetime="2022-03-08T10:50:33+08:00">2022-03-08</time>
+        <time title="修改时间：2022-03-09 14:49:46" itemprop="dateModified" datetime="2022-03-09T14:49:46+08:00">2022-03-09</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -387,14 +391,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>4.1k</span>
+      <span>5.4k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>4 分钟</span>
+      <span>5 分钟</span>
     </span>
 </div>
 
@@ -590,7 +594,54 @@
 <p>如果只是拿 Redis 做内存缓存的话，那么就都不用</p>
 <p>如果对于数据很敏感，可以使用 AOF，但是不建议单独使用，可以也打开 RDB。</p>
 <p>如果对数据不敏感而且还要进行保存，那么仅使用 RDB 进行存储</p>
-<h2 id="Redis-集群篇"><a href="#Redis-集群篇" class="headerlink" title="Redis 集群篇"></a>Redis 集群篇</h2>
+<h2 id="Redis-集群篇"><a href="#Redis-集群篇" class="headerlink" title="Redis 集群篇"></a>Redis 集群篇</h2><h2 id="Redis-应用问题解决篇"><a href="#Redis-应用问题解决篇" class="headerlink" title="Redis 应用问题解决篇"></a>Redis 应用问题解决篇</h2><h3 id="1-Redis-如何实现分布式锁？"><a href="#1-Redis-如何实现分布式锁？" class="headerlink" title="1. Redis 如何实现分布式锁？"></a>1. Redis 如何实现分布式锁？</h3><h5 id="问题出现的原因"><a href="#问题出现的原因" class="headerlink" title="问题出现的原因"></a>问题出现的原因</h5><p>单机中，我们使用本地锁就可以避免多个操作同一个问题，但是在分布式系统中，肯容易就是多个服务器修改同一个数据，又因为读取和更新不是一个操作，所以原来的本地锁就派不上用场，这个时候就就需要分布式锁，它的作用就是<strong>保证多台服务器在执行某一段代码时保证只有一台服务器执行</strong>。</p>
+<h5 id="如果实现分布式锁，需要满足的条件"><a href="#如果实现分布式锁，需要满足的条件" class="headerlink" title="如果实现分布式锁，需要满足的条件"></a>如果实现分布式锁，需要满足的条件</h5><ol>
+<li>互斥性，任何时刻，保证只有一个客户端持有锁。</li>
+<li>不能出现死锁，即使崩溃也要按时释放。</li>
+<li>解锁和释放必须是同一个客户端。</li>
+</ol>
+<h5 id="目前可以实现的方式"><a href="#目前可以实现的方式" class="headerlink" title="目前可以实现的方式"></a>目前可以实现的方式</h5><ul>
+<li>使用 MySQL 实现分布式锁</li>
+<li>基于缓存（Redis）也是我们要讲的（性能最高）</li>
+<li>基于 Zookeeper（最可靠）</li>
+</ul>
+<h5 id="情况一"><a href="#情况一" class="headerlink" title="情况一"></a>情况一</h5><p>使用<code>setnx key 1</code>设置锁，使用<code>del key</code>删除锁。</p>
+<p>出现的问题：处理业务时，没及时释放锁，或者进程挂了，没释放锁。</p>
+<img src="https://gitee.com/dlutlgy/images_for_typora/raw/master/images/image-20220309123853020.png" alt="image-20220309123853020" style="zoom: 50%;" />
+
+<h5 id="情况二"><a href="#情况二" class="headerlink" title="情况二"></a>情况二</h5><p>对情况一改进，先执行 <code>setnx key 1</code>,再执行 <code>expire key 10</code>,设置过期时间。</p>
+<p>出现的问题：只执行完了第一条命令，却没来的及执行第二条命令。</p>
+<h5 id="情况三"><a href="#情况三" class="headerlink" title="情况三"></a>情况三</h5><p>对情况二改进，执行<code>set key 1 ex 10 nx</code>,这样就是原子操作了，也解决了死锁问题</p>
+<img src="https://gitee.com/dlutlgy/images_for_typora/raw/master/images/image-20220309124333628.png" alt="image-20220309124333628" style="zoom: 50%;" />
+
+<p>出现的两个问题：</p>
+<ol>
+<li>客户端A加锁成功，开始操作共享资源，<strong>但是操作共享资源的时间</strong>，锁自动释放。</li>
+<li>客户端A加锁成功，开始操作共享资源，共享资源已经完了，这个时候释放了锁（释放锁的机制有两个，一个操作完就放，一个是过期了释放），又经过其他客户端操作后，过期了，释放了其他客户端的锁。</li>
+</ol>
+<h5 id="情况四"><a href="#情况四" class="headerlink" title="情况四"></a>情况四</h5><p>解决上面第一个问题就是<strong>给锁续期</strong>。在 Redisson 框架实现分布式锁的思路，就使用 watchDog 机制实现锁的续期。当加锁成功后，同时开启守护线程，默认有效期是30秒，每隔10秒就会给锁续期到30秒，只要持有锁的客户端没有宕机，就能保证一直持有锁，直到业务代码执行完毕由客户端自己解锁，如果宕机了自然就在有效期失效后自动解锁。</p>
+<p>解决第二个问题就是<strong>使用UUID</strong>，<code>set key UUID ex 10 nx</code>，在删除的时候，判断是不是自己持有的。因为是判断的，所以不是原子性操作，这里需要用到 <strong>Lua 脚本</strong></p>
+<img src="https://gitee.com/dlutlgy/images_for_typora/raw/master/images/image-20220309125237765.png" alt="image-20220309125237765" style="zoom: 50%;" />
+
+<h5 id="情况五"><a href="#情况五" class="headerlink" title="情况五"></a>情况五</h5><p>锁只能加一次，不可重入啊，解决方式如下：</p>
+<p>在Redisson实现可重入锁的思路，使用Redis的哈希表存储可重入次数，当加锁成功后，使用<code>hset</code>命令，value(重入次数)则是1。如果同一个客户端再次加锁成功，则使用<code>hincrby</code>自增加一。解锁时，先判断可重复次数是否大于0，大于0则减一，否则删除键值，释放锁资源。</p>
+<p><strong>情况六</strong>：如果加锁失败的情况下，总不可能一直轮询尝试加锁，直到加锁成功为止，这样太过耗费性能。所以需要利用发布订阅的机制进行优化。</p>
+<p>当加锁失败后，订阅锁释放的消息，自身进入阻塞状态。</p>
+<p>当持有锁的客户端释放锁的时候，发布锁释放的消息。</p>
+<p>当进入阻塞等待的其他客户端收到锁释放的消息后，解除阻塞等待状态，再次尝试加锁。</p>
+<img src="https://gitee.com/dlutlgy/images_for_typora/raw/master/images/image-20220309125916161.png" alt="image-20220309125916161" style="zoom:67%;" />
+
+
+
+<h5 id="情况七"><a href="#情况七" class="headerlink" title="情况七"></a>情况七</h5><p>之前分析的都是单个 Redis 实例中可能产生的问题，如果在集群中呢？</p>
+<p>场景：</p>
+<ol>
+<li>客户端A 在主库上执行 SET 命令，加锁成功</li>
+<li>此时，主库异常宕机，SET 命令还未同步到从库上(主从复制是异步的)</li>
+<li>从库被哨兵提升为新主库，这个锁在新的主库上，丢失了!</li>
+</ol>
+<p>解决方式 ： <strong>RedLock</strong></p>
+
     </div>
 
     
@@ -692,14 +743,14 @@
       <i class="fa fa-chart-line"></i>
     </span>
       <span>站点总字数：</span>
-    <span title="站点总字数">182k</span>
+    <span title="站点总字数">183k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span>站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">2:45</span>
+    <span title="站点阅读时长">2:46</span>
   </span>
 </div>
 
