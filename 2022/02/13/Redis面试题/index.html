@@ -38,8 +38,10 @@
 <meta property="og:image" content="https://gitee.com/dlutlgy/images_for_typora/raw/master/images/image-20220309124333628.png">
 <meta property="og:image" content="https://gitee.com/dlutlgy/images_for_typora/raw/master/images/image-20220309125237765.png">
 <meta property="og:image" content="https://gitee.com/dlutlgy/images_for_typora/raw/master/images/image-20220309125916161.png">
+<meta property="og:image" content="https://gitee.com/dlutlgy/images_for_typora/raw/master/images/image-20220310133039176.png">
+<meta property="og:image" content="https://gitee.com/dlutlgy/images_for_typora/raw/master/images/image-20220310135257343.png">
 <meta property="article:published_time" content="2022-02-13T09:36:24.000Z">
-<meta property="article:modified_time" content="2022-03-09T06:49:46.359Z">
+<meta property="article:modified_time" content="2022-03-10T05:58:13.280Z">
 <meta property="article:author" content="Dlutlgy">
 <meta property="article:tag" content="面试">
 <meta property="article:tag" content="Redis">
@@ -236,7 +238,7 @@
 
       <!--noindex-->
       <section class="post-toc-wrap sidebar-panel">
-          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Redis-%E5%9F%BA%E7%A1%80%E7%AF%87"><span class="nav-text">Redis 基础篇</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Redis-%E4%B8%8E-Memcached-%E7%9A%84%E5%85%B1%E5%90%8C%E7%82%B9%E4%B8%8E%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="nav-text">1. Redis 与 Memcached 的共同点与区别？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Redis-%E9%99%A4%E4%BA%86%E5%81%9A%E7%BC%93%E5%AD%98%EF%BC%8C%E8%BF%98%E8%83%BD%E5%81%9A%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-text">2. Redis 除了做缓存，还能做什么？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-Redis-%E8%BF%90%E8%A1%8C%E5%BF%AB%E7%9A%84%E5%8E%9F%E5%9B%A0%EF%BC%9F"><span class="nav-text">3. Redis 运行快的原因？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-Redis-%E7%9A%84%E4%BC%98%E7%BC%BA%E7%82%B9%EF%BC%9F"><span class="nav-text">4. Redis 的优缺点？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-Redis4-0-%E4%B9%8B%E5%89%8D%E4%B8%BA%E4%BB%80%E4%B9%88%E9%80%89%E6%8B%A9%E5%8D%95%E7%BA%BF%E7%A8%8B-%E5%A4%9A%E8%B7%AF-IO-%E5%A4%8D%E7%94%A8"><span class="nav-text">5. Redis4.0 之前为什么选择单线程+多路 IO 复用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Redis-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%AF%87"><span class="nav-text">Redis 数据结构篇</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-SDS-%E7%AE%80%E5%8D%95%E5%8A%A8%E6%80%81%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="nav-text">1. SDS(简单动态字符串)</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BD%9C%E7%94%A8"><span class="nav-text">作用</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%BB%93%E6%9E%84"><span class="nav-text">结构</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%B8%8E-C-%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="nav-text">与 C 字符串的区别？</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E9%93%BE%E8%A1%A8"><span class="nav-text">2. 链表</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BD%9C%E7%94%A8-1"><span class="nav-text">作用</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%BB%93%E6%9E%84-1"><span class="nav-text">结构</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E5%AD%97%E5%85%B8"><span class="nav-text">3. 字典</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BD%9C%E7%94%A8-2"><span class="nav-text">作用</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%BB%93%E6%9E%84-2"><span class="nav-text">结构</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%93%88%E5%B8%8C%E7%AE%97%E6%B3%95"><span class="nav-text">哈希算法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#rehash"><span class="nav-text">rehash</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%B8%90%E8%BF%9B%E5%BC%8F-rehash"><span class="nav-text">渐进式 rehash</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-%E8%B7%B3%E8%B7%83%E8%A1%A8"><span class="nav-text">4. 跳跃表</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BD%9C%E7%94%A8-3"><span class="nav-text">作用</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-%E6%95%B4%E6%95%B0%E9%9B%86%E5%90%88"><span class="nav-text">5. 整数集合</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-%E5%8E%8B%E7%BC%A9%E5%88%97%E8%A1%A8"><span class="nav-text">6. 压缩列表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-%E5%AF%B9%E8%B1%A1"><span class="nav-text">7. 对象</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Redis-%E6%8C%81%E4%B9%85%E5%8C%96%E7%AF%87"><span class="nav-text">Redis 持久化篇</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E8%AE%B2%E4%B8%80%E4%B8%8B-Redis-%E4%B8%AD%E7%9A%84%E6%8C%81%E4%B9%85%E5%8C%96%E6%9C%BA%E5%88%B6"><span class="nav-text">1. 讲一下 Redis 中的持久化机制</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#RDB"><span class="nav-text">RDB</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#AOF"><span class="nav-text">AOF</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E8%AF%B4%E4%B8%80%E4%B8%8B-RDB-%E5%92%8C-AOF-%E7%9A%84%E4%BC%98%E7%BC%BA%E7%82%B9%EF%BC%9F"><span class="nav-text">2. 说一下 RDB 和 AOF 的优缺点？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-RDB-%E5%92%8C-AOF-%E9%80%89%E5%93%AA%E4%B8%80%E4%B8%AA%EF%BC%9F"><span class="nav-text">3. RDB 和 AOF 选哪一个？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Redis-%E9%9B%86%E7%BE%A4%E7%AF%87"><span class="nav-text">Redis 集群篇</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Redis-%E5%BA%94%E7%94%A8%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3%E7%AF%87"><span class="nav-text">Redis 应用问题解决篇</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Redis-%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81%EF%BC%9F"><span class="nav-text">1. Redis 如何实现分布式锁？</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E5%87%BA%E7%8E%B0%E7%9A%84%E5%8E%9F%E5%9B%A0"><span class="nav-text">问题出现的原因</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%A6%82%E6%9E%9C%E5%AE%9E%E7%8E%B0%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81%EF%BC%8C%E9%9C%80%E8%A6%81%E6%BB%A1%E8%B6%B3%E7%9A%84%E6%9D%A1%E4%BB%B6"><span class="nav-text">如果实现分布式锁，需要满足的条件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%9B%AE%E5%89%8D%E5%8F%AF%E4%BB%A5%E5%AE%9E%E7%8E%B0%E7%9A%84%E6%96%B9%E5%BC%8F"><span class="nav-text">目前可以实现的方式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%83%85%E5%86%B5%E4%B8%80"><span class="nav-text">情况一</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%83%85%E5%86%B5%E4%BA%8C"><span class="nav-text">情况二</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%83%85%E5%86%B5%E4%B8%89"><span class="nav-text">情况三</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%83%85%E5%86%B5%E5%9B%9B"><span class="nav-text">情况四</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%83%85%E5%86%B5%E4%BA%94"><span class="nav-text">情况五</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%83%85%E5%86%B5%E4%B8%83"><span class="nav-text">情况七</span></a></li></ol></li></ol></li></ol></li></ol></div>
+          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Redis-%E5%9F%BA%E7%A1%80%E7%AF%87"><span class="nav-text">Redis 基础篇</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Redis-%E4%B8%8E-Memcached-%E7%9A%84%E5%85%B1%E5%90%8C%E7%82%B9%E4%B8%8E%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="nav-text">1. Redis 与 Memcached 的共同点与区别？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Redis-%E9%99%A4%E4%BA%86%E5%81%9A%E7%BC%93%E5%AD%98%EF%BC%8C%E8%BF%98%E8%83%BD%E5%81%9A%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-text">2. Redis 除了做缓存，还能做什么？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-Redis-%E8%BF%90%E8%A1%8C%E5%BF%AB%E7%9A%84%E5%8E%9F%E5%9B%A0%EF%BC%9F"><span class="nav-text">3. Redis 运行快的原因？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-Redis-%E7%9A%84%E4%BC%98%E7%BC%BA%E7%82%B9%EF%BC%9F"><span class="nav-text">4. Redis 的优缺点？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-Redis4-0-%E4%B9%8B%E5%89%8D%E4%B8%BA%E4%BB%80%E4%B9%88%E9%80%89%E6%8B%A9%E5%8D%95%E7%BA%BF%E7%A8%8B-%E5%A4%9A%E8%B7%AF-IO-%E5%A4%8D%E7%94%A8"><span class="nav-text">5. Redis4.0 之前为什么选择单线程+多路 IO 复用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Redis-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%AF%87"><span class="nav-text">Redis 数据结构篇</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-SDS-%E7%AE%80%E5%8D%95%E5%8A%A8%E6%80%81%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="nav-text">1. SDS(简单动态字符串)</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BD%9C%E7%94%A8"><span class="nav-text">作用</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%BB%93%E6%9E%84"><span class="nav-text">结构</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%B8%8E-C-%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="nav-text">与 C 字符串的区别？</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E9%93%BE%E8%A1%A8"><span class="nav-text">2. 链表</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BD%9C%E7%94%A8-1"><span class="nav-text">作用</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%BB%93%E6%9E%84-1"><span class="nav-text">结构</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E5%AD%97%E5%85%B8"><span class="nav-text">3. 字典</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BD%9C%E7%94%A8-2"><span class="nav-text">作用</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%BB%93%E6%9E%84-2"><span class="nav-text">结构</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%93%88%E5%B8%8C%E7%AE%97%E6%B3%95"><span class="nav-text">哈希算法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#rehash"><span class="nav-text">rehash</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%B8%90%E8%BF%9B%E5%BC%8F-rehash"><span class="nav-text">渐进式 rehash</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-%E8%B7%B3%E8%B7%83%E8%A1%A8"><span class="nav-text">4. 跳跃表</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BD%9C%E7%94%A8-3"><span class="nav-text">作用</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-%E6%95%B4%E6%95%B0%E9%9B%86%E5%90%88"><span class="nav-text">5. 整数集合</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-%E5%8E%8B%E7%BC%A9%E5%88%97%E8%A1%A8"><span class="nav-text">6. 压缩列表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-%E5%AF%B9%E8%B1%A1"><span class="nav-text">7. 对象</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Redis-%E6%8C%81%E4%B9%85%E5%8C%96%E7%AF%87"><span class="nav-text">Redis 持久化篇</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E8%AE%B2%E4%B8%80%E4%B8%8B-Redis-%E4%B8%AD%E7%9A%84%E6%8C%81%E4%B9%85%E5%8C%96%E6%9C%BA%E5%88%B6"><span class="nav-text">1. 讲一下 Redis 中的持久化机制</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#RDB"><span class="nav-text">RDB</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#AOF"><span class="nav-text">AOF</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E8%AF%B4%E4%B8%80%E4%B8%8B-RDB-%E5%92%8C-AOF-%E7%9A%84%E4%BC%98%E7%BC%BA%E7%82%B9%EF%BC%9F"><span class="nav-text">2. 说一下 RDB 和 AOF 的优缺点？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-RDB-%E5%92%8C-AOF-%E9%80%89%E5%93%AA%E4%B8%80%E4%B8%AA%EF%BC%9F"><span class="nav-text">3. RDB 和 AOF 选哪一个？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Redis-%E9%9B%86%E7%BE%A4%E7%AF%87"><span class="nav-text">Redis 集群篇</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Redis-%E5%BA%94%E7%94%A8%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3%E7%AF%87"><span class="nav-text">Redis 应用问题解决篇</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Redis-%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81%EF%BC%9F"><span class="nav-text">1. Redis 如何实现分布式锁？</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E5%87%BA%E7%8E%B0%E7%9A%84%E5%8E%9F%E5%9B%A0"><span class="nav-text">问题出现的原因</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%A6%82%E6%9E%9C%E5%AE%9E%E7%8E%B0%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81%EF%BC%8C%E9%9C%80%E8%A6%81%E6%BB%A1%E8%B6%B3%E7%9A%84%E6%9D%A1%E4%BB%B6"><span class="nav-text">如果实现分布式锁，需要满足的条件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%9B%AE%E5%89%8D%E5%8F%AF%E4%BB%A5%E5%AE%9E%E7%8E%B0%E7%9A%84%E6%96%B9%E5%BC%8F"><span class="nav-text">目前可以实现的方式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%83%85%E5%86%B5%E4%B8%80"><span class="nav-text">情况一</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%83%85%E5%86%B5%E4%BA%8C"><span class="nav-text">情况二</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%83%85%E5%86%B5%E4%B8%89"><span class="nav-text">情况三</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%83%85%E5%86%B5%E5%9B%9B"><span class="nav-text">情况四</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%83%85%E5%86%B5%E4%BA%94"><span class="nav-text">情况五</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%83%85%E5%86%B5%E4%B8%83"><span class="nav-text">情况七</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Redis-%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97%EF%BC%9F"><span class="nav-text">2. Redis 如何实现消息队列？</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#List-%E9%98%9F%E5%88%97"><span class="nav-text">List 队列</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%91%E5%B8%83-%E8%AE%A2%E9%98%85%E6%A8%A1%E5%9E%8B"><span class="nav-text">发布&#x2F;订阅模型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Stream"><span class="nav-text">Stream</span></a></li></ol></li></ol></li></ol></div>
       </section>
       <!--/noindex-->
 
@@ -346,7 +348,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2022-03-09 14:49:46" itemprop="dateModified" datetime="2022-03-09T14:49:46+08:00">2022-03-09</time>
+        <time title="修改时间：2022-03-10 13:58:13" itemprop="dateModified" datetime="2022-03-10T13:58:13+08:00">2022-03-10</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -391,14 +393,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>5.4k</span>
+      <span>6.5k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>5 分钟</span>
+      <span>6 分钟</span>
     </span>
 </div>
 
@@ -641,6 +643,54 @@
 <li>从库被哨兵提升为新主库，这个锁在新的主库上，丢失了!</li>
 </ol>
 <p>解决方式 ： <strong>RedLock</strong></p>
+<h3 id="2-Redis-如何实现消息队列？"><a href="#2-Redis-如何实现消息队列？" class="headerlink" title="2. Redis 如何实现消息队列？"></a>2. Redis 如何实现消息队列？</h3><p>三种方式：</p>
+<ul>
+<li>List 队列</li>
+<li>发布/订阅模型</li>
+<li>Stream 趋于成熟的队列</li>
+</ul>
+<p>其实还有一种是专业的消息队列，比如 kafka、RabbitMQ。</p>
+<h4 id="List-队列"><a href="#List-队列" class="headerlink" title="List 队列"></a>List 队列</h4><p>模型简单，一边生产者生产消息，一边消费者拉取消息，出现的问题是：没有消息就一直拉取，这个时候就会导致 CPU 空转、如果要是让拉取消息休息一会，就有可能新消息延迟消费。</p>
+<p>改进：使用 BRPOP/BLPOP ，这里的 B 是阻塞的意思。没有消息就阻塞，有了消息就能消费了。但是存在一些问题，分别是：</p>
+<ul>
+<li>不支持重复消费，消费者拉取消息后，List 上就被删除了，无法被其他消费者消费。</li>
+<li>消息丢失，消费着拉取消息后宕机了，那这条消息就丢失了。</li>
+</ul>
+<p>解决方式看发布/订阅模型</p>
+<h4 id="发布-订阅模型"><a href="#发布-订阅模型" class="headerlink" title="发布/订阅模型"></a>发布/订阅模型</h4><p>可以解决重复消费，多个消费者订阅同一个生产者，当生产者有消息是，就是通知消费者。并且一个消费者可以订阅多个生产者。但是存在的问题就是<strong>丢数据</strong>。</p>
+<p>发生的场景：1. 消费者下线。2. Redis 宕机。3.消息堆积</p>
+<img src="https://gitee.com/dlutlgy/images_for_typora/raw/master/images/image-20220310133039176.png" alt="image-20220310133039176" style="zoom:50%;" />
+
+<p>我们可以看到，发布/订阅模型不存储数据，只是转发给消费者。<strong>没有数据持久化的能力。</strong></p>
+<p>如果消费者下线了，那再次上线只能接受新的消息。</p>
+<p>如果 Redis 宕机，Pub/Sub 的数据也会全部丢失。</p>
+<p>如果生产者生产速度比较快，对于List来说，可能就是链表过长，内存持续增长，如果是 Pub/Sub 模式，因为消费者每次订阅一个队列，都会给消费者一个缓冲区（也就是一块内存），当生产者发布消息的时候，就会把消息写到订阅这个的消费者的缓冲区，之后消费者在缓冲区读取消息，但是消费者缓冲区是有限制的，如果超过了缓冲区，那就会把这个消费者踢下线。也就导致消费失败，丢失数据。</p>
+<p>发布/订阅的优缺点：</p>
+<ol>
+<li><p>支持发布/订阅。支持多组生产者，消费者处理消息。</p>
+</li>
+<li><p>消费者下载，消息丢失。</p>
+</li>
+<li><p>不支持数据的持久化，Redis 宕机，数据丢失。</p>
+</li>
+<li><p>消息堆积，缓冲区溢出，消费者被踢，数据丢失。</p>
+</li>
+<li><p>从缓冲区取走数据，也就在 Redis 缓冲区中删除了，消费者一场，无法重新消费。</p>
+</li>
+</ol>
+<p>我们希望的是：</p>
+<ol>
+<li>支持阻塞式拉取消息</li>
+<li>支持发布/订阅模式</li>
+<li>消费失败，可以重新消费。</li>
+<li>实例宕机，消息不丢失，数据可持久化。</li>
+<li>消息可堆积。</li>
+</ol>
+<h4 id="Stream"><a href="#Stream" class="headerlink" title="Stream"></a>Stream</h4><p>Stream 使用 XADD 和 XREAD 完成生产消费，也支持阻塞式拉取消息，也支持发布/订阅模式，当消费完成后，会执行 XACK 命令告知 Redis，Redis 就会标记为处理完成。</p>
+<img src="https://gitee.com/dlutlgy/images_for_typora/raw/master/images/image-20220310135257343.png" alt="image-20220310135257343" style="zoom:50%;" />
+
+<p>Stream 和其他数据类型一样，写操作都会写入到 RDB 和 AOF 中。</p>
+<p>对于消息堆积，两个解决方法，1. 生产者限流。2. 丢弃消息：中间件丢弃消息，只保留固定长度新消息。所以，当消息积压的时候，还是会丢失消息。有小瑕疵，如果继续对比，那就是与专业的消息队列对比了。</p>
 
     </div>
 
@@ -743,14 +793,14 @@
       <i class="fa fa-chart-line"></i>
     </span>
       <span>站点总字数：</span>
-    <span title="站点总字数">183k</span>
+    <span title="站点总字数">184k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span>站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">2:46</span>
+    <span title="站点阅读时长">2:47</span>
   </span>
 </div>
 
