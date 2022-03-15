@@ -31,7 +31,7 @@
 <meta property="og:image" content="https://gitee.com/dlutlgy/images_for_typora/raw/master/images/image-20220105213540811.png">
 <meta property="og:image" content="https://gitee.com/dlutlgy/images_for_typora/raw/master/images/image-20220102223958792.png">
 <meta property="article:published_time" content="2021-02-18T08:24:57.000Z">
-<meta property="article:modified_time" content="2022-03-02T08:16:40.732Z">
+<meta property="article:modified_time" content="2022-03-15T07:07:42.739Z">
 <meta property="article:author" content="Dlutlgy">
 <meta property="article:tag" content="面试">
 <meta property="article:tag" content="Java基础">
@@ -228,7 +228,7 @@
 
       <!--noindex-->
       <section class="post-toc-wrap sidebar-panel">
-          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#List%E3%80%81Set%E3%80%81Map-%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="nav-text">List、Set、Map 的区别？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ArrayList-%E5%92%8C-LinkedList-%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="nav-text">ArrayList 和 LinkedList 的区别？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ArrayList-%E5%92%8C-Vector-%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%9F-%E4%B8%BA%E4%BB%80%E4%B9%88Vector-%E8%A2%AB%E4%BB%A3%E6%9B%BF%EF%BC%9F"><span class="nav-text">ArrayList 和 Vector 的区别？ 为什么Vector 被代替？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ArrayList-%E7%9A%84%E6%89%A9%E5%AE%B9%E6%9C%BA%E5%88%B6"><span class="nav-text">ArrayList 的扩容机制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HashMap-%E5%BA%95%E5%B1%82%E7%9A%84%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86%EF%BC%9F"><span class="nav-text">HashMap 底层的实现原理？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HashMap-%E5%BA%95%E5%B1%82%E6%95%B0%E7%BB%84%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E4%BF%9D%E8%AF%81%E6%98%AF2%E7%9A%84n%E6%AC%A1%E6%96%B9%EF%BC%9F"><span class="nav-text">HashMap 底层数组为什么要保证是2的n次方？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HashMap-%E5%92%8C-Hashtable-%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="nav-text">HashMap 和 Hashtable 的区别？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HashMap-%E5%92%8C-HashSet-%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-text">HashMap 和 HashSet 的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HashSet-%E5%A6%82%E4%BD%95%E6%A3%80%E6%9F%A5%E9%87%8D%E5%A4%8D%EF%BC%9F"><span class="nav-text">HashSet 如何检查重复？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#hashCode-%E4%B8%8E-equals-%E7%9A%84%E7%9B%B8%E5%85%B3%E8%A7%84%E5%AE%9A"><span class="nav-text">hashCode() 与 equals() 的相关规定</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8E-equal-%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="nav-text">&#x3D;&#x3D; 与 equal() 的区别？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ConcurrentHashMap-%E5%92%8C-Hashtable-%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="nav-text">ConcurrentHashMap 和 Hashtable 的区别？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HashMap%E6%BA%90%E7%A0%81%E4%B8%AD%E7%9A%84%E9%87%8D%E8%A6%81%E5%B8%B8%E9%87%8F"><span class="nav-text">HashMap源码中的重要常量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HashMap-%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90"><span class="nav-text">HashMap 源码分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ConcurrentHashMap-%E8%AE%B2%E8%A7%A3"><span class="nav-text">ConcurrentHashMap 讲解</span></a></li></ol></div>
+          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#List%E3%80%81Set%E3%80%81Map-%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="nav-text">List、Set、Map 的区别？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ArrayList-%E5%92%8C-LinkedList-%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="nav-text">ArrayList 和 LinkedList 的区别？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ArrayList-%E5%92%8C-Vector-%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%9F-%E4%B8%BA%E4%BB%80%E4%B9%88Vector-%E8%A2%AB%E4%BB%A3%E6%9B%BF%EF%BC%9F"><span class="nav-text">ArrayList 和 Vector 的区别？ 为什么Vector 被代替？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ArrayList-%E7%9A%84%E6%89%A9%E5%AE%B9%E6%9C%BA%E5%88%B6"><span class="nav-text">ArrayList 的扩容机制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HashMap-%E5%BA%95%E5%B1%82%E7%9A%84%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86%EF%BC%9F"><span class="nav-text">HashMap 底层的实现原理？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HashMap-%E5%BA%95%E5%B1%82%E6%95%B0%E7%BB%84%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E4%BF%9D%E8%AF%81%E6%98%AF-2-%E7%9A%84-n-%E6%AC%A1%E6%96%B9%EF%BC%9F"><span class="nav-text">HashMap 底层数组为什么要保证是 2 的 n 次方？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HashMap-%E5%92%8C-Hashtable-%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="nav-text">HashMap 和 Hashtable 的区别？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HashMap-%E5%92%8C-HashSet-%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-text">HashMap 和 HashSet 的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HashSet-%E5%A6%82%E4%BD%95%E6%A3%80%E6%9F%A5%E9%87%8D%E5%A4%8D%EF%BC%9F"><span class="nav-text">HashSet 如何检查重复？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#hashCode-%E4%B8%8E-equals-%E7%9A%84%E7%9B%B8%E5%85%B3%E8%A7%84%E5%AE%9A"><span class="nav-text">hashCode() 与 equals() 的相关规定</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8E-equal-%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="nav-text">&#x3D;&#x3D; 与 equal() 的区别？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ConcurrentHashMap-%E5%92%8C-Hashtable-%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="nav-text">ConcurrentHashMap 和 Hashtable 的区别？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HashMap%E6%BA%90%E7%A0%81%E4%B8%AD%E7%9A%84%E9%87%8D%E8%A6%81%E5%B8%B8%E9%87%8F"><span class="nav-text">HashMap源码中的重要常量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HashMap-%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90"><span class="nav-text">HashMap 源码分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ConcurrentHashMap-%E8%AE%B2%E8%A7%A3"><span class="nav-text">ConcurrentHashMap 讲解</span></a></li></ol></div>
       </section>
       <!--/noindex-->
 
@@ -338,7 +338,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2022-03-02 16:16:40" itemprop="dateModified" datetime="2022-03-02T16:16:40+08:00">2022-03-02</time>
+        <time title="修改时间：2022-03-15 15:07:42" itemprop="dateModified" datetime="2022-03-15T15:07:42+08:00">2022-03-15</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -407,7 +407,7 @@
 <p><img src="https://gitee.com/dlutlgy/images_for_typora/raw/master/images/image-20220102223958792.png" alt="image-20220102223958792"></p>
 <h3 id="List、Set、Map-的区别？"><a href="#List、Set、Map-的区别？" class="headerlink" title="List、Set、Map 的区别？"></a>List、Set、Map 的区别？</h3><p>List 可以存放有序、可重复的数据。也称为“动态数组”（这里的有序指的是存放顺序从索引0开始存放）</p>
 <p>Set 可以存放无序、不可重复的数据。（类似于高中的集合）</p>
-<p>Map 是双列集合，用来存储一对（key- value） 的数据，key值是唯一的。用Set存。</p>
+<p>Map 是双列集合，用来存储一对（key- value） 的数据，key值是唯一的。用Set存。key是无序的，不可重复的数据，value存放的是无序的，可重复的数据。</p>
 <h3 id="ArrayList-和-LinkedList-的区别？"><a href="#ArrayList-和-LinkedList-的区别？" class="headerlink" title="ArrayList 和 LinkedList 的区别？"></a>ArrayList 和 LinkedList 的区别？</h3><ul>
 <li>底层数据结构</li>
 </ul>
@@ -415,7 +415,7 @@
 <ul>
 <li>插入和删除受元素位置的影响</li>
 </ul>
-<p>ArrayList是用数组存储的，如果是执行add( E ,e)这时候就是在最后面插入，时间为O(1),如果是在中间插入元素，执行add(int index, E element) 的时间复杂度就在O(n-i),因为在插入i的位置之后的元素，即第n-i个元素都需要进行移动。</p>
+<p>ArrayList是用数组存储的，如果是执行add( E ,e)这时候就是在最后面插入，时间为O(1)，如果是在中间插入元素，执行add(int index, E element) 的时间复杂度就在O(n-i),因为在插入i的位置之后的元素，即第n-i个元素都需要进行移动。</p>
 <p>LinkedList采用的是链表的存储的，插入，删除的时间复杂度为O(1)</p>
 <ul>
 <li>是否支持快速随机访问（也就是查找速度看谁快）</li>
@@ -431,9 +431,9 @@
 <li>ArrayList 扩容的时候是扩容1.5倍，而 Vector 扩容的时候是2倍</li>
 </ul>
 <p>因为 Vector 类中所有的方法都是同步的(线程安全的)，所以系统开销比较大。</p>
-<h3 id="ArrayList-的扩容机制"><a href="#ArrayList-的扩容机制" class="headerlink" title="ArrayList 的扩容机制"></a>ArrayList 的扩容机制</h3><p>jdk 7情况下</p>
+<h3 id="ArrayList-的扩容机制"><a href="#ArrayList-的扩容机制" class="headerlink" title="ArrayList 的扩容机制"></a>ArrayList 的扩容机制</h3><p>jdk 7 情况下</p>
 <ul>
-<li>ArrayList list = new ArrayList();//底层创建了长度是10的Object[]数组elementData</li>
+<li>ArrayList list = new ArrayList(); //底层创建了长度是 10 的 Object[] 数组 elementData</li>
 </ul>
 <ul>
 <li>list.add(123);//elementData[0] = new Integer(123);</li>
@@ -442,10 +442,10 @@
 <li>默认情况下，扩容为原来的容量的1.5倍，同时需要将原有数组中的数据复制到新的数组中。</li>
 <li>结论：建议开发中使用带参的构造器：ArrayList list = new ArrayList(int capacity)</li>
 </ul>
-<p>jdk 8中ArrayList的变化：</p>
+<p>jdk 8 中ArrayList的变化：</p>
 <ul>
-<li>ArrayList list = new ArrayList();//底层Object[] elementData初始化为{}.并没有创建长度为10的数组</li>
-<li>list.add(123);//第一次调用add()时，底层才创建了长度10的数组，并将数据123添加到elementData[0]</li>
+<li>ArrayList list = new ArrayList(); //底层 Object[] elementData 初始化为 {} .并没有创建长度为 10 的数组</li>
+<li>list.add(123); //第一次调用 add() 时，底层才创建了长度 10 的数组，并将数据 123 添加到 elementData[0]</li>
 <li>…</li>
 <li>后续的添加和扩容操作与jdk 7 无异。<br>小结：jdk7中的ArrayList的对象的创建类似于单例的饿汉式，而jdk8中的ArrayList的对象的创建类似于单例的懒汉式，延迟了数组的创建，节省内存。</li>
 </ul>
@@ -456,7 +456,7 @@
 </li>
 <li><p>…可能在放元素之前，已经放了好多次了… 然后我们在放元素 map.put(key1,value1)</p>
 </li>
-<li><p>首先，调用 key1 所在的类计算hashcode() 计算 key1 的哈希值，此哈希值经过某种计算后，得到在Entry数组中存放的位置。</p>
+<li><p>首先，调用 key1 所在的类计算 hashcode() 计算 key1 的哈希值，此哈希值经过某种计算后，得到在Entry数组中存放的位置。</p>
 </li>
 <li><p>如果此位置上数据为空，那么直接存放该数据 ———–<strong>情况1</strong>。</p>
 <p>如果此位置上数据不为空(那就是说此位置上有一个或多个数据(多个数据则是以链表的形式存在))，则比较和已经存在的一个或者多个数据的哈希值：</p>
@@ -465,14 +465,14 @@
 </li>
 <li><p>如果key1 的哈希值与已经存在的数据的哈希值有相同的，则继续比较：调用key1所在类的equals(key1)方法，比较：</p>
 <ul>
-<li>如果equals() 返回false；此时 key1 - value1 添加成功  ——-<strong>情况3</strong></li>
-<li>如果equals() 返回true；那么此时value1 的值会代替之前的旧值。</li>
+<li>如果 equals() 返回false；此时 key1 - value1 添加成功  ——-<strong>情况3</strong></li>
+<li>如果 equals() 返回true；那么此时 value1 的值会代替之前的旧值。</li>
 </ul>
 </li>
 </ul>
 </li>
 </ol>
-<h3 id="HashMap-底层数组为什么要保证是2的n次方？"><a href="#HashMap-底层数组为什么要保证是2的n次方？" class="headerlink" title="HashMap 底层数组为什么要保证是2的n次方？"></a>HashMap 底层数组为什么要保证是2的n次方？</h3><p>​    因为在计算要存放的hash值后，会与数组的长度-1进行一次与运算，如果数组是2的倍数（也就是2的n次方），那么长度length-1 的二进制一定是 ….000001111这样的格式，后面全是1，那么在进行与运算的时候，结果一定是在原来的数组的大小范围之内（即0-15之内），假如不是2的倍数，那么length-1 的二进制值后面可能就不可能全是1，做运算的时候可能就有空间不管怎么计算都落不到，就会导致空间的浪费。</p>
+<h3 id="HashMap-底层数组为什么要保证是-2-的-n-次方？"><a href="#HashMap-底层数组为什么要保证是-2-的-n-次方？" class="headerlink" title="HashMap 底层数组为什么要保证是 2 的 n 次方？"></a>HashMap 底层数组为什么要保证是 2 的 n 次方？</h3><p>​    因为在计算要存放的 hash 值后，会与数组的长度 -1 进行一次<strong>与运算</strong>，如果数组是2的倍数（也就是2的n次方），那么长度length-1 的二进制一定是 ….000001111这样的格式，后面全是1，那么在进行与运算的时候，结果一定是在原来的数组的大小范围之内（即0-15之内），假如不是2的倍数，那么length-1 的二进制值后面可能就不可能全是1，做运算的时候可能就有空间不管怎么计算都落不到，就会导致空间的浪费。</p>
 <h3 id="HashMap-和-Hashtable-的区别？"><a href="#HashMap-和-Hashtable-的区别？" class="headerlink" title="HashMap 和 Hashtable 的区别？"></a>HashMap 和 Hashtable 的区别？</h3><ul>
 <li>线程是否安全</li>
 </ul>
@@ -482,30 +482,30 @@
 </ul>
 <p>因为线程不安全，所以 HashMap 效率高点，Hashtable 效率低，一般都不使用了。</p>
 <ul>
-<li>Null key 和Null value</li>
+<li>Null key 和 Null value</li>
 </ul>
-<p>HashMap 支持null作为键，但是只能有一个，值也可以为null，可以有多个。</p>
-<p>Hashtable键是不能作为 null 的。</p>
+<p>HashMap 支持 null 作为键，但是只能有一个，值也可以为 null，可以有多个。</p>
+<p>Hashtable 键是不能作为 null 的。</p>
 <ul>
 <li>初始化容量大小和每次扩容的大小不同</li>
 </ul>
-<p>HashMap 默认初始化是 16 ，每次扩容为原来的两倍。Hashtable默认初始化 11。每次扩容为原来的 2n+1。</p>
-<p>如果初始化都指定来一个初始化值，那么 HashMap 都会扩充为2 的幂次方大小。而Hashtable则就是使用指定的大小进行初始化。</p>
+<p>HashMap 默认初始化是 16 ，每次扩容为原来的<strong>两倍</strong>。Hashtable默认初始化 11。每次扩容为原来的 2n+1。</p>
+<p>如果初始化都指定来一个初始化值，那么 HashMap 都会扩充为 2 的幂次方大小。而Hashtable则就是使用指定的大小进行初始化。</p>
 <ul>
 <li>底层数据结构</li>
 </ul>
-<p>HashMap在1.8以后当链表的长度大于8且数组的长度大于64 的时候，这时候链表会转化为红黑树，而Hashtable没有这种机制。</p>
-<h3 id="HashMap-和-HashSet-的区别"><a href="#HashMap-和-HashSet-的区别" class="headerlink" title="HashMap 和 HashSet 的区别"></a>HashMap 和 HashSet 的区别</h3><p>HashSet底层是基于HashMap实现的，所以一般很少问到HashSet 的底层数据结构。</p>
-<p>HashMap实现了Map接口，而HashSet实现了Set接口。</p>
-<p>HashMap存储的是键值对，HashSet存储的是对象。</p>
-<p>HashMap使用的是key进行计算hashcode，HashSet使用成员对象计算hashcode。</p>
-<h3 id="HashSet-如何检查重复？"><a href="#HashSet-如何检查重复？" class="headerlink" title="HashSet 如何检查重复？"></a>HashSet 如何检查重复？</h3><p>当把对象加入到 HashSet 的时候，首先会计算该对象的 hashcode 值，来判断该对象的位置，同时和其他已经存在的进行值比较，如果该位置为空(对应位置没有元素)，那么就认为对象没有重复，它就是唯一的(嗯，我就是唯一的)，那就可以放进去了，但是，如果比较相同，那就会调用 equal() 方法再来比较(因为不同的对象可有可能出现相同的 hashcode 值)，看是否真的相同，如果相同就添加成功，不相同那就算了。</p>
+<p>HashMap 在1.8以后当链表的长度大于8且数组的长度大于64 的时候，这时候链表会转化为红黑树，而 Hashtable 没有这种机制。</p>
+<h3 id="HashMap-和-HashSet-的区别"><a href="#HashMap-和-HashSet-的区别" class="headerlink" title="HashMap 和 HashSet 的区别"></a>HashMap 和 HashSet 的区别</h3><p>HashSet 底层是基于 HashMap 实现的，所以一般很少问到 HashSet 的底层数据结构。</p>
+<p>HashMap 实现了Map接口，而 HashSet 实现了 Set 接口。</p>
+<p>HashMap 存储的是键值对，HashSet 存储的是对象。</p>
+<p>HashMap 使用的是 key 进行计算 hashcode，HashSet 使用成员对象计算 hashcode。</p>
+<h3 id="HashSet-如何检查重复？"><a href="#HashSet-如何检查重复？" class="headerlink" title="HashSet 如何检查重复？"></a>HashSet 如何检查重复？</h3><p>当把对象加入到 HashSet 的时候，首先会计算该对象的 hashcode 值，来判断该对象的位置，同时和其他已经存在的进行值比较，如果该位置为空(对应位置没有元素)，那么就认为对象没有重复，它就是唯一的(嗯，我就是唯一的)，那就可以放进去了，但是，如果比较相同，那就会调用 equal() 方法再来比较 (因为不同的对象可有可能出现相同的 hashcode 值)，看是否真的相同，如果相同就添加成功，不相同那就算了。</p>
 <h3 id="hashCode-与-equals-的相关规定"><a href="#hashCode-与-equals-的相关规定" class="headerlink" title="hashCode() 与 equals() 的相关规定"></a>hashCode() 与 equals() 的相关规定</h3><ol>
 <li>如果两个对象相同，那么hashcode 一定相同。</li>
 <li>如果两个对象相同，那么 equals 方法返回 true。</li>
 <li>hashcode 相同的两个对象，也可能不相等。</li>
 </ol>
-<p>所以：equals() 方法被覆盖重写，那么 hashCode() 方法一定要重写。如果不重写，就是使用默认的hashCode() 方法，默认的 hashCode() 方法对里面的对象产生不同的值。那么该 class 的两个对象无论如何都不会相等，即使这两个对象指向相同的数据，也会产生不同的值。 </p>
+<p>所以：equals() 方法被覆盖重写，那么 hashCode() 方法一定要重写。如果不重写，就是使用默认的 hashCode() 方法，默认的 hashCode() 方法对里面的对象产生不同的值。那么该 class 的两个对象无论如何都不会相等，即使这两个对象指向相同的数据，也会产生不同的值。 </p>
 <h3 id="与-equal-的区别？"><a href="#与-equal-的区别？" class="headerlink" title="== 与 equal() 的区别？"></a>== 与 equal() 的区别？</h3><ol>
 <li><p>== 一般比较的是值是否相等</p>
 <ul>
@@ -532,7 +532,7 @@
 <li>底层数据结构</li>
 </ul>
 <p>Hashtable 采用的是<strong>数组+链表</strong>的形式</p>
-<p>ConcurrentHashMap 在 jdk 7 的是由 <strong>Segment 数组结构和HashEntry数组结构</strong> 构成。在 jdk 8中，底层和 HashMap 数据结构差不多。采用的是<strong>数组+链表/红黑树</strong>(链表长度超过8则由链表转红黑树)</p>
+<p>ConcurrentHashMap 在 jdk 7 的是由 <strong>Segment 数组结构和 HashEntry 数组结构</strong> 构成。在 jdk 8中，底层和 HashMap 数据结构差不多。采用的是<strong>数组+链表+红黑树</strong>(链表长度超过8则由链表转红黑树)</p>
 <ul>
 <li>扩容方式</li>
 </ul>
@@ -571,8 +571,8 @@
 <ul>
 <li>new HashMap():底层没有创建一个长度为16的数组</li>
 <li>jdk 8底层的数组是：Node[],而非Entry[]</li>
-<li>首次调用put()方法时，底层创建长度为16的数组</li>
-<li>jdk7底层结构只有：数组+链表。jdk8中底层结构：数组+链表+红黑树。</li>
+<li>首次调用put()方法时，底层创建长度为 16 的数组</li>
+<li>jdk7底层结构只有：数组+链表。jdk8 中底层结构：数组+链表+红黑树。</li>
 <li>形成链表时，七上八下（jdk7:新的元素指向旧的元素。jdk8：旧的元素指向新的元素）</li>
 <li>当数组的某一个索引位置上的元素以链表形式存在的数据个数 &gt; 8 且当前数组的长度 &gt; 64时，此时此索引位置上的所数据改为使用红黑树存储。</li>
 </ul>
@@ -679,14 +679,14 @@
       <i class="fa fa-chart-line"></i>
     </span>
       <span>站点总字数：</span>
-    <span title="站点总字数">186k</span>
+    <span title="站点总字数">187k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span>站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">2:49</span>
+    <span title="站点阅读时长">2:50</span>
   </span>
 </div>
 

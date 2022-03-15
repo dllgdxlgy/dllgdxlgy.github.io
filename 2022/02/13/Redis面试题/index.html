@@ -42,7 +42,7 @@
 <meta property="og:image" content="https://gitee.com/dlutlgy/images_for_typora/raw/master/images/image-20220310133039176.png">
 <meta property="og:image" content="https://gitee.com/dlutlgy/images_for_typora/raw/master/images/image-20220310135257343.png">
 <meta property="article:published_time" content="2022-02-13T09:36:24.000Z">
-<meta property="article:modified_time" content="2022-03-14T05:14:51.781Z">
+<meta property="article:modified_time" content="2022-03-14T07:09:18.205Z">
 <meta property="article:author" content="Dlutlgy">
 <meta property="article:tag" content="面试">
 <meta property="article:tag" content="Redis">
@@ -349,7 +349,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2022-03-14 13:14:51" itemprop="dateModified" datetime="2022-03-14T13:14:51+08:00">2022-03-14</time>
+        <time title="修改时间：2022-03-14 15:09:18" itemprop="dateModified" datetime="2022-03-14T15:09:18+08:00">2022-03-14</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -394,7 +394,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>7.9k</span>
+      <span>8.2k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -509,7 +509,7 @@
 <p>当空间缩小的时候，会直接记录到 free 字段里。</p>
 </li>
 <li><p>二进制安全的</p>
-<p>C 字符串只保存 ASCII 码，并且除了字符串的末尾，不能有空字符串，这些就导致了没办法存放图片、音频、视频等内容，而SDS 就随便放。它读取的是len 的值，即使你有空字符串也继续读。</p>
+<p>C 字符串只保存 ASCII 码，并且除了字符串的末尾，不能有空字符串，这些就导致了没办法存放图片、音频、视频等内容，而SDS 就随便放。它读取的是len 的值，即使你有空字符串也继续读。使用的是 len 属性，而不是字符串里的空字符。</p>
 </li>
 <li><p>兼容部分 C 字符串函数</p>
 </li>
@@ -524,6 +524,14 @@
 </ol>
 <h5 id="结构-1"><a href="#结构-1" class="headerlink" title="结构"></a>结构</h5><img src="https://gitee.com/dlutlgy/images_for_typora/raw/master/images/image-20220214175759234.png" alt="image-20220214175759234" style="zoom:50%;" />
 
+<p>总结：</p>
+<ol>
+<li>获取某个节点的前一个或者后一个节点的时间复杂度都是 O(1).</li>
+<li>无环结构，头节点的前一个和尾节点的后一个都是指向的null</li>
+<li>获取表头节点和表尾节点的时间复杂度尾 O(1)</li>
+<li>获取长度的时间复杂度也是 O(1)</li>
+<li></li>
+</ol>
 <h3 id="3-字典"><a href="#3-字典" class="headerlink" title="3. 字典"></a>3. 字典</h3><h5 id="作用-2"><a href="#作用-2" class="headerlink" title="作用"></a>作用</h5><ol>
 <li>Redis 底层数据库就是使用字典实现的</li>
 <li>是哈希键的底层实现之一</li>
@@ -609,7 +617,13 @@
 <p>如果只是拿 Redis 做内存缓存的话，那么就都不用</p>
 <p>如果对于数据很敏感，可以使用 AOF，但是不建议单独使用，可以也打开 RDB。</p>
 <p>如果对数据不敏感而且还要进行保存，那么仅使用 RDB 进行存储</p>
-<h2 id="Redis-集群篇"><a href="#Redis-集群篇" class="headerlink" title="Redis 集群篇"></a>Redis 集群篇</h2><h2 id="Redis-应用问题解决篇"><a href="#Redis-应用问题解决篇" class="headerlink" title="Redis 应用问题解决篇"></a>Redis 应用问题解决篇</h2><h3 id="1-Redis-如何实现分布式锁？"><a href="#1-Redis-如何实现分布式锁？" class="headerlink" title="1. Redis 如何实现分布式锁？"></a>1. Redis 如何实现分布式锁？</h3><p>参考链接：<a target="_blank" rel="noopener" href="https://www.zhihu.com/question/300767410/answer/1749442787">https://www.zhihu.com/question/300767410/answer/1749442787</a></p>
+<h2 id="Redis-集群篇"><a href="#Redis-集群篇" class="headerlink" title="Redis 集群篇"></a>Redis 集群篇</h2><p>主从复制的原理：</p>
+<ul>
+<li>当从服务器连上主服务器的时候，从服务器向主服务器发送数据同步消息</li>
+<li>主服务器连接到从服务器发送过来的同步消息后，把主服务器数据进行持久化RDB文件，把 RDB 文件发送给从服务器，然后，从服务器拿到文件后进行读取。</li>
+<li>每次主服务器进行写操作了，这个时候主服务器主的进行数据同步。</li>
+</ul>
+<h2 id="Redis-应用问题解决篇"><a href="#Redis-应用问题解决篇" class="headerlink" title="Redis 应用问题解决篇"></a>Redis 应用问题解决篇</h2><h3 id="1-Redis-如何实现分布式锁？"><a href="#1-Redis-如何实现分布式锁？" class="headerlink" title="1. Redis 如何实现分布式锁？"></a>1. Redis 如何实现分布式锁？</h3><p>参考链接：<a target="_blank" rel="noopener" href="https://www.zhihu.com/question/300767410/answer/1749442787">https://www.zhihu.com/question/300767410/answer/1749442787</a></p>
 <h5 id="问题出现的原因"><a href="#问题出现的原因" class="headerlink" title="问题出现的原因"></a>问题出现的原因</h5><p>单机中，我们使用本地锁就可以避免多个操作同一个问题，但是在分布式系统中，肯容易就是多个服务器修改同一个数据，又因为读取和更新不是一个操作，所以原来的本地锁就派不上用场，这个时候就就需要分布式锁，它的作用就是<strong>保证多台服务器在执行某一段代码时保证只有一台服务器执行</strong>。</p>
 <h5 id="如果实现分布式锁，需要满足的条件"><a href="#如果实现分布式锁，需要满足的条件" class="headerlink" title="如果实现分布式锁，需要满足的条件"></a>如果实现分布式锁，需要满足的条件</h5><ol>
 <li>互斥性，任何时刻，保证只有一个客户端持有锁。</li>
@@ -842,14 +856,14 @@
       <i class="fa fa-chart-line"></i>
     </span>
       <span>站点总字数：</span>
-    <span title="站点总字数">186k</span>
+    <span title="站点总字数">187k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span>站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">2:49</span>
+    <span title="站点阅读时长">2:50</span>
   </span>
 </div>
 
