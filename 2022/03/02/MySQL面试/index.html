@@ -44,7 +44,7 @@
 <meta property="og:image" content="https://gitee.com/dlutlgy/images_for_typora/raw/master/images/image-20220305123355941.png">
 <meta property="og:image" content="https://gitee.com/dlutlgy/images_for_typora/raw/master/images/image-20220305123543108.png">
 <meta property="article:published_time" content="2022-03-02T11:18:57.000Z">
-<meta property="article:modified_time" content="2022-03-16T05:12:58.898Z">
+<meta property="article:modified_time" content="2022-03-17T13:42:59.745Z">
 <meta property="article:author" content="Dlutlgy">
 <meta property="article:tag" content="面试">
 <meta property="article:tag" content="MySql">
@@ -351,7 +351,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2022-03-16 13:12:58" itemprop="dateModified" datetime="2022-03-16T13:12:58+08:00">2022-03-16</time>
+        <time title="修改时间：2022-03-17 21:42:59" itemprop="dateModified" datetime="2022-03-17T21:42:59+08:00">2022-03-17</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -483,7 +483,7 @@
 <p>唯一索引：数据列不允许重复，允许为 null，一个表可以由多个唯一索引。</p>
 <p>普通索引：没有唯一性和 null 值要求。</p>
 <p>全文索引：（先空着吧）</p>
-<h3 id="4-索引的数据结构？"><a href="#4-索引的数据结构？" class="headerlink" title="4. 索引的数据结构？"></a>4. 索引的数据结构？</h3><h4 id="Hash-amp-B-树"><a href="#Hash-amp-B-树" class="headerlink" title="Hash &amp; B+树"></a>Hash &amp; B+树</h4><p>Hash表查询数据时间复杂度为O(1),但是无法进行范围查询。并且查出类的数据也不一定对。</p>
+<h3 id="4-索引的数据结构？"><a href="#4-索引的数据结构？" class="headerlink" title="4. 索引的数据结构？"></a>4. 索引的数据结构？</h3><h4 id="Hash-amp-B-树"><a href="#Hash-amp-B-树" class="headerlink" title="Hash &amp; B+树"></a>Hash &amp; B+树</h4><p>Hash表查询数据时间复杂度为 O(1)，但是无法进行范围查询。并且查出类的数据也不一定对。</p>
 <h5 id="Hash-表存在的缺点"><a href="#Hash-表存在的缺点" class="headerlink" title="Hash 表存在的缺点"></a>Hash 表存在的缺点</h5><ul>
 <li>Hash 冲突问题</li>
 <li>Hash 索引不支持顺序查找和范围查找</li>
@@ -569,15 +569,15 @@
 </li>
 </ul>
 <h3 id="3-redo-log-和-undo-log"><a href="#3-redo-log-和-undo-log" class="headerlink" title="3. redo log 和 undo log"></a>3. redo log 和 undo log</h3><p>首先，我们介绍了事务的四种特性，那么到底是基于什么样的原理实现的呢？</p>
-<p>事务的隔离型由<strong>锁机制</strong>实现</p>
+<p>事务的隔离性由<strong>锁机制</strong>实现</p>
 <p>事务的原子性、一致性、持久性由事务的 <strong>redo log</strong> 和 <strong>undo log</strong> 实现。</p>
 <p> <strong>redo log</strong> 称为重做日志，提供<strong>再写入功能</strong>、恢复提交事务修改的页操作，保证事务的持久性。</p>
 <p> **undo log **称为回滚日志，回滚行记录到指定的某个版本，保证事务的原子性、一致性。</p>
 <p>解决的问题：如果一个事务没有提交，那么突然断电也就算了，反正你也没提交，但是如果我提交了，然后断电了，此时数据还没有被刷新到磁盘，那么我们怎么办呢？这时候就需要 redo log 日志了。redo log 只是记录了一下修改的表空间哪一个页面的哪一条数据，改了写什么。如果这个时候在发生问题，我们之间拿过来 redo log 就怼到 bug 脸上 。</p>
 <h4 id="redo-log"><a href="#redo-log" class="headerlink" title="redo log"></a>redo log</h4><img src="https://gitee.com/dlutlgy/images_for_typora/raw/master/images/image-20220305093142998.png" alt="image-20220305093142998" style="zoom:50%;" />
 
-<p>这里有一种技术 <strong>WAL</strong>（Write-Ahead Log）预先日志持久化技术，面试经常问噢，然后我们说的刷盘，一般指的就是上面的步骤3，只要我们把redo log buffer 写入 redo log file 中，断电崩溃你随意。</p>
-<p>注意⚠️：在redo log buffer 写入 redo log file 中，并不是直接刷到磁盘的，只是刷入了page cache（文件系统缓存）中。由我们的操作系统来决定，具体由 <strong>innodb_flush_log_at_trx_commit</strong> 参数决定。由于面试不会问，这里就不写了。</p>
+<p>这里有一种技术 <strong>WAL</strong>（Write-Ahead Log）预先日志持久化技术，面试经常问噢，然后我们说的刷盘，一般指的就是上面的步骤3，只要我们把 redo log buffer 写入 redo log file 中，断电崩溃你随意。</p>
+<p>注意⚠️：在redo log buffer 写入 redo log file 中，并不是直接刷到磁盘的，只是刷入了 page cache（文件系统缓存）中。由我们的操作系统来决定，具体由 <strong>innodb_flush_log_at_trx_commit</strong> 参数决定。由于面试不会问，这里就不写了。</p>
 <h4 id="undo-log"><a href="#undo-log" class="headerlink" title="undo log"></a>undo log</h4><p>undo log 是事务原子性的保证，在<strong>增删改</strong>的操作下，是一定要记录的，查询不用记录，因为没有修改数据。</p>
 <p>如果遇到服务器本身错误、操作系统错误、或者程序员进行了 ROLLBACK，都是进行回滚。符合一致性操作。不过 undo log 还有一种作用：就是做 <strong>MVCC</strong>（重点）。</p>
 <p>下面👇是修改数据是的具体流程</p>
@@ -597,7 +597,7 @@
 <p>脏写就是两个事务，一个事务A，一个事务B，如果事务A修改了另一个事务B未提交但修改过的数据，事务A提交了，但是事务B回滚了，这就意味着脏写。（这种问题太严重了，所有的隔离级别都解决了这种问题）</p>
 </li>
 <li><p>脏读</p>
-<p>所谓脏读，就是指一个事务A读取了事务B修改后，但是还没有提交的数据，这时候事务B又把数据回滚了，此时事务A读取到的数据就是脏的，所以称其为脏读。</p>
+<p>所谓脏读，就是指一个事务 A 读取了事务 B 修改后，但是还没有提交的数据，这时候事务B又把数据回滚了，此时事务A读取到的数据就是脏的，所以称其为脏读。</p>
 </li>
 <li><p>不可重复读</p>
 <p>两个事务，事务A读取了数据，事务B修改了数据并且提交了，此时，事务A再次读取数据时发现数据变了，造成了两次读取数据不一样，就是不可重复读。</p>
@@ -865,14 +865,14 @@
       <i class="fa fa-chart-line"></i>
     </span>
       <span>站点总字数：</span>
-    <span title="站点总字数">189k</span>
+    <span title="站点总字数">190k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span>站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">2:52</span>
+    <span title="站点阅读时长">2:53</span>
   </span>
 </div>
 
