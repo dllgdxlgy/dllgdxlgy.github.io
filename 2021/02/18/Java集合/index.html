@@ -31,7 +31,7 @@
 <meta property="og:image" content="https://gitee.com/dlutlgy/images_for_typora/raw/master/images/image-20220105213540811.png">
 <meta property="og:image" content="https://gitee.com/dlutlgy/images_for_typora/raw/master/images/image-20220102223958792.png">
 <meta property="article:published_time" content="2021-02-18T08:24:57.000Z">
-<meta property="article:modified_time" content="2022-03-15T07:07:42.739Z">
+<meta property="article:modified_time" content="2022-03-21T01:56:30.575Z">
 <meta property="article:author" content="Dlutlgy">
 <meta property="article:tag" content="面试">
 <meta property="article:tag" content="Java基础">
@@ -228,7 +228,7 @@
 
       <!--noindex-->
       <section class="post-toc-wrap sidebar-panel">
-          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#List%E3%80%81Set%E3%80%81Map-%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="nav-text">List、Set、Map 的区别？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ArrayList-%E5%92%8C-LinkedList-%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="nav-text">ArrayList 和 LinkedList 的区别？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ArrayList-%E5%92%8C-Vector-%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%9F-%E4%B8%BA%E4%BB%80%E4%B9%88Vector-%E8%A2%AB%E4%BB%A3%E6%9B%BF%EF%BC%9F"><span class="nav-text">ArrayList 和 Vector 的区别？ 为什么Vector 被代替？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ArrayList-%E7%9A%84%E6%89%A9%E5%AE%B9%E6%9C%BA%E5%88%B6"><span class="nav-text">ArrayList 的扩容机制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HashMap-%E5%BA%95%E5%B1%82%E7%9A%84%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86%EF%BC%9F"><span class="nav-text">HashMap 底层的实现原理？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HashMap-%E5%BA%95%E5%B1%82%E6%95%B0%E7%BB%84%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E4%BF%9D%E8%AF%81%E6%98%AF-2-%E7%9A%84-n-%E6%AC%A1%E6%96%B9%EF%BC%9F"><span class="nav-text">HashMap 底层数组为什么要保证是 2 的 n 次方？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HashMap-%E5%92%8C-Hashtable-%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="nav-text">HashMap 和 Hashtable 的区别？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HashMap-%E5%92%8C-HashSet-%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-text">HashMap 和 HashSet 的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HashSet-%E5%A6%82%E4%BD%95%E6%A3%80%E6%9F%A5%E9%87%8D%E5%A4%8D%EF%BC%9F"><span class="nav-text">HashSet 如何检查重复？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#hashCode-%E4%B8%8E-equals-%E7%9A%84%E7%9B%B8%E5%85%B3%E8%A7%84%E5%AE%9A"><span class="nav-text">hashCode() 与 equals() 的相关规定</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8E-equal-%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="nav-text">&#x3D;&#x3D; 与 equal() 的区别？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ConcurrentHashMap-%E5%92%8C-Hashtable-%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="nav-text">ConcurrentHashMap 和 Hashtable 的区别？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HashMap%E6%BA%90%E7%A0%81%E4%B8%AD%E7%9A%84%E9%87%8D%E8%A6%81%E5%B8%B8%E9%87%8F"><span class="nav-text">HashMap源码中的重要常量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HashMap-%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90"><span class="nav-text">HashMap 源码分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ConcurrentHashMap-%E8%AE%B2%E8%A7%A3"><span class="nav-text">ConcurrentHashMap 讲解</span></a></li></ol></div>
+          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#List%E3%80%81Set%E3%80%81Map-%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="nav-text">List、Set、Map 的区别？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ArrayList-%E5%92%8C-LinkedList-%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="nav-text">ArrayList 和 LinkedList 的区别？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ArrayList-%E5%92%8C-Vector-%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%9F-%E4%B8%BA%E4%BB%80%E4%B9%88Vector-%E8%A2%AB%E4%BB%A3%E6%9B%BF%EF%BC%9F"><span class="nav-text">ArrayList 和 Vector 的区别？ 为什么Vector 被代替？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ArrayList-%E7%9A%84%E6%89%A9%E5%AE%B9%E6%9C%BA%E5%88%B6"><span class="nav-text">ArrayList 的扩容机制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HashMap-%E5%BA%95%E5%B1%82%E7%9A%84%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86%EF%BC%9F"><span class="nav-text">HashMap 底层的实现原理？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HashMap-%E5%BA%95%E5%B1%82%E6%95%B0%E7%BB%84%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E4%BF%9D%E8%AF%81%E6%98%AF-2-%E7%9A%84-n-%E6%AC%A1%E6%96%B9%EF%BC%9F"><span class="nav-text">HashMap 底层数组为什么要保证是 2 的 n 次方？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HashMap-%E5%92%8C-Hashtable-%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="nav-text">HashMap 和 Hashtable 的区别？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HashMap-%E5%92%8C-HashSet-%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-text">HashMap 和 HashSet 的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HashSet-%E5%A6%82%E4%BD%95%E6%A3%80%E6%9F%A5%E9%87%8D%E5%A4%8D%EF%BC%9F"><span class="nav-text">HashSet 如何检查重复？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#hashCode-%E4%B8%8E-equals-%E7%9A%84%E7%9B%B8%E5%85%B3%E8%A7%84%E5%AE%9A"><span class="nav-text">hashCode() 与 equals() 的相关规定</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8E-equal-%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="nav-text">&#x3D;&#x3D; 与 equal() 的区别？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ConcurrentHashMap-%E5%92%8C-Hashtable-%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="nav-text">ConcurrentHashMap 和 Hashtable 的区别？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HashMap%E6%BA%90%E7%A0%81%E4%B8%AD%E7%9A%84%E9%87%8D%E8%A6%81%E5%B8%B8%E9%87%8F"><span class="nav-text">HashMap源码中的重要常量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HashMap-%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90"><span class="nav-text">HashMap 源码分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ConcurrentHashMap-%E8%AE%B2%E8%A7%A3"><span class="nav-text">ConcurrentHashMap 讲解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%84%E7%90%86-hash-%E5%86%B2%E7%AA%81%E6%9C%89%E5%93%AA%E4%BA%9B%E6%96%B9%E6%B3%95%EF%BC%9F"><span class="nav-text">处理 hash 冲突有哪些方法？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%B6%85%E8%BF%87-8-%E6%89%8D%E5%8F%98%E4%B8%BA%E7%BA%A2%E9%BB%91%E6%A0%91-%EF%BC%9F"><span class="nav-text">为什么超过 8 才变为红黑树 ？</span></a></li></ol></div>
       </section>
       <!--/noindex-->
 
@@ -338,7 +338,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2022-03-15 15:07:42" itemprop="dateModified" datetime="2022-03-15T15:07:42+08:00">2022-03-15</time>
+        <time title="修改时间：2022-03-21 09:56:30" itemprop="dateModified" datetime="2022-03-21T09:56:30+08:00">2022-03-21</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -379,7 +379,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>14k</span>
+      <span>15k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -577,6 +577,17 @@
 <li>当数组的某一个索引位置上的元素以链表形式存在的数据个数 &gt; 8 且当前数组的长度 &gt; 64时，此时此索引位置上的所数据改为使用红黑树存储。</li>
 </ul>
 <h3 id="ConcurrentHashMap-讲解"><a href="#ConcurrentHashMap-讲解" class="headerlink" title="ConcurrentHashMap 讲解"></a>ConcurrentHashMap 讲解</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/justloveyou_/article/details/72783008">https://blog.csdn.net/justloveyou_/article/details/72783008</a></p>
+<h3 id="处理-hash-冲突有哪些方法？"><a href="#处理-hash-冲突有哪些方法？" class="headerlink" title="处理 hash 冲突有哪些方法？"></a>处理 hash 冲突有哪些方法？</h3><p>拉链法、开放定址法、</p>
+<h3 id="为什么超过-8-才变为红黑树-？"><a href="#为什么超过-8-才变为红黑树-？" class="headerlink" title="为什么超过 8 才变为红黑树 ？"></a>为什么超过 8 才变为红黑树 ？</h3><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/linghu-java/p/10598758.html">参考链接</a></p>
+<p>说法一：</p>
+<p>TreeNodes 占用空间是普通 Nodes 的两倍，所以只有当 bin 包含足够多的节点时才会转成 TreeNodes。链表长度达到8就转成红黑树，当长度降到6就转成普通 bin。（bin就是bucket，即HashMap中hashCode值一样的元素保存的地方）</p>
+<p>当 hashCode 离散性很好的时候，树型 bin 用到的概率非常小，因为数据均匀分布在每个 bin 中，几乎不会有 bin 中链表长度会达到阈值。但是在随机 hashCode 下，离散性可能会变差，然而 JDK 又不能阻止用户实现这种不好的 hash 算法，因此就可能导致不均匀的数据分布。不过理想情况下随机 hashCode 算法下所有bin中节点的分布频率会遵循泊松分布，我们可以看到，一个 bin 中链表长度达到 8 个元素的概率为 0.00000006，几乎是不可能事件。所以，之所以选择 8 ，不是拍拍屁股决定的，而是根据概率统计决定的。由此可见，发展30年的 Java 每一项改动和优化都是非常严谨和科学的。</p>
+<p>说法二：</p>
+<p>红黑树的平均查找长度是log(n)，如果长度为8，平均查找长度为log(8)=3，链表的平均查找长度为n/2，当长度为8时，平均查找长度为8/2=4，这才有转换成树的必要；链表长度如果是小于等于6，6/2=3，而log(6)=2.6，虽然速度也很快的，但是转化为树结构和生成树的时间并不会太短。</p>
+<p>参考资料：</p>
+<ol>
+<li><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Kb411W75N?spm_id_from=333.337.search-card.all.click">尚硅谷基础视频课程</a></li>
+</ol>
 
     </div>
 
@@ -679,14 +690,14 @@
       <i class="fa fa-chart-line"></i>
     </span>
       <span>站点总字数：</span>
-    <span title="站点总字数">190k</span>
+    <span title="站点总字数">191k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span>站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">2:53</span>
+    <span title="站点阅读时长">2:54</span>
   </span>
 </div>
 
