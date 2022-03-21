@@ -31,7 +31,7 @@
 <meta property="og:image" content="https://gitee.com/dlutlgy/images_for_typora/raw/master/images/image-20220105213540811.png">
 <meta property="og:image" content="https://gitee.com/dlutlgy/images_for_typora/raw/master/images/image-20220102223958792.png">
 <meta property="article:published_time" content="2021-02-18T08:24:57.000Z">
-<meta property="article:modified_time" content="2022-03-21T02:26:43.050Z">
+<meta property="article:modified_time" content="2022-03-21T12:25:38.094Z">
 <meta property="article:author" content="Dlutlgy">
 <meta property="article:tag" content="面试">
 <meta property="article:tag" content="Java基础">
@@ -228,7 +228,7 @@
 
       <!--noindex-->
       <section class="post-toc-wrap sidebar-panel">
-          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#List%E3%80%81Set%E3%80%81Map-%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="nav-text">List、Set、Map 的区别？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ArrayList-%E5%92%8C-LinkedList-%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="nav-text">ArrayList 和 LinkedList 的区别？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ArrayList-%E5%92%8C-Vector-%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%9F-%E4%B8%BA%E4%BB%80%E4%B9%88Vector-%E8%A2%AB%E4%BB%A3%E6%9B%BF%EF%BC%9F"><span class="nav-text">ArrayList 和 Vector 的区别？ 为什么Vector 被代替？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ArrayList-%E7%9A%84%E6%89%A9%E5%AE%B9%E6%9C%BA%E5%88%B6"><span class="nav-text">ArrayList 的扩容机制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HashMap-%E5%BA%95%E5%B1%82%E7%9A%84%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86%EF%BC%9F"><span class="nav-text">HashMap 底层的实现原理？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HashMap-%E5%BA%95%E5%B1%82%E6%95%B0%E7%BB%84%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E4%BF%9D%E8%AF%81%E6%98%AF-2-%E7%9A%84-n-%E6%AC%A1%E6%96%B9%EF%BC%9F"><span class="nav-text">HashMap 底层数组为什么要保证是 2 的 n 次方？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HashMap-%E5%92%8C-Hashtable-%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="nav-text">HashMap 和 Hashtable 的区别？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HashMap-%E5%92%8C-HashSet-%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-text">HashMap 和 HashSet 的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HashSet-%E5%A6%82%E4%BD%95%E6%A3%80%E6%9F%A5%E9%87%8D%E5%A4%8D%EF%BC%9F"><span class="nav-text">HashSet 如何检查重复？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#hashCode-%E4%B8%8E-equals-%E7%9A%84%E7%9B%B8%E5%85%B3%E8%A7%84%E5%AE%9A"><span class="nav-text">hashCode() 与 equals() 的相关规定</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8E-equal-%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="nav-text">&#x3D;&#x3D; 与 equal() 的区别？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ConcurrentHashMap-%E5%92%8C-Hashtable-%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="nav-text">ConcurrentHashMap 和 Hashtable 的区别？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HashMap%E6%BA%90%E7%A0%81%E4%B8%AD%E7%9A%84%E9%87%8D%E8%A6%81%E5%B8%B8%E9%87%8F"><span class="nav-text">HashMap源码中的重要常量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HashMap-%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90"><span class="nav-text">HashMap 源码分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ConcurrentHashMap-%E8%AE%B2%E8%A7%A3"><span class="nav-text">ConcurrentHashMap 讲解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%84%E7%90%86-hash-%E5%86%B2%E7%AA%81%E6%9C%89%E5%93%AA%E4%BA%9B%E6%96%B9%E6%B3%95%EF%BC%9F"><span class="nav-text">处理 hash 冲突有哪些方法？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%B6%85%E8%BF%87-8-%E6%89%8D%E5%8F%98%E4%B8%BA%E7%BA%A2%E9%BB%91%E6%A0%91-%EF%BC%9F"><span class="nav-text">为什么超过 8 才变为红黑树 ？</span></a></li></ol></div>
+          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#List%E3%80%81Set%E3%80%81Map-%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="nav-text">List、Set、Map 的区别？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ArrayList-%E5%92%8C-LinkedList-%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="nav-text">ArrayList 和 LinkedList 的区别？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ArrayList-%E5%92%8C-Vector-%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%9F-%E4%B8%BA%E4%BB%80%E4%B9%88Vector-%E8%A2%AB%E4%BB%A3%E6%9B%BF%EF%BC%9F"><span class="nav-text">ArrayList 和 Vector 的区别？ 为什么Vector 被代替？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ArrayList-%E7%9A%84%E6%89%A9%E5%AE%B9%E6%9C%BA%E5%88%B6"><span class="nav-text">ArrayList 的扩容机制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HashMap-%E5%BA%95%E5%B1%82%E7%9A%84%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86%EF%BC%9F"><span class="nav-text">HashMap 底层的实现原理？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HashMap-%E5%BA%95%E5%B1%82%E6%95%B0%E7%BB%84%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E4%BF%9D%E8%AF%81%E6%98%AF-2-%E7%9A%84-n-%E6%AC%A1%E6%96%B9%EF%BC%9F"><span class="nav-text">HashMap 底层数组为什么要保证是 2 的 n 次方？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HashMap-%E5%92%8C-Hashtable-%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="nav-text">HashMap 和 Hashtable 的区别？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HashMap-%E5%92%8C-HashSet-%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-text">HashMap 和 HashSet 的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HashSet-%E5%A6%82%E4%BD%95%E6%A3%80%E6%9F%A5%E9%87%8D%E5%A4%8D%EF%BC%9F"><span class="nav-text">HashSet 如何检查重复？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#hashCode-%E4%B8%8E-equals-%E7%9A%84%E7%9B%B8%E5%85%B3%E8%A7%84%E5%AE%9A"><span class="nav-text">hashCode() 与 equals() 的相关规定</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8E-equal-%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="nav-text">&#x3D;&#x3D; 与 equal() 的区别？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ConcurrentHashMap-%E5%92%8C-Hashtable-%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="nav-text">ConcurrentHashMap 和 Hashtable 的区别？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HashMap%E6%BA%90%E7%A0%81%E4%B8%AD%E7%9A%84%E9%87%8D%E8%A6%81%E5%B8%B8%E9%87%8F"><span class="nav-text">HashMap源码中的重要常量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HashMap-%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90"><span class="nav-text">HashMap 源码分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ConcurrentHashMap-%E8%AE%B2%E8%A7%A3"><span class="nav-text">ConcurrentHashMap 讲解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JDK1-7-%E5%92%8C-JDK1-8-ConcurrentHashMap%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="nav-text">JDK1.7 和 JDK1.8 ConcurrentHashMap的区别？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ConcurrentHashMap%E7%9A%84%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-text">ConcurrentHashMap的实现原理是什么？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JDK-1-8-%E4%B8%AD%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BD%BF%E7%94%A8%E5%86%85%E7%BD%AE%E9%94%81-synchronized-%E6%9B%BF%E6%8D%A2%E5%8F%AF%E9%87%8D%E5%85%A5%E9%94%81-ReentrantLock%EF%BC%9F"><span class="nav-text">JDK 1.8 中为什么使用内置锁 synchronized 替换可重入锁 ReentrantLock？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%84%E7%90%86-hash-%E5%86%B2%E7%AA%81%E6%9C%89%E5%93%AA%E4%BA%9B%E6%96%B9%E6%B3%95%EF%BC%9F"><span class="nav-text">处理 hash 冲突有哪些方法？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%B6%85%E8%BF%87-8-%E6%89%8D%E5%8F%98%E4%B8%BA%E7%BA%A2%E9%BB%91%E6%A0%91-%EF%BC%9F"><span class="nav-text">为什么超过 8 才变为红黑树 ？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ConcurrentHashMap-%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%8D%E6%94%AF%E6%8C%81-null-value%EF%BC%9F"><span class="nav-text">ConcurrentHashMap 为什么不支持 null value？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8B%E5%AE%89%E5%85%A8%E7%9A%84%E6%93%8D%E4%BD%9C%EF%BC%8Cmap%E8%BF%98%E6%9C%89%E5%85%B6%E4%BB%96%E6%96%B9%E6%B3%95%E5%90%97%EF%BC%9F"><span class="nav-text">多线程下安全的操作，map还有其他方法吗？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B7%E4%BD%93%E8%AF%B4%E4%B8%80%E4%B8%8B-Hashtable-%E7%9A%84%E9%94%81%E6%9C%BA%E5%88%B6%EF%BC%9F"><span class="nav-text">具体说一下 Hashtable 的锁机制？</span></a></li></ol></div>
       </section>
       <!--/noindex-->
 
@@ -338,7 +338,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2022-03-21 10:26:43" itemprop="dateModified" datetime="2022-03-21T10:26:43+08:00">2022-03-21</time>
+        <time title="修改时间：2022-03-21 20:25:38" itemprop="dateModified" datetime="2022-03-21T20:25:38+08:00">2022-03-21</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -379,14 +379,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>15k</span>
+      <span>16k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>13 分钟</span>
+      <span>15 分钟</span>
     </span>
 </div>
 
@@ -577,6 +577,20 @@
 <li>当数组的某一个索引位置上的元素以链表形式存在的数据个数 &gt; 8 且当前数组的长度 &gt; 64时，此时此索引位置上的所数据改为使用红黑树存储。</li>
 </ul>
 <h3 id="ConcurrentHashMap-讲解"><a href="#ConcurrentHashMap-讲解" class="headerlink" title="ConcurrentHashMap 讲解"></a>ConcurrentHashMap 讲解</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/justloveyou_/article/details/72783008">https://blog.csdn.net/justloveyou_/article/details/72783008</a></p>
+<h3 id="JDK1-7-和-JDK1-8-ConcurrentHashMap的区别？"><a href="#JDK1-7-和-JDK1-8-ConcurrentHashMap的区别？" class="headerlink" title="JDK1.7 和 JDK1.8 ConcurrentHashMap的区别？"></a>JDK1.7 和 JDK1.8 ConcurrentHashMap的区别？</h3><p><strong>数据结构</strong>：取消了 Segment 分段锁的数据结构，取而代之的是数组+链表+红黑树的结构。</p>
+<p><strong>保证线程安全机制</strong>：JDK1.7 采用 Segment 的分段锁机制实现线程安全，其中 Segment 继承自 ReentrantLock 。JDK1.8 采用CAS+synchronized保证线程安全。</p>
+<p><strong>锁的粒度</strong>：JDK1.7 是对需要进行数据操作的 Segment 加锁，JDK1.8 调整为对每个数组元素加锁（Node）。</p>
+<p><strong>链表转化为红黑树</strong>：定位节点的 hash 算法简化会带来弊端，hash 冲突加剧，因此在链表节点数量大于 8（且数据总量大于等于 64）时，会将链表转化为红黑树进行存储。</p>
+<p><strong>查询时间复杂度</strong>：从 JDK1.7的遍历链表O(n)， JDK1.8 变成遍历红黑树O(logN)。</p>
+<h3 id="ConcurrentHashMap的实现原理是什么？"><a href="#ConcurrentHashMap的实现原理是什么？" class="headerlink" title="ConcurrentHashMap的实现原理是什么？"></a>ConcurrentHashMap的实现原理是什么？</h3><p>ConcurrentHashMap 在 JDK 1.7 和 JDK 1.8实现的原理不同。</p>
+<p><strong>JDK 1.7</strong> </p>
+<p>JDK1.7 中的 ConcurrentHashMap 是由 <strong>Segment 数组结构和 HashEntry 数组结构</strong>组成，即 ConcurrentHashMap 把哈希桶数组切分成小数组（Segment），每个小数组有 n 个 HashEntry 组成。</p>
+<p>首先将数据分为一段一段的存储，然后给每一段数据配一把锁，当一个线程占用锁访问其中一段数据时，其他段的数据也能被其他线程访问，实现了真正的并发访问。</p>
+<p><strong>JDK 1.8</strong> </p>
+<p>JDK1.8 中的 ConcurrentHashMap 选择了与 HashMap 相同的<strong>Node数组+链表+红黑树</strong>结构；在锁的实现上，抛弃了原有的 Segment 分段锁，采用 CAS + synchronized 实现更加细粒度的锁。</p>
+<p>将锁的级别控制在了更细粒度的哈希桶数组元素级别，也就是说只需要锁住这个链表头节点（红黑树的根节点），就不会影响其他的哈希桶数组元素的读写，大大提高了并发度。</p>
+<h3 id="JDK-1-8-中为什么使用内置锁-synchronized-替换可重入锁-ReentrantLock？"><a href="#JDK-1-8-中为什么使用内置锁-synchronized-替换可重入锁-ReentrantLock？" class="headerlink" title="JDK 1.8 中为什么使用内置锁 synchronized 替换可重入锁 ReentrantLock？"></a>JDK 1.8 中为什么使用内置锁 synchronized 替换可重入锁 ReentrantLock？</h3><p>在 JDK1.6 中，对 synchronized 锁的实现引入了大量的优化，并且 synchronized 有多种锁状态，会从无锁 -&gt; 偏向锁 -&gt; 轻量级锁 -&gt; 重量级锁一步步转换。</p>
+<p>减少内存开销 。假设使用可重入锁来获得同步支持，那么每个节点都需要通过继承 AQS 来获得同步支持。但并不是每个节点都需要获得同步支持的，只有链表的头节点（红黑树的根节点）需要同步，这无疑带来了巨大内存浪费。</p>
 <h3 id="处理-hash-冲突有哪些方法？"><a href="#处理-hash-冲突有哪些方法？" class="headerlink" title="处理 hash 冲突有哪些方法？"></a>处理 hash 冲突有哪些方法？</h3><p>直接定址法、除留余数法、数字分析法、平方取中法。</p>
 <p>拉链法、开放定址法，</p>
 <h3 id="为什么超过-8-才变为红黑树-？"><a href="#为什么超过-8-才变为红黑树-？" class="headerlink" title="为什么超过 8 才变为红黑树 ？"></a>为什么超过 8 才变为红黑树 ？</h3><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/linghu-java/p/10598758.html">参考链接</a></p>
@@ -585,11 +599,18 @@
 <p>当 hashCode 离散性很好的时候，树型 bin 用到的概率非常小，因为数据均匀分布在每个 bin 中，几乎不会有 bin 中链表长度会达到阈值。但是在随机 hashCode 下，离散性可能会变差，然而 JDK 又不能阻止用户实现这种不好的 hash 算法，因此就可能导致不均匀的数据分布。不过理想情况下随机 hashCode 算法下所有bin中节点的分布频率会遵循<strong>泊松分布</strong>，我们可以看到，一个 bin 中链表长度达到 8 个元素的概率为 0.00000006，几乎是不可能事件。所以，之所以选择 8 ，不是拍拍屁股决定的，而是根据概率统计决定的。由此可见，发展30年的 Java 每一项改动和优化都是非常严谨和科学的。</p>
 <p>说法二：</p>
 <p>红黑树的平均查找长度是log(n)，如果长度为8，平均查找长度为log(8)=3，链表的平均查找长度为n/2，当长度为8时，平均查找长度为8/2=4，这才有转换成树的必要；链表长度如果是小于等于6，6/2=3，而log(6)=2.6，虽然速度也很快的，但是转化为树结构和生成树的时间并不会太短。</p>
+<h3 id="ConcurrentHashMap-为什么不支持-null-value？"><a href="#ConcurrentHashMap-为什么不支持-null-value？" class="headerlink" title="ConcurrentHashMap 为什么不支持 null value？"></a>ConcurrentHashMap 为什么不支持 null value？</h3><p>因为 value 为 null 有两种情况，第一种是可能存的值为 null，第二种可能就是没有映射到值返回的 null 值。而 HashMap 在单线程下可以通过 ContainsKey() 区分这两种情况。ConcurrentHashMap 用于多线程下，本来映射 ContainsKey() 返回 false，但是可能在你调用 ContainsKey() 检查时，新线程插入了 null值，返回 ture。存在二义性。</p>
+<h3 id="多线程下安全的操作，map还有其他方法吗？"><a href="#多线程下安全的操作，map还有其他方法吗？" class="headerlink" title="多线程下安全的操作，map还有其他方法吗？"></a>多线程下安全的操作，map还有其他方法吗？</h3><p>使用Collections.SynchronizedMap 方法，对方法进行同步锁。如果传入的是 HashMap 对象，其实也是对 HashMap 做的方法做了一层包装，里面使用对象锁来保证多线程场景下，线程安全，本质也是对 HashMap 进行全表锁。在竞争激烈的多线程环境下性能依然也非常差，不推荐使用！</p>
+<h3 id="具体说一下-Hashtable-的锁机制？"><a href="#具体说一下-Hashtable-的锁机制？" class="headerlink" title="具体说一下 Hashtable 的锁机制？"></a>具体说一下 Hashtable 的锁机制？</h3><p>Hashtable 是使用 synchronized来实现线程安全的，给整个哈希表加了一把大锁，多线程访问时候，只要有一个线程访问或操作该对象，那其他线程只能阻塞等待需要的锁被释放，在竞争激烈的多线程场景中性能就会非常差！</p>
 <p>参考资料：</p>
 <ol>
 <li><p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Kb411W75N?spm_id_from=333.337.search-card.all.click">尚硅谷基础视频课程</a></p>
 </li>
 <li><p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/RmpzIc9sddmVgvwZnM9OSw">你好，面试官-HashMap</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/justloveyou_/article/details/72783008">ConcurrentHashMap 1.7</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/wwj17647590781/article/details/118151008?spm=1001.2014.3001.5501">ConcurrentHashMap 1.8</a></p>
 </li>
 </ol>
 
@@ -694,14 +715,14 @@
       <i class="fa fa-chart-line"></i>
     </span>
       <span>站点总字数：</span>
-    <span title="站点总字数">191k</span>
+    <span title="站点总字数">193k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span>站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">2:54</span>
+    <span title="站点阅读时长">2:55</span>
   </span>
 </div>
 
