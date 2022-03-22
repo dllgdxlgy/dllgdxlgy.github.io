@@ -44,7 +44,7 @@
 <meta property="og:image" content="https://gitee.com/dlutlgy/images_for_typora/raw/master/images/image-20220305123355941.png">
 <meta property="og:image" content="https://gitee.com/dlutlgy/images_for_typora/raw/master/images/image-20220305123543108.png">
 <meta property="article:published_time" content="2022-03-02T11:18:57.000Z">
-<meta property="article:modified_time" content="2022-03-22T02:25:22.177Z">
+<meta property="article:modified_time" content="2022-03-22T04:49:59.921Z">
 <meta property="article:author" content="Dlutlgy">
 <meta property="article:tag" content="面试">
 <meta property="article:tag" content="MySql">
@@ -351,7 +351,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2022-03-22 10:25:22" itemprop="dateModified" datetime="2022-03-22T10:25:22+08:00">2022-03-22</time>
+        <time title="修改时间：2022-03-22 12:49:59" itemprop="dateModified" datetime="2022-03-22T12:49:59+08:00">2022-03-22</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -648,7 +648,7 @@
 <h3 id="行锁"><a href="#行锁" class="headerlink" title="行锁"></a>行锁</h3><p>记录锁：行锁也是记录锁，记录锁有 X 型记录锁和 S 型记录锁。</p>
 <p>间隙锁（Gap Locks）：间隙锁的提出<strong>主要解决幻读问题的</strong>。</p>
 <p>临键锁（Next-Key Locks）：既锁定了某条记录，又阻止其他事务在该记录的间隙插入新纪录。</p>
-<p>插入意向锁：插入意向锁是间隙锁，产生的主要原因是判断插入的位置是不是被别人加了间隙锁或者临键锁。</p>
+<p>插入意向锁：插入意向锁是间隙锁，产生的主要原因是判断插入的位置是不是被别人加了间隙锁或者临键锁。如果在此之前加入了间隙锁，如果这时候还有两个事务，都在这个间隙里面插入数据，且插入的的数据不一样（指id），那么这个时候插入意向锁是可以共存的。</p>
 <h3 id="乐观锁、悲观锁"><a href="#乐观锁、悲观锁" class="headerlink" title="乐观锁、悲观锁"></a>乐观锁、悲观锁</h3><p>悲观锁：就是做最坏的打算，每次拿数据的时候都认为别人会修改，所以每次的时候都上锁。Java 中的 synchronized 和 ReentrantLock 等就是悲观类型的锁。</p>
 <p>乐观锁：他认为对同一操作的数据不会总发生，不用美词对别人进行行锁，但是在更新数据的时候会判断一下在此期间别人有没有更新过这个数据，可以采用<strong>版本号机制</strong>或者 <strong>CAS 机制</strong>。</p>
 <p>适合使用的场景：</p>
