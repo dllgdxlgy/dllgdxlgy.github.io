@@ -29,19 +29,19 @@
 <meta property="og:site_name" content="酒窝里有酒">
 <meta property="og:description" content="技术没有高低之分，只有使用的人有高低之分。  先把ssm中的MyBatis重新再来一遍！">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://gitee.com/dlutlgy/images_for_typora/raw/master/images/image-20201229201021860.png">
-<meta property="og:image" content="https://gitee.com/dlutlgy/images_for_typora/raw/master/images/image-20210104102832311.png">
-<meta property="og:image" content="https://gitee.com/dlutlgy/images_for_typora/raw/master/images/image-20210104152441089.png">
-<meta property="og:image" content="https://gitee.com/dlutlgy/images_for_typora/raw/master/images/image-20210104154030017.png">
-<meta property="og:image" content="https://gitee.com/dlutlgy/images_for_typora/raw/master/images/image-20210104203938105.png">
-<meta property="og:image" content="https://gitee.com/dlutlgy/images_for_typora/raw/master/images/image-20210106140128103.png">
-<meta property="og:image" content="https://gitee.com/dlutlgy/images_for_typora/raw/master/images/image-20210115115059452.png">
+<meta property="og:image" content="https://dlutlgy-image-for-mac.oss-cn-beijing.aliyuncs.com/image-20201229201021860.png">
+<meta property="og:image" content="https://dlutlgy-image-for-mac.oss-cn-beijing.aliyuncs.com/imagesimage-20210104102832311.png">
+<meta property="og:image" content="https://dlutlgy-image-for-mac.oss-cn-beijing.aliyuncs.com/image-20210104152441089.png">
+<meta property="og:image" content="https://dlutlgy-image-for-mac.oss-cn-beijing.aliyuncs.com/imagesimage-20210104154030017.png">
+<meta property="og:image" content="https://dlutlgy-image-for-mac.oss-cn-beijing.aliyuncs.com/imagesimage-20210104203938105.png">
+<meta property="og:image" content="https://dlutlgy-image-for-mac.oss-cn-beijing.aliyuncs.com/image-20210106140128103.png">
+<meta property="og:image" content="https://dlutlgy-image-for-mac.oss-cn-beijing.aliyuncs.com/image-20210115115059452.png">
 <meta property="article:published_time" content="2021-01-09T01:18:08.000Z">
-<meta property="article:modified_time" content="2021-02-20T03:54:02.915Z">
+<meta property="article:modified_time" content="2022-03-25T13:12:57.718Z">
 <meta property="article:author" content="Dlutlgy">
 <meta property="article:tag" content="mybatis">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://gitee.com/dlutlgy/images_for_typora/raw/master/images/image-20201229201021860.png">
+<meta name="twitter:image" content="https://dlutlgy-image-for-mac.oss-cn-beijing.aliyuncs.com/image-20201229201021860.png">
 
 
 <link rel="canonical" href="http://dlutlgy.top/2021/01/09/MyBatis/">
@@ -343,7 +343,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-02-20 11:54:02" itemprop="dateModified" datetime="2021-02-20T11:54:02+08:00">2021-02-20</time>
+        <time title="修改时间：2022-03-25 21:12:57" itemprop="dateModified" datetime="2022-03-25T21:12:57+08:00">2022-03-25</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -426,7 +426,7 @@
 <li>Junit</li>
 </ul>
 <p>ssm框架学习都需要配置配置文件，都需要看<a target="_blank" rel="noopener" href="https://mybatis.org/mybatis-3/zh/index.html">官网文档</a></p>
-<h1 id="1、简介"><a href="#1、简介" class="headerlink" title="1、简介"></a>1、简介</h1><h2 id="1-1、什么是Mybatis"><a href="#1-1、什么是Mybatis" class="headerlink" title="1.1、什么是Mybatis"></a>1.1、什么是Mybatis</h2><img src="https://gitee.com/dlutlgy/images_for_typora/raw/master/images/image-20201229201021860.png" alt="image-20201229201021860" style="zoom:67%;" />
+<h1 id="1、简介"><a href="#1、简介" class="headerlink" title="1、简介"></a>1、简介</h1><h2 id="1-1、什么是Mybatis"><a href="#1-1、什么是Mybatis" class="headerlink" title="1.1、什么是Mybatis"></a>1.1、什么是Mybatis</h2><img src="https://dlutlgy-image-for-mac.oss-cn-beijing.aliyuncs.com/image-20201229201021860.png" alt="image-20201229201021860" style="zoom:67%;" />
 
 <ul>
 <li>MyBatis 是一款优秀的<strong>持久层框架</strong>，</li>
@@ -568,7 +568,7 @@
 
 <p>在核心配置文件中引用</p>
 <p>遇到的问题：</p>
-<p><img src="https://gitee.com/dlutlgy/images_for_typora/raw/master/images/image-20210104102832311.png" alt="image-20210104102832311"></p>
+<p><img src="https://dlutlgy-image-for-mac.oss-cn-beijing.aliyuncs.com/imagesimage-20210104102832311.png" alt="image-20210104102832311"></p>
 <p>这里面规定了配置文件中标签的顺序，所以不能乱了顺序写。</p>
 <p>引用后</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--引入外部配置文件--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">properties</span> <span class="attr">resource</span>=<span class="string">&quot;db.properties&quot;</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--这里面还可以进行写其他属性--&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">properties</span>&gt;</span></span><br></pre></td></tr></table></figure>
@@ -611,13 +611,13 @@
 <li>接口和他的配置文件必须在同一个包下</li>
 </ul>
 <h1 id="5、解决属性名和字段名不一致的问题"><a href="#5、解决属性名和字段名不一致的问题" class="headerlink" title="5、解决属性名和字段名不一致的问题"></a>5、解决属性名和字段名不一致的问题</h1><p>数据库的字段名</p>
-<img src="https://gitee.com/dlutlgy/images_for_typora/raw/master/images/image-20210104152441089.png" alt="image-20210104152441089" style="zoom:50%;" />
+<img src="https://dlutlgy-image-for-mac.oss-cn-beijing.aliyuncs.com/image-20210104152441089.png" alt="image-20210104152441089" style="zoom:50%;" />
 
 <p>实体类的属性名：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">int</span> id;</span><br><span class="line"><span class="keyword">private</span> String name;</span><br><span class="line"><span class="keyword">private</span> String password;</span><br></pre></td></tr></table></figure>
 
 <p>但是查出来password显示为空</p>
-<p><img src="https://gitee.com/dlutlgy/images_for_typora/raw/master/images/image-20210104154030017.png" alt="image-20210104154030017"></p>
+<p><img src="https://dlutlgy-image-for-mac.oss-cn-beijing.aliyuncs.com/imagesimage-20210104154030017.png" alt="image-20210104154030017"></p>
 <p>解决方法1：在xml文件的相应sql中进行修改，</p>
 <p>解决方法2: resultMap（结果集映射）</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--resultMap--&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- resultMap中的id与&lt;select&gt;标签里面的resultMap里面的值要一样，要代表引用 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">resultMap</span> <span class="attr">id</span>=<span class="string">&quot;usermap&quot;</span> <span class="attr">type</span>=<span class="string">&quot;User&quot;</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!--column代表数据库中字段，property代表实体类中的属性--&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">result</span> <span class="attr">column</span>=<span class="string">&quot;id&quot;</span> <span class="attr">property</span>=<span class="string">&quot;id&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">result</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">result</span> <span class="attr">column</span>=<span class="string">&quot;name&quot;</span> <span class="attr">property</span>=<span class="string">&quot;name&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">result</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">result</span> <span class="attr">column</span>=<span class="string">&quot;pwd&quot;</span> <span class="attr">property</span>=<span class="string">&quot;password&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">result</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">resultMap</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">&quot;getUserById&quot;</span>  <span class="attr">parameterType</span>=<span class="string">&quot;int&quot;</span> <span class="attr">resultType</span>=<span class="string">&quot;com.lgy.pojo.User&quot;</span> <span class="attr">resultMap</span>=<span class="string">&quot;usermap&quot;</span>&gt;</span></span><br><span class="line">  select * from mybatis.user where id = #&#123;id&#125;;</span><br><span class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></table></figure>
@@ -628,7 +628,7 @@
 
 
 
-<p><img src="https://gitee.com/dlutlgy/images_for_typora/raw/master/images/image-20210104203938105.png" alt="image-20210104203938105"></p>
+<p><img src="https://dlutlgy-image-for-mac.oss-cn-beijing.aliyuncs.com/imagesimage-20210104203938105.png" alt="image-20210104203938105"></p>
 <h2 id="6-2、Log4j"><a href="#6-2、Log4j" class="headerlink" title="6.2、Log4j"></a>6.2、Log4j</h2><ol>
 <li>导入Log4j依赖</li>
 </ol>
@@ -669,7 +669,7 @@
 <li>MapperXml</li>
 <li>测试</li>
 </ol>
-<h2 id="7-2使用mybatis插件实现分页"><a href="#7-2使用mybatis插件实现分页" class="headerlink" title="7.2使用mybatis插件实现分页"></a>7.2使用mybatis插件实现分页</h2><img src="https://gitee.com/dlutlgy/images_for_typora/raw/master/images/image-20210106140128103.png" alt="image-20210106140128103" style="zoom:50%;" />
+<h2 id="7-2使用mybatis插件实现分页"><a href="#7-2使用mybatis插件实现分页" class="headerlink" title="7.2使用mybatis插件实现分页"></a>7.2使用mybatis插件实现分页</h2><img src="https://dlutlgy-image-for-mac.oss-cn-beijing.aliyuncs.com/image-20210106140128103.png" alt="image-20210106140128103" style="zoom:50%;" />
 
 <p><a target="_blank" rel="noopener" href="https://pagehelper.github.io/">mybatis插件</a></p>
 <h1 id="8、使用注解开发"><a href="#8、使用注解开发" class="headerlink" title="8、使用注解开发"></a>8、使用注解开发</h1><p>使用mybatis大多数使用配置文件，而是用其他的是使用注解的方式</p>
@@ -730,7 +730,7 @@
 
 
 <h1 id="10、多对一"><a href="#10、多对一" class="headerlink" title="10、多对一"></a>10、多对一</h1><p>举例：一个老师对应多个学生，多个学生对应（关联）一个老师。</p>
-<img src="https://gitee.com/dlutlgy/images_for_typora/raw/master/images/image-20210115115059452.png" alt="image-20210115115059452" style="zoom: 50%;" />
+<img src="https://dlutlgy-image-for-mac.oss-cn-beijing.aliyuncs.com/image-20210115115059452.png" alt="image-20210115115059452" style="zoom: 50%;" />
 
 <p>关于XXXMapper.xml文件模版：</p>
 <p>只需要改动是把mybatis 的核心配置文件，把configuration换为mapper，然后把config换为mapper即可</p>

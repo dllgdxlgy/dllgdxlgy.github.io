@@ -29,22 +29,23 @@
 <meta property="og:site_name" content="酒窝里有酒">
 <meta property="og:description" content="​        本篇文章主要在Java内存结构、垃圾收集器、类文件结构、类加载机制四个方面进行总结，能有效清晰的帮助在读的各位了解 Java 内存结构，Java 文件编译后是如何加载的、及如何管理虚拟机中的垃圾的。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://gitee.com/dlutlgy/window_typora/raw/master/images/image-20210905150636105.png">
-<meta property="og:image" content="https://gitee.com/dlutlgy/window_typora/raw/master/images/string-new.png">
+<meta property="og:image" content="https://dlutlgy-image-for-mac.oss-cn-beijing.aliyuncs.com/image-20210905150636105.png">
+<meta property="og:image" content="https://dlutlgy-image-for-mac.oss-cn-beijing.aliyuncs.com/string-new.png">
 <meta property="og:image" content="https://gitee.com/dlutlgy/window_typora/raw/master/images/string-intern.png">
 <meta property="og:image" content="https://gitee.com/dlutlgy/window_typora/raw/master/images/string-equal.png">
+<meta property="og:image" content="https://gitee.com/dlutlgy/images_for_typora/raw/master/images/image-20220324095546407.png">
 <meta property="og:image" content="https://gitee.com/dlutlgy/images_for_typora/raw/master/images/image-20220322132430846.png">
 <meta property="og:image" content="https://gitee.com/dlutlgy/window_typora/raw/master/images/image-20211115164112865.png">
 <meta property="og:image" content="https://gitee.com/dlutlgy/window_typora/raw/master/images/image-20211115175101252.png">
 <meta property="og:image" content="https://gitee.com/dlutlgy/window_typora/raw/master/images/image-20211116214556489.png">
 <meta property="og:image" content="https://gitee.com/dlutlgy/window_typora/raw/master/images/image-20211120143543051.png">
 <meta property="article:published_time" content="2022-02-17T03:13:21.000Z">
-<meta property="article:modified_time" content="2022-03-24T01:52:40.931Z">
+<meta property="article:modified_time" content="2022-03-25T12:39:45.906Z">
 <meta property="article:author" content="Dlutlgy">
 <meta property="article:tag" content="面试">
 <meta property="article:tag" content="Java基础">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://gitee.com/dlutlgy/window_typora/raw/master/images/image-20210905150636105.png">
+<meta name="twitter:image" content="https://dlutlgy-image-for-mac.oss-cn-beijing.aliyuncs.com/image-20210905150636105.png">
 
 
 <link rel="canonical" href="http://dlutlgy.top/2022/02/17/%E6%B7%B1%E5%BA%A6%E7%90%86%E8%A7%A3Java%E8%99%9A%E6%8B%9F%E6%9C%BA/">
@@ -346,7 +347,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2022-03-24 09:52:40" itemprop="dateModified" datetime="2022-03-24T09:52:40+08:00">2022-03-24</time>
+        <time title="修改时间：2022-03-25 20:39:45" itemprop="dateModified" datetime="2022-03-25T20:39:45+08:00">2022-03-25</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -387,7 +388,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>7.7k</span>
+      <span>7.8k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -408,7 +409,7 @@
         <p>​        本篇文章主要在Java内存结构、垃圾收集器、类文件结构、类加载机制四个方面进行总结，能有效清晰的帮助在读的各位了解 Java 内存结构，Java 文件编译后是如何加载的、及如何管理虚拟机中的垃圾的。</p>
 <a id="more"></a>
 
-<h1 id="深度理解Java虚拟机"><a href="#深度理解Java虚拟机" class="headerlink" title="深度理解Java虚拟机"></a>深度理解Java虚拟机</h1><h2 id="一、Java内存结构"><a href="#一、Java内存结构" class="headerlink" title="一、Java内存结构"></a>一、Java内存结构</h2><h3 id="1-JVM内存结构"><a href="#1-JVM内存结构" class="headerlink" title="1. JVM内存结构"></a>1. JVM内存结构</h3><p><img src="https://gitee.com/dlutlgy/window_typora/raw/master/images/image-20210905150636105.png" alt="image-20210905150636105"></p>
+<h1 id="深度理解Java虚拟机"><a href="#深度理解Java虚拟机" class="headerlink" title="深度理解Java虚拟机"></a>深度理解Java虚拟机</h1><h2 id="一、Java内存结构"><a href="#一、Java内存结构" class="headerlink" title="一、Java内存结构"></a>一、Java内存结构</h2><h3 id="1-JVM内存结构"><a href="#1-JVM内存结构" class="headerlink" title="1. JVM内存结构"></a>1. JVM内存结构</h3><p><img src="https://dlutlgy-image-for-mac.oss-cn-beijing.aliyuncs.com/image-20210905150636105.png" alt="image-20210905150636105"></p>
 <ol>
 <li>程序计数器</li>
 <li>虚拟机栈</li>
@@ -462,7 +463,7 @@
 <li><strong>运行时常量池</strong></li>
 </ul>
 <p><strong>运行时常量池是方法区的一部分</strong>，在类加载之后，会将编译器生成的各种字面量和符号引号放到运行时常量池。在运行期间动态生成的常量，如 String 类的 intern()方法，也会被放入运行时常量池。</p>
-<p><img src="https://gitee.com/dlutlgy/window_typora/raw/master/images/string-new.png" alt="img"></p>
+<p><img src="https://dlutlgy-image-for-mac.oss-cn-beijing.aliyuncs.com/string-new.png" alt="img"></p>
 <p><img src="https://gitee.com/dlutlgy/window_typora/raw/master/images/string-intern.png" alt="img"></p>
 <p><img src="https://gitee.com/dlutlgy/window_typora/raw/master/images/string-equal.png" alt="img"></p>
 <ul>
@@ -529,7 +530,10 @@
 <li><p>虚引用被称为“幽灵引用”或“幻影引用”，为一个对象设置虚引用的目的就是在垃圾回收的时候能够收到通知。</p>
 </li>
 </ol>
-<h3 id="4-垃圾回收器的有哪些类别？"><a href="#4-垃圾回收器的有哪些类别？" class="headerlink" title="4.垃圾回收器的有哪些类别？"></a>4.垃圾回收器的有哪些类别？</h3><ol>
+<h3 id="4-垃圾回收器的有哪些类别？"><a href="#4-垃圾回收器的有哪些类别？" class="headerlink" title="4.垃圾回收器的有哪些类别？"></a>4.垃圾回收器的有哪些类别？</h3><img src="https://gitee.com/dlutlgy/images_for_typora/raw/master/images/image-20220324095546407.png" alt="image-20220324095546407" style="zoom: 33%;" />
+
+<p>注意⚠️：上图 Parallel Old 是多线程，标记错了。</p>
+<ol>
 <li><p>Serial 收集器（新生代）</p>
 <p>Serial收集器是一个<strong>单线程的收集器</strong>(采用的是<strong>复制算法</strong>暂停用户的线程)，这里单线程强调的是在进行垃圾回收前，必须进行暂停其他所有工作的线程（<strong>STW</strong>），优点就是简单而高效，没有线程交互的开销，能够专心做垃圾收集。只要是不频繁进行垃圾回收，那么用户是感觉不出来的，也是可以接受的。</p>
 </li>
@@ -547,7 +551,7 @@
 </li>
 <li><p>CMS 收集器（老年代）（标记清除算法）</p>
 <p>首次实现了让垃圾回收器和用户线程同时工作。</p>
-<p>目的是为了获得最短停顿时间的收集器</p>
+<p>目的是<strong>为了获得最短停顿时间的收集器</strong></p>
 </li>
 <li><p>G1 收集器</p>
 <p>面向全堆的收集器。</p>
@@ -572,7 +576,7 @@
 </ol>
 <p>主要缺点：</p>
 <ul>
-<li>CMS收集器<strong>对处理器的资源非常敏感</strong>，(其实所有的收集器对处理器资源都比较敏感),因为：如果处理器少了，在并发阶段，CMS对用户程序的影响就会变得很大。</li>
+<li>CMS收集器<strong>对处理器的资源非常敏感</strong>，(其实所有的收集器对处理器资源都比较敏感)，因为：如果处理器少了，在并发阶段，CMS对用户程序的影响就会变得很大。</li>
 <li>CMS收集器无法处理<strong>浮动垃圾</strong>，“浮动垃圾”就是在并发标记和并发清除阶段，由用户线程继续运行产生的新的垃圾对象，只能等下次回收。</li>
 <li>CMS收集器不能等老年代几乎被填满了再去收集，必须留一部分空间供并发阶段使用，可以进行参数设置。</li>
 <li>因为CMS是标记-清除的，所以收集结束后会有大量空间碎片产生，这样可能会给大对象直接进入老年代产生影响，这时候就有可能会触发Full GC 。</li>
@@ -580,15 +584,16 @@
 <h3 id="6-G1-收集器"><a href="#6-G1-收集器" class="headerlink" title="6. G1 收集器"></a>6. G1 收集器</h3><p>G1收集器是<strong>面向全堆</strong>的垃圾收集器，它的目标就是<strong>在延迟可控的情况下获得尽可能高的吞吐量</strong>。</p>
 <p><img src="https://gitee.com/dlutlgy/window_typora/raw/master/images/image-20211115164112865.png" alt="image-20211115164112865"></p>
 <p>G1是基于Region的堆内存布局，但是还是遵循分代收集理论的。</p>
+<p>停顿时间模型：在一个长度为M毫秒的时间片段内，消耗在垃圾回收的时间大概率不超过n毫秒。</p>
 <h4 id="要解决的问题"><a href="#要解决的问题" class="headerlink" title="要解决的问题"></a>要解决的问题</h4><ul>
 <li>Region中存在跨Region引用的对象怎么解决？</li>
 </ul>
-<p>使用记忆集来避免对全堆进行扫描，每个Region中都有记忆集，记忆集中都存在着指向自己的指针，也记录了自己指向谁，解决了这个问题，但是带来的缺点就是G1垃圾收集器比其他的垃圾收集器有着更高的内存负担，G1收集器要占用堆容量的10%-20%。</p>
+<p>使用记忆集来避免对全堆进行扫描，每个Region中都有记忆集，记忆集中都存在着指向自己的指针，也记录了自己指向谁，解决了这个问题，但是带来的缺点就是G1垃圾收集器比其他的垃圾收集器有着更高的内存负担，<strong>G1收集器</strong>要占用堆容量的10%-20%。</p>
 <ul>
 <li>并发阶段如何保证收集线程与用户线程互不干扰的进行？</li>
 </ul>
 <ol>
-<li>G1垃圾收集器使用的是原始快照的方式来保证用户线程在并发阶段改变对象引用时，不会出现错误。</li>
+<li>G1垃圾收集器使用的是<strong>原始快照</strong>的方式来保证用户线程在并发阶段改变对象引用时，不会出现错误。</li>
 <li>G1 为每一个 Region 区域设计了两个名为 TAMS（Top at Mark Start）的指针， 从 Region 区域划出一部分空间用于记录并发回收过程中的新对象。这样的对象认为它们是存活的，不纳入垃圾回收范围。</li>
 </ol>
 <ul>
@@ -597,10 +602,10 @@
 <p>G1收集器记录每个Region 的回收耗时，根据Region中记忆集记录的脏卡信息计算要花费的成本，然后确定那些Region回收在不超过期望停顿时间的约束下获得最高的收益。</p>
 <p><img src="https://gitee.com/dlutlgy/window_typora/raw/master/images/image-20211115175101252.png" alt="image-20211115175101252"></p>
 <h4 id="G1回收过程"><a href="#G1回收过程" class="headerlink" title="G1回收过程"></a>G1回收过程</h4><ol>
-<li>初始标记：标记GC Roots能直接关联的对象，并修改 TAMS 的指针。</li>
-<li>并发标记：从GC Roots 开始对堆对象进行可达性分析，遍历对象图，找到要回收的对象。然后重新处理SATB记录下的用户线程造成的对象的变动。</li>
-<li>最终标记：对用户线程进行短暂的暂停，再来处理并发阶段后仍遗留下来的最后的SATB记录。</li>
-<li>筛选回收：负责更新Region的统计数据，对各个Region域的回收价值和成本进行排序，制定回收计划，确定要回收的Region，暂停用户线程，采用的是标记-复制的算法。</li>
+<li>初始标记：标记 GC Roots 能直接关联的对象，并修改 TAMS 的指针。</li>
+<li>并发标记：从 GC Roots 开始对堆对象进行可达性分析，遍历对象图，找到要回收的对象。然后重新处理 SATB 记录下的用户线程造成的对象的变动。</li>
+<li>最终标记：对用户线程进行短暂的暂停，再来处理并发阶段后仍遗留下来的最后的 SATB 记录。</li>
+<li>筛选回收：负责更新Region的统计数据，对各个 Region 域的回收价值和成本进行排序，制定回收计划，确定要回收的Region，暂停用户线程，采用的是标记-复制的算法。</li>
 </ol>
 <h4 id="CMS-垃圾收集器与-G1-收集器对比"><a href="#CMS-垃圾收集器与-G1-收集器对比" class="headerlink" title="CMS 垃圾收集器与 G1 收集器对比"></a>CMS 垃圾收集器与 G1 收集器对比</h4><p>CMS 采用的是标记-清除算法，而 G1 整体上采用的是<strong>标记-整理</strong>算法（整个区域收集），局部采用的是<strong>标记-复制</strong>算法（一个区域收集完复制到另一个区域），这说明<strong>G1不会产生内存空间碎片</strong></p>
 <p>G1垃圾收集器的缺点是：<strong>内存占用高</strong>和<strong>程序额外执行负载</strong>要高。</p>

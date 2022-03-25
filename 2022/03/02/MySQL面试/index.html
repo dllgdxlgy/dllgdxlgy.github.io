@@ -29,27 +29,27 @@
 <meta property="og:site_name" content="酒窝里有酒">
 <meta property="og:description" content="本篇文章从存储引擎架构、索引、事务、锁及 MVCC 等方面详细介绍面试中常见的问题。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://gitee.com/dlutlgy/images_for_typora/raw/master/images/image-20220210222236950.png">
-<meta property="og:image" content="https://gitee.com/dlutlgy/images_for_typora/raw/master/images/image-20220304101115541.png">
-<meta property="og:image" content="https://gitee.com/dlutlgy/window_typora/raw/master/images/image-20220228170105898.png">
-<meta property="og:image" content="https://gitee.com/dlutlgy/images_for_typora/raw/master/images/image-20220305093142998.png">
-<meta property="og:image" content="https://gitee.com/dlutlgy/images_for_typora/raw/master/images/image-20220305101744576.png">
-<meta property="og:image" content="https://gitee.com/dlutlgy/images_for_typora/raw/master/images/image-20220304133246932.png">
-<meta property="og:image" content="https://gitee.com/dlutlgy/images_for_typora/raw/master/images/image-20220304141828616.png">
-<meta property="og:image" content="https://gitee.com/dlutlgy/images_for_typora/raw/master/images/image-20220304141849723.png">
-<meta property="og:image" content="https://gitee.com/dlutlgy/images_for_typora/raw/master/images/image-20220305111106465.png">
-<meta property="og:image" content="https://gitee.com/dlutlgy/images_for_typora/raw/master/images/image-20220305112310163.png">
-<meta property="og:image" content="https://gitee.com/dlutlgy/images_for_typora/raw/master/images/image-20220305112705688.png">
-<meta property="og:image" content="https://gitee.com/dlutlgy/images_for_typora/raw/master/images/image-20220305113642314.png">
-<meta property="og:image" content="https://gitee.com/dlutlgy/images_for_typora/raw/master/images/image-20220305123355941.png">
-<meta property="og:image" content="https://gitee.com/dlutlgy/images_for_typora/raw/master/images/image-20220305123543108.png">
+<meta property="og:image" content="https://dlutlgy-image-for-mac.oss-cn-beijing.aliyuncs.com/imagesimage-20220210222236950-20220325211339500.png">
+<meta property="og:image" content="https://dlutlgy-image-for-mac.oss-cn-beijing.aliyuncs.com/image-20220304101115541.png">
+<meta property="og:image" content="https://dlutlgy-image-for-mac.oss-cn-beijing.aliyuncs.com/imagesimage-20220228170105898.png">
+<meta property="og:image" content="https://dlutlgy-image-for-mac.oss-cn-beijing.aliyuncs.com/image-20220305093142998.png">
+<meta property="og:image" content="https://dlutlgy-image-for-mac.oss-cn-beijing.aliyuncs.com/image-20220305101744576.png">
+<meta property="og:image" content="https://dlutlgy-image-for-mac.oss-cn-beijing.aliyuncs.com/image-20220304133246932.png">
+<meta property="og:image" content="https://dlutlgy-image-for-mac.oss-cn-beijing.aliyuncs.com/imagesimage-20220304141828616.png">
+<meta property="og:image" content="https://dlutlgy-image-for-mac.oss-cn-beijing.aliyuncs.com/imagesimage-20220304141849723.png">
+<meta property="og:image" content="https://dlutlgy-image-for-mac.oss-cn-beijing.aliyuncs.com/image-20220305111106465.png">
+<meta property="og:image" content="https://dlutlgy-image-for-mac.oss-cn-beijing.aliyuncs.com/image-20220305112310163.png">
+<meta property="og:image" content="https://dlutlgy-image-for-mac.oss-cn-beijing.aliyuncs.com/image-20220305112705688.png">
+<meta property="og:image" content="https://dlutlgy-image-for-mac.oss-cn-beijing.aliyuncs.com/image-20220305113642314.png">
+<meta property="og:image" content="https://dlutlgy-image-for-mac.oss-cn-beijing.aliyuncs.com/image-20220305123355941.png">
+<meta property="og:image" content="https://dlutlgy-image-for-mac.oss-cn-beijing.aliyuncs.com/image-20220305123543108.png">
 <meta property="article:published_time" content="2022-03-02T11:18:57.000Z">
-<meta property="article:modified_time" content="2022-03-22T04:49:59.921Z">
+<meta property="article:modified_time" content="2022-03-25T13:16:35.638Z">
 <meta property="article:author" content="Dlutlgy">
 <meta property="article:tag" content="面试">
 <meta property="article:tag" content="MySql">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://gitee.com/dlutlgy/images_for_typora/raw/master/images/image-20220210222236950.png">
+<meta name="twitter:image" content="https://dlutlgy-image-for-mac.oss-cn-beijing.aliyuncs.com/imagesimage-20220210222236950-20220325211339500.png">
 
 
 <link rel="canonical" href="http://dlutlgy.top/2022/03/02/MySQL%E9%9D%A2%E8%AF%95/">
@@ -351,7 +351,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2022-03-22 12:49:59" itemprop="dateModified" datetime="2022-03-22T12:49:59+08:00">2022-03-22</time>
+        <time title="修改时间：2022-03-25 21:16:35" itemprop="dateModified" datetime="2022-03-25T21:16:35+08:00">2022-03-25</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -428,7 +428,7 @@
 <li>查询缓存组建：内部有 Cache 和 Buffer ，如果查到直接返回。一般作用不大，<strong>8.0去掉了缓存</strong>。</li>
 </ul>
 <p><strong>引擎层</strong>：与数据库文件打交道，负责数据的存储和读取</p>
-<p><img src="https://gitee.com/dlutlgy/images_for_typora/raw/master/images/image-20220210222236950.png" alt="image-20220210222236950"></p>
+<p><img src="https://dlutlgy-image-for-mac.oss-cn-beijing.aliyuncs.com/imagesimage-20220210222236950-20220325211339500.png" alt="image-20220210222236950"></p>
 <h3 id="2-SQL-的执行流程"><a href="#2-SQL-的执行流程" class="headerlink" title="2. SQL 的执行流程"></a>2. SQL 的执行流程</h3><ol>
 <li><p>在 SQL 查询之前，需要建立 TCP 连接</p>
 </li>
@@ -443,7 +443,7 @@
 <li><p>执行计划给到执行器，判断用户是不是有权限，如果没有返回错误，如果有调用存储引擎</p>
 </li>
 <li><p>执行引擎执行 SQL 查询并返回结果，然后将结果放回查询缓存当中。</p>
-<img src="https://gitee.com/dlutlgy/images_for_typora/raw/master/images/image-20220304101115541.png" alt="image-20220304101115541" style="zoom:50%;" />
+<img src="https://dlutlgy-image-for-mac.oss-cn-beijing.aliyuncs.com/image-20220304101115541.png" alt="image-20220304101115541" style="zoom:50%;" />
 
 
 
@@ -460,7 +460,7 @@
 <ul>
 <li>在选择存储引擎方面，如果没有特殊要求，我们就选 InnoDB ，如果多数都在读操作，并且清楚明白没有事务，数据崩溃等缺点，也可以使用 MyISAM，如果需要事务，并且需要高并发，经常进行写操作，那么就使用 InnoDB。</li>
 </ul>
-<p><img src="https://gitee.com/dlutlgy/window_typora/raw/master/images/image-20220228170105898.png" alt="image-20220228170105898"></p>
+<p><img src="https://dlutlgy-image-for-mac.oss-cn-beijing.aliyuncs.com/imagesimage-20220228170105898.png" alt="image-20220228170105898"></p>
 <p>注意⚠️：Innodb 5.6 之后支持全文索引、并且还有自适应的 hash 索引</p>
 <h2 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h2><h3 id="1-什么是索引？"><a href="#1-什么是索引？" class="headerlink" title="1. 什么是索引？"></a>1. 什么是索引？</h3><p>索引就是一种能帮助 MySql 高效获取数据的数据结构(排好序的快速查找的数据结构)，能实现快速查找。</p>
 <h3 id="2-索引的优缺点？"><a href="#2-索引的优缺点？" class="headerlink" title="2. 索引的优缺点？"></a>2. 索引的优缺点？</h3><p>优点：</p>
@@ -574,7 +574,7 @@
 <p> <strong>redo log</strong> 称为重做日志，提供<strong>再写入功能</strong>、恢复提交事务修改的页操作，保证事务的持久性。</p>
 <p> **undo log **称为回滚日志，回滚行记录到指定的某个版本，保证事务的原子性、一致性。</p>
 <p>解决的问题：如果一个事务没有提交，那么突然断电也就算了，反正你也没提交，但是如果我提交了，然后断电了，此时数据还没有被刷新到磁盘，那么我们怎么办呢？这时候就需要 redo log 日志了。redo log 只是记录了一下修改的表空间哪一个页面的哪一条数据，改了写什么。如果这个时候在发生问题，我们之间拿过来 redo log 就怼到 bug 脸上 。</p>
-<h4 id="redo-log"><a href="#redo-log" class="headerlink" title="redo log"></a>redo log</h4><img src="https://gitee.com/dlutlgy/images_for_typora/raw/master/images/image-20220305093142998.png" alt="image-20220305093142998" style="zoom:50%;" />
+<h4 id="redo-log"><a href="#redo-log" class="headerlink" title="redo log"></a>redo log</h4><img src="https://dlutlgy-image-for-mac.oss-cn-beijing.aliyuncs.com/image-20220305093142998.png" alt="image-20220305093142998" style="zoom:50%;" />
 
 <p>这里有一种技术 <strong>WAL</strong>（Write-Ahead Log）预先日志持久化技术，面试经常问噢，然后我们说的刷盘，一般指的就是上面的步骤3，只要我们把 redo log buffer 写入 redo log file 中，断电崩溃你随意。</p>
 <p>注意⚠️：在redo log buffer 写入 redo log file 中，并不是直接刷到磁盘的，只是刷入了 page cache（文件系统缓存）中。由我们的操作系统来决定，具体由 <strong>innodb_flush_log_at_trx_commit</strong> 参数决定。由于面试不会问，这里就不写了。</p>
@@ -590,7 +590,7 @@
 <li>Redo Log Buffer再写入到 Redo Log 文件</li>
 <li>然后写入到 Binlog 文件中，方便主从复制，从机可以知道你做了什么操作了，实现主从同步。</li>
 </ol>
-<img src="https://gitee.com/dlutlgy/images_for_typora/raw/master/images/image-20220305101744576.png" alt="image-20220305101744576" style="zoom:50%;" />
+<img src="https://dlutlgy-image-for-mac.oss-cn-beijing.aliyuncs.com/image-20220305101744576.png" alt="image-20220305101744576" style="zoom:50%;" />
 
 <h3 id="4-事务的并发问题"><a href="#4-事务的并发问题" class="headerlink" title="4. 事务的并发问题"></a>4. 事务的并发问题</h3><ul>
 <li><p>脏写</p>
@@ -624,7 +624,7 @@
 <p>确保事务可以从一个表中读取相同的行，在这个事务持续期间，禁止其他食物对该表进行插入、更新、和删除操作。能避免所有问题，但是效率比较低。</p>
 <h2 id="锁"><a href="#锁" class="headerlink" title="锁"></a>锁</h2><p>前提：锁的出现是为了保证事务的隔离型。数据库 MySQL 并发访问相同记录主要有以下三种情况，分别是：读-读、读-写(或者写-读)、写-写。读-读的情况可以并发进行，写-写的情况加锁就可以了，但是写-读或者读-写这种情况就有点难办。不过也有办法，主要有两种，第一种就是加锁，无论是读还是写，第二种就是读操作利用多版本并发控制（MVCC）这个后面讲到，这里主要讲锁。</p>
 <p>锁的分类：</p>
-<img src="https://gitee.com/dlutlgy/images_for_typora/raw/master/images/image-20220304133246932.png" alt="image-20220304133246932" style="zoom:50%;" />
+<img src="https://dlutlgy-image-for-mac.oss-cn-beijing.aliyuncs.com/image-20220304133246932.png" alt="image-20220304133246932" style="zoom:50%;" />
 
 <p>读锁：就是可以进行读操作，也就是都来进行加读锁，但是不可以加写锁，<strong>被称为共享读</strong>。</p>
 <p>写锁：只能我来写，其他锁（无论读锁还是写锁都阻塞）阻塞。</p>
@@ -635,9 +635,9 @@
 <p>意向锁的出现原因：如果我们对标中的某一行加了 X 锁，之后又有一个事务加表级别的 X 锁，那这个时候就出了问题，除非在插入表级别的锁的时候进行，对所有行进行遍历，如果数据特别多，那真有点惨，所以出现了意向锁。主要协调表级锁与行级锁的关系。</p>
 <p>所谓的意向锁。就是在行级别加 X 锁的时候，自动对页进行加锁，为 IX 锁（意向排他锁）。顺序一般为：先获取表的对应意向锁，然后再获取行的锁。</p>
 <p>锁之间的关系</p>
-<p><img src="https://gitee.com/dlutlgy/images_for_typora/raw/master/images/image-20220304141828616.png" alt="image-20220304141828616"></p>
+<p><img src="https://dlutlgy-image-for-mac.oss-cn-beijing.aliyuncs.com/imagesimage-20220304141828616.png" alt="image-20220304141828616"></p>
 <p>这里的<strong>意向锁和排他锁是表级别的锁</strong>。</p>
-<p><img src="https://gitee.com/dlutlgy/images_for_typora/raw/master/images/image-20220304141849723.png" alt="image-20220304141849723"></p>
+<p><img src="https://dlutlgy-image-for-mac.oss-cn-beijing.aliyuncs.com/imagesimage-20220304141849723.png" alt="image-20220304141849723"></p>
 <p><strong>自增锁：</strong>（了解）</p>
 <p>在我们插入数据的时候，有的时候没有指定主键也能插入成功，是因为系统自动增加的，这里插入数据分为三种情况：简单插入、批量插入、混合模式插入。</p>
 <p>简单插入：能确定插入的行数，能在系统中获取下一个的主键值就可以了。</p>
@@ -663,7 +663,7 @@
 <p>trx-id：记录每一次 事务对他改动的<strong>事务号</strong>，每一个事务都会有事务号。</p>
 <p>roll-pointer：是一个指针，每次对数据进行改动时，都会把旧版本的数据写入到 undo log ，然后这个指针就指向之前的记录。</p>
 <p>后面的两个字段我们需要使用！</p>
-<h4 id="undo-log-1"><a href="#undo-log-1" class="headerlink" title="undo log"></a><strong>undo log</strong></h4><img src="https://gitee.com/dlutlgy/images_for_typora/raw/master/images/image-20220305111106465.png" alt="image-20220305111106465" style="zoom:50%;" />
+<h4 id="undo-log-1"><a href="#undo-log-1" class="headerlink" title="undo log"></a><strong>undo log</strong></h4><img src="https://dlutlgy-image-for-mac.oss-cn-beijing.aliyuncs.com/image-20220305111106465.png" alt="image-20220305111106465" style="zoom:50%;" />
 
 
 
@@ -689,14 +689,14 @@
 </ul>
 <h4 id="举例1"><a href="#举例1" class="headerlink" title="举例1"></a>举例1</h4><p>在  read-committed：**每次读取数据前都生成一个 **ReadView。</p>
 <p>假如现在 student 表中只有一条由 事务id 为 8 的事务插入的数据：</p>
-<img src="https://gitee.com/dlutlgy/images_for_typora/raw/master/images/image-20220305112310163.png" alt="image-20220305112310163" style="zoom: 50%;" />
+<img src="https://dlutlgy-image-for-mac.oss-cn-beijing.aliyuncs.com/image-20220305112310163.png" alt="image-20220305112310163" style="zoom: 50%;" />
 
 <p>系统里有两个 事务id 分别为 10 、 20 的事务在执行:</p>
 <p>注意⚠️：如果是增删改，事务是分配的，如果是查询的话事务 id 为0；</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># Transaction 10</span><br><span class="line">BEGIN;</span><br><span class="line">UPDATE student SET name&#x3D;&quot;李四&quot; WHERE id&#x3D;1; UPDATE student SET name&#x3D;&quot;王五&quot; WHERE id&#x3D;1;</span><br><span class="line"># Transaction 20</span><br><span class="line">BEGIN;</span><br><span class="line"># 更新了一些别的表的记录 ...</span><br></pre></td></tr></table></figure>
 
 <p>此时就是下图表示的样子：</p>
-<img src="https://gitee.com/dlutlgy/images_for_typora/raw/master/images/image-20220305112705688.png" alt="image-20220305112705688" style="zoom:50%;" />
+<img src="https://dlutlgy-image-for-mac.oss-cn-beijing.aliyuncs.com/image-20220305112705688.png" alt="image-20220305112705688" style="zoom:50%;" />
 
 <p>注意⚠️：现在是在 READ COMMITTED 级别下</p>
 <p>现在有一个事务来进行查询（事务ID为0），ReadView里面是【10、20】，因为0&lt;10，因为是读已提交，所以读出来是”张三”等信息。</p>
@@ -712,7 +712,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># Transaction 20</span><br><span class="line">BEGIN;</span><br><span class="line"># 更新了一些别的表的记录</span><br><span class="line">...</span><br><span class="line">UPDATE student SET name&#x3D;&quot;钱七&quot; WHERE id&#x3D;1; UPDATE student SET name&#x3D;&quot;宋八&quot; WHERE id&#x3D;1;</span><br></pre></td></tr></table></figure>
 
 <p>然后就是下图的情况：</p>
-<img src="https://gitee.com/dlutlgy/images_for_typora/raw/master/images/image-20220305113642314.png" alt="image-20220305113642314" style="zoom:50%;" />
+<img src="https://dlutlgy-image-for-mac.oss-cn-beijing.aliyuncs.com/image-20220305113642314.png" alt="image-20220305113642314" style="zoom:50%;" />
 
 <p>然后，我们依旧进行读操作，每读一次就生成一个 ReadView。这里因为是读所以还是0；</p>
 <p>具体步骤如下：</p>
@@ -754,7 +754,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">insert into student( id , name) values(2,&#39;李四&#39;);</span><br><span class="line">insert into student ( id , name) values(3, &#39;王五&#39;);</span><br></pre></td></tr></table></figure>
 
 <p>此时表student中就有三条数据了，对应的undo log 如下图所示:</p>
-<img src="https://gitee.com/dlutlgy/images_for_typora/raw/master/images/image-20220305123355941.png" alt="image-20220305123355941" style="zoom:50%;" />
+<img src="https://dlutlgy-image-for-mac.oss-cn-beijing.aliyuncs.com/image-20220305123355941.png" alt="image-20220305123355941" style="zoom:50%;" />
 
 <p>步骤3:接着事务 A 开启第二次查询，根据可重复读隔离级别的规则，此时事务 A <strong>并不会再重新生成</strong> ReadView。此时表 student 中的 3 条数据都满足 where id&gt;=1 的条件，因此会先查出来。然后根据 ReadView 机制，判断每条数据是不是都可以被事务 A 看到。</p>
 <ol>
@@ -763,7 +763,7 @@
 <li>同理，id=3 的这条数据，trx_id 也为 30，因此也不能被事务 A 看见。</li>
 </ol>
 <p>如图所示：</p>
-<img src="https://gitee.com/dlutlgy/images_for_typora/raw/master/images/image-20220305123543108.png" alt="image-20220305123543108" style="zoom:50%;" />
+<img src="https://dlutlgy-image-for-mac.oss-cn-beijing.aliyuncs.com/image-20220305123543108.png" alt="image-20220305123543108" style="zoom:50%;" />
 
 <p>这不就解决幻读了咩！</p>
 
