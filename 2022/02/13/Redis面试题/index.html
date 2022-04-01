@@ -45,7 +45,7 @@
 <meta property="og:image" content="https://dlutlgy-image-for-mac.oss-cn-beijing.aliyuncs.com/image-20220310135257343.png">
 <meta property="og:image" content="https://dlutlgy-image-for-mac.oss-cn-beijing.aliyuncs.com/imagesimage-20220329095832473.png">
 <meta property="article:published_time" content="2022-02-13T09:36:24.000Z">
-<meta property="article:modified_time" content="2022-03-31T09:29:13.011Z">
+<meta property="article:modified_time" content="2022-04-01T01:08:47.049Z">
 <meta property="article:author" content="Dlutlgy">
 <meta property="article:tag" content="面试">
 <meta property="article:tag" content="Redis">
@@ -352,7 +352,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2022-03-31 17:29:13" itemprop="dateModified" datetime="2022-03-31T17:29:13+08:00">2022-03-31</time>
+        <time title="修改时间：2022-04-01 09:08:47" itemprop="dateModified" datetime="2022-04-01T09:08:47+08:00">2022-04-01</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -656,7 +656,7 @@
 <p>提供了经纬度设置，查询、范围查询、距离查询。</p>
 <p><strong>stream</strong></p>
 <h3 id="7-Redis-的常用指令？"><a href="#7-Redis-的常用指令？" class="headerlink" title="7. Redis 的常用指令？"></a>7. Redis 的常用指令？</h3><h2 id="Redis-持久化篇"><a href="#Redis-持久化篇" class="headerlink" title="Redis 持久化篇"></a>Redis 持久化篇</h2><h3 id="1-讲一下-Redis-中的持久化机制"><a href="#1-讲一下-Redis-中的持久化机制" class="headerlink" title="1. 讲一下 Redis 中的持久化机制"></a>1. 讲一下 Redis 中的持久化机制</h3><h4 id="RDB"><a href="#RDB" class="headerlink" title="RDB"></a>RDB</h4><p>RDB 持久化方式是将 Redis 在内存中的数据库记录按照指定时间写入磁盘，实际操作过程是 fork 一个子进程，先将数据写入临时文件，写入成功后，在替换之前的文件，使用二进制压缩。</p>
-<h4 id="AOF"><a href="#AOF" class="headerlink" title="AOF"></a>AOF</h4><p>AOF 持久化是以日志的形式记录服务器所处理的每一个写、删除操作。不会记录查询操作，以文本的方式记录，可以打开文件看到详细的操作记录。</p>
+<h4 id="AOF"><a href="#AOF" class="headerlink" title="AOF"></a>AOF</h4><p>AOF 持久化是以日志的形式记录服务器所处理的每一个增加、删除、修改操作。不会记录查询操作，以文本的方式记录，可以打开文件看到详细的操作记录。</p>
 <h3 id="2-说一下-RDB-和-AOF-的优缺点？"><a href="#2-说一下-RDB-和-AOF-的优缺点？" class="headerlink" title="2. 说一下 RDB 和 AOF 的优缺点？"></a>2. 说一下 RDB 和 AOF 的优缺点？</h3><p>RDB 的优势</p>
 <ul>
 <li>适合大规模数据恢复（个人理解为启动效率高）</li>
@@ -680,7 +680,7 @@
 <ul>
 <li>比起 RDB 更占空间（因为不仅仅保存数据还保存操作的记录）</li>
 <li>恢复速度比较慢（因为需要一条条执行完指令）</li>
-<li>存在 bug，可能造成不能恢复</li>
+<li>存在 bug，可能造成不能恢复。</li>
 </ul>
 <h3 id="3-RDB-和-AOF-选哪一个？"><a href="#3-RDB-和-AOF-选哪一个？" class="headerlink" title="3. RDB 和 AOF 选哪一个？"></a>3. RDB 和 AOF 选哪一个？</h3><p>这个要具体情况具体分析</p>
 <p>如果只是拿 Redis 做内存缓存的话，那么可以都不用</p>
@@ -694,13 +694,13 @@
 <h3 id="2-Redis-事务的三个阶段、三个特性"><a href="#2-Redis-事务的三个阶段、三个特性" class="headerlink" title="2. Redis 事务的三个阶段、三个特性"></a>2. Redis 事务的三个阶段、三个特性</h3><p>三阶段：</p>
 <ol>
 <li>开启事务</li>
-<li>入队</li>
+<li>命令入队</li>
 <li>执行</li>
 </ol>
 <p>三特性：</p>
 <ol>
 <li>单独的隔离操作：事务的所有命令都会序列化，按顺序执行，事务在执行的过程中，不会被其他客户端发送过来的命令请求所打断。</li>
-<li>没有隔离级别的概念，因为每一条命令都攒着，一直到执行EXEC命令</li>
+<li>没有隔离级别的概念，因为每一条命令都攒着，一直到执行 EXEC 命令。</li>
 <li>不保证原子性：因为如果一个事务里面的一条命令执行失败，其后面的命令依旧执行，没有回滚。</li>
 </ol>
 <p>注意⚠️：在组队（入队）的时候出错，执行时整个的所有队列都会被取消。</p>
@@ -762,7 +762,7 @@
 </li>
 </ul>
 <h2 id="Redis-应用问题解决篇"><a href="#Redis-应用问题解决篇" class="headerlink" title="Redis 应用问题解决篇"></a>Redis 应用问题解决篇</h2><h3 id="1-Redis-如何实现分布式锁？"><a href="#1-Redis-如何实现分布式锁？" class="headerlink" title="1. Redis 如何实现分布式锁？"></a>1. Redis 如何实现分布式锁？</h3><p>参考链接：<a target="_blank" rel="noopener" href="https://www.zhihu.com/question/300767410/answer/1749442787">https://www.zhihu.com/question/300767410/answer/1749442787</a></p>
-<h5 id="问题出现的原因"><a href="#问题出现的原因" class="headerlink" title="问题出现的原因"></a>问题出现的原因</h5><p>单机中，我们使用本地锁就可以避免多个操作同一个数据的问题，但是在分布式系统中，肯容易就是多个服务器修改同一个数据，又因为读取和更新不是一个操作，所以原来的本地锁就派不上用场，这个时候就就需要分布式锁，它的作用就是<strong>保证多台服务器在执行某一段代码时保证只有一台服务器执行</strong>。</p>
+<h5 id="问题出现的原因"><a href="#问题出现的原因" class="headerlink" title="问题出现的原因"></a>问题出现的原因</h5><p>单机中，我们使用本地锁就可以避免多个操作共同操作同一个数据的问题，但是在分布式系统中，很容易就是多个客户端修改同一个数据，又因为读取和更新不是一个操作，所以原来的本地锁就派不上用场，这个时候就就需要分布式锁，它的作用就是<strong>保证多台客户端在执行某一段代码时保证只有一台客户端执行</strong>。</p>
 <h5 id="如果实现分布式锁，需要满足的条件"><a href="#如果实现分布式锁，需要满足的条件" class="headerlink" title="如果实现分布式锁，需要满足的条件"></a>如果实现分布式锁，需要满足的条件</h5><ol>
 <li>互斥性，任何时刻，保证只有一个客户端持有锁。</li>
 <li>不能出现死锁，即使崩溃也要按时释放。</li>
@@ -771,7 +771,7 @@
 <h5 id="目前可以实现的方式"><a href="#目前可以实现的方式" class="headerlink" title="目前可以实现的方式"></a>目前可以实现的方式</h5><ul>
 <li>使用 MySQL 实现分布式锁</li>
 <li>基于缓存（Redis）也是我们要讲的（性能最高）</li>
-<li>基于 Zookeeper（最可靠）</li>
+<li>基于 Zookeeper实现分布式锁（最可靠）</li>
 </ul>
 <h5 id="情况一"><a href="#情况一" class="headerlink" title="情况一"></a>情况一</h5><p>使用<code>setnx key 1</code>设置锁，使用<code>del key</code>删除锁。</p>
 <p><strong>出现的问题</strong>：</p>
@@ -782,7 +782,7 @@
 <img src="https://dlutlgy-image-for-mac.oss-cn-beijing.aliyuncs.com/image-20220309123853020.png" alt="image-20220309123853020" style="zoom: 50%;" />
 
 <h5 id="情况二"><a href="#情况二" class="headerlink" title="情况二"></a>情况二</h5><p>对情况一改进，先执行 <code>setnx key 1</code>,再执行 <code>expire key 10</code>,设置过期时间。</p>
-<p>出现的问题：只执行完了第一条命令，却没来的及执行第二条命令。</p>
+<p>出现的问题：只执行完了第一条命令，却没来的及执行第二条命令。这时候和情况一相同。</p>
 <h5 id="情况三"><a href="#情况三" class="headerlink" title="情况三"></a>情况三</h5><p>对情况二改进，执行<code>set key 1 ex 10 nx</code>，这样就是原子操作了，也解决了死锁问题</p>
 <img src="https://dlutlgy-image-for-mac.oss-cn-beijing.aliyuncs.com/image-20220309124333628.png" alt="image-20220309124333628" style="zoom: 50%;" />
 
@@ -826,7 +826,7 @@
 </ol>
 <h3 id="2-Redis-如何实现消息队列？"><a href="#2-Redis-如何实现消息队列？" class="headerlink" title="2. Redis 如何实现消息队列？"></a>2. Redis 如何实现消息队列？</h3><p><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/20795043">参考链接-@Kaito</a></p>
 <p><a target="_blank" rel="noopener" href="https://javakeeper.starfish.ink/data-management/Redis/Redis-MQ.html#%E4%B8%80%E3%80%81%E5%9B%9E%E9%A1%BE%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97">参考链接-JavaKeeper</a></p>
-<p>不建议使用 Redis 做消息队列，但 Redis 设计的初衷是为了做缓存。如果做消息队列的话也可以，注要有以下三种方式。</p>
+<p>不建议使用 Redis 做消息队列，因为 Redis 设计的初衷是为了做缓存。如果做消息队列的话也可以，注要有以下三种方式。</p>
 <p>三种方式：</p>
 <ul>
 <li>List 队列</li>
