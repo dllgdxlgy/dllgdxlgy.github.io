@@ -32,7 +32,7 @@
 <meta property="og:image" content="https://dlutlgy-image-for-mac.oss-cn-beijing.aliyuncs.com/imagesimage-20220403112057443.png">
 <meta property="og:image" content="https://dlutlgy-image-for-mac.oss-cn-beijing.aliyuncs.com/imagesimage-20220403112321490.png">
 <meta property="article:published_time" content="2022-02-17T03:13:21.000Z">
-<meta property="article:modified_time" content="2022-04-03T03:51:22.701Z">
+<meta property="article:modified_time" content="2022-04-03T06:20:45.932Z">
 <meta property="article:author" content="Dlutlgy">
 <meta property="article:tag" content="面试">
 <meta property="article:tag" content="Java基础">
@@ -229,7 +229,7 @@
 
       <!--noindex-->
       <section class="post-toc-wrap sidebar-panel">
-          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B3%E4%BA%8E%E5%B9%B6%E5%8F%91%E4%B8%8E%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%9A%84%E4%B8%80%E4%BA%9B%E6%80%9D%E8%80%83"><span class="nav-text">关于并发与多线程的一些思考</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E5%B8%A6%E6%9D%A5%E7%9A%84%E9%97%AE%E9%A2%98%EF%BC%9F"><span class="nav-text">1.并发编程带来的问题？</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1%E5%A6%82%E4%BD%95%E5%87%8F%E5%B0%91%E4%B8%8A%E4%B8%8B%E6%96%87%E5%88%87%E6%8D%A2%EF%BC%9F"><span class="nav-text">1.1如何减少上下文切换？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-%E7%BA%BF%E7%A8%8B%E3%80%81%E8%BF%9B%E7%A8%8B%E3%80%81%E5%8D%8F%E7%A8%8B%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="nav-text">1.2 线程、进程、协程的区别？</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-Java-%E5%B9%B6%E5%8F%91%E6%9C%BA%E5%88%B6%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86"><span class="nav-text">2.Java 并发机制底层原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-Synchronized-%E5%85%B3%E9%94%AE%E5%AD%97"><span class="nav-text">3.Synchronized 关键字</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1%E7%89%B9%E6%80%A7"><span class="nav-text">3.1特性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2%E7%94%A8%E6%B3%95"><span class="nav-text">3.2用法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3%E9%94%81%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="nav-text">3.3锁的实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4%E5%BA%95%E5%B1%82%E5%AE%9E%E7%8E%B0"><span class="nav-text">3.4底层实现</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-volatile%E5%85%B3%E9%94%AE%E5%AD%97"><span class="nav-text">4.volatile关键字</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BA%BF%E7%A8%8B%E6%B1%A0"><span class="nav-text">线程池</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BD%BF%E7%94%A8%E7%BA%BF%E7%A8%8B%E6%B1%A0%EF%BC%9F"><span class="nav-text">1.为什么使用线程池？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E5%88%9B%E5%BB%BA%E7%BA%BF%E7%A8%8B%E7%9A%84%E6%96%B9%E5%BC%8F%E6%9C%89%E5%93%AA%E4%BA%9B%EF%BC%9F"><span class="nav-text">2.创建线程的方式有哪些？</span></a></li></ol></li></ol></div>
+          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B3%E4%BA%8E%E5%B9%B6%E5%8F%91%E4%B8%8E%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%9A%84%E4%B8%80%E4%BA%9B%E6%80%9D%E8%80%83"><span class="nav-text">关于并发与多线程的一些思考</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E5%B8%A6%E6%9D%A5%E7%9A%84%E9%97%AE%E9%A2%98%EF%BC%9F"><span class="nav-text">1.并发编程带来的问题？</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1%E5%A6%82%E4%BD%95%E5%87%8F%E5%B0%91%E4%B8%8A%E4%B8%8B%E6%96%87%E5%88%87%E6%8D%A2%EF%BC%9F"><span class="nav-text">1.1如何减少上下文切换？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-%E7%BA%BF%E7%A8%8B%E3%80%81%E8%BF%9B%E7%A8%8B%E3%80%81%E5%8D%8F%E7%A8%8B%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="nav-text">1.2 线程、进程、协程的区别？</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-Java-%E5%B9%B6%E5%8F%91%E6%9C%BA%E5%88%B6%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86"><span class="nav-text">2.Java 并发机制底层原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-Synchronized-%E5%85%B3%E9%94%AE%E5%AD%97"><span class="nav-text">3.Synchronized 关键字</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1%E7%89%B9%E6%80%A7"><span class="nav-text">3.1特性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2%E7%94%A8%E6%B3%95"><span class="nav-text">3.2用法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3%E9%94%81%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="nav-text">3.3锁的实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4%E5%BA%95%E5%B1%82%E5%AE%9E%E7%8E%B0"><span class="nav-text">3.4底层实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-5Synchronized-%E9%94%81%E4%BC%98%E5%8C%96"><span class="nav-text">3.5Synchronized 锁优化</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-volatile%E5%85%B3%E9%94%AE%E5%AD%97"><span class="nav-text">4.volatile关键字</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BA%BF%E7%A8%8B%E6%B1%A0"><span class="nav-text">线程池</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BD%BF%E7%94%A8%E7%BA%BF%E7%A8%8B%E6%B1%A0%EF%BC%9F"><span class="nav-text">1.为什么使用线程池？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E5%88%9B%E5%BB%BA%E7%BA%BF%E7%A8%8B%E7%9A%84%E6%96%B9%E5%BC%8F%E6%9C%89%E5%93%AA%E4%BA%9B%EF%BC%9F"><span class="nav-text">2.创建线程的方式有哪些？</span></a></li></ol></li></ol></div>
       </section>
       <!--/noindex-->
 
@@ -339,7 +339,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2022-04-03 11:51:22" itemprop="dateModified" datetime="2022-04-03T11:51:22+08:00">2022-04-03</time>
+        <time title="修改时间：2022-04-03 14:20:45" itemprop="dateModified" datetime="2022-04-03T14:20:45+08:00">2022-04-03</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -380,14 +380,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>4.7k</span>
+      <span>5.4k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>4 分钟</span>
+      <span>5 分钟</span>
     </span>
 </div>
 
@@ -470,9 +470,25 @@
 <p>对象头是我们需要关注的重点，它是 synchronized 实现锁的基础，因为 synchronized 申请锁、上锁、释放锁都与对象头有关。对象头主要结构是由 <code>Mark Word</code> 和 <code>Class Metadata Address</code> 组成，其中 <code>Mark Word</code> 存储对象的 <strong>hashCode、分代年龄、锁信息</strong>等信息，<code>Class Metadata Address</code> 是类型指针指向对象的类元数据，JVM通过该指针确定该对象是哪个类的实例。</p>
 <p>锁也分不同状态，JDK6 之前只有两个状态：<strong>无锁、有锁（重量级锁）</strong>，而在 JDK6 之后对 synchronized 进行了优化，新增了两种状态，总共就是四个状态：<strong>无锁状态、偏向锁、轻量级锁、重量级锁</strong>，其中无锁就是一种状态了。锁的类型和状态在对象头<code>Mark Word</code>中都有记录，在申请锁、锁升级等过程中 JVM 都需要读取对象的 <code>Mark Word</code> 数据。</p>
 <p>每一个锁都对应一个monitor对象，在HotSpot虚拟机中它是由ObjectMonitor实现的（C++实现）。每个对象都存在着一个monitor与之关联，对象与其monitor之间的关系有存在多种实现方式，如monitor可以与对象一起创建销毁或当线程试图获取对象锁时自动生成，但当一个monitor被某个线程持有后，它便处于锁定状态。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">ObjectMonitor() &#123;</span><br><span class="line">    _header       = NULL;</span><br><span class="line">    _count        = <span class="number">0</span>;  <span class="comment">//锁计数器</span></span><br><span class="line">    _waiters      = <span class="number">0</span>,</span><br><span class="line">    _recursions   = <span class="number">0</span>;</span><br><span class="line">    _object       = NULL;</span><br><span class="line">    _owner        = NULL;</span><br><span class="line">    _WaitSet      = NULL; <span class="comment">//处于wait状态的线程，会被加入到_WaitSet</span></span><br><span class="line">    _WaitSetLock  = <span class="number">0</span> ;</span><br><span class="line">    _Responsible  = NULL ;</span><br><span class="line">    _succ         = NULL ;</span><br><span class="line">    _cxq          = NULL ;</span><br><span class="line">    FreeNext      = NULL ;</span><br><span class="line">    _EntryList    = NULL ; <span class="comment">//处于等待锁block状态的线程，会被加入到该列表</span></span><br><span class="line">    _SpinFreq     = <span class="number">0</span> ;</span><br><span class="line">    _SpinClock    = <span class="number">0</span> ;</span><br><span class="line">    OwnerIsThread = <span class="number">0</span> ;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
 <blockquote>
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/javazejian/article/details/72828483">该段摘自下面引用文章1</a><br>ObjectMonitor中有两个队列  <strong>_WaitSet</strong> 和 <strong>_EntryList</strong>，用来保存ObjectWaiter对象列表(每个等待锁的线程都会被封装ObjectWaiter对象)，<strong>_owner</strong>指向持有ObjectMonitor对象的线程，当多个线程同时访问一段同步代码时，首先会进入 <strong>_EntryList</strong>  集合，当线程获取到对象的 monitor 后进入。<strong>_owner</strong>区域并把 monitor 中的 owner 变量设置为当前线程同时monitor中的计数器count加1，若线程调用 wait() 方法，将释放当前持有的monitor，owner变量恢复为null，count自减1，同时该线程进入 WaitSet集合中等待被唤醒。若当前线程执行完毕也将释放monitor(锁)并复位变量的值，以便其他线程进入获取monitor(锁)。<br>monitor对象存在于每个Java对象的对象头中(存储的指针的指向)，synchronized锁便是通过这种方式获取锁的，也是为什么Java中任意对象可以作为锁的原因，同时也是notify/notifyAll/wait等方法存在于顶级对象Object中的原因(关于这点稍后还会进行分析)</p>
 </blockquote>
+<h3 id="3-5Synchronized-锁优化"><a href="#3-5Synchronized-锁优化" class="headerlink" title="3.5Synchronized 锁优化"></a>3.5Synchronized 锁优化</h3><p>JDK6之前只有无锁和重量级锁，在JDK6的时候，添加了偏向锁和轻量级锁，给synchronized带来了很大的提升。</p>
+<p>锁状态的变化：<strong>无锁——&gt;偏向锁——&gt;轻量级锁——&gt;重量级锁</strong></p>
+<ul>
+<li>偏向锁</li>
+</ul>
+<p>是为了让线程获取锁的代价更低。我们发现不仅是其他线程去争夺锁，自己这个线程也会去抢锁，当一个线程获取锁的时候，在对象头和栈帧中锁记录存储偏向锁ID，那么该线程再次获取锁就直接测试对象头是不是指向自己的线程ID，如果是就相当于获取了锁，这样就避免了获取锁的申请了。</p>
+<ul>
+<li>轻量级锁</li>
+</ul>
+<p>如果此时是偏向锁，这时候又来了一个线程，来申请同一个锁对象的时候，偏向锁就会立即升级为轻量级锁，注意这里只是申请锁，而不是两个线程竞争锁，可以一前一后的交替执行代码块。</p>
+<ul>
+<li>重量级锁</li>
+</ul>
+<p>重量级锁是由轻量级锁升级而来，当<strong>同一时间</strong>有多个线程竞争锁时，锁就会被升级成重量级锁，此时其申请锁带来的开销也就变大。重量级锁一般使用场景会在追求吞吐量，同步块或者同步方法执行时间较长的场景。</p>
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/javazejian/article/details/72828483">1.深入理解Java并发之synchronized实现原理</a></p>
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_36934826/article/details/95978700">2.原文链接</a></p>
 <h2 id="4-volatile关键字"><a href="#4-volatile关键字" class="headerlink" title="4.volatile关键字"></a>4.volatile关键字</h2><h2 id="线程池"><a href="#线程池" class="headerlink" title="线程池"></a>线程池</h2><h3 id="1-为什么使用线程池？"><a href="#1-为什么使用线程池？" class="headerlink" title="1.为什么使用线程池？"></a>1.为什么使用线程池？</h3><ul>
@@ -582,14 +598,14 @@
       <i class="fa fa-chart-line"></i>
     </span>
       <span>站点总字数：</span>
-    <span title="站点总字数">203k</span>
+    <span title="站点总字数">204k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span>站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">3:04</span>
+    <span title="站点阅读时长">3:05</span>
   </span>
 </div>
 
