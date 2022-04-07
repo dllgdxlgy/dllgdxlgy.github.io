@@ -40,7 +40,7 @@
 <meta property="og:image" content="https://dlutlgy-image-for-mac.oss-cn-beijing.aliyuncs.com/image-20211116214556489.png">
 <meta property="og:image" content="https://dlutlgy-image-for-mac.oss-cn-beijing.aliyuncs.com/image-20211120143543051.png">
 <meta property="article:published_time" content="2022-02-17T03:13:21.000Z">
-<meta property="article:modified_time" content="2022-04-05T07:07:32.982Z">
+<meta property="article:modified_time" content="2022-04-07T05:18:06.907Z">
 <meta property="article:author" content="Dlutlgy">
 <meta property="article:tag" content="面试">
 <meta property="article:tag" content="Java基础">
@@ -347,7 +347,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2022-04-05 15:07:32" itemprop="dateModified" datetime="2022-04-05T15:07:32+08:00">2022-04-05</time>
+        <time title="修改时间：2022-04-07 13:18:06" itemprop="dateModified" datetime="2022-04-07T13:18:06+08:00">2022-04-07</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -549,7 +549,7 @@
 <li><p>Parallel Old 收集器</p>
 <p>是Parallel Scavenge的老年代版本，使用<strong>多线程</strong>，<strong>标记-整理</strong>算法。</p>
 </li>
-<li><p>CMS 收集器（老年代）（标记清除算法）</p>
+<li><p>CMS 收集器（老年代）（<strong>标记清除算法</strong>）</p>
 <p>首次实现了让垃圾回收器和用户线程同时工作。</p>
 <p>目的是<strong>为了获得最短停顿时间的收集器</strong></p>
 </li>
@@ -584,7 +584,7 @@
 <p>优点：</p>
 <ul>
 <li>支持并发收集。</li>
-<li>低停顿，因为 CMS 可以控制将耗时的两个 Stop-The-World 操作保持与用户线程恰当的时机并发执行，并且能保证在短时间执行完成，这样就达到了近似并发的目的。</li>
+<li>低停顿垃圾回收器，因为 CMS 可以控制将耗时的两个 Stop-The-World 操作保持与用户线程恰当的时机并发执行，并且能保证在短时间执行完成，这样就达到了近似并发的目的。</li>
 </ul>
 <p>适用范围：</p>
 <p>它关注的是垃圾回收最短的停顿时间（低停顿），在老年代并不频繁GC的场景下，是比较适用的。</p>
@@ -600,7 +600,7 @@
 <li>并发阶段如何保证收集线程与用户线程互不干扰的进行？</li>
 </ul>
 <ol>
-<li>G1垃圾收集器使用的是<strong>原始快照</strong>的方式来保证用户线程在并发阶段改变对象引用时，不会出现错误。</li>
+<li>G1垃圾收集器使用的是<strong>原始快照</strong>（SATB）的方式来保证用户线程在并发阶段改变对象引用时，不会出现错误。</li>
 <li>G1 为每一个 Region 区域设计了两个名为 TAMS（Top at Mark Start）的指针， 从 Region 区域划出一部分空间用于记录并发回收过程中的新对象。这样的对象认为它们是存活的，不纳入垃圾回收范围。</li>
 </ol>
 <ul>
@@ -612,15 +612,22 @@
 <li>初始标记：标记 GC Roots 能直接关联的对象，并修改 TAMS 的指针。</li>
 <li>并发标记：从 GC Roots 开始对堆对象进行可达性分析，遍历对象图，找到要回收的对象。然后重新处理 SATB 记录下的用户线程造成的对象的变动。</li>
 <li>最终标记：对用户线程进行短暂的暂停，再来处理并发阶段后仍遗留下来的最后的 SATB 记录。</li>
-<li>筛选回收：负责更新Region的统计数据，对各个 Region 域的回收价值和成本进行排序，制定回收计划，确定要回收的Region，暂停用户线程，采用的是标记-复制的算法。</li>
+<li>筛选回收：负责更新Region的统计数据，对各个 Region 域的回收价值和成本进行排序，制定回收计划，确定要回收的Region，暂停用户线程，采用的是<strong>标记-复制</strong>的算法。</li>
 </ol>
 <h4 id="CMS-垃圾收集器与-G1-收集器对比"><a href="#CMS-垃圾收集器与-G1-收集器对比" class="headerlink" title="CMS 垃圾收集器与 G1 收集器对比"></a>CMS 垃圾收集器与 G1 收集器对比</h4><p>CMS 采用的是标记-清除算法，而 G1 整体上采用的是<strong>标记-整理</strong>算法（整个区域收集），局部采用的是<strong>标记-复制</strong>算法（一个区域收集完复制到另一个区域），这说明<strong>G1不会产生内存空间碎片</strong>。</p>
 <p>G1垃圾收集器的缺点是：<strong>内存占用高</strong>和<strong>程序额外执行负载</strong>要高。</p>
-<h4 id="CMS-收集器和-G1-收集器的区别？"><a href="#CMS-收集器和-G1-收集器的区别？" class="headerlink" title="CMS 收集器和 G1 收集器的区别？"></a>CMS 收集器和 G1 收集器的区别？</h4><ol>
-<li>CMS 收集器是<strong>老年代的收集器</strong>，可以配合新生代的Serial和ParNew收集器一起使用；G1 收集器收集范围是<strong>老年代和新生代</strong>，不需要结合其他收集器使用；</li>
-<li>CMS 收集器<strong>以最小的停顿时间为目标</strong>的收集器；G1 收集器<strong>可预测垃圾回收的停顿时间</strong>。</li>
-<li>CMS 收集器是使用<strong>“标记-清除”算法</strong>进行的垃圾回收，容易产生内存碎片。G1 收集器使用的是<strong>“标记-整理”算法</strong>，进行了空间整合，降低了内存空间碎片。</li>
-</ol>
+<h4 id="CMS-收集器和-G1-收集器的区别？"><a href="#CMS-收集器和-G1-收集器的区别？" class="headerlink" title="CMS 收集器和 G1 收集器的区别？"></a>CMS 收集器和 G1 收集器的区别？</h4><ul>
+<li>清除的目标</li>
+</ul>
+<p>CMS 收集器是<strong>老年代的收集器</strong>，可以配合新生代的Serial和ParNew收集器一起使用；G1 收集器收集范围是<strong>老年代和新生代</strong>，不需要结合其他收集器使用；</p>
+<ul>
+<li>回收期建立的目标</li>
+</ul>
+<p>CMS 收集器<strong>以最小的停顿时间为目标</strong>的收集器；G1 收集器<strong>可预测垃圾回收的停顿时间</strong>。</p>
+<ul>
+<li>标记算法方面</li>
+</ul>
+<p>CMS 收集器是使用<strong>“标记-清除”算法</strong>进行的垃圾回收，容易产生内存碎片。G1 收集器使用的是<strong>“标记-整理”算法</strong>，进行了空间整合，降低了内存空间碎片。</p>
 <h4 id="CMS-和-G1-的如何选择？"><a href="#CMS-和-G1-的如何选择？" class="headerlink" title="CMS 和 G1 的如何选择？"></a>CMS 和 G1 的如何选择？</h4><p>优先选择 G1 的情况</p>
 <ul>
 <li>最小堆内存6个G能稳定运行，因此对 CPU 的要求就是4核8G</li>
