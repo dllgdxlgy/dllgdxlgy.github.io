@@ -938,6 +938,31 @@
     
     
     <entry>
+      <title>Dubbo</title>
+      <link href="2020/10/09/Dubbo/"/>
+      <url>2020/10/09/Dubbo/</url>
+      
+        <content type="html"><![CDATA[<h2 id="Dubbo"><a href="#Dubbo" class="headerlink" title="Dubbo"></a>Dubbo</h2><p><strong>RPC</strong>：远程过程调用，即一个服务 A 远程调用另一个服务 B 的过程。</p><p><strong>分布式服务架构：</strong>最核心的难点就是如何进行远程过程调用，以及拆分业务，提升业务的复用程度。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Dubbo </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 分布式 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>chrome上的Ghelper插件</title>
       <link href="2020/10/09/Ghelper%E6%8F%92%E4%BB%B6%E6%8E%A8%E8%8D%90/"/>
       <url>2020/10/09/Ghelper%E6%8F%92%E4%BB%B6%E6%8E%A8%E8%8D%90/</url>
@@ -1141,13 +1166,13 @@
             
             <tag> Mac </tag>
             
+            <tag> typora </tag>
+            
             <tag> Gitee </tag>
             
             <tag> hexo </tag>
             
             <tag> PicGo </tag>
-            
-            <tag> typora </tag>
             
         </tags>
       
