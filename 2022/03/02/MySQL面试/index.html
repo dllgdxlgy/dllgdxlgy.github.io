@@ -45,10 +45,10 @@
 <meta property="og:image" content="https://dlutlgy-image-for-mac.oss-cn-beijing.aliyuncs.com/image-20220305123355941.png">
 <meta property="og:image" content="https://dlutlgy-image-for-mac.oss-cn-beijing.aliyuncs.com/image-20220305123543108.png">
 <meta property="article:published_time" content="2022-03-02T11:18:57.000Z">
-<meta property="article:modified_time" content="2022-04-10T08:12:28.203Z">
+<meta property="article:modified_time" content="2022-04-11T02:06:01.321Z">
 <meta property="article:author" content="Dlutlgy">
-<meta property="article:tag" content="面试">
 <meta property="article:tag" content="MySql">
+<meta property="article:tag" content="面试">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://dlutlgy-image-for-mac.oss-cn-beijing.aliyuncs.com/imagesimage-20220210222236950-20220325211339500.png">
 
@@ -352,7 +352,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2022-04-10 16:12:28" itemprop="dateModified" datetime="2022-04-10T16:12:28+08:00">2022-04-10</time>
+        <time title="修改时间：2022-04-11 10:06:01" itemprop="dateModified" datetime="2022-04-11T10:06:01+08:00">2022-04-11</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -426,9 +426,9 @@
 <li>SQL 接口：接收 SQL 命令，并返回数据。</li>
 <li>解析器： 对 SQL 语法分析、语义分析。并创建语法树</li>
 <li>查询优化器：确定 SQL 对执行路径，生成一个执行计划</li>
-<li>查询缓存组建：内部有 Cache 和 Buffer ，如果查到直接返回。一般作用不大，<strong>8.0去掉了缓存</strong>。</li>
+<li>查询缓存组件：内部有 Cache 和 Buffer ，如果查到直接返回。一般作用不大，<strong>8.0去掉了缓存</strong>。</li>
 </ul>
-<p><strong>引擎层</strong>：与数据库文件打交道，负责数据的存储和读取</p>
+<p><strong>引擎层</strong>：与数据库文件打交道，负责数据的存储和读取。</p>
 <p><img src="https://dlutlgy-image-for-mac.oss-cn-beijing.aliyuncs.com/imagesimage-20220210222236950-20220325211339500.png" alt="image-20220210222236950"></p>
 <h3 id="2-SQL-的执行流程"><a href="#2-SQL-的执行流程" class="headerlink" title="2. SQL 的执行流程"></a>2. SQL 的执行流程</h3><ol>
 <li><p>在 SQL 查询之前，需要建立 TCP 连接</p>
@@ -443,7 +443,7 @@
 </li>
 <li><p>执行计划给到执行器，判断用户是不是有权限，如果没有返回错误，如果有调用存储引擎</p>
 </li>
-<li><p>执行引擎执行 SQL 查询并返回结果，然后将结果放回查询缓存当中。</p>
+<li><p>执行引擎执行 SQL 查询并返回结果，如果有缓存，还需要将结果放回查询缓存当中。</p>
 <img src="https://dlutlgy-image-for-mac.oss-cn-beijing.aliyuncs.com/image-20220304101115541.png" alt="image-20220304101115541" style="zoom:50%;" />
 
 
@@ -457,7 +457,7 @@
 <li>InnoDB 数据与索引保存在一起（.ibd）, 而 MyISAM 分为三个文件(.frm 表结构)(.myi 索引)(.myd 数据)</li>
 <li>InnoDB 支持<strong>行级锁、事务、外键</strong>。而 MyISAM 都不支持。</li>
 <li>InnoDB 更新更优， MyISAM 查询更优</li>
-<li>Select count(*) MyISAM 更快，因为它维护了一个计数器。</li>
+<li>Select count(*) MyISAM 更快，因为它维护了一个计数器。InnoDB 需要遍历全表才能获取行记录数量。</li>
 </ol>
 <ul>
 <li>在选择存储引擎方面，如果没有特殊要求，我们就选 InnoDB ，如果多数都在读操作，并且清楚明白没有事务，数据崩溃等缺点，也可以使用 MyISAM，如果需要事务，并且需要高并发，经常进行写操作，那么就使用 InnoDB。</li>
@@ -466,16 +466,16 @@
 <p>注意⚠️：Innodb 5.6 之后支持全文索引、并且还有自适应的 hash 索引</p>
 <h3 id="4-MySQL-中支持的数据类型？（待整理）"><a href="#4-MySQL-中支持的数据类型？（待整理）" class="headerlink" title="4.MySQL 中支持的数据类型？（待整理）"></a>4.MySQL 中支持的数据类型？（待整理）</h3><h3 id="5-数据库范式？"><a href="#5-数据库范式？" class="headerlink" title="5.数据库范式？"></a>5.数据库范式？</h3><h3 id="6-UUID可以做主键吗？"><a href="#6-UUID可以做主键吗？" class="headerlink" title="6.UUID可以做主键吗？"></a>6.UUID可以做主键吗？</h3><h3 id="7-谈谈你对自增主键的理解？-自增锁"><a href="#7-谈谈你对自增主键的理解？-自增锁" class="headerlink" title="7.谈谈你对自增主键的理解？(自增锁)"></a>7.谈谈你对自增主键的理解？(自增锁)</h3><p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/NHXXTr-8_tOije7IqdTDkA">点击链接</a></p>
 <h3 id="8-InnoDB-为什么推荐使用自增ID"><a href="#8-InnoDB-为什么推荐使用自增ID" class="headerlink" title="8. InnoDB 为什么推荐使用自增ID"></a>8. InnoDB 为什么推荐使用自增ID</h3><ol>
-<li><p>主键页就会近乎于顺序的记录填满，提升了页面的最大填充率，不会有页的浪费。</p>
+<li><p>因为 InnoDB 数据和索引存放在一起，是聚簇索引，如果主键是自增的，聚簇索引就会近乎于顺序的记录填满，提升了页面的最大填充率，不会有页的浪费。</p>
 </li>
-<li><p>新插入的行一定会在原有的最大数据行下一行，mysql定位和寻址很快，不会为计算新行的位置而做出额外的消耗。</p>
+<li><p>新插入的行一定会在原有的最大数据行下一行，MySQL 定位和寻址很快，不会为计算新行的位置而做出额外的消耗。</p>
 </li>
 <li><p>减少了页分裂和碎片的产生。</p>
 </li>
 </ol>
-<p>UUID：大量的随机IO+页分裂导致移动大量的数据+数据会有碎片。</p>
+<p>UUID：大量的随机IO + 页分裂导致移动大量的数据 + 数据会有碎片。</p>
 <p>总结：自增ID有序，会按顺序往最后插入，而UUID无序，随机生成，随机插入，会造成频繁页分裂，内存碎片化，大量随机IO。</p>
-<h2 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h2><h3 id="1-什么是索引？"><a href="#1-什么是索引？" class="headerlink" title="1. 什么是索引？"></a>1. 什么是索引？</h3><p>索引就是一种能帮助 MySql 高效获取数据的数据结构(排好序的快速查找的数据结构)，能实现快速查找。</p>
+<h2 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h2><h3 id="1-什么是索引？"><a href="#1-什么是索引？" class="headerlink" title="1. 什么是索引？"></a>1. 什么是索引？</h3><p>索引就是一种能帮助 MySQL 高效获取数据的数据结构(排好序的快速查找的数据结构)，能实现快速查找。</p>
 <h3 id="2-索引的优缺点？"><a href="#2-索引的优缺点？" class="headerlink" title="2. 索引的优缺点？"></a>2. 索引的优缺点？</h3><p>优点：</p>
 <ul>
 <li><p>提高数据检索效率，降低数据库的 IO 成本。(主要原因)</p>
@@ -495,8 +495,8 @@
 <p>主键索引：数据列不允许重复，不允许为 null，一个表只有一个主键索引。</p>
 <p>唯一索引：数据列不允许重复，允许为 null，一个表可以由多个唯一索引。</p>
 <p>普通索引：没有唯一性和 null 值要求。</p>
-<p>全文索引：（先空着吧）</p>
-<h3 id="4-索引的数据结构"><a href="#4-索引的数据结构" class="headerlink" title="4. 索引的数据结构"></a>4. 索引的数据结构</h3><h4 id="4-1-Hash-amp-B-树"><a href="#4-1-Hash-amp-B-树" class="headerlink" title="4.1.Hash &amp; B+树"></a>4.1.Hash &amp; B+树</h4><p>Hash表查询数据时间复杂度为 O(1)（前提键值唯一，不唯一就根据链表进行扫描，直达查询出数据）</p>
+<p>全文索引：允许重复和空值，全文索引只能创建在<code>char</code>、<code>varchar</code> 、<code>text</code>上，适合于数据量非常大的情况，目前已经被<code>solr</code>、<code>ElasticSearch</code>替代。</p>
+<h3 id="4-索引的数据结构"><a href="#4-索引的数据结构" class="headerlink" title="4. 索引的数据结构"></a>4. 索引的数据结构</h3><h4 id="4-1-Hash-amp-B-树"><a href="#4-1-Hash-amp-B-树" class="headerlink" title="4.1.Hash &amp; B+树"></a>4.1.Hash &amp; B+树</h4><p>Hash 表查询数据时间复杂度为 O(1)（前提键值唯一，不唯一就根据链表进行扫描，直到查询出数据）</p>
 <p><strong>Hash 表存在的缺点</strong></p>
 <ul>
 <li>Hash 冲突问题(碰撞问题)</li>
@@ -507,7 +507,8 @@
 <ul>
 <li>B 树的非叶子节点既存放键也存放数据，然而 B+ 树的数据只存在叶子节点中。</li>
 </ul>
-<p>对于B树来讲，每一个数据页存储的空间是有限的，如果data数据比较大就会导致每个数据页能存放的数据量就越小，而存储数据量小了，就会导致B树的深度增加，就会导致增大磁盘IO次数，进而影响效率，而B+树，所有的数据记录节点都是按照键值大小顺序存放在同一节点，而非叶子节点只存储key值，这样就能大大增加每个节点存放的数量，降低B+树的高度，减低B+树的IO次数。</p>
+<p>对于B树来讲，每一个数据页存储的空间是有限的，如果data数据比较大就会导致每个数据页能存放的数据量就越小，而存储数据量小了，就会导致B树的深度增加，就会导致增大磁盘IO次数，进而影响效率。</p>
+<p>而对于B+树，所有的数据记录节点都是按照键值大小顺序存放在同一节点，而非叶子节点只存储key值，这样就能大大增加每个节点存放的数量，降低B+树的高度，减低B+树的IO次数。</p>
 <ul>
 <li>B 树中叶子节点时独立的，而 B+ 树有链表指向邻居节点。</li>
 </ul>
@@ -518,7 +519,7 @@
 <h4 id="4-3-相对于二叉查找树、AVL树，为什么使用B-树？"><a href="#4-3-相对于二叉查找树、AVL树，为什么使用B-树？" class="headerlink" title="4.3. 相对于二叉查找树、AVL树，为什么使用B+树？"></a>4.3. 相对于二叉查找树、AVL树，为什么使用B+树？</h4><ul>
 <li>二叉查找树、AVL(二叉平衡树) 和 红黑树 都是存储在内存才使用的数据结构。</li>
 <li>二叉查找树可能会退化成线性表，时间复杂度为O(1)</li>
-<li>二叉查找树、AVL树、红黑树都会因为树的多深度过大而造成磁盘IO过于频繁，导致效率低下。</li>
+<li>二叉查找树、AVL树、红黑树都会因为树的多深度过大而造成磁盘 IO 过于频繁，导致效率低下。</li>
 </ul>
 <h3 id="5-索引的设计原则？"><a href="#5-索引的设计原则？" class="headerlink" title="5. 索引的设计原则？"></a>5. 索引的设计原则？</h3><h4 id="那些情况下适合创建索引？"><a href="#那些情况下适合创建索引？" class="headerlink" title="那些情况下适合创建索引？"></a>那些情况下适合创建索引？</h4><ol>
 <li><p>字段的数值有唯一性的限制</p>
@@ -556,13 +557,15 @@
 <li>不要定义冗余或重复的索引</li>
 </ol>
 <h4 id="索引失效的场景？"><a href="#索引失效的场景？" class="headerlink" title="索引失效的场景？"></a>索引失效的场景？</h4><ol>
-<li><p>以 “%” 开头的 like 语句，索引无效，后缀 “%” 不影响。</p>
-</li>
-<li><p>or 语句前后没有同时使用索引。</p>
-</li>
+<li>以 “%” 开头的 like 语句，索引无效，后缀 “%” 不影响。</li>
+<li>or 语句前后没有同时使用索引。</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">where a &#x3D; 1 or b &#x3D; 2 &#x2F;&#x2F; 必须同时对a、b建立索引</span><br></pre></td></tr></table></figure>
+
+<ol>
 <li><p>列类型是字符串，一定要在条件中将数据用引号引用，否则失效（隐式转换）。</p>
 </li>
-<li><p>如果mysql估计使用全表扫描比索引快，则不用索引（键值少，重复数据多）。</p>
+<li><p>如果 MySQL 估计使用全表扫描比索引快，则不用索引（键值少，重复数据多）。</p>
 </li>
 <li><p>组合索引要遵守最左前缀原则——不使用第一列索引 失效。</p>
 </li>
@@ -578,7 +581,7 @@
 <h3 id="7-非聚簇索引一定会回表查询吗？"><a href="#7-非聚簇索引一定会回表查询吗？" class="headerlink" title="7. 非聚簇索引一定会回表查询吗？"></a>7. 非聚簇索引一定会回表查询吗？</h3><p>不一定，这涉及到查询语句所要求的字段是否全部命中了索引，如果全部命中了索引，那么就不必再进行回表查询。</p>
 <p>举个简单的例子，假设我们在员工表的年龄上建立了索引，那么当进行select age from employee where age &lt; 20的查询时，在索引的叶子节点上，已经包含了age信息，不会再次进行回表查询。</p>
 <h3 id="8-什么是最左前缀原则？"><a href="#8-什么是最左前缀原则？" class="headerlink" title="8. 什么是最左前缀原则？"></a>8. 什么是最左前缀原则？</h3><p>在 MySQL 建立联合索引时会遵守最左前缀匹配原则，即最左优先，在检索数据时从联合索引的最左边开始匹配，如果第一个索引字段没有使用，那就不会使用该索引。</p>
-<h3 id="9-百万级别或以上的数据如何删除？"><a href="#9-百万级别或以上的数据如何删除？" class="headerlink" title="9. 百万级别或以上的数据如何删除？"></a>9. 百万级别或以上的数据如何删除？</h3><p>如果直接删除，那么删除数据的时候还要维护索引，就意味着额外的 IO，会降低效率，所以，我们可以先记录已经创建的索引，在删除数据之前先删除索引，在删除数据，最后再建立相应的索引。</p>
+<h3 id="9-百万级别或以上的数据如何删除？"><a href="#9-百万级别或以上的数据如何删除？" class="headerlink" title="9. 百万级别或以上的数据如何删除？"></a>9. 百万级别或以上的数据如何删除？</h3><p>如果直接删除，那么删除数据的时候还要维护索引，就意味着额外的 IO，会降低效率，所以，我们可以先记录已经创建的索引，在删除数据之前先删除索引，再删除数据，最后再建立相应的索引。</p>
 <h3 id="10-COUNT-和-COUNT-具体字段-效率？"><a href="#10-COUNT-和-COUNT-具体字段-效率？" class="headerlink" title="10. COUNT(*) 和 COUNT(具体字段) 效率？"></a>10. COUNT(*) 和 COUNT(具体字段) 效率？</h3><p>在 MySQL 中统计数据表的行数，有三种方式，select count(*)、select count(1)、select count(具体字段)。但是他们的效率如何的呢？</p>
 <p>环节1: COUNT(*) 和 COUNT(1) 都是对所有结果进行 COUNT，COUNT( * ) 和 COUNT(1) 本质上并没有区别(二者执行时间可能略有差别，不过你还是可以把它俩的执行效率看成是相等的)。如果有 WHERE 子句，则是对所有符合筛选条件的数据行进行统计；如果没有 WHERE 子句，则是对数据表的数据行数进行统计。</p>
 <p>环节2: 如果是 MylSAM 存储引擎，统计数据表的行数只需要 O(1) 的复杂度，这是因为每张 MyISAM 的数据表都有一个 meta 信息存储了 row_count 值，而一致性则由表级锁来保证。如果是 InnoDB 存储引擎，因为 InnoDB 支持事务，采用行级锁和 MVCC 机制，所以无法像 MyISAM 一样，维护一个 row_count 变量，因此需要采用扫描全表，O(n)复杂度。进行 <strong>循环＋计数</strong> 的方式来完成统计。</p>
@@ -588,8 +591,8 @@
 <p>原因：</p>
 <p>①.MySQL 在解析的过程中，会通过查寻数据字典将 * 按序转化为所有列名，这会大大耗费资源和时间。</p>
 <p>②. 无法使用<strong>覆盖索引</strong>。</p>
-<h3 id="12-limit-1-对于优化的影响"><a href="#12-limit-1-对于优化的影响" class="headerlink" title="12. limit 1 对于优化的影响"></a>12. limit 1 对于优化的影响</h3><p>针对的是全表扫描的 SQL 语句，如果你可以确定结果集只有一条，那么加上 limit1 的时候，当找到一条结果的时候，就不会继续扫描了，这样会加快查询速度。</p>
-<p>如果数据表已经对字段建立了索引，那么就会通过索引进行扫描，就不用家 limit1 了。</p>
+<h3 id="12-limit-1-对于优化的影响"><a href="#12-limit-1-对于优化的影响" class="headerlink" title="12. limit 1 对于优化的影响"></a>12. limit 1 对于优化的影响</h3><p>针对的是全表扫描的 SQL 语句，如果你可以确定结果集只有一条，那么加上 limit 1 的时候，当找到一条结果的时候，就不会继续扫描了，这样会加快查询速度。</p>
+<p>如果数据表已经对字段建立了索引，那么就会通过索引进行扫描，就不用加 limit 1 了。</p>
 <h3 id="13-创建索引的三种方式"><a href="#13-创建索引的三种方式" class="headerlink" title="13.创建索引的三种方式"></a>13.创建索引的三种方式</h3><ul>
 <li>在创建表的时候创建索引</li>
 </ul>
@@ -600,13 +603,13 @@
 <li>使用 CREATE INDEX 命令创建</li>
 </ul>
 <h3 id="14-为什么使用联合索引？"><a href="#14-为什么使用联合索引？" class="headerlink" title="14.为什么使用联合索引？"></a>14.为什么使用联合索引？</h3><p><strong>能够减少开销。</strong>建一个联合索引(col1,col2,col3)，实际相当于建了(col1 ),(col1 ,col2),(col1,col2,col3)三个索引。每多一个索<br>引，都会增加写操作的开销和磁盘空间的开销。对于大量数据的表，使用联合索引会大大的减少开销！</p>
-<p><strong>可能会使用到覆盖索引。</strong>对联合索引(col1,col2,col3)，如果有如下的sql: select col1,col2,col3 from test where col1=1 and col2=2。那么MySQL可以直接通过遍历索引取得数据，而无需回表，这减少了很多的随机io操作。减少io操作，特别的随机io<br>其实是dba主要的优化策略。所以，在真正的实际应用中，覆盖索引是主要的提升性能的优化手段之一。</p>
-<p><strong>效率高。</strong>索引列越多，通过索引筛选出的数据越少。有1000W 条数据的表，有如下sql：select from table where coll=1<br>and col2 = 2 and col3 = 3，假设假设每个条件可以筛选出10%的数据，如果只有单值索引，那么通过该索引能筛选出1000W * 10% = 100w条数据，然后再回表从100w条数据中找到符合col2=2 and col3= 3的数据，然后再排序，再分页；如果是联合索引，通过索引筛选出1000w*10% *10% *10%=1w，效率提升可想而知！</p>
+<p><strong>可能会使用到覆盖索引。</strong>对联合索引(col1,col2,col3)，如果有如下的sql: <code>select col1,col2,col3 from test where col1=1 and col2=2</code>。那么MySQL可以直接通过遍历索引取得数据，而无需回表，这减少了很多的随机IO操作。减少IO操作，特别的随机IO<br>其实是 dba 主要的优化策略。所以，在真正的实际应用中，覆盖索引是主要的提升性能的优化手段之一。</p>
+<p><strong>效率高。</strong>索引列越多，通过索引筛选出的数据越少。有1000W 条数据的表，有如下sql：<code>select from table where coll=1 and col2 = 2 and col3 = 3</code>，假设每个条件可以筛选出 10% 的数据，如果只有单值索引，那么通过该索引能筛选出1000W * 10% = 100w条数据，然后再回表从 100w 条数据中找到符合col2 = 2 and col3 = 3的数据，然后再排序，再分页；如果是联合索引，通过索引筛选出1000w*10% *10% *10%=1w，效率提升可想而知！</p>
 <h3 id="15-索引-条件-下推（ICP）"><a href="#15-索引-条件-下推（ICP）" class="headerlink" title="15.索引(条件)下推（ICP）"></a>15.索引(条件)下推（ICP）</h3><p>ICP 是在存储引擎层使用索引过滤数据的优化方式，</p>
 <ul>
 <li><p>如果没有 ICP，存储引擎会遍历索引以定位基表中的行，并将它们返回给 MySQL 服务器，由 MySQL 服务器评估 WHERE 后面的条件是否保留行。</p>
 </li>
-<li><p>启用ICP后，如果部分 WHERE 条件可以仅使用索引中的列进行筛选，则 MysQL 服务器会把这部分 WHERE 条件放到存储引擎筛选。然后，存储引擎通过使用索引条目来筛选数据，并且只有在满足这一条件时才从表中读取行。</p>
+<li><p>启用ICP后，如果部分 WHERE 条件可以仅使用索引中的列进行筛选，则 MySQL 服务器会把这部分 WHERE 条件放到存储引擎筛选。然后，存储引擎通过使用索引条目来筛选数据，并且只有在满足这一条件时才从表中读取行。</p>
 <ul>
 <li>好处：ICP 可以减少存储引擎必须访问基表的次数和 MySQL 服务器必须访问存储引擎的次数。。</li>
 <li>但是，ICP 的加速效果取决于在存储引擎内通过 ICP 筛选掉的数据的比例。</li>
@@ -622,24 +625,29 @@
 <ol>
 <li>必须用在非聚簇索引中，因为他需要回表，因为ICP在回表之前做的判断，从而减低执行时间。但是即使是非聚簇索引，但是走的是覆盖索引，也不会进行回表，也不支持ICP了。</li>
 </ol>
-<h3 id="16-普通索引和唯一索引怎么选？"><a href="#16-普通索引和唯一索引怎么选？" class="headerlink" title="16.普通索引和唯一索引怎么选？"></a>16.普通索引和唯一索引怎么选？</h3><p>查询比较</p>
+<h3 id="16-普通索引和唯一索引怎么选？"><a href="#16-普通索引和唯一索引怎么选？" class="headerlink" title="16.普通索引和唯一索引怎么选？"></a>16.普通索引和唯一索引怎么选？</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/mseaspring/article/details/106346243?spm=1001.2101.3001.6650.1&utm_medium=distribute.pc_relevant.none-task-blog-2~default~BlogCommendFromBaidu~Rate-1.pc_relevant_antiscanv2&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2~default~BlogCommendFromBaidu~Rate-1.pc_relevant_antiscanv2&utm_relevant_index=2">参考链接</a></p>
+<p>如果业务上要求我们数据库的值是唯一的，那就必须选择唯一索引，如果要求不严格（没有唯一性要求），就要看谁的性能更好。</p>
+<p>查询比较</p>
 <ul>
-<li>查询会以页为单位将数据页加载进内存，不需要一条记录一条记录读取磁盘。然后唯一索引根据条件查询到记录时就返回结果，普通索引查到第一条记录往后遍历直到不满足条件，由于都在内存中，不需要磁盘读取那么大开销，带来的额外查询开销忽略不计，所以查询性能几乎一致</li>
+<li>查询会以页为单位将数据页加载进内存，不需要一条记录一条记录读取磁盘。然后<strong>唯一索引根据条件查询到记录时就返回结果，普通索引查到第一条记录往后遍历直到不满足条件</strong>，由于都在内存中，不需要磁盘读取那么大开销，带来的额外查询开销忽略不计，所以查询性能几乎一致</li>
 </ul>
 <p>更新比较</p>
+<p>更新数据并且数据页<strong>在内存</strong>中：</p>
 <ul>
-<li><p>唯一索引由于更新时要检查唯一性，所以需要将数据页先加载进内存才能判断，此时直接操作内存，不需要操作change buffer</p>
-</li>
-<li><p>补充：普通索引若数据再内存中直接内存中更新，否则会将更新操作先记录到channge buffer中，等下一次查询将数据读到内存中再进行change buffer里相关更新操作后将数据返回，这样一来，再写多读少的情况下就减少了磁盘IO，若写完就马上查询，就大可不必用change buffer，不但没提高多少效率还造成维护change buffer额外消耗</p>
-</li>
-<li><p>将change buffer的操作对应到原始数据页的操作称为merge（可以查询来时读到内存再修改数据，后台线程也会merge，数据库正常关闭也会merge）</p>
-</li>
+<li>如果是普通索引，那么直接更新内存中的数据。</li>
+<li>如果是唯一索引，碰巧是插入操作，进行比较后决定是否插入。这两种差距很小。</li>
 </ul>
+<p>更新数据并且数据页<strong>不在内存</strong>中：</p>
+<ul>
+<li>如果是普通索引，那么会将更新操作先记录到change buffer中，等下一次查询将数据读到内存中再进行 change buffer 里相关更新操作后将数据返回，这样一来，在写多读少的情况下就减少了磁盘IO，若写完就马上查询，就大可不必用change buffer，不但没提高多少效率还造成维护change buffer额外消耗</li>
+<li>如果是唯一索引，则需要将数据读取到内存中，判断是否满足唯一性约束，就不需要 change buffer 了。</li>
+</ul>
+<p>注意⚠️：InnoDB 维护了一个缓存区域叫做Buffer Pool，change buffer 是 Buffer Pool 中的一部分内存</p>
 <p>适合场景</p>
 <ul>
-<li>写多读少，选用普通索引更好，可以利用change buffer进行性能优化减少磁盘IO，将更新操作记录到change bufer，等查询来了将数据读到内存再进行修改.</li>
+<li>写多读少，选用普通索引更好，可以利用change buffer进行性能优化减少磁盘IO，将更新操作记录到 change bufer，等查询来了将数据读到内存再进行修改。</li>
 </ul>
-<h2 id="优化-amp-性能分析"><a href="#优化-amp-性能分析" class="headerlink" title="优化&amp;性能分析"></a>优化&amp;性能分析</h2><p>在实际的生产环境中，可能会出现 SQL 查询比较慢的场景，那是什么问题导致这个 SQL 执行比较慢？是索引设计的问题？还是我们服务器参数配置的问题？还是我们需要增加缓存的问题？？这里目标是为了响应时间更快，为了吞吐量更大。就需要宏观监控工具嘿呦微观日志来解决调优思路。</p>
+<h2 id="优化-amp-性能分析"><a href="#优化-amp-性能分析" class="headerlink" title="优化&amp;性能分析"></a>优化&amp;性能分析</h2><p>在实际的生产环境中，可能会出现 SQL 查询比较慢的场景，那是什么问题导致这个 SQL 执行比较慢？是索引设计的问题？还是我们服务器参数配置的问题？还是我们需要增加缓存的问题？？这里目标是<strong>为了响应时间更快，为了吞吐量更大</strong>。就需要宏观监控工具、微观日志来帮助找到调优思路。</p>
 <h3 id="1-数据库的优化步骤？"><a href="#1-数据库的优化步骤？" class="headerlink" title="1. 数据库的优化步骤？"></a>1. 数据库的优化步骤？</h3><h3 id="2-一条-SQL-执行很慢的原因？"><a href="#2-一条-SQL-执行很慢的原因？" class="headerlink" title="2.一条 SQL 执行很慢的原因？"></a>2.一条 SQL 执行很慢的原因？</h3><h3 id="3-Explain-分析"><a href="#3-Explain-分析" class="headerlink" title="3.Explain 分析"></a>3.Explain 分析</h3><h2 id="事务"><a href="#事务" class="headerlink" title="事务"></a>事务</h2><h3 id="1-什么是事务"><a href="#1-什么是事务" class="headerlink" title="1. 什么是事务"></a>1. 什么是事务</h3><p>事务就是指程序中一系列的严密操作，而且所有的操作必须全部成功，否则所有的操作必须全部撤销，通俗理解为：要么全部执行完，要么全部执行失败。</p>
 <h3 id="2-事务的四个特性？"><a href="#2-事务的四个特性？" class="headerlink" title="2. 事务的四个特性？"></a>2. 事务的四个特性？</h3><ul>
 <li><p>原子性(Atomicity)</p>
@@ -894,8 +902,8 @@
 </div>
 
           <div class="post-tags">
-              <a href="/tags/%E9%9D%A2%E8%AF%95/" rel="tag"># 面试</a>
               <a href="/tags/MySql/" rel="tag"># MySql</a>
+              <a href="/tags/%E9%9D%A2%E8%AF%95/" rel="tag"># 面试</a>
           </div>
 
         
@@ -966,14 +974,14 @@
       <i class="fa fa-chart-line"></i>
     </span>
       <span>站点总字数：</span>
-    <span title="站点总字数">215k</span>
+    <span title="站点总字数">218k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span>站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">3:15</span>
+    <span title="站点阅读时长">3:18</span>
   </span>
 </div>
 
