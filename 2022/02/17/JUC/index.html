@@ -39,8 +39,11 @@
 <meta property="og:image" content="https://dlutlgy-image-for-mac.oss-cn-beijing.aliyuncs.com/imagesimage-20220404104820177.png">
 <meta property="og:image" content="https://dlutlgy-image-for-mac.oss-cn-beijing.aliyuncs.com/imagesimage-20220404104941542.png">
 <meta property="og:image" content="https://dlutlgy-image-for-mac.oss-cn-beijing.aliyuncs.com/imagesimage-20220404105004351.png">
+<meta property="og:image" content="https://dlutlgy-image-for-mac.oss-cn-beijing.aliyuncs.com/imagesimage-20220412204732045.png">
+<meta property="og:image" content="https://dlutlgy-image-for-mac.oss-cn-beijing.aliyuncs.com/imagesimage-20220412205349118.png">
+<meta property="og:image" content="https://dlutlgy-image-for-mac.oss-cn-beijing.aliyuncs.com/imagesimage-20220412205944136.png">
 <meta property="article:published_time" content="2022-02-17T03:13:21.000Z">
-<meta property="article:modified_time" content="2022-04-10T10:55:26.602Z">
+<meta property="article:modified_time" content="2022-04-12T13:59:35.814Z">
 <meta property="article:author" content="Dlutlgy">
 <meta property="article:tag" content="面试">
 <meta property="article:tag" content="Java基础">
@@ -237,7 +240,7 @@
 
       <!--noindex-->
       <section class="post-toc-wrap sidebar-panel">
-          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B3%E4%BA%8E%E5%B9%B6%E5%8F%91%E4%B8%8E%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%9A%84%E4%B8%80%E4%BA%9B%E6%80%9D%E8%80%83"><span class="nav-text">关于并发与多线程的一些思考</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E5%B8%A6%E6%9D%A5%E7%9A%84%E9%97%AE%E9%A2%98%EF%BC%9F"><span class="nav-text">1.并发编程带来的问题？</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1%E5%A6%82%E4%BD%95%E5%87%8F%E5%B0%91%E4%B8%8A%E4%B8%8B%E6%96%87%E5%88%87%E6%8D%A2%EF%BC%9F"><span class="nav-text">1.1如何减少上下文切换？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-%E7%BA%BF%E7%A8%8B%E3%80%81%E8%BF%9B%E7%A8%8B%E3%80%81%E5%8D%8F%E7%A8%8B%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="nav-text">1.2 线程、进程、协程的区别？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-Java-%E5%B9%B6%E5%8F%91%E6%9C%BA%E5%88%B6%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86"><span class="nav-text">2.Java 并发机制底层原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-Synchronized-%E5%85%B3%E9%94%AE%E5%AD%97"><span class="nav-text">3.Synchronized 关键字</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1%E7%89%B9%E6%80%A7"><span class="nav-text">3.1特性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2%E7%94%A8%E6%B3%95"><span class="nav-text">3.2用法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3%E9%94%81%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="nav-text">3.3锁的实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4%E5%BA%95%E5%B1%82%E5%AE%9E%E7%8E%B0"><span class="nav-text">3.4底层实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-5Synchronized-%E9%94%81%E4%BC%98%E5%8C%96"><span class="nav-text">3.5Synchronized 锁优化</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-volatile%E5%85%B3%E9%94%AE%E5%AD%97"><span class="nav-text">4.volatile关键字</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-new-Object-%E5%88%B0%E5%BA%95%E5%8D%A0%E7%94%A8%E5%87%A0%E4%B8%AA%E5%AD%97%E8%8A%82%EF%BC%9F"><span class="nav-text">5. new  Object()到底占用几个字节？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BA%BF%E7%A8%8B%E6%B1%A0"><span class="nav-text">线程池</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BD%BF%E7%94%A8%E7%BA%BF%E7%A8%8B%E6%B1%A0%EF%BC%9F"><span class="nav-text">1.为什么使用线程池？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E7%BA%BF%E7%A8%8B%E6%B1%A0%E7%9A%84%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86%EF%BC%9F"><span class="nav-text">2.线程池的实现原理？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E5%88%9B%E5%BB%BA%E7%BA%BF%E7%A8%8B%E7%9A%84%E6%96%B9%E5%BC%8F%E6%9C%89%E5%93%AA%E4%BA%9B%EF%BC%9F"><span class="nav-text">2.创建线程的方式有哪些？</span></a></li></ol></li></ol></div>
+          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B3%E4%BA%8E%E5%B9%B6%E5%8F%91%E4%B8%8E%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%9A%84%E4%B8%80%E4%BA%9B%E6%80%9D%E8%80%83"><span class="nav-text">关于并发与多线程的一些思考</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E5%B8%A6%E6%9D%A5%E7%9A%84%E9%97%AE%E9%A2%98%EF%BC%9F"><span class="nav-text">1.并发编程带来的问题？</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1%E5%A6%82%E4%BD%95%E5%87%8F%E5%B0%91%E4%B8%8A%E4%B8%8B%E6%96%87%E5%88%87%E6%8D%A2%EF%BC%9F"><span class="nav-text">1.1如何减少上下文切换？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-%E7%BA%BF%E7%A8%8B%E3%80%81%E8%BF%9B%E7%A8%8B%E3%80%81%E5%8D%8F%E7%A8%8B%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="nav-text">1.2 线程、进程、协程的区别？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-Java-%E5%B9%B6%E5%8F%91%E6%9C%BA%E5%88%B6%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86"><span class="nav-text">2.Java 并发机制底层原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-Synchronized-%E5%85%B3%E9%94%AE%E5%AD%97"><span class="nav-text">3.Synchronized 关键字</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1%E7%89%B9%E6%80%A7"><span class="nav-text">3.1特性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2%E7%94%A8%E6%B3%95"><span class="nav-text">3.2用法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3%E9%94%81%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="nav-text">3.3锁的实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4%E5%BA%95%E5%B1%82%E5%AE%9E%E7%8E%B0"><span class="nav-text">3.4底层实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-5Synchronized-%E9%94%81%E4%BC%98%E5%8C%96"><span class="nav-text">3.5Synchronized 锁优化</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-volatile%E5%85%B3%E9%94%AE%E5%AD%97"><span class="nav-text">4.volatile关键字</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-new-Object-%E5%88%B0%E5%BA%95%E5%8D%A0%E7%94%A8%E5%87%A0%E4%B8%AA%E5%AD%97%E8%8A%82%EF%BC%9F"><span class="nav-text">5. new  Object()到底占用几个字节？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AQS"><span class="nav-text">AQS</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ReentrantLock"><span class="nav-text">ReentrantLock</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90"><span class="nav-text">源码分析</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BA%BF%E7%A8%8B%E6%B1%A0"><span class="nav-text">线程池</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BD%BF%E7%94%A8%E7%BA%BF%E7%A8%8B%E6%B1%A0%EF%BC%9F"><span class="nav-text">1.为什么使用线程池？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E7%BA%BF%E7%A8%8B%E6%B1%A0%E7%9A%84%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86%EF%BC%9F"><span class="nav-text">2.线程池的实现原理？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E5%88%9B%E5%BB%BA%E7%BA%BF%E7%A8%8B%E7%9A%84%E6%96%B9%E5%BC%8F%E6%9C%89%E5%93%AA%E4%BA%9B%EF%BC%9F"><span class="nav-text">2.创建线程的方式有哪些？</span></a></li></ol></li></ol></div>
       </section>
       <!--/noindex-->
 
@@ -347,7 +350,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2022-04-10 18:55:26" itemprop="dateModified" datetime="2022-04-10T18:55:26+08:00">2022-04-10</time>
+        <time title="修改时间：2022-04-12 21:59:35" itemprop="dateModified" datetime="2022-04-12T21:59:35+08:00">2022-04-12</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -388,7 +391,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>7.6k</span>
+      <span>8k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -552,7 +555,25 @@
 <img src="https://dlutlgy-image-for-mac.oss-cn-beijing.aliyuncs.com/imagesimage-20220404105004351.png" alt="image-20220404105004351" style="zoom:50%;" />
 
 <p>这个时候就能看出来开启了指针压缩的优势了，如果不断创建大量对象，指针压缩对性能还是有一定优化的。</p>
-<h2 id="线程池"><a href="#线程池" class="headerlink" title="线程池"></a>线程池</h2><h3 id="1-为什么使用线程池？"><a href="#1-为什么使用线程池？" class="headerlink" title="1.为什么使用线程池？"></a>1.为什么使用线程池？</h3><ul>
+<h2 id="AQS"><a href="#AQS" class="headerlink" title="AQS"></a>AQS</h2><img src="https://dlutlgy-image-for-mac.oss-cn-beijing.aliyuncs.com/imagesimage-20220412204732045.png" alt="image-20220412204732045" style="zoom:33%;" />
+
+<p>AQS = state +CLH的变种（双向队列）</p>
+<p>AQS代码中比较重要的属性</p>
+<p>state：是目前的状态</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">volatile</span> <span class="keyword">int</span> state;</span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">final</span> <span class="keyword">int</span> <span class="title">getState</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> state;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">final</span> <span class="keyword">void</span> <span class="title">setState</span><span class="params">(<span class="keyword">int</span> newState)</span> </span>&#123;</span><br><span class="line">    state = newState;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>内部Node类：表示队列中的节点。</p>
+<p>Node节点 = waitStatus + 前后指针的指向。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Node 类中的重要属性</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">volatile</span> <span class="keyword">int</span> waitStatus;</span><br><span class="line"><span class="keyword">volatile</span> Node prev;</span><br><span class="line"><span class="keyword">volatile</span> Node next;</span><br><span class="line"><span class="keyword">volatile</span> Thread thread;</span><br></pre></td></tr></table></figure>
+
+<img src="https://dlutlgy-image-for-mac.oss-cn-beijing.aliyuncs.com/imagesimage-20220412205349118.png" alt="image-20220412205349118" style="zoom:50%;" />
+
+
+
+<h3 id="ReentrantLock"><a href="#ReentrantLock" class="headerlink" title="ReentrantLock"></a>ReentrantLock</h3><p>默认创建非公平锁，</p>
+<img src="https://dlutlgy-image-for-mac.oss-cn-beijing.aliyuncs.com/imagesimage-20220412205944136.png" alt="image-20220412205944136" style="zoom:33%;" />
+
+<h3 id="源码分析"><a href="#源码分析" class="headerlink" title="源码分析"></a>源码分析</h3><h2 id="线程池"><a href="#线程池" class="headerlink" title="线程池"></a>线程池</h2><h3 id="1-为什么使用线程池？"><a href="#1-为什么使用线程池？" class="headerlink" title="1.为什么使用线程池？"></a>1.为什么使用线程池？</h3><ul>
 <li><strong>降低资源消耗。</strong>通过重复利用已创建的线程降低线程创建和销毁造成的消耗。</li>
 <li><strong>提高响应速度。</strong>当任务到达时，任务可以不需要等到线程创建就能立即执行。</li>
 <li><strong>提高线程的可管理性。</strong>线程是稀缺资源，如果无限制的创建，不仅会消耗系统资源，还会降低系统的稳定性，使用线程池可以进行统一的分配，调优和监控。</li>
