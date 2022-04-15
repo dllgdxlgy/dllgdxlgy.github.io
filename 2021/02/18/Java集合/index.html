@@ -31,7 +31,7 @@
 <meta property="og:image" content="https://dlutlgy-image-for-mac.oss-cn-beijing.aliyuncs.com/imagesimage-20220105213540811.png">
 <meta property="og:image" content="https://dlutlgy-image-for-mac.oss-cn-beijing.aliyuncs.com/imagesimage-20220102223958792-20220325205334795.png">
 <meta property="article:published_time" content="2021-02-18T08:24:57.000Z">
-<meta property="article:modified_time" content="2022-04-05T06:03:37.701Z">
+<meta property="article:modified_time" content="2022-04-15T13:27:01.870Z">
 <meta property="article:author" content="Dlutlgy">
 <meta property="article:tag" content="面试">
 <meta property="article:tag" content="Java基础">
@@ -338,7 +338,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2022-04-05 14:03:37" itemprop="dateModified" datetime="2022-04-05T14:03:37+08:00">2022-04-05</time>
+        <time title="修改时间：2022-04-15 21:27:01" itemprop="dateModified" datetime="2022-04-15T21:27:01+08:00">2022-04-15</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -429,7 +429,7 @@
 <h3 id="ArrayList-和-Vector-的区别？-为什么Vector-被代替？"><a href="#ArrayList-和-Vector-的区别？-为什么Vector-被代替？" class="headerlink" title="ArrayList 和 Vector 的区别？ 为什么Vector 被代替？"></a>ArrayList 和 Vector 的区别？ 为什么Vector 被代替？</h3><p>思路：线程是否安全、扩容</p>
 <ul>
 <li>ArrayList 是线程不安全的，效率高，而 Vector 是线程安全的，效率低。</li>
-<li>ArrayList 扩容的时候是扩容1.5倍，而 Vector 扩容的时候是2倍</li>
+<li>ArrayList 扩容的时候是扩容为原来的1.5倍，而 Vector 扩容为原来的 2 倍</li>
 </ul>
 <p>因为 Vector 类中所有的方法都是同步的(线程安全的)，所以系统开销比较大。</p>
 <h3 id="ArrayList-的扩容机制"><a href="#ArrayList-的扩容机制" class="headerlink" title="ArrayList 的扩容机制"></a>ArrayList 的扩容机制</h3><p>jdk 7 情况下</p>
@@ -610,14 +610,11 @@
 <h3 id="具体说一下-Hashtable-的锁机制？"><a href="#具体说一下-Hashtable-的锁机制？" class="headerlink" title="具体说一下 Hashtable 的锁机制？"></a>具体说一下 Hashtable 的锁机制？</h3><p>Hashtable 是使用 synchronized来实现线程安全的，给整个哈希表加了一把大锁，多线程访问时候，只要有一个线程访问或操作该对象，那其他线程只能阻塞等待需要的锁被释放，在竞争激烈的多线程场景中性能就会非常差！</p>
 <p>参考资料：</p>
 <ol>
-<li><p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Kb411W75N?spm_id_from=333.337.search-card.all.click">尚硅谷基础视频课程</a></p>
-</li>
-<li><p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/RmpzIc9sddmVgvwZnM9OSw">你好，面试官-HashMap</a></p>
-</li>
-<li><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/justloveyou_/article/details/72783008">ConcurrentHashMap 1.7</a></p>
-</li>
-<li><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/wwj17647590781/article/details/118151008?spm=1001.2014.3001.5501">ConcurrentHashMap 1.8</a></p>
-</li>
+<li><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Kb411W75N?spm_id_from=333.337.search-card.all.click">尚硅谷基础视频课程</a></li>
+<li><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/RmpzIc9sddmVgvwZnM9OSw">你好，面试官-HashMap</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/justloveyou_/article/details/72783008">ConcurrentHashMap 1.7</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/wwj17647590781/article/details/118151008?spm=1001.2014.3001.5501">ConcurrentHashMap 1.8</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=iLxkZ8iEGo0">ConcurrentHashMap 1.7视频教程</a></li>
 </ol>
 
     </div>
