@@ -40,7 +40,7 @@
 <meta property="og:image" content="https://dlutlgy-image-for-mac.oss-cn-beijing.aliyuncs.com/image-20211116214556489.png">
 <meta property="og:image" content="https://dlutlgy-image-for-mac.oss-cn-beijing.aliyuncs.com/image-20211120143543051.png">
 <meta property="article:published_time" content="2022-02-17T03:13:21.000Z">
-<meta property="article:modified_time" content="2022-04-07T05:18:06.907Z">
+<meta property="article:modified_time" content="2022-04-15T02:53:40.486Z">
 <meta property="article:author" content="Dlutlgy">
 <meta property="article:tag" content="面试">
 <meta property="article:tag" content="Java基础">
@@ -237,7 +237,7 @@
 
       <!--noindex-->
       <section class="post-toc-wrap sidebar-panel">
-          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%B7%B1%E5%BA%A6%E7%90%86%E8%A7%A3Java%E8%99%9A%E6%8B%9F%E6%9C%BA"><span class="nav-text">深度理解Java虚拟机</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81Java%E5%86%85%E5%AD%98%E7%BB%93%E6%9E%84"><span class="nav-text">一、Java内存结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-JVM%E5%86%85%E5%AD%98%E7%BB%93%E6%9E%84"><span class="nav-text">1. JVM内存结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%88%9B%E5%BB%BA%E6%B5%81%E7%A8%8B"><span class="nav-text">2. 对象的创建流程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%E5%88%86%E9%85%8D%E5%86%85%E5%AD%98%E6%97%B6%E7%9A%84%E5%B9%B6%E5%8F%91%E9%97%AE%E9%A2%98%EF%BC%9F"><span class="nav-text">3. 如何解决分配内存时的并发问题？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%86%85%E5%AD%98%E5%B8%83%E5%B1%80%EF%BC%88%E6%9C%AA%E6%95%B4%E7%90%86%EF%BC%89"><span class="nav-text">4. 对象的内存布局（未整理）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-Java%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%AE%9A%E4%BD%8D%E6%96%B9%E5%BC%8F"><span class="nav-text">5. Java对象的定位方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-%E5%A0%86%E6%A0%88%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-text">6. 堆栈的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-%E4%BB%80%E4%B9%88%E6%83%85%E5%86%B5%E4%B8%8B%E4%BC%9A%E5%8F%91%E7%94%9F%E6%A0%88%E6%BA%A2%E5%87%BA"><span class="nav-text">7. 什么情况下会发生栈溢出</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E5%99%A8"><span class="nav-text">二、垃圾收集器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E5%A6%82%E4%BD%95%E5%88%A4%E6%96%AD%E5%9E%83%E5%9C%BE%EF%BC%9F%E6%9C%89%E5%87%A0%E7%A7%8D%E6%96%B9%E6%B3%95%EF%BC%9F"><span class="nav-text">1. 如何判断垃圾？有几种方法？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E5%8F%AF%E8%A2%AB%E4%BD%9C%E4%B8%BA-GC-Roots-%E5%AF%B9%E8%B1%A1%E7%9A%84%E6%9C%89%E5%93%AA%E4%BA%9B%EF%BC%9F"><span class="nav-text">2. 可被作为 GC Roots 对象的有哪些？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E5%BC%BA%E5%BC%95%E7%94%A8%E3%80%81%E8%BD%AF%E5%BC%95%E7%94%A8%E3%80%81%E5%BC%B1%E5%BC%95%E7%94%A8%E3%80%81%E8%99%9A%E5%BC%95%E7%94%A8%EF%BC%9F"><span class="nav-text">3.强引用、软引用、弱引用、虚引用？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E5%99%A8%E7%9A%84%E6%9C%89%E5%93%AA%E4%BA%9B%E7%B1%BB%E5%88%AB%EF%BC%9F"><span class="nav-text">4.垃圾回收器的有哪些类别？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-CMS%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E5%99%A8"><span class="nav-text">5. CMS垃圾收集器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-G1-%E6%94%B6%E9%9B%86%E5%99%A8"><span class="nav-text">6. G1 收集器</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A6%81%E8%A7%A3%E5%86%B3%E7%9A%84%E9%97%AE%E9%A2%98"><span class="nav-text">要解决的问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#G1%E5%9B%9E%E6%94%B6%E8%BF%87%E7%A8%8B"><span class="nav-text">G1回收过程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#CMS-%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E5%99%A8%E4%B8%8E-G1-%E6%94%B6%E9%9B%86%E5%99%A8%E5%AF%B9%E6%AF%94"><span class="nav-text">CMS 垃圾收集器与 G1 收集器对比</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#CMS-%E6%94%B6%E9%9B%86%E5%99%A8%E5%92%8C-G1-%E6%94%B6%E9%9B%86%E5%99%A8%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="nav-text">CMS 收集器和 G1 收集器的区别？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#CMS-%E5%92%8C-G1-%E7%9A%84%E5%A6%82%E4%BD%95%E9%80%89%E6%8B%A9%EF%BC%9F"><span class="nav-text">CMS 和 G1 的如何选择？</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81-%E7%B1%BB%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84"><span class="nav-text">三、 类文件结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B1%BB%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84"><span class="nav-text">类文件结构</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E7%B1%BB%E5%8A%A0%E8%BD%BD%E6%9C%BA%E5%88%B6"><span class="nav-text">四、类加载机制</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1%E3%80%81%E4%BB%80%E4%B9%88%E6%98%AF%E7%B1%BB%E5%8A%A0%E8%BD%BD%EF%BC%9F%E7%B1%BB%E5%8A%A0%E8%BD%BD%E7%9A%84%E8%BF%87%E7%A8%8B%EF%BC%9F"><span class="nav-text">1、什么是类加载？类加载的过程？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2%E3%80%81%E7%B1%BB%E5%8A%A0%E8%BD%BD%E7%9A%84%E8%BF%87%E7%A8%8B"><span class="nav-text">2、类加载的过程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E5%8A%A0%E8%BD%BD"><span class="nav-text">1. 加载</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E9%AA%8C%E8%AF%81"><span class="nav-text">2. 验证</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E5%87%86%E5%A4%87"><span class="nav-text">3. 准备</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-%E8%A7%A3%E6%9E%90"><span class="nav-text">4.解析</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3%E3%80%81%E7%B1%BB%E5%8A%A0%E8%BD%BD%E5%99%A8%E7%9A%84%E7%A7%8D%E7%B1%BB"><span class="nav-text">3、类加载器的种类</span></a></li></ol></li></ol></li></ol></div>
+          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%B7%B1%E5%BA%A6%E7%90%86%E8%A7%A3Java%E8%99%9A%E6%8B%9F%E6%9C%BA"><span class="nav-text">深度理解Java虚拟机</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81Java%E5%86%85%E5%AD%98%E7%BB%93%E6%9E%84"><span class="nav-text">一、Java内存结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-JVM%E5%86%85%E5%AD%98%E7%BB%93%E6%9E%84"><span class="nav-text">1. JVM内存结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%88%9B%E5%BB%BA%E6%B5%81%E7%A8%8B"><span class="nav-text">2. 对象的创建流程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%E5%88%86%E9%85%8D%E5%86%85%E5%AD%98%E6%97%B6%E7%9A%84%E5%B9%B6%E5%8F%91%E9%97%AE%E9%A2%98%EF%BC%9F"><span class="nav-text">3. 如何解决分配内存时的并发问题？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%86%85%E5%AD%98%E5%B8%83%E5%B1%80%EF%BC%88%E6%9C%AA%E6%95%B4%E7%90%86%EF%BC%89"><span class="nav-text">4. 对象的内存布局（未整理）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-Java%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%AE%9A%E4%BD%8D%E6%96%B9%E5%BC%8F"><span class="nav-text">5. Java对象的定位方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-%E5%A0%86%E6%A0%88%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-text">6. 堆栈的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-%E4%BB%80%E4%B9%88%E6%83%85%E5%86%B5%E4%B8%8B%E4%BC%9A%E5%8F%91%E7%94%9F%E6%A0%88%E6%BA%A2%E5%87%BA"><span class="nav-text">7. 什么情况下会发生栈溢出</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E5%99%A8"><span class="nav-text">二、垃圾收集器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E5%A6%82%E4%BD%95%E5%88%A4%E6%96%AD%E5%9E%83%E5%9C%BE%EF%BC%9F%E6%9C%89%E5%87%A0%E7%A7%8D%E6%96%B9%E6%B3%95%EF%BC%9F"><span class="nav-text">1. 如何判断垃圾？有几种方法？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E5%8F%AF%E8%A2%AB%E4%BD%9C%E4%B8%BA-GC-Roots-%E5%AF%B9%E8%B1%A1%E7%9A%84%E6%9C%89%E5%93%AA%E4%BA%9B%EF%BC%9F"><span class="nav-text">2. 可被作为 GC Roots 对象的有哪些？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E5%BC%BA%E5%BC%95%E7%94%A8%E3%80%81%E8%BD%AF%E5%BC%95%E7%94%A8%E3%80%81%E5%BC%B1%E5%BC%95%E7%94%A8%E3%80%81%E8%99%9A%E5%BC%95%E7%94%A8%EF%BC%9F"><span class="nav-text">3.强引用、软引用、弱引用、虚引用？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-%E7%A1%AE%E5%AE%9A%E4%B8%8D%E5%8F%AF%E8%BE%BE%EF%BC%8C%E9%82%A3%E4%B8%80%E5%AE%9A%E4%BC%9A%E8%A2%AB%E5%9B%9E%E6%94%B6%E5%90%97%EF%BC%9F"><span class="nav-text">4.确定不可达，那一定会被回收吗？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-%E7%B1%BB%E8%A2%AB%E5%9B%9E%E6%94%B6%E7%9A%84%E6%9D%A1%E4%BB%B6%EF%BC%9F"><span class="nav-text">5.类被回收的条件？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-%E9%82%A3%E4%BD%A0%E8%AF%B4%E8%AF%B4%E6%9C%89%E5%93%AA%E4%BA%9B%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E7%AE%97%E6%B3%95%EF%BC%9F"><span class="nav-text">6.那你说说有哪些垃圾回收算法？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-%E4%B8%89%E7%A7%8D%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E7%AE%97%E6%B3%95%EF%BC%9F"><span class="nav-text">7.三种垃圾回收算法？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E5%99%A8%E7%9A%84%E6%9C%89%E5%93%AA%E4%BA%9B%E7%B1%BB%E5%88%AB%EF%BC%9F"><span class="nav-text">8.垃圾回收器的有哪些类别？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-CMS%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E5%99%A8"><span class="nav-text">6. CMS垃圾收集器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-G1-%E6%94%B6%E9%9B%86%E5%99%A8"><span class="nav-text">7. G1 收集器</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A6%81%E8%A7%A3%E5%86%B3%E7%9A%84%E9%97%AE%E9%A2%98"><span class="nav-text">要解决的问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#G1%E5%9B%9E%E6%94%B6%E8%BF%87%E7%A8%8B"><span class="nav-text">G1回收过程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#CMS-%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E5%99%A8%E4%B8%8E-G1-%E6%94%B6%E9%9B%86%E5%99%A8%E5%AF%B9%E6%AF%94"><span class="nav-text">CMS 垃圾收集器与 G1 收集器对比</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#CMS-%E6%94%B6%E9%9B%86%E5%99%A8%E5%92%8C-G1-%E6%94%B6%E9%9B%86%E5%99%A8%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="nav-text">CMS 收集器和 G1 收集器的区别？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#CMS-%E5%92%8C-G1-%E7%9A%84%E5%A6%82%E4%BD%95%E9%80%89%E6%8B%A9%EF%BC%9F"><span class="nav-text">CMS 和 G1 的如何选择？</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81-%E7%B1%BB%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84"><span class="nav-text">三、 类文件结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B1%BB%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84"><span class="nav-text">类文件结构</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E7%B1%BB%E5%8A%A0%E8%BD%BD%E6%9C%BA%E5%88%B6"><span class="nav-text">四、类加载机制</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1%E3%80%81%E4%BB%80%E4%B9%88%E6%98%AF%E7%B1%BB%E5%8A%A0%E8%BD%BD%EF%BC%9F%E7%B1%BB%E5%8A%A0%E8%BD%BD%E7%9A%84%E8%BF%87%E7%A8%8B%EF%BC%9F"><span class="nav-text">1、什么是类加载？类加载的过程？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2%E3%80%81%E7%B1%BB%E5%8A%A0%E8%BD%BD%E7%9A%84%E8%BF%87%E7%A8%8B"><span class="nav-text">2、类加载的过程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E5%8A%A0%E8%BD%BD"><span class="nav-text">1. 加载</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E9%AA%8C%E8%AF%81"><span class="nav-text">2. 验证</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E5%87%86%E5%A4%87"><span class="nav-text">3. 准备</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-%E8%A7%A3%E6%9E%90"><span class="nav-text">4.解析</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3%E3%80%81%E7%B1%BB%E5%8A%A0%E8%BD%BD%E5%99%A8%E7%9A%84%E7%A7%8D%E7%B1%BB"><span class="nav-text">3、类加载器的种类</span></a></li></ol></li></ol></li></ol></div>
       </section>
       <!--/noindex-->
 
@@ -253,20 +253,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">46</span>
+          <span class="site-state-item-count">47</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">31</span>
+        <span class="site-state-item-count">32</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">38</span>
+        <span class="site-state-item-count">39</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -347,7 +347,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2022-04-07 13:18:06" itemprop="dateModified" datetime="2022-04-07T13:18:06+08:00">2022-04-07</time>
+        <time title="修改时间：2022-04-15 10:53:40" itemprop="dateModified" datetime="2022-04-15T10:53:40+08:00">2022-04-15</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -388,14 +388,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>8.1k</span>
+      <span>9.8k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>7 分钟</span>
+      <span>9 分钟</span>
     </span>
 </div>
 
@@ -505,8 +505,13 @@
 <p>堆对于整个应用程序都是共享、可见的。</p>
 <p>栈只对于线程是可见的，线程私有。</p>
 <h3 id="7-什么情况下会发生栈溢出"><a href="#7-什么情况下会发生栈溢出" class="headerlink" title="7. 什么情况下会发生栈溢出"></a>7. 什么情况下会发生栈溢出</h3><p>当线程请求的栈深度超过了虚拟机允许的最大深度时，会抛出StackOverFlowError异常。通过调整参数<code>-xss</code>可以调整JVM栈的大小。</p>
-<h2 id="二、垃圾收集器"><a href="#二、垃圾收集器" class="headerlink" title="二、垃圾收集器"></a>二、垃圾收集器</h2><h3 id="1-如何判断垃圾？有几种方法？"><a href="#1-如何判断垃圾？有几种方法？" class="headerlink" title="1. 如何判断垃圾？有几种方法？"></a>1. 如何判断垃圾？有几种方法？</h3><p>首先，内存中不再使用的就是垃圾，判断垃圾的方法有两种：<strong>引用计数法</strong>和<strong>可达性分析算法</strong>。</p>
+<h2 id="二、垃圾收集器"><a href="#二、垃圾收集器" class="headerlink" title="二、垃圾收集器"></a>二、垃圾收集器</h2><p>回答思路：</p>
+<p>先解释什么是垃圾——判断垃圾的方法——这两种方法的优缺点——作为 GC Roots 的有哪些？——说到引用，那你说说四种引用——垃圾一定会被回收吗？——那你说说类的回收？</p>
+<p>如果问到垃圾回收算法，回答思路：</p>
+<h3 id="1-如何判断垃圾？有几种方法？"><a href="#1-如何判断垃圾？有几种方法？" class="headerlink" title="1. 如何判断垃圾？有几种方法？"></a>1. 如何判断垃圾？有几种方法？</h3><p>好的，面试官，内存中的垃圾就是我们创建的对象使用后不再使用的对象，那么这部分内存就可以被释放。</p>
+<p>判断垃圾的方法有<strong>两种</strong>：<strong>引用计数法</strong>和<strong>可达性分析算法</strong>。</p>
 <p>引用计数器中的算法存在弊端：很难解决互相引用的的问题。</p>
+<p>举例：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ObjA.instance = ObjB</span><br><span class="line">ObjB.instance = ObjA</span><br></pre></td></tr></table></figure>
 
 <p>可达性分析算法是从 GC Roots 开始向下搜索，如果一个对象没有被搜索到，那么这个对象就会被判定为死亡。</p>
@@ -530,7 +535,59 @@
 <li><p>虚引用被称为“幽灵引用”或“幻影引用”，为一个对象设置虚引用的目的就是在垃圾回收的时候能够收到通知。</p>
 </li>
 </ol>
-<h3 id="4-垃圾回收器的有哪些类别？"><a href="#4-垃圾回收器的有哪些类别？" class="headerlink" title="4.垃圾回收器的有哪些类别？"></a>4.垃圾回收器的有哪些类别？</h3><img src="https://dlutlgy-image-for-mac.oss-cn-beijing.aliyuncs.com/image-20220324095546407.png" alt="image-20220324095546407" style="zoom: 33%;" />
+<h3 id="4-确定不可达，那一定会被回收吗？"><a href="#4-确定不可达，那一定会被回收吗？" class="headerlink" title="4.确定不可达，那一定会被回收吗？"></a>4.确定不可达，那一定会被回收吗？</h3><p>好的，面试官，当一个对象在可达性分析算法中被判定为不可达，也不是非死不可的。</p>
+<p>此时还处于不确定的状态，因为一个对象要回收<strong>至少</strong>要<strong>经历两次的标记过程</strong>。</p>
+<p>第一次发生在对象在进行可达性分析后发现没有与 GC Roots 相连接，就进行第一次标记。然后，进行筛选，筛选的条件是不是有必要执行 finalize() 方法，不调用的情况（1. 对象没有覆盖 finalized() 方法。2.  finalized() 方法已经被调用过），如果有必要执行 finalized() 方法，那就进入 F-Queue 队列中，如果在第一次标记完到进入 F-Queue之前这段时间，调用了finalized() 方法，只要重新与引用链上的对象相连就行，那么就会在 F-Queue 移除。不过，finalized() 方法只会被系统调用一次。</p>
+<p>所以，当确定不可达，那也不一定会被回收。</p>
+<h3 id="5-类被回收的条件？"><a href="#5-类被回收的条件？" class="headerlink" title="5.类被回收的条件？"></a>5.类被回收的条件？</h3><p>好的，面试官，类被回收需要满足以下三个条件</p>
+<ol>
+<li>该类所有的实例都已经被回收，也就是 Java 中没有该类及该类子类的实例。</li>
+<li>加载该类的类加载器已经被回收，一般这个条件很难达成。</li>
+<li>该类对应的java.lang.Class 对象没有在任何地方被引用，无法在任何地方通过反射访问该类的方法。</li>
+</ol>
+<h3 id="6-那你说说有哪些垃圾回收算法？"><a href="#6-那你说说有哪些垃圾回收算法？" class="headerlink" title="6.那你说说有哪些垃圾回收算法？"></a>6.那你说说有哪些垃圾回收算法？</h3><p>在进行回答时，可以扩展、扩展在扩展！</p>
+<p>好的，面试官，在介绍垃圾回收算法的时候，我先介绍一下分代收集假说，分代收集假说有两种：</p>
+<ol>
+<li>弱分代假说：绝大部分对象都是朝生熄灭的。</li>
+<li>强分代假说：熬过了多次垃圾回收过程就很难消亡。</li>
+</ol>
+<p>因为这两个分代假说，所以把 Java 堆分成不同的区域</p>
+<p>为什么要划分区域呢？</p>
+<p>如果一个区域大多数对象朝生熄灭，那么我们回收时只关注少量存活的对象，为不用去标记哪些要被回收的对象，就能用较低的代价换回大量空间，</p>
+<p>如果一个区域大多数对象很难消亡，我们就可以用较低的频率去回收这个区域，就同时兼顾了垃圾回收的时间开销和空间利用。</p>
+<p>所以才有了Minor GC、Major GC、Full GC，因而有了<strong>标记-删除、标记-复制、标记-整理</strong>算法。</p>
+<p>不过还有一个问题就是：</p>
+<ol start="3">
+<li>跨代引用假说</li>
+</ol>
+<p>带来的问题：如果一个新生代对象被老年的对象引用，这种情况很少。但是我们需要对老年代对象进行遍历，反过来也是，这样就会带来性能负担。</p>
+<p>解决方法：在新生代建立一种数据结构——记忆集，记忆集把老年代分出若干块，标识出那一块老年代存在跨代引用，在进行对新生代垃圾回收时，只需要对老年代小块内存的对象进行扫描，避免对所有的老年代进行扫描，是划算的。</p>
+<h3 id="7-三种垃圾回收算法？"><a href="#7-三种垃圾回收算法？" class="headerlink" title="7.三种垃圾回收算法？"></a>7.三种垃圾回收算法？</h3><p><strong>标记-删除算法：</strong></p>
+<p>定义：首先标记出所有需要回收的对象，在标记完成后，再统一回收所有被标记的对象，也可以反过来，先标记存活的对象，最后统一回收未被标记的对象。</p>
+<p>缺点：</p>
+<ol>
+<li>执行效率不稳定，如果 Java 堆中存在大量的对象，并且大部分都需要进行回收，那么标记、清除这两个动作花费的时间就长、效率变低。</li>
+<li>会有大量的垃圾碎片，垃圾回收完就有大量的内存碎片，空间碎片太多，就会可能导致在分配较大的对象的时候无法找到足够的空间而出发垃圾回收。</li>
+</ol>
+<p><strong>标记-复制算法：</strong></p>
+<p>定义：将可用内存的容量划分为相等的两块，每次只使用一块，当一块内存使用完了，就将存活的对象复制到另一块，然后把已经使用的内存清理掉。</p>
+<p>缺点：</p>
+<ol>
+<li>如果对象大多数时存活的，复制算法会很耗时。</li>
+<li>将空间内存缩小为原来的一半，空间浪费了太多了。</li>
+</ol>
+<p>优点：</p>
+<ol>
+<li>在进行垃圾回收时，只需要对内存的一半进行回收。</li>
+<li>分配内存的时候，不要考虑空间碎片的情况。</li>
+</ol>
+<p><strong>标记-整理算法：</strong></p>
+<p>定义：标记整理就是让所有存活的对象向空间的一端移动，然后直接清理掉边界的内存。</p>
+<p>缺点：</p>
+<ol>
+<li>在进行标记-整理时，需要暂停用户的程序。</li>
+</ol>
+<h3 id="8-垃圾回收器的有哪些类别？"><a href="#8-垃圾回收器的有哪些类别？" class="headerlink" title="8.垃圾回收器的有哪些类别？"></a><strong>8</strong>.垃圾回收器的有哪些类别？</h3><img src="https://dlutlgy-image-for-mac.oss-cn-beijing.aliyuncs.com/image-20220324095546407.png" alt="image-20220324095546407" style="zoom: 33%;" />
 
 <p>注意⚠️：上图 Parallel Old 是多线程，标记错了。</p>
 <ol>
@@ -557,7 +614,7 @@
 <p>面向全堆的收集器。</p>
 </li>
 </ol>
-<h3 id="5-CMS垃圾收集器"><a href="#5-CMS垃圾收集器" class="headerlink" title="5. CMS垃圾收集器"></a>5. CMS垃圾收集器</h3><p>CMS(Consurrent Mark Sweep)收集器：以获取<strong>最短回收停顿时间</strong>为目标的收集器，采用<strong>标记-清除</strong>的算法实现的。</p>
+<h3 id="6-CMS垃圾收集器"><a href="#6-CMS垃圾收集器" class="headerlink" title="6. CMS垃圾收集器"></a>6. CMS垃圾收集器</h3><p>CMS(Consurrent Mark Sweep)收集器：以获取<strong>最短回收停顿时间</strong>为目标的收集器，采用<strong>标记-清除</strong>的算法实现的。</p>
 <p><img src="https://dlutlgy-image-for-mac.oss-cn-beijing.aliyuncs.com/imagesimage-20220322132430846.png" alt="image-20220322132430846"></p>
 <p>四个过程：</p>
 <ul>
@@ -588,7 +645,7 @@
 </ul>
 <p>适用范围：</p>
 <p>它关注的是垃圾回收最短的停顿时间（低停顿），在老年代并不频繁GC的场景下，是比较适用的。</p>
-<h3 id="6-G1-收集器"><a href="#6-G1-收集器" class="headerlink" title="6. G1 收集器"></a>6. G1 收集器</h3><p>G1收集器是<strong>面向全堆</strong>的垃圾收集器，它的目标就是<strong>在延迟可控的情况下获得尽可能高的吞吐量</strong>。</p>
+<h3 id="7-G1-收集器"><a href="#7-G1-收集器" class="headerlink" title="7. G1 收集器"></a>7. G1 收集器</h3><p>G1收集器是<strong>面向全堆</strong>的垃圾收集器，它的目标就是<strong>在延迟可控的情况下获得尽可能高的吞吐量</strong>。</p>
 <p><img src="https://dlutlgy-image-for-mac.oss-cn-beijing.aliyuncs.com/image-20211115164112865.png" alt="image-20211115164112865"></p>
 <p>G1是基于Region的堆内存布局，但是还是遵循分代收集理论的。</p>
 <p>停顿时间模型：在一个长度为M毫秒的时间片段内，消耗在垃圾回收的时间大概率不超过n毫秒。</p>
@@ -819,14 +876,14 @@
       <i class="fa fa-chart-line"></i>
     </span>
       <span>站点总字数：</span>
-    <span title="站点总字数">222k</span>
+    <span title="站点总字数">223k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span>站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">3:22</span>
+    <span title="站点阅读时长">3:23</span>
   </span>
 </div>
 
