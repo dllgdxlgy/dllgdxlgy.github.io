@@ -571,7 +571,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2022-04-14 15:01:11" itemprop="dateModified" datetime="2022-04-14T15:01:11+08:00">2022-04-14</time>
+        <time title="修改时间：2022-04-16 21:41:28" itemprop="dateModified" datetime="2022-04-16T21:41:28+08:00">2022-04-16</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -630,258 +630,15 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <a id="more"></a>
-
-<h3 id="1-Java-中对象比较的三种方式"><a href="#1-Java-中对象比较的三种方式" class="headerlink" title="1.Java 中对象比较的三种方式"></a>1.Java 中对象比较的三种方式</h3><ol>
-<li>== 和 equals() 方法</li>
-<li>hashCode() 方法和 equals() 方法</li>
-<li>Comparable 接口和 Comparator 接口</li>
-</ol>
-<ul>
-<li>== 和 equals() 方法（已经整理）</li>
-</ul>
-<p>不重写就是比较的对象的地址值是不是一样的，自己写的类一般都重写 equals() 方法。</p>
-<ul>
-<li>hashCode() 方法和 equals() 方法</li>
-</ul>
-<p>之所以重写hashCode() 方法就是为了使对象里面的相同的内容产生相同的 hash 值，然后在对象进行比较的时候 hash 值一样。</p>
-<p>实现 Comparable 接口，然后重写compareTo() 方法。</p>
-<ul>
-<li>Comparable 接口和 Comparator 接口<ul>
-<li>Comparable 接口需要重写 compareTo() 方法</li>
-<li>Comparator接口</li>
-</ul>
-</li>
-</ul>
-<p>参考：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/myworld7/p/10050947.html#_label1">https://www.cnblogs.com/myworld7/p/10050947.html#_label1</a></p>
-<h3 id="2-HashCode-的作用"><a href="#2-HashCode-的作用" class="headerlink" title="2.HashCode 的作用"></a>2.HashCode 的作用</h3><p>（1）HashCode的存在主要是用于查找的快捷性，如Hashtable，HashMap等，HashCode经常用于确定对象的存储地址；</p>
-<p>（2）如果两个对象相同， equals方法一定返回true，并且这两个对象的HashCode一定相同；</p>
-<p>（3）两个对象的HashCode相同，并不一定表示两个对象就相同，即equals()不一定为true，只能说明这两个对象在一个散列存储结构中。</p>
-<p>（4）如果对象的equals方法被重写，那么对象的HashCode也尽量重写。</p>
-<p>在集合中，当要添加元素时，没使用 HashCode 之前，需要进行很多次 equals() 方法，会降低效率，但是我们使用 HashCode() 的时候，我们就能一下子确定插入的位置。即使相同的 Hash 值，也能调用有限次 equals() 方法进行比较。</p>
-<p>参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/SEU_Calvin/article/details/52094115">https://blog.csdn.net/SEU_Calvin/article/details/52094115</a></p>
-<h3 id="3-Java-中获取键盘输入值的三种方法"><a href="#3-Java-中获取键盘输入值的三种方法" class="headerlink" title="3.Java 中获取键盘输入值的三种方法"></a>3.Java 中获取键盘输入值的三种方法</h3><ul>
-<li>从控制台中接收一个字符，然后将其打印出来。</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.io.*;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String [] args)</span> <span class="keyword">throws</span> IOException</span>&#123; </span><br><span class="line">       System.out.print(<span class="string">&quot;Enter a Char:&quot;</span>); </span><br><span class="line">        <span class="keyword">char</span> i = (<span class="keyword">char</span>) System.in.read(); </span><br><span class="line">       System.out.println(<span class="string">&quot;your char is :&quot;</span>+i); </span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
-
-<p>只能针对一个字符进行获取，获取进来的变量只能是 char，如果是一个数字，我们需要得到一个整型变量的时候，只能再次进行转换。</p>
-<ul>
-<li>从控制台接收一个字符串，然后将其打印出来。我们需要用到 BufferedReader 类和 InputStreamReader 类</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.io.*;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String [] args)</span> <span class="keyword">throws</span> IOException</span>&#123; </span><br><span class="line">         BufferedReader br = <span class="keyword">new</span> BufferedReader(<span class="keyword">new</span> InputStreamReader(System.in)); </span><br><span class="line">         String str = <span class="keyword">null</span>; </span><br><span class="line">         System.out.println(<span class="string">&quot;Enter your value:&quot;</span>); </span><br><span class="line">         str = br.readLine(); </span><br><span class="line">         System.out.println(<span class="string">&quot;your value is :&quot;</span>+str); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>使用 Scanner 类</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String [] args)</span> </span>&#123; </span><br><span class="line">        Scanner sc = <span class="keyword">new</span> Scanner(System.in); </span><br><span class="line">       System.out.println(<span class="string">&quot;请输入你的姓名：&quot;</span>); </span><br><span class="line">        String name = sc.nextLine(); </span><br><span class="line">       System.out.println(<span class="string">&quot;请输入你的年龄：&quot;</span>); </span><br><span class="line">        <span class="keyword">int</span> age = sc.nextInt(); </span><br><span class="line">       System.out.println(<span class="string">&quot;请输入你的工资：&quot;</span>); </span><br><span class="line">        <span class="keyword">float</span> salary = sc.nextFloat(); </span><br><span class="line">       System.out.println(<span class="string">&quot;你的信息如下：&quot;</span>); </span><br><span class="line">       System.out.println(<span class="string">&quot;姓名：&quot;</span>+name+<span class="string">&quot;\n&quot;</span>+<span class="string">&quot;年龄：&quot;</span>+age+<span class="string">&quot;\n&quot;</span>+<span class="string">&quot;工资：&quot;</span>+salary); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>参考：<a target="_blank" rel="noopener" href="http://blog.sina.com.cn/s/blog_93dc666c0101h00f.html">http://blog.sina.com.cn/s/blog_93dc666c0101h00f.html</a></p>
-<h3 id="4-Java中有哪几种类型的流"><a href="#4-Java中有哪几种类型的流" class="headerlink" title="4.Java中有哪几种类型的流"></a>4.Java中有哪几种类型的流</h3><p>按照数据单位不同分为：<strong>字节流和字符流</strong></p>
-<p>按照数据流的流向分为：<strong>输入流和输出流</strong></p>
-<p>按照流的角色分为：<strong>节点流和处理流</strong></p>
-<p>节点流：直接作用在文件上。</p>
-<p>处理流：是在节点流的基础上进行包裹的流。</p>
-<p>字节流继承于 InputStream 和 OutStream，字符流继承于 Reader 和 Writer。</p>
-<h3 id="5-字节流和字符流的区别？"><a href="#5-字节流和字符流的区别？" class="headerlink" title="5.字节流和字符流的区别？"></a>5.字节流和字符流的区别？</h3><p>参考：<a target="_blank" rel="noopener" href="https://www.zhihu.com/question/39262026">https://www.zhihu.com/question/39262026</a></p>
-<ol>
-<li>字节流操作的基本单位是字节，而字符流操作的基本单位是 Unicode码元。</li>
-<li>字节流不需要使用缓冲区，字符流需要使用缓冲区。</li>
-<li>字节流可以处理二进制数据，也就是可以处理任意类型的数据。而字符流通常处理文本类型的数据。</li>
-</ol>
-<h3 id="6-String、StringBuffer、和StringBuilder-的区别？"><a href="#6-String、StringBuffer、和StringBuilder-的区别？" class="headerlink" title="6.String、StringBuffer、和StringBuilder 的区别？"></a>6.String、StringBuffer、和StringBuilder 的区别？</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/mad1989/article/details/26389541">参考链接1</a></p>
-<p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s?__biz=Mzg2OTA0Njk0OA==&mid=2247484891&idx=1&sn=65643683457bdd1d58cc9f4573d9788b&source=41#wechat_redirect">参考链接2</a></p>
-<p><strong>可变性</strong>　<br>String类中使用字符数组: private　final　char　value[]保存字符串，所以String对象是不可变的。StringBuilder与StringBuffer都继承自AbstractStringBuilder类，在AbstractStringBuilder中也是使用字符数组保存字符串，char[]value，这两种对象都是可变的。</p>
-<p><strong>线程安全性</strong></p>
-<p>String中的对象是不可变的，也就可以理解为常量，线程安全。AbstractStringBuilder是StringBuilder与StringBuffer的公共父类，定义了一些字符串的基本操作，如expandCapacity、append、insert、indexOf等公共方法。StringBuffer对方法加了同步锁或者对调用的方法加了同步锁，所以是线程安全的。StringBuilder并没有对方法进行加同步锁，所以是非线程安全的。</p>
-<p><strong>性能</strong></p>
-<p>每次对String 类型进行改变的时候，都会生成一个新的String对象，然后将指针指向新的String 对象。StringBuffer每次都会对StringBuffer对象本身进行操作，而不是生成新的对象并改变对象引用。相同情况下使用StirngBuilder 相比使用StringBuffer 仅能获得10%~15% 左右的性能提升，但却要冒多线程不安全的风险。</p>
-<p><strong>对于三者使用的总结：</strong></p>
-<p>如果要操作少量的数据用 String</p>
-<p>单线程操作字符串缓冲区 下操作大量数据用StringBuilder</p>
-<p>多线程操作字符串缓冲区 下操作大量数据用StringBuffer</p>
-<h3 id="7-关于-String-的面试题"><a href="#7-关于-String-的面试题" class="headerlink" title="7.关于 String 的面试题"></a>7.关于 String 的面试题</h3><p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6912065606460112903#comment">参考文章</a></p>
-<p><strong>String s = new String(“abc”)；方式创建对象，在内存中创建了几个对象？</strong></p>
-<p>看字节码文件来证明</p>
-<p>两个：一个是堆空间中 new 结构，另一个是 char[] 对应的常量池中的数据：”abc”，如果常量池中有，就不用造了，没有就造。</p>
-<p><strong>new String(“a”) + new String(“b”)；创建了几个对象？</strong></p>
-<p>6个，分别是：</p>
-<ol>
-<li>只要是相连，就用StringBuilder。new StringBuilder()</li>
-<li>new String(“a”)</li>
-<li>常量池里的a</li>
-<li>new String(“b”)</li>
-<li>常量池里的b</li>
-<li>深入剖析 StringBuilder 的 toString() 里面 new 了一个 String 对象。也就是 new String(“ab”)，<strong>字符串常量池里面没有ab（重点）</strong></li>
-</ol>
-<p><strong>一道面试题：</strong></p>
-<p>Jdk 6 中字符串常量池在<strong>方法区</strong>，而Jdk 7/8 字符串常量池在<strong>堆空间</strong>里。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(string[ ] args)</span> </span>&#123;</span><br><span class="line">  <span class="comment">//俩对象，一个是堆空间的&quot;1&quot;，一个是常量池里的&quot;1&quot;。至于常量池的&quot;1&quot; 是在永久代还是在堆空间中呢？无所谓，反正返回的是堆空间的那个对象。</span></span><br><span class="line">	string s = <span class="keyword">new</span> string( original: <span class="string">&quot;1&quot;</span>);</span><br><span class="line">  <span class="comment">// 这里常量池里显然有1，在这里，调用此方法没啥意思。已经存在了。</span></span><br><span class="line">  s.intern();</span><br><span class="line">  <span class="comment">// 常量池里有1了。</span></span><br><span class="line">	string s2 = <span class="string">&quot;1&quot;</span>;</span><br><span class="line">	system.out.println(s == s2);<span class="comment">//jdk6: false    jdk7/8: false</span></span><br><span class="line">  <span class="comment">//-------------------------------------------------------------------------------------  </span></span><br><span class="line">  <span class="comment">// s3 这个变量记录的地址就是new String(&quot;11&quot;)的这个地址。到这里，字符串常量池里不存在&quot;11&quot;。</span></span><br><span class="line">	string s3 = <span class="keyword">new</span> string( original: <span class="string">&quot;1&quot;</span>) + <span class="keyword">new</span> string( original: <span class="string">&quot;1&quot;</span>);</span><br><span class="line">  <span class="comment">// 这里就在字符串常量中生成&quot;11&quot;。</span></span><br><span class="line">  <span class="comment">// 如何理解？在 JDK 6 中，就是创建了一个新的对象，叫做&quot;11&quot;,也就有新的地址。所以，JDK6中，为false。</span></span><br><span class="line">  <span class="comment">// 但是在 JDK 7中，我们把常量池放在了堆空间（实际是永久代）中了。为了节省空间，没有创建新的&quot;11&quot;,而是指向了s3所指向的地址。</span></span><br><span class="line">  s3.intern();</span><br><span class="line">  <span class="comment">// 这个就是使用的上一行代码生成的&quot;11&quot;的地址。</span></span><br><span class="line">	string s4 = <span class="string">&quot;11&quot;</span>;</span><br><span class="line">  <span class="comment">//</span></span><br><span class="line">	system.out.println(s3 = s4);<span class="comment">//jdk6: false    jdk7/8: true</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>JDK6</p>
-<img src="https://dlutlgy-image-for-mac.oss-cn-beijing.aliyuncs.com/imagesimage-20220413130837934.png" alt="image-20220413130837934" style="zoom: 33%;" />
-
-<p>JDK7</p>
-<img src="https://dlutlgy-image-for-mac.oss-cn-beijing.aliyuncs.com/imagesimage-20220413131053922.png" alt="image-20220413131053922" style="zoom:33%;" />
-
-
-
-<img src="https://dlutlgy-image-for-mac.oss-cn-beijing.aliyuncs.com/imagesimage-20220413131130435.png" alt="image-20220413131130435" style="zoom:33%;" />
-
-<h3 id="8-接口和抽象类的区别？"><a href="#8-接口和抽象类的区别？" class="headerlink" title="8.接口和抽象类的区别？"></a>8.接口和抽象类的区别？</h3><p><strong>设计目的不同：</strong></p>
-<p>接口的设计目的是一种模版设计，是一种行为规范，凡事实现接口的类，都要实现它的方法，是一种行为抽象。</p>
-<p>抽象类的设计目的是为了复用代码，抽象类是对现实事物的抽象，记录通用特性的。</p>
-<p><strong>实现不同：</strong></p>
-<p>实现接口就要实现它的所有方法。</p>
-<p>继承抽象类上面没有类似的要求。如果提供部分方法的实现，那么这个子类依旧是抽象类，如果全部实现，那这个类就不是抽象类了。</p>
-<p><strong>构造器：</strong></p>
-<p>接口不可以有构造器。</p>
-<p>抽象类可以拥有构造器。</p>
-<p>注意⚠️：Java 8 中接口引入了默认方法和静态方法。子类可以不去实现默认方法。</p>
-<p><strong>选择</strong>：如果是定义一组行为模型，那我们优先选择接口，如果是某一种事物的抽象，我们选用抽象类。</p>
-<p><strong>相同点：</strong></p>
-<p>接口和抽象类都不能实例化</p>
-<p>他们都位于继承的顶端，用于实现或者继承。</p>
-<p>都包涵抽象方法。</p>
-<h3 id="9-Object-有哪些方法？"><a href="#9-Object-有哪些方法？" class="headerlink" title="9.Object 有哪些方法？"></a>9.Object 有哪些方法？</h3><p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/eJy74CbzthHMgRPOA_4wEA">参考文章</a></p>
-<p><code>Object</code>类中含有： <code>registerNatives()、getClass()、hashCode()、equals()、clone()、toString()、notify()、notifyAll()、wait(long)、wait(long,int)、wait()、finalize()</code> 共<strong>十二个方法</strong>。这个顺序是按照 <code>Object</code>类中定义方法的顺序列举的，下面我也会按照这个顺序依次进行讲解。</p>
-<p>**1. registerNatives()**方法</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Object</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">native</span> <span class="keyword">void</span> <span class="title">registerNatives</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="keyword">static</span>&#123;</span><br><span class="line">        registerNatives();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>从名字上理解，这个方法是注册 <code>native</code>方法</strong>（本地方法，由 <code>JVM</code>实现，底层是 <code>C/C++</code>实现的）**向谁注册呢？当然是向 <code>JVM</code>**，当有程序调用到 <code>native</code>方法时， <code>JVM</code>才好去找到这些底层的方法进行调用。</p>
-<p><code>Object</code>中的 <code>native</code>方法，并使用 <code>registerNatives()</code>向 <code>JVM</code>进行注册。（这属于 <code>JNI</code>的范畴，有兴趣的可自行查阅。）</p>
-<img src="https://dlutlgy-image-for-mac.oss-cn-beijing.aliyuncs.com/imagesimage-20220404110241734.png" alt="image-20220404110241734" style="zoom:50%;" />
-
-<p>为什么要使用静态方法，还要放到静态块中呢？</p>
-<p>我们知道了在类初始化的时候，会依次从父类到本类的类变量及类初始化块中的类变量及方法按照定义顺序放到 <code>&lt; clinit&gt;</code>方法中，这样可以保证父类的类变量及方法的初始化一定先于子类。所以当子类调用相应 <code>native</code>方法，比如计算 <code>hashCode</code>时，一定可以保证能够调用到 <code>JVM</code>的 <code>native</code>方法。</p>
-<p><strong>2. getClass()</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">native</span> Class <span class="title">getClass</span><span class="params">()</span></span>;</span><br></pre></td></tr></table></figure>
-
-<p>这是一个 <code>public</code> 的方法，我们可以直接通过对象调用。类加载的第一阶段类的加载就是将 <code>.class</code> 文件加载到内存，并生成一个 <code>java.lang.Class</code> 对象的过程。 <code>getClass()</code>方法就是获取这个对象，这是当前类的对象在运行时类的所有信息的集合。这个方法是反射三种方式之一。</p>
-<p><strong>3. hashCode()</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">native</span> <span class="keyword">int</span> <span class="title">hashCode</span><span class="params">()</span></span>;</span><br></pre></td></tr></table></figure>
-
-<p>这是一个 <code>public</code>的方法，所以子类可以重写它。这个方法返回当前对象的 <code>hashCode</code>值，这个值是一个整数范围内的 <code>（-2^31~2^31-1）</code>数字。</p>
-<p>对于 <code>hashCode </code>有以下几点约束:</p>
-<ol>
-<li>在 Java应用程序执行期间，在对同一对象多次调用 <code>hashCode</code> 方法时，必须一致地返回相同的整数，前提是将对象进行 <code>equals</code> 比较时所用的信息没有被修改；</li>
-<li>如果两个对象 <code>x.equals(y)</code> 方法返回 <code>true</code>，则 <code>x</code>、 <code>y</code>这两个对象的 <code>hashCode</code>必须相等。</li>
-<li>如果两个对象 <code>x.equals(y)</code> 方法返回 <code>false</code>，则 <code>x</code>、 <code>y</code>这两个对象的 <code>hashCode</code>可以相等也可以不等。但是，为不相等的对象生成不同整数结果可以提高哈希表的性能。</li>
-<li>默认的 <code>hashCode</code>是将内存地址转换为的 <code>hash</code>值，重写过后就是自定义的计算方式；也可以通过 <code>System.identityHashCode(Object)</code>来返回原本的 <code>hashCode</code>。</li>
-</ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HashCodeTest</span> </span>&#123;</span><br><span class="line">		<span class="keyword">private</span> <span class="keyword">int</span> age;</span><br><span class="line">		<span class="keyword">private</span> String name ;</span><br><span class="line">		<span class="meta">@Override</span></span><br><span class="line">		<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">hashCode</span><span class="params">()</span> </span>&#123;</span><br><span class="line">			Object[] a = Stream. of(age, name). toArray();</span><br><span class="line">			<span class="keyword">int</span> result = <span class="number">1</span>;</span><br><span class="line">			<span class="keyword">for</span> (object element : a) &#123;</span><br><span class="line">				result = <span class="number">31</span> * result + (element == <span class="keyword">null</span> ? <span class="number">0</span> : element. hashCode()) ;</span><br><span class="line">      &#125;</span><br><span class="line">			<span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>推荐使用 <code>Objects.hash(Object…values)</code>方法。相信看源码的时候，都看到计算 <code>hashCode</code>都使用了 <code>31</code>作为基础乘数，为什么使用 <code>31</code>呢？我比较赞同与理解 <code>result *31=(result&lt;&lt;5)-result</code>。 <code>JVM</code>底层可以自动做优化为位运算，效率很高；还有因为 <code>31</code>计算的 <code>hashCode</code>冲突较少，利于 <code>hash</code>桶位的分布。</p>
-<p><strong>4. equals()</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">equals</span><span class="params">(Object obj)</span></span>;</span><br></pre></td></tr></table></figure>
-
-<p>用于比较当前对象与目标对象是否相等，默认是比较引用是否指向同一对象。为 <code>public</code>方法，子类可重写。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Object</span></span>&#123;    </span><br><span class="line">		<span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">equals</span><span class="params">(Object obj)</span> </span>&#123;        </span><br><span class="line">				<span class="keyword">return</span> (<span class="keyword">this</span> == obj);    </span><br><span class="line">		&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>为什么需要重写 <code>equals</code>方法？</p>
-<p><strong>因为如果不重写equals方法，当将自定义对象放到 <code>map</code>或者 <code>set</code>中时</strong>；如果这时两个对象的 <code>hashCode</code>相同，就会调用 <code>equals</code>方法进行比较，这个时候会调用 <code>Object</code>中默认的 <code>equals</code>方法，而默认的 <code>equals</code>方法只是比较了两个对象的引用是否指向了同一个对象，显然大多数时候都不会指向，这样就会将重复对象存入 <code>map</code>或者 <code>set</code>中。这就<strong>破坏了 <code>map</code>与 <code>set</code>不能存储重复对象的特性，会造成内存溢出</strong>。</p>
-<p><strong>重写 <code>equals</code>方法的几条约定：</strong></p>
-<ol>
-<li><strong>自反性</strong>：即 <code>x.equals(x)</code>返回 <code>true</code>， <code>x</code>不为 <code>null</code>；</li>
-<li><strong>对称性</strong>：即 <code>x.equals(y)</code>与 <code>y.equals(x）</code>的结果相同， <code>x</code>与 <code>y</code>不为 <code>null</code>；</li>
-<li><strong>传递性</strong>：即 <code>x.equals(y)</code>结果为 <code>true</code>, <code>y.equals(z)</code>结果为 <code>true</code>，则 <code>x.equals(z)</code>结果也必须为 <code>true</code>；</li>
-<li><strong>一致性</strong>：即 <code>x.equals(y)</code>返回 <code>true</code>或 <code>false</code>，在未更改 <code>equals</code>方法使用的参数条件下，多次调用返回的结果也必须一致。 <code>x</code>与 <code>y</code>不为 <code>null</code>。</li>
-<li>如果 <code>x</code>不为 <code>null</code>, <code>x.equals(null)</code>返回 <code>false</code>。</li>
-</ol>
-<p><strong>5. clone()</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">native</span> Object <span class="title">clone</span><span class="params">()</span> <span class="keyword">throws</span> CloneNotSupportedException；</span></span><br></pre></td></tr></table></figure>
-
-<p>这是一个 <code>protected</code>方法，提供给子类重写。但需要实现 <code>Cloneable</code>接口，这是一个标记接口，如果没有实现，当调用 <code>object.clone()</code>方法，会抛出 <code>CloneNotSupportedException</code>。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CloneTest</span> <span class="keyword">implements</span> <span class="title">Cloneable</span> </span>&#123;</span><br><span class="line">		<span class="keyword">private</span> <span class="keyword">int</span> age ;</span><br><span class="line">		<span class="keyword">private</span> String name;</span><br><span class="line">		<span class="comment">//省略get、set、 构造函数等</span></span><br><span class="line">		<span class="meta">@Override</span></span><br><span class="line">		<span class="function"><span class="keyword">protected</span> CloneTest <span class="title">clone</span><span class="params">()</span> <span class="keyword">throws</span> CloneNotSupportedException </span>&#123;</span><br><span class="line">				<span class="keyword">return</span>(CloneTest) <span class="keyword">super</span>.clone( );</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> CloneNotSupportedException </span>&#123;</span><br><span class="line">				CloneTest cloneTest = <span class="keyword">new</span> CloneTest(<span class="number">23</span>, <span class="string">&quot;XX&quot;</span>);</span><br><span class="line">				CloneTest clone = cloneTest. clone() ;</span><br><span class="line">				System. out. println(clone == cloneTest);</span><br><span class="line">				System. out. println(cloneTest. getAge( )==clone. getAge());</span><br><span class="line">				System. out. println( cloneTest. getName( )==clone . getName()) ;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//输出结果</span></span><br><span class="line"><span class="comment">//false</span></span><br><span class="line"><span class="comment">//true</span></span><br><span class="line"><span class="comment">//true</span></span><br></pre></td></tr></table></figure>
-
-<p>从输出我们看见， <code>clone</code> 的对象是一个新的对象；但原对象与 <code>clone </code>对象的 <code>String </code>类型的 <code>name </code>却是同一个引用，这表明， <code>super.clone</code>方法对成员变量如果是引用类型，进行是浅拷贝。</p>
-<p>那如果我们要进行深拷贝怎么办呢？ </p>
-<p><strong>答案是</strong>：如果成员变量是引用类型，想实现深拷贝，则成员变量也要实现 <code>Cloneable</code>接口，重写 <code>clone</code>方法。</p>
-<p><strong>6. toString()</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span>；</span></span><br></pre></td></tr></table></figure>
-
-<p>这是一个 <code>public</code>方法，子类可重写，建议所有子类都重写 <code>toString</code>方法，默认的 <code>toString</code>方法，只是将当前类的全限定性类名 <code>+@+</code>十六进制的 <code>hashCode</code>值。</p>
-<p><strong>我们思考一下为什么需要toString方法？</strong></p>
-<p>可以这么理解：返回当前对象的字符串表示，可以将其打印方便查看对象的信息，方便记录日志信息提供调试。我们可以选择需要表示的重要信息重写到 <code>toString</code>方法中。</p>
-<p><strong>7. wait()、8.  wait(long)、9. wait(long,int)</strong></p>
-<p>这三个方法是用来线程间通信用的，作用是阻塞当前线程，等待其他线程调用 <code>notify()/notifyAll()</code>方法将其唤醒。这些方法都是 <code>publicfinal</code>的，不可被重写。</p>
-<p><strong>注意：</strong></p>
-<ol>
-<li>此方法只能在当前线程获取到对象的锁监视器之后才能调用，否则会抛出 <code>IllegalMonitorStateException</code>异常。</li>
-<li>调用 <code>wait</code>方法，线程会将锁监视器进行释放；而 <code>Thread.sleep，Thread.yield()</code>并不会释放锁。</li>
-<li><code>wait</code>方法会一直阻塞，直到其他线程调用当前对象的 <code>notify()/notifyAll()</code>方法将其唤醒；而 <code>wait(long)</code>是等待给定超时时间内（单位毫秒），如果还没有调用 <code>notify()/nofiyAll()</code>会自动唤醒； <code>wait(long,int)</code>如果第二个参数大于 <code>0</code>并且小于 <code>999999</code>，则第一个参数 <code>+1</code> 作为超时时间；</li>
-</ol>
-<p><strong>10. notify()、11. notifyAll()</strong></p>
-<p>前面说了，如果当前线程获得了当前对象锁，调用 <code>wait</code>方法，将锁释放并阻塞；这时另一个线程获取到了此对象锁，并调用此对象的 <code>notify()/notifyAll()</code>方法将之前的线程唤醒。这些方法都是 <code>public final</code>的，不可被重写。</p>
-<ol>
-<li><code>public final native void notify();</code> 随机唤醒之前在当前对象上调用 <code>wait</code>方法的一个线程</li>
-<li><code>public final native void notifyAll()</code>; 唤醒所有之前在当前对象上调用 <code>wait</code>方法的线程</li>
-</ol>
-<p><strong>注意</strong>：调用 <code>notify()</code>后，阻塞线程被唤醒，可以参与锁的竞争，但可能调用 <code>notify()</code>方法的线程还要继续做其他事，锁并未释放，所以我们看到的结果是，无论 <code>notify()</code>是在方法一开始调用，还是最后调用，阻塞线程都要等待当前线程结束才能开始。</p>
-<blockquote>
-<p>为什么 <code>wait()/notify()</code>方法要放到 <code>Object</code>中呢？ </p>
-<p>因为每个对象都可以成为锁监视器对象，所以放到 <code>Object</code>中，可以直接使用。</p>
-</blockquote>
-<p><strong>12. finalize()</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">finalize</span><span class="params">()</span> <span class="keyword">throws</span> Throwable </span>;</span><br></pre></td></tr></table></figure>
-
-<p>此方法是在垃圾回收之前，JVM 会调用此方法来清理资源。此方法可能会将对象重新置为可达状态，导致JVM无法进行垃圾回收。我们知道java相对于 C++ 很大的优势是程序员不用手动管理内存，内存由 JVM 管理；如果我们的引用对象在堆中没有引用指向他们时，当内存不足时，JVM 会自动将这些对象进行回收释放内存，这就是我们常说的垃圾回收。但垃圾回收没有讲述的这么简单。</p>
-<p><strong><code>finalize()</code>方法具有如下4个特点：</strong></p>
-<ol>
-<li>永远不要主动调用某个对象的 <code>finalize()</code>方法，该方法由垃圾回收机制自己调用；</li>
-<li><code>finalize()</code>何时被调用，是否被调用具有不确定性；</li>
-<li>当 <code>JVM</code>执行可恢复对象的 <code>finalize()</code>可能会将此对象重新变为可达状态；</li>
-<li>当 <code>JVM</code>执行 <code>finalize()</code>方法时出现异常，垃圾回收机制不会报告异常，程序继续执行。</li>
-</ol>
-<h3 id="10-Java-中值传递和引用传递？"><a href="#10-Java-中值传递和引用传递？" class="headerlink" title="10.Java 中值传递和引用传递？"></a>10.Java 中值传递和引用传递？</h3><p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s?__biz=Mzg2OTA0Njk0OA==&mid=2247484896&idx=1&sn=44eefd9e63d2363815cced886151183b&source=41#wechat_redirect">参考地址</a></p>
-<p><strong>值传递</strong>是指对象被值传递，意味着传递了对象的一个副本，即使副本被改变，也不会影响源对象。（因为值传递的时候，实际上是将实参的值复制一份给形参。）</p>
-<p><strong>引用传递</strong>是指对象被引用传递，意味着传递的并不是实际的对象，而是对象的引用。因此，外部对引用对象的改变会反映到实际的对象上。（因为引用传递的时候，实际上是将实参的地址值复制一份给形参。）</p>
-<h3 id="11-JDK、JRE、JVM？"><a href="#11-JDK、JRE、JVM？" class="headerlink" title="11.JDK、JRE、JVM？"></a>11.JDK、JRE、JVM？</h3><p><strong>JDK</strong>: 顾名思义它是给开发者提供的开发工具箱，是给程序开发者用的。它除了包括完整的 JRE（Java Runtime Environment），Java运行环境，还包含了其他供开发者使用的工具包。</p>
-<p><strong>JRE</strong>: 普通用户而只需要安装 JRE（Java Runtime Environment）来运行 Java 程序。而程序开发者必须安装JDK来编译、调试程序。</p>
-<p><strong>JVM</strong>： 当我们运行一个程序时，JVM 负责将字节码转换为特定机器代码，JVM 提供了内存管理/垃圾回收和安全机制等。这种独立于硬件和操作系统，正是 Java 程序可以一次编写多处执行的原因。</p>
-<p><strong>区别与联系：</strong></p>
-<p>JDK 用于开发，JRE 用于运行 Java 程序 ；</p>
-<p>JDK 和 JRE 中都包含 JVM ；</p>
-<p>JVM 是 Java 编程语言的核心并且具有平台独立性。</p>
-<img src="https://dlutlgy-image-for-mac.oss-cn-beijing.aliyuncs.com/imagesimage-20220411182755625.png" alt="image-20220411182755625" style="zoom:50%;" />
-
-<h3 id="12-字符型常量与字符串常量？"><a href="#12-字符型常量与字符串常量？" class="headerlink" title="12.字符型常量与字符串常量？"></a>12.字符型常量与字符串常量？</h3><ol>
-<li><p><strong>形式上:</strong> 字符常量是单引号引起的一个字符，字符串常量是双引号引起的若干个字符</p>
-</li>
-<li><p><strong>含义上:</strong> 字符常量相当于一个整形值(ASCII值)，可以参加表达式运算，字符串常量代表一个地址值(该字符串在内存中存放位置)</p>
-</li>
-<li><p><strong>占内存大小上：</strong>字符常量只占一个字节，字符串常量占若干个字节(至少一个字符结束标志)</p>
-</li>
-</ol>
-<h3 id="13-重载和重写？"><a href="#13-重载和重写？" class="headerlink" title="13.重载和重写？"></a>13.重载和重写？</h3><p><strong>重载</strong>： 发生在同一个类中，方法名必须相同，参数类型不同、个数不同、顺序不同，方法返回值和访问修饰符可以不同，发生在编译时。 　　</p>
-<p><strong>重写</strong>： 发生在父子类中，方法名、参数列表必须相同，返回值范围小于等于父类，抛出的异常范围小于等于父类，访问修饰符范围大于等于父类；如果父类方法访问修饰符为 private 则子类就不能重写该方法。</p>
-<h3 id="14-成员变量与局部变量的区别有那些？"><a href="#14-成员变量与局部变量的区别有那些？" class="headerlink" title="14.成员变量与局部变量的区别有那些？"></a>14.成员变量与局部变量的区别有那些？</h3><p><strong>语法形式上</strong>：看成员变量是属于类的，而局部变量是在方法中定义的变量或是方法的参数；成员变量可以被public，private，static 等修饰符所修饰，而局部变量不能被访问控制修饰符及 static 所修饰；但是，成员变量和局部变量都能被 final 所修饰；</p>
-<p><strong>从变量在内存中的存储方式</strong>上：成员变量是对象的一部分，而对象存在于堆内存，局部变量存在于栈内存。</p>
-<p><strong>从变量在内存中的生存时间</strong>上：成员变量是对象的一部分，它随着对象的创建而存在，而局部变量随着方法的调用而自动消失。</p>
-<p><strong>再赋值方面：</strong>成员变量如果没有被赋初值，则会自动以类型的默认值而赋值（一种情况例外：被final修饰但没有被static修饰的成员变量必须显示地赋值）；而局部变量则不会自动赋值。</p>
-<h3 id="16-Java-与-C"><a href="#16-Java-与-C" class="headerlink" title="16.Java 与 C++"></a>16.Java 与 C++</h3><ol>
-<li>都是面向对象的语言，都支持封装、继承和多态。</li>
-<li>Java不提供指针来直接访问内存，程序内存更加安全。</li>
-<li>Java的类是单继承的，C++支持多重继承；虽然Java的类不可以多继承，但是接口可以多继承。</li>
-<li>Java有自动内存管理机制，不需要程序员手动释放无用内存。</li>
-</ol>
-<h3 id="17-字节码是什么？有什么好处？"><a href="#17-字节码是什么？有什么好处？" class="headerlink" title="17.字节码是什么？有什么好处？"></a>17.字节码是什么？有什么好处？</h3><p>Java 中引入了虚拟机的概念，即在机器和编译程序之间加入了一层抽象的虚拟的机器。这台虚拟的机器在任何平台上都提供给编译程序一个的共同的接口。编译程序只需要面向虚拟机，生成虚拟机能够理解的代码，然后由解释器来将虚拟机代码转换为特定系统的机器码执行。在 Java 中，这种供虚拟机理解的代码叫做 字节码（即扩展名为 .class 的文件），它不面向任何特定的处理器，只面向虚拟机。每一种平台的解释器是不同的，但是实现的虚拟机是相同的。Java 源程序经过编译器编译后变成字节码，字节码由虚拟机解释执行，虚拟机将每一条要执行的字节码送给解释器，解释器将其翻译成特定机器上的机器码，然后在特定的机器上运行。这也就是解释了 Java 的编译与解释并存的特点。</p>
-<p>Java源代码 —-&gt; 编译器—-&gt; JVM 可执行的 Java 字节码(即虚拟指令) —-&gt; JVM—-&gt; JVM中解释器—–&gt;机器可执行的二进制机器码—-&gt;程序运行。</p>
-<h3 id="18-面向对象的三大特性？"><a href="#18-面向对象的三大特性？" class="headerlink" title="18.面向对象的三大特性？"></a>18.面向对象的三大特性？</h3><p>好的，面试官，Java中面向对象有以下三大特性，分别是<strong>封装、继承、和多态。</strong></p>
-<p>第一、<strong>封装</strong>就是把对象的状态信息隐藏在内部，不允许外部对象直接访问对象的内部属性，但是我们可以提供一些被外界访问的方法来操作属性。</p>
-<p>举例：一个学生有学号、姓名两个属性。我们可以把属性私有化，然后创建该私有属性的 get/set 方法，用来获取或设置私有变量的值。</p>
-<p>第二、<strong>继承</strong>的意思：在不同类型的对象之间，往往有一定数量的共同点，我们可以把这些公共的特点抽取出来抽象出一个公共的类。</p>
-<p>举例：比如猫和狗都有腿、眼睛，并且都会进食，我们可以抽象出一个 animal 类，来定义这些公共的属性和方法。像猫这样更具体一点的子类可以继承 animal 类。</p>
-<p>继承的优点：子类能够新增自己特有的方法，也可以使用父类的功能，提高代码的重用和程序的可维护性。节省大量创建类的时间，从而提高开发效率。</p>
-<p>第三、多态，就是一个对象具有多种状态，即表现为<strong>父类引用指向子类的实例</strong>。<a target="_blank" rel="noopener" href="https://juejin.cn/post/6907627284790788104">参考文章</a></p>
-<p>多态具有以下特点：</p>
-<ul>
-<li>对象类型和引用类型之间具有继承（类）/实现（接口）的关系；</li>
-<li>引用类型变量发出的方法调用的到底是哪个类中的方法，必须在程序运行期间才能确定；</li>
-<li>多态不能调用”只在子类存在但在父类不存在”的方法；</li>
-<li>如果子类重写了父类的方法，真正执行的是子类覆盖的方法，如果子类没有覆盖父类的方法，执行的是父类的方法。</li>
-</ul>
-
+          <center>他山之石，可以攻玉</center>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/02/18/Java%E9%9D%A2%E8%AF%95%E6%95%B4%E7%90%86/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -1079,14 +836,14 @@
       <i class="fa fa-chart-line"></i>
     </span>
       <span>站点总字数：</span>
-    <span title="站点总字数">223k</span>
+    <span title="站点总字数">224k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span>站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">3:23</span>
+    <span title="站点阅读时长">3:24</span>
   </span>
 </div>
 
